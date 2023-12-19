@@ -14,7 +14,7 @@ public class OverworldPlayer : MonoBehaviour
     private float vertical;
     private bool interact;
 
-    private List<Chest> chests = new List<Chest>();
+    private List<Interactable> interactables = new List<Interactable>();
 
     public void Awake()
     {
@@ -43,12 +43,15 @@ public class OverworldPlayer : MonoBehaviour
         interact = Input.GetKeyDown(KeyCode.E);
 
         // Keeps count of chests within interacting area.
-        if (interact && chests.Count > 0)
+        if (interact && interactables.Count > 0)
         {
-            Chest chest = chests.ElementAt(0);
-            chest.GetItems();
-            chest.StopIndicating();
-            chests.Remove(chest);
+            if (interactables.Count > 0)
+            {
+                Interactable interactable = interactables.ElementAt(0);
+                if (interactable.isActive) interactable.Interact();
+                interactables.Remove(interactable);
+                interactables.Add(interactable);
+            }
         }
     }
 
@@ -59,21 +62,21 @@ public class OverworldPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Chest chest = other.GetComponent<Chest>();
-        if (chest && !chest.isOpened)
+        Interactable interactable = other.GetComponent<Interactable>();
+        if (interactable && interactable.isActive)
         {
-            chests.Add(chest);
-            chest.StartIndicating();
+            interactables.Add(interactable);
+            interactable.OnEnterRange();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Chest chest = other.GetComponent<Chest>();
-        if (chest)
+        Interactable interactable = other.GetComponent<Interactable>();
+        if (interactable)
         {
-            chests.Remove(chest);
-            chest.StopIndicating();
+            interactables.Remove(interactable);
+            interactable.OnExitRange();
         }
     }
 }

@@ -6,4 +6,7 @@ public static class Events
 {
     public static event Action<ItemData> OnItemReceived;
     public static void ReceiveItem(ItemData data) => OnItemReceived?.Invoke(data);
+
+    public static event Action<int> OnDialogueEnded;
+    public static void EndDialogue(int value) => OnDialogueEnded?.Invoke(value);
 }

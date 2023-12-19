@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chest : MonoBehaviour
+public class Chest : Interactable
 {
     public ChestData chestData;
     private SpriteRenderer _sr;
     private Animator _anim;
-    public bool isOpened;
 
     private void Start()
     {
@@ -16,16 +15,16 @@ public class Chest : MonoBehaviour
         if (chestData.items.Count > 0)
         {
             _sr.sprite = chestData.ClosedSprite;
-            isOpened = false;
+            isActive = true;
         }
         else
         {
             _sr.sprite = chestData.OpenSprite;
-            isOpened = true;
+            isActive = false;
         }
     }
 
-    public void GetItems()
+    public override void Interact()
     {
         foreach (ItemData item in chestData.items)
         {
@@ -33,18 +32,19 @@ public class Chest : MonoBehaviour
         }
         _sr.sprite = chestData.OpenSprite;
         chestData.items = new List<ItemData>();
-        isOpened = true;
+        isActive = false;
+        OnExitRange();
     }
-    public void StartIndicating()
+    public override void OnEnterRange()
     {
-        if (!isOpened)
+        if (isActive)
         {
             _anim.enabled = true;
             _anim.Play("ChestBlinking", 0, 0f);
         }
     }
 
-    public void StopIndicating()
+    public override void OnExitRange()
     {
         if (_anim.enabled)
         {

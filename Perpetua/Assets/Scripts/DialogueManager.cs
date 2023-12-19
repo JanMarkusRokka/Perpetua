@@ -17,6 +17,23 @@ public class DialogueManager : MonoBehaviour
     private Image _bg;
 
     private Queue<Dialogue> dialogues;
+
+    public void Awake()
+    {
+        Events.OnDialogueEnded += OnDialogueEnded;
+    }
+
+    public void OnDestroy()
+    {
+        Events.OnDialogueEnded -= OnDialogueEnded;
+    }
+
+    public void OnDialogueEnded(int value)
+    {
+        dialogues = new Queue<Dialogue>();
+        DialoguePresenter.SetActive(false);
+    }
+
     void Start()
     {
         Instance = this;
@@ -62,7 +79,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            DialoguePresenter.SetActive(false);
+            Events.EndDialogue(0);
         }
     }
 }

@@ -110,12 +110,12 @@ TextureImporter:
       name: Fisherman_attack_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 28
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.32221645, y: 0.41957417}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,10 +133,10 @@ TextureImporter:
         serializedVersion: 2
         x: 48
         y: 0
-        width: 27
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.31375065, y: 0.41534123}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,10 +154,10 @@ TextureImporter:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 26
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.31089735, y: 0.39311588}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: Fisherman_attack_3
       rect:
         serializedVersion: 2
-        x: 146
+        x: 144
         y: 0
-        width: 29
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.34659514, y: 0.4090933}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,12 +194,12 @@ TextureImporter:
       name: Fisherman_attack_4
       rect:
         serializedVersion: 2
-        x: 194
+        x: 192
         y: 0
-        width: 28
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.33977985, y: 0.40104052}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: Fisherman_attack_5
       rect:
         serializedVersion: 2
-        x: 241
+        x: 240
         y: 0
-        width: 28
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.32581744, y: 0.4196081}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
