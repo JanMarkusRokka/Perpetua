@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class NotificationPresenter : MonoBehaviour
 {
+    // Notification Presenter
     public static NotificationPresenter Instance;
 
     public GameObject NotificationPrefab;

@@ -6,8 +6,15 @@ using UnityEngine.UI;
 
 public class ItemsPresenter : MonoBehaviour
 {
-    public InventoryData Inventory;
+    // Items Presenter
+    private InventoryData inventory;
     public Button ItemPresenter;
+
+    private void Awake()
+    {
+        inventory = InventoryManager.Instance.inventory;
+        Debug.Log(inventory);
+    }
 
     private void OnEnable()
     {
@@ -23,7 +30,7 @@ public class ItemsPresenter : MonoBehaviour
             GameObject.Destroy(transform.GetChild(i).gameObject);
         }
 
-        foreach (ItemData item in Inventory.items)
+        foreach (ItemData item in inventory.items)
         {
             Button itemPres = Instantiate(ItemPresenter, transform);
             itemPres.GetComponentInChildren<Image>().sprite = item.image;

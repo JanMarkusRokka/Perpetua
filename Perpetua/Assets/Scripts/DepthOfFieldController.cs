@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+//using UnityEngine.Rendering.PostProcessing;
 
 public class DepthOfFieldController : MonoBehaviour
 {
+    /*
     float playerDistance = 10f;
     public GameObject target;
 
@@ -41,5 +42,5 @@ public class DepthOfFieldController : MonoBehaviour
     void SetFocus()
     {
         depthOfField.focusDistance.value = playerDistance;
-    }
+    }*/
 }

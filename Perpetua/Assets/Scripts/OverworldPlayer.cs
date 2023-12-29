@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class OverworldPlayer : MonoBehaviour
 {
     public float MoveSpeed = 10;
-    public InventoryData inventory;
     private Rigidbody _rb;
 
     private float horizontal;
@@ -15,21 +15,6 @@ public class OverworldPlayer : MonoBehaviour
     private bool interact;
 
     private List<Interactable> interactables = new List<Interactable>();
-
-    public void Awake()
-    {
-        Events.OnItemReceived += OnItemReceived;
-    }
-
-    public void OnDestroy()
-    {
-        Events.OnItemReceived -= OnItemReceived;
-    }
-
-    public void OnItemReceived(ItemData item)
-    {
-        inventory.items.Add(item);
-    }
 
     void Start()
     {

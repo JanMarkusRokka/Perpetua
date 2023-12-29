@@ -7,13 +7,8 @@ public class TransparencyController : MonoBehaviour
 
     private bool isTransparent = false;
     private float invisibilityEnds;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
+    // Still needs fixing (remember last rayed objects and compare?)
     void Update()
     {
         if (isTransparent && Time.time > invisibilityEnds)

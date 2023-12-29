@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    // Dialogue Manager
     public static DialogueManager Instance;
 
     public GameObject DialoguePresenter;

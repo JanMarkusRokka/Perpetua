@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Notification : MonoBehaviour
 {
+    // Notification
     public float LifeTime;
     private float deleteTime;
 
