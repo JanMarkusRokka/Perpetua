@@ -10,4 +10,5 @@ public class PartyCharacterData : ScriptableObject
     public new string name;
     public string description;
     public ItemData weapon;
+    public StatsData stats;
 }

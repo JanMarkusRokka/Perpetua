@@ -16,3 +16,4 @@ MonoBehaviour:
   name: John Personimus
   description: A man of focus, commitment and sheer will.
   weapon: {fileID: 11400000, guid: 875d26044df198447ac08eec71514e43, type: 2}
+  stats: {fileID: 11400000, guid: 92cf16ef6696a66429d0a97a434ef121, type: 2}

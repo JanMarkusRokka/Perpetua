@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a712662c7cf8c8341af87f9b739cebc4, type: 3}
-  m_Name: Axe
+  m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
+  m_Name: JohnStats
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: ff62eda793bf4234e99887b2a02663e8, type: 3}
-  name: Axe
-  type: {fileID: 11400000, guid: 9e4d05a3a852b3d468c1dbd36c131be1, type: 2}
-  equipped: 0
+  healthPoints: 100

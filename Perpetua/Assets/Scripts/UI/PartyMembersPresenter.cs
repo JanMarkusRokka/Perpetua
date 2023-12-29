@@ -14,6 +14,7 @@ public class PartyMembersPresenter : MonoBehaviour
     public GameObject CharacterCustomizer;
     private IEnumerator RevealTextCoroutine = null;
     public GameObject ItemPresenterPrefab;
+    public GameObject StatisticPresenterPrefab;
 
     public void Awake()
     {
@@ -60,6 +61,21 @@ public class PartyMembersPresenter : MonoBehaviour
         }
     }
 
+    private void RefreshStats(StatsData stats)
+    {
+        Transform pres = CharacterCustomizer.transform.Find("StatsPanel").Find("StatsPresenter");
+
+        int children = pres.childCount;
+
+        for (int i = children - 1; i >= 0; i--)
+        {
+            GameObject.Destroy(pres.GetChild(i).gameObject);
+        }
+
+        GameObject healthPresenter = Instantiate(StatisticPresenterPrefab, pres);
+        healthPresenter.GetComponent<TextMeshProUGUI>().text = "Health: " + stats.healthPoints;
+    }
+
     public void FocusOnMember(PartyCharacterData member)
     {
         Clear();
@@ -83,6 +99,7 @@ public class PartyMembersPresenter : MonoBehaviour
         CharacterCustomizer.transform.Find("DescriptionPanel").gameObject.SetActive(true);
         StopCoroutines();
         CharacterCustomizer.transform.Find("DescriptionPanel").GetComponentInChildren<TextMeshProUGUI>().text = "";
+        RefreshStats(member.stats);
         RevealTextCoroutine = TextMethods.RevealText(member.description, CharacterCustomizer.transform.Find("DescriptionPanel").GetComponentInChildren<TextMeshProUGUI>(), 0.05f);
         this.StartCoroutine(RevealTextCoroutine);
     }
