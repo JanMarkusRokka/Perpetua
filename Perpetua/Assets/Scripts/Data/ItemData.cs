@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ItemData : ScriptableObject
 {
     public Sprite image;
-    public string name;
+    public new string name;
     public ItemTypeData type;
+    public bool equipped;
 }

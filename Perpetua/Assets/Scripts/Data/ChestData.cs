@@ -9,5 +9,5 @@ public class ChestData : ScriptableObject
     public List<ItemData> items;
     public Sprite ClosedSprite;
     public Sprite OpenSprite;
-    public string name;
+    public new string name;
 }

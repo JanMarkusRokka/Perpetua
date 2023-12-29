@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Rune
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  name: 
+  name: Rune

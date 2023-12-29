@@ -6,14 +6,12 @@ using UnityEngine.UI;
 
 public class ItemsPresenter : MonoBehaviour
 {
-    // Items Presenter
     private InventoryData inventory;
     public Button ItemPresenter;
 
     private void Awake()
     {
         inventory = InventoryManager.Instance.inventory;
-        Debug.Log(inventory);
     }
 
     private void OnEnable()

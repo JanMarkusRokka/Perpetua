@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Accessory
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  name: 
+  name: Accessory

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: c97c6c6b0dcc07b4b9e0709bb3c23824, type: 3}
   name: TrollFace
-  type: {fileID: 11400000, guid: 97194480644489643bc3e1c09ff31b7c, type: 2}
+  type: {fileID: 11400000, guid: 9e4d05a3a852b3d468c1dbd36c131be1, type: 2}

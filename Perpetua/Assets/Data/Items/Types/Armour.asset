@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Armour
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: c97c6c6b0dcc07b4b9e0709bb3c23824, type: 3}
-  name: 
+  name: Armour

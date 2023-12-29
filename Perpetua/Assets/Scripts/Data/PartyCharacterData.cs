@@ -7,5 +7,7 @@ using UnityEngine.UI;
 public class PartyCharacterData : ScriptableObject
 {
     public Sprite image;
-    public string name;
+    public new string name;
+    public string description;
+    public ItemData weapon;
 }
