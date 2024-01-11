@@ -9,4 +9,7 @@ public static class Events
 
     public static event Action<int> OnDialogueEnded;
     public static void EndDialogue(int value) => OnDialogueEnded?.Invoke(value);
+
+    public static event Action<int> OnSave;
+    public static void Save(int value) => OnSave?.Invoke(value);
 }

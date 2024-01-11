@@ -17,3 +17,4 @@ MonoBehaviour:
   description: A man of focus, commitment and sheer will.
   weapon: {fileID: 11400000, guid: 875d26044df198447ac08eec71514e43, type: 2}
   stats: {fileID: 11400000, guid: 92cf16ef6696a66429d0a97a434ef121, type: 2}
+  equipment: {fileID: 11400000, guid: 4cf1fb92b91b0f240b2eb02b2224bfb5, type: 2}

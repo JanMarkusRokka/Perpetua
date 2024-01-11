@@ -9,6 +9,6 @@ public class PartyCharacterData : ScriptableObject
     public Sprite image;
     public new string name;
     public string description;
-    public ItemData weapon;
     public StatsData stats;
+    public EquipmentData equipment;
 }

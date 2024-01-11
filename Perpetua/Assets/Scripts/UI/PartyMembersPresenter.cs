@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -85,18 +86,10 @@ public class PartyMembersPresenter : MonoBehaviour
         pres.GetComponentInChildren<TextMeshProUGUI>().text = member.name;
 
         CharacterCustomizer.SetActive(true);
-
         CharacterCustomizer.transform.Find("EquipmentOptionsPanel").gameObject.SetActive(false);
-        CharacterCustomizer.transform.Find("EquipmentPanel").Find("WeaponSlot").GetComponent<ItemSlot>().member = member;
-
-        if (member.weapon)
-            CharacterCustomizer.transform.Find("EquipmentPanel").Find("WeaponSlot").GetComponent<ItemSlot>().SetItem(member.weapon);
-        else
-        {
-            CharacterCustomizer.transform.Find("EquipmentPanel").Find("WeaponSlot").GetComponent<ItemSlot>().SetItem(null);
-        }
-
+        RefreshEquipmentSlots(member);
         CharacterCustomizer.transform.Find("DescriptionPanel").gameObject.SetActive(true);
+
         StopCoroutines();
         CharacterCustomizer.transform.Find("DescriptionPanel").GetComponentInChildren<TextMeshProUGUI>().text = "";
         RefreshStats(member.stats);
@@ -104,8 +97,20 @@ public class PartyMembersPresenter : MonoBehaviour
         this.StartCoroutine(RevealTextCoroutine);
     }
 
-    public void SelectEquipmentSlot(ItemSlot slot, PartyCharacterData member)
+    public void RefreshEquipmentSlots(PartyCharacterData member)
     {
+        string[] slots = { "WeaponSlot", "Rune1Slot", "Rune2Slot", "ArmourSlot", "AccessorySlot" };
+
+        foreach (string slotName in slots)
+        {
+            ItemSlotPresenter slot = CharacterCustomizer.transform.Find("EquipmentPanel").Find(slotName).GetComponent<ItemSlotPresenter>();
+            slot.member = member;
+            slot.SetItem(slot.GetMemberSlotItem());
+        }
+    }
+
+    public void SelectEquipmentSlot(ItemSlotPresenter slot, PartyCharacterData member)
+    { 
         GameObject panel = CharacterCustomizer.transform.Find("EquipmentOptionsPanel").gameObject;
         ClearEquipmentOptions();
         CharacterCustomizer.transform.Find("DescriptionPanel").gameObject.SetActive(false);
