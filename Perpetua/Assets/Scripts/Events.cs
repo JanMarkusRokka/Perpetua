@@ -12,4 +12,6 @@ public static class Events
 
     public static event Action<int> OnSave;
     public static void Save(int value) => OnSave?.Invoke(value);
+    public static event Action<int> OnLoad;
+    public static void Load(int value) => OnLoad?.Invoke(value);
 }

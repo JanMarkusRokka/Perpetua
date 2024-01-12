@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: 875d26044df198447ac08eec71514e43, type: 2}
-  - {fileID: 11400000, guid: c09fb460ea4aaf0448a134e6e4a89395, type: 2}
+  - {fileID: 11400000, guid: 875d26044df198447ac08eec71514e43, type: 2}
+  - {fileID: 11400000, guid: e9e1140dfcc196d48b4fb972e75a5ab5, type: 2}
   - {fileID: 11400000, guid: dbb6a1ffbdb1bef47ab266e81232c94b, type: 2}
   ClosedSprite: {fileID: 21300000, guid: 7a39eda6416e3bd45a55ea804da81993, type: 3}
   OpenSprite: {fileID: 21300000, guid: 28a0450a80cb5fa479d2925222763763, type: 3}

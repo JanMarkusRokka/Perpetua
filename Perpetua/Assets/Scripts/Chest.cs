@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Chest : Interactable
@@ -10,6 +11,7 @@ public class Chest : Interactable
 
     private void Start()
     {
+        chestData = ChestData.Clone(chestData);
         _anim = GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
         if (chestData.items.Count > 0)
