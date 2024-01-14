@@ -6,13 +6,7 @@ using UnityEngine.UI;
 
 public class ItemsPresenter : MonoBehaviour
 {
-    private InventoryData inventory;
     public Button ItemPresenter;
-
-    private void Awake()
-    {
-        inventory = InventoryManager.Instance.inventory;
-    }
 
     private void OnEnable()
     {
@@ -28,11 +22,14 @@ public class ItemsPresenter : MonoBehaviour
             GameObject.Destroy(transform.GetChild(i).gameObject);
         }
 
-        foreach (ItemData item in inventory.items)
+        if (InventoryManager.Instance.inventory.items.Count > 0)
         {
-            Button itemPres = Instantiate(ItemPresenter, transform);
-            itemPres.GetComponentInChildren<Image>().sprite = item.image;
-            itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
+            foreach (ItemData item in InventoryManager.Instance.inventory.items)
+            {
+                Button itemPres = Instantiate(ItemPresenter, transform);
+                itemPres.GetComponentInChildren<Image>().sprite = item.image;
+                itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
+            }
         }
     }
 }

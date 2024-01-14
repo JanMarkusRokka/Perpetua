@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00204f3957846284b9d370427eb88827, type: 3}
-  m_Name: PreludeParty
+  m_Name: PreludeChapter1
   m_EditorClassIdentifier: 
   PartyMembers:
   - {fileID: 11400000, guid: 5677b7a2d1541f843b147177ce2d964c, type: 2}

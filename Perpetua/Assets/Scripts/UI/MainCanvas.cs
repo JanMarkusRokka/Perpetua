@@ -8,11 +8,18 @@ public class MainCanvas : MonoBehaviour
     public static MainCanvas Instance;
     public GameObject InventoryPanel;
     public GameObject PartyPanel;
+    public GameObject OptionsPanel;
     public GameObject TabsChanger;
+    private TabsController _tc;
 
     public void Awake()
     {
         Instance = this;
+
+        _tc = GetComponent<TabsController>();
+        _tc.tabs.Add(InventoryPanel);
+        _tc.tabs.Add(PartyPanel);
+        _tc.tabs.Add(OptionsPanel);
     }
     void Update()
     {
@@ -24,6 +31,10 @@ public class MainCanvas : MonoBehaviour
         {
             ProcessTabOpenClose(PartyPanel);
         }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            ProcessTabOpenClose(OptionsPanel);
+        }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             DisableTabs();
@@ -32,7 +43,7 @@ public class MainCanvas : MonoBehaviour
     public void ProcessTabOpenClose(GameObject tab)
     {
         bool wasOpen = tab.activeInHierarchy;
-        DisableTabs();
+        _tc.DisableTabs();
         if (wasOpen)
         {
             Time.timeScale = 1f;
@@ -47,16 +58,14 @@ public class MainCanvas : MonoBehaviour
     }
     public void DisableTabs()
     {
-        InventoryPanel.SetActive(false);
-        PartyPanel.SetActive(false);
-        TabsChanger.SetActive(false);
+        _tc.DisableTabs();
         Time.timeScale = 1f;
     }
     public void SetTab(GameObject tab)
     {
-        DisableTabs();
+        _tc.DisableTabs();
         Time.timeScale = 0f;
         TabsChanger.SetActive(true);
-        tab.SetActive(true);
+        _tc.SetTab(tab);
     }
 }

@@ -16,6 +16,7 @@ public class PartyMembersPresenter : MonoBehaviour
     private IEnumerator RevealTextCoroutine = null;
     public GameObject ItemPresenterPrefab;
     public GameObject StatisticPresenterPrefab;
+    public Sprite EmptySlot;
 
     public void Awake()
     {
@@ -117,19 +118,22 @@ public class PartyMembersPresenter : MonoBehaviour
         panel.SetActive(true);
         InventoryData inventory = InventoryManager.Instance.inventory;
         GameObject nullItemPres = Instantiate(ItemPresenterPrefab, panel.transform);
-        nullItemPres.GetComponent<Image>().sprite = null;
+        nullItemPres.GetComponent<Image>().sprite = EmptySlot;
         nullItemPres.GetComponentInChildren<TextMeshProUGUI>().text = null;
         nullItemPres.GetComponent<Button>().onClick.AddListener(delegate { slot.SetItem(null); FocusOnMember(member); });
 
-        foreach (ItemData item in inventory.items)
+        if (inventory.items.Count > 0)
         {
-            if (item.type == slot.itemType && !item.equipped)
+            foreach (ItemData item in inventory.items)
             {
-                Debug.Log("shown: " + item);
-                GameObject itemPres = Instantiate(ItemPresenterPrefab, panel.transform);
-                itemPres.GetComponent<Image>().sprite = item.image;
-                itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
-                itemPres.GetComponent<Button>().onClick.AddListener(delegate { slot.SetItem(item); FocusOnMember(member); });
+                if (item.type == slot.itemType && !item.equipped)
+                {
+                    Debug.Log("shown: " + item);
+                    GameObject itemPres = Instantiate(ItemPresenterPrefab, panel.transform);
+                    itemPres.GetComponent<Image>().sprite = item.image;
+                    itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
+                    itemPres.GetComponent<Button>().onClick.AddListener(delegate { slot.SetItem(item); FocusOnMember(member); });
+                }
             }
         }
     }
