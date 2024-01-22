@@ -37,7 +37,9 @@ public class MainCanvas : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            DisableTabs();
+            if (TabsChanger.activeInHierarchy)
+                DisableTabs();
+            else ProcessTabOpenClose(OptionsPanel);
         }
     }
     public void ProcessTabOpenClose(GameObject tab)
@@ -59,6 +61,7 @@ public class MainCanvas : MonoBehaviour
     public void DisableTabs()
     {
         _tc.DisableTabs();
+        TabsChanger.SetActive(false);
         Time.timeScale = 1f;
     }
     public void SetTab(GameObject tab)

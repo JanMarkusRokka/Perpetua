@@ -13,12 +13,20 @@ public class OverworldPlayer : MonoBehaviour
     private float horizontal;
     private float vertical;
     private bool interact;
+    public GameObject PartyMemberPrefab;
 
     private List<Interactable> interactables = new List<Interactable>();
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        List<PartyCharacterData> partyMembers = PartyManager.Instance.party.PartyMembers;
+        foreach(PartyCharacterData member in partyMembers)
+        {
+            Debug.Log("Spawning party member:" + member.name);
+            GameObject memberObject = Instantiate(PartyMemberPrefab, transform.position, transform.rotation);
+            memberObject.GetComponent<OverworldPartyMember>().SetupCharacter(member, transform);
+        }
     }
 
     void Update()
