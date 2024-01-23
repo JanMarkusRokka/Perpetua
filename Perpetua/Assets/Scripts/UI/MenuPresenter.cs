@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class MenuPresenter : MonoBehaviour
 {
+    public static MenuPresenter Instance;
     public GameObject TitleScreen;
     public GameObject SavesTab;
     public Button NewCampaignButton;
@@ -21,6 +22,8 @@ public class MenuPresenter : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
         NewCampaignButton.onClick.AddListener(NewCampaign);
         LoadSaveButton.onClick.AddListener(OpenSavesTab);
         ExitButton.onClick.AddListener(ExitGame);

@@ -31,6 +31,7 @@ public class ScenarioManager : MonoBehaviour
             // Instantiates new items, party members, etc.
             InventoryManager.Instance.SetInventoryInstantiate(scenario.StartingInventory);
             PartyManager.Instance.SetPartyInstantiate(scenario.StartingParty, InventoryManager.Instance.inventory);
+            Debug.Log(PartyManager.Instance.party.PartyMembers);
         }
 
         //Events.Save(0);

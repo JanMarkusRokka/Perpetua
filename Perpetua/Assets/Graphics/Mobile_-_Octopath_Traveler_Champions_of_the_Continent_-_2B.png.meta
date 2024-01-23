@@ -1,0 +1,3418 @@
+fileFormatVersion: 2
+guid: e8a545aeb6b980142ba7c4989d8796a6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 704
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddfc1f6a61447e14bbdf973857e42a84
+      internalID: 976384397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 704
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4fcec2f93198db41b53d0e583edd702
+      internalID: 1036053554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 704
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e674cebad6f13b4bbd5d2f0724d2bbb
+      internalID: 282861940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_3
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 704
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916bac131e6a9944590eba6eadcac29d
+      internalID: -182743785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_4
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 704
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f7eac1ab06b01c46a6b2ed6ed0737a0
+      internalID: -1299407269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_5
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 704
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68b3032953f52b46bda476f18025eec
+      internalID: -509047959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_6
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 704
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45075518812ed142b4f11c09d00dc44
+      internalID: -1700514455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_7
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 704
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffbd6ba151097cc4286b3bff9595f3f6
+      internalID: -1595989531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_8
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 704
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd43003b9b0d12e479e20116e62a23fe
+      internalID: -34776160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_9
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 704
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed45f1b5b10b831419871e79ed87217f
+      internalID: -901427114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_10
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 660
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e303698d29f8158408a4bdb7a7a56eac
+      internalID: -309672914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_11
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 660
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559c3b9c1c2b2c4478fa602125101c62
+      internalID: 587151033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_12
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 661
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ee81b5532adc241a3ff32188a920db
+      internalID: -1766591188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_13
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 661
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9221b4d9a2df12c4193452422b278a71
+      internalID: 516828296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_14
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 660
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59fabf3697da69a47b6630b914711de6
+      internalID: 490269234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_15
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 661
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8266b1cb9449c874f8a9f20f8e7d3376
+      internalID: 2008761266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_16
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 661
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a7c076cd223eef42a270c62fe1f821f
+      internalID: -1262470737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_17
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 660
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89568ebf7d0743a43934c4e530b73ba5
+      internalID: -1525156621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_18
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 661
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b9d61b4954fe6f4081daf076e032a4d
+      internalID: 2140981326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_19
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 661
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d177c67b231e8a34898cfbd1f8a05da2
+      internalID: 464559204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_20
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 616
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd1f19d3a8f393544b92f2d09b8bbab8
+      internalID: -68492885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_21
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 617
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d709569200ddf5e409aa10dbef51a94b
+      internalID: -1254524049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_22
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 617
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6a8807d94d723c4ba92c16130d01235
+      internalID: 1791659190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_23
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 616
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fadf6f0858f78d43b44fe86a048413f
+      internalID: 294406240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_24
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 616
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de90cb41d168dc4fa38e27f2bc6eb16
+      internalID: 449039694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_25
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 616
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9ccdeadf238d7a43ad5e04c1688a412
+      internalID: 346409346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_26
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 617
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61087667834212f40bf9662437c4e6e1
+      internalID: -890834763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_27
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 617
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608a61858dfd34449b6adbeacd7cf9a3
+      internalID: 306615207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_28
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 617
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4da65e22fdc47e409b9da6be079d63a
+      internalID: 1943231867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_29
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 616
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab0fb783438feb46bc103077fa8a0e2
+      internalID: -2141858944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_30
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 572
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9ce6ddcdc3fb24a8650e62101d60cf
+      internalID: 810433654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_31
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 572
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b65d29ed6fdc99240b7d5cc03277e9ed
+      internalID: 469764178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_32
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 572
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b9afde6ee25d14aa0b42612fe8d27e
+      internalID: -1877784448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_33
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 572
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 494d7cb0cd71b1b42afc1fd501f7de2c
+      internalID: -744472574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_34
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 572
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fafaa35d3a884e4e93d5f492a1d4e39
+      internalID: 1170148659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_35
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 573
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b3e95d5aa8b6b54f8faa863045717d5
+      internalID: 1643301852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_36
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 572
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de984f7eced93c045b5c2cb12ee21113
+      internalID: -510001690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_37
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 572
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe6e8f19d8e06b54da888f2d741d93e3
+      internalID: 838125432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_38
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 573
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c9058f4eda93a48b4a10a153bdcb06
+      internalID: 800674144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_39
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 572
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c66fff4085bc3684398b4f860f4d1526
+      internalID: 1930333163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_40
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 528
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5787cb34655f0504d9e94d118e4c1e7b
+      internalID: 1835377222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_41
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 528
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04e9eb3bf719e594dbf7f0ba3a91df03
+      internalID: 393804309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_42
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 528
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc7794a7cde9cb04aacfcb33090183bb
+      internalID: 2013398569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_43
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 528
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 490901b5146969340a07e828fed2d7d7
+      internalID: -938920254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_44
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 528
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92dbbb9d7779557468c35e3c7f296a30
+      internalID: 1019555131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_45
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 528
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c473be8f1a1a4148be3a9f476d84cd4
+      internalID: 1141607426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_46
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 528
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64cfe7f597ba8cf4784f9186718cfee3
+      internalID: -1728922869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_47
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 528
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2641e776472ec438bb22dcb1634337
+      internalID: -35789029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_48
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 528
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff8c53f6368cc254aa7f5cebb3544b49
+      internalID: -1500964855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_49
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 528
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7d6b37e39c554438414c02d3d51d7d
+      internalID: -886326462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_50
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 484
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 314087320262ec04c8d49784d444f1d3
+      internalID: -2093066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_51
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 484
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba66bdc44de9bf543a4fd6ba1adbd529
+      internalID: 1502689869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_52
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 484
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a93704c393ef04785a83b6c09ac82b
+      internalID: -785052109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_53
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 484
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dcc05b40e11ef34aa9b13ce97fbf849
+      internalID: 254042667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_54
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 484
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70f6d0860d76c64096e32417e4bae7e
+      internalID: -933762560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_55
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 484
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc04f935a839914ba8137e1c5152e16
+      internalID: -930995991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_56
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 484
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d9344017d63eb4c81b21450362ee12
+      internalID: -864936912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_57
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 484
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db13683bbb543ba43a1dbd7930f775bf
+      internalID: -2061445306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_58
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 484
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe976fa679db6348b5b3baea7f811d1
+      internalID: 1289364024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_59
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 484
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d0b20fc5abeeba4faf6a8c8e3a897f4
+      internalID: 222679165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_60
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 441
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c5360b93e638a408fd2b9f8f806b59
+      internalID: 1081837745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_61
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 440
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d292d15a8c0e1542b066d71e88f7a97
+      internalID: -783720909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_62
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 440
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 915c1e47b18d7684182709f7a1be53fb
+      internalID: -307400063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_63
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 440
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0db6e1f666dc49e4d9a75126c9b8157a
+      internalID: 2000288923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_64
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 440
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d674c54776c7c7040876b486eb6235ae
+      internalID: -1155209824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_65
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 440
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df82158d3657644a885d0f4e1746889
+      internalID: 252363872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_66
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 440
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa81306478303c947940b666b5f4bb46
+      internalID: -936874244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_67
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 441
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8feaf73147fe09f4ca80587b4f3560d5
+      internalID: 885612004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_68
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 448
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 491e8bd98c7e7e6488c248fb31e47de0
+      internalID: -960902569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_69
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 440
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c90fa105538bcd94c840e662b11aab64
+      internalID: -1893905426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_70
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 396
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 038199e65d6aca0408d4925742b40727
+      internalID: 577296201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_71
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 396
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6626e1d6cfb52154aa7217837b1eac34
+      internalID: -1501335881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_72
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 396
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e3d5109481e8240bdb09b8dece6d12
+      internalID: 416191464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_73
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 396
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f996913a37c2043bd410649b53d175
+      internalID: 914561328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_74
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 396
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2168bff5bfc66428fe93a2975eae8d
+      internalID: 999130648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_75
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 396
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 938be3d6998d0e2468947d3920cf1a18
+      internalID: 1154888128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_76
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 396
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a821093dd2181d4294dd115ea4a72f5
+      internalID: -1353170008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_77
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 396
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c318e6ca768d504e99f1f808bdf2358
+      internalID: -889693181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_78
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 396
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a08306c1269c07946b224b811f1f3614
+      internalID: 1975300911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_79
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 396
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70277e4e416f69a4f9586bf446cf2b00
+      internalID: 2007935880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_80
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 352
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddc070aca9080e246a6abba15713ddea
+      internalID: -1695286376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_81
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 353
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dceb2ec3040579b49beca85e5baf8ab2
+      internalID: -990954743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_82
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 353
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a151663569677bb47a6226b99dee5448
+      internalID: -173708690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_83
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 352
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4af64660effc544b8fda0f3d8d52b1a
+      internalID: 2027999083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_84
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 353
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e513fa8b2d87214cba4a0d47000b3cd
+      internalID: -1364404089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_85
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 353
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94ab318b0219384f8701a687319ff01
+      internalID: 1225369654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_86
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 352
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 803fe210d6e330a46bcd3460b5ed433f
+      internalID: 2001533648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_87
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 353
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 070a9d8779dbcdf43a857ff57774a66f
+      internalID: 772486543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_88
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 353
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18006abda45296b4d9b391601a827934
+      internalID: 425919343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_89
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 352
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b1f754fcaa525a459171bdef1fcbec2
+      internalID: -1773800385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_90
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 309
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9540828891a98d542b845dfa71f75b95
+      internalID: 795368529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_91
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 309
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b89ac6fb5b6600245ae38f5aeb2a7ca3
+      internalID: 1329759573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_92
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 308
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0edc2ebd2c08ac045900db987ee1ec73
+      internalID: -592728956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_93
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 308
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24cb705392b779f43824cefccb39a39e
+      internalID: 1997634168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_94
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 308
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0072dc0ce7977204cad55e7592fb8d2c
+      internalID: -1517877653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_95
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 309
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d75a004cd14900d46b894b8610289428
+      internalID: 1314674011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_96
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 309
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7cde76182875784e9bceed030c0713b
+      internalID: -859773621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_97
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 309
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293568f63a635e942886330a07122ab2
+      internalID: -265896389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_98
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 308
+        width: 15
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3708efa18b28502478319b4ffef6e168
+      internalID: 803740475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_99
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 308
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75bcbf0b3e3f82d46baee2ad53ea4e3f
+      internalID: -1706752397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_100
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 264
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8191b5ee598c2f046b00634765aa72b0
+      internalID: 886387493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_101
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 264
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c08d8a1e1771b042b8170e3ade4cccd
+      internalID: 37081591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_102
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 264
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2724a9bfe3c4a247b8d7ce309a124ca
+      internalID: -1383948737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_103
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 264
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1747b9fa783c44c4dadcc57c799e6348
+      internalID: -300197052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_104
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 265
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 549d3dc70a380a646ae955968d810e37
+      internalID: -2044813353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_105
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 264
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ee8064eafd68e4da7deb467ee3b381
+      internalID: 225182432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_106
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 264
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ace05b4c090014bb17f6e3f49833a6
+      internalID: -2109676893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_107
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 265
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36ab6377bfed6d9459b299d01c0672ec
+      internalID: -1094245820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_108
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 264
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca5c1c0556030641a651eac9852a383
+      internalID: -752603955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_109
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 264
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2d9b0e2600c68478450e2d64504f42
+      internalID: -1947666210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_110
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 220
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59bc2ff058f3698449ccf5805744e765
+      internalID: 555872933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_111
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 220
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aad6e80b7f37824e9d93b6d536065f3
+      internalID: -1036309643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_112
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 220
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b3b8e91bb2ac8a41abd6351971e0c6c
+      internalID: 900773146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_113
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 220
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829502f04d620954da629136e46b010b
+      internalID: -579735997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_114
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 220
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9491734847e3b074194a1ce3fc1440a1
+      internalID: 1800771427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_115
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 220
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d031dc020eb9ad34aa5c389018eba3b3
+      internalID: -158026606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_116
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 220
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf73fabf6932105418badbb7cece9150
+      internalID: 53088104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_117
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 220
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269c4eac6f42c3248be58ca32a1b8c60
+      internalID: 1476647542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_118
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 220
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d607719f1a6df45869640832a61f9e
+      internalID: -1847745537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_119
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 220
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65b149150d4ef3c43a7541d96bc42e6c
+      internalID: -1780237657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_120
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 176
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c86ac5ca43b33041bebea9b2df705f9
+      internalID: 1675455315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_121
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 177
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e70502822a8c0845b307a826dc11311
+      internalID: 1496266598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_122
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 176
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31fe3aa5ccd61c440b7ced48352dedb0
+      internalID: 118821328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_123
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 176
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d830f1e777fcca4ba34c1ea12f0c23b
+      internalID: 2028395962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_124
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 176
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4b365b474a14e49a5d82c3face61f2
+      internalID: 1670725617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_125
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 176
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf8e008cb4539fc45868e4c78dd7fd58
+      internalID: 1194623669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_126
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 184
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5fbc54a3b4f89d4d9147ee92e123a32
+      internalID: -884212293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_127
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 176
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c170c4a5dc25f44bb188985e7a097e
+      internalID: 773412768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_128
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 184
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0949448db0e3c341893653ba89044cd
+      internalID: -1932894208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_129
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 184
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5967f04b81fb7e84f9684d4fd8b0da74
+      internalID: 1805279983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_130
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 132
+        width: 42
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 710346f4a5683294d8e15336f9a6993a
+      internalID: -519902993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_131
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 132
+        width: 42
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a85ed236163aa41498f834c0b8e9c862
+      internalID: -1529175747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_132
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 132
+        width: 33
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b25f112932c3d6b4ba6e52d0caaed74d
+      internalID: 2083792743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_133
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 132
+        width: 54
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a6332e11639ff44a84557147dd084e9
+      internalID: -1197586257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_134
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 132
+        width: 52
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a9cb36d16dbe54db963fefcddffffc
+      internalID: -1982990154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_135
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 88
+        width: 53
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f2d61760e7939342a6e8f23bb1f6fe1
+      internalID: -1761867804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_136
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 88
+        width: 48
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a72f657978320234ebae54f0df870561
+      internalID: -1229972034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_137
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 88
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2109a0041c80db479c86f5354b9e517
+      internalID: -1334918487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_138
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 88
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc1cc43a22c481f42ba3a82d245b6c23
+      internalID: 1579676881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_139
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 96
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa0b42882112dc41b3d8f457f7e77d4
+      internalID: -905265294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_140
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 44
+        width: 34
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae83684ba12c981479676f675fb23e94
+      internalID: 1804811958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_141
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 44
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79d3b82126b03a2438a3da8f1d59e6be
+      internalID: 1998140655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_142
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 44
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46cd361a3be3a884bac0fcc057929b63
+      internalID: -31456667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_143
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 44
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a4a331ed5463a045af9521d0a41657b
+      internalID: -897980363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_144
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 44
+        width: 39
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af32b31bfb133e04092268dc446b0858
+      internalID: -155128415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_145
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2196a87cb4d0bb48a51fbf6527a0adf
+      internalID: -91055712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_146
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 0
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d56a131960fd944bd370ff37a1c48d
+      internalID: 111008054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_147
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d452646ff2d21134c93f9b1858a57c34
+      internalID: 735292271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_148
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 0
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33e5790284f986e45b59210263a9945b
+      internalID: -797180264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_0: 976384397
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_1: 1036053554
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_10: -309672914
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_100: 886387493
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_101: 37081591
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_102: -1383948737
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_103: -300197052
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_104: -2044813353
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_105: 225182432
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_106: -2109676893
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_107: -1094245820
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_108: -752603955
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_109: -1947666210
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_11: 587151033
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_110: 555872933
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_111: -1036309643
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_112: 900773146
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_113: -579735997
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_114: 1800771427
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_115: -158026606
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_116: 53088104
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_117: 1476647542
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_118: -1847745537
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_119: -1780237657
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_12: -1766591188
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_120: 1675455315
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_121: 1496266598
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_122: 118821328
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_123: 2028395962
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_124: 1670725617
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_125: 1194623669
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_126: -884212293
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_127: 773412768
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_128: -1932894208
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_129: 1805279983
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_13: 516828296
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_130: -519902993
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_131: -1529175747
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_132: 2083792743
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_133: -1197586257
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_134: -1982990154
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_135: -1761867804
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_136: -1229972034
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_137: -1334918487
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_138: 1579676881
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_139: -905265294
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_14: 490269234
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_140: 1804811958
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_141: 1998140655
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_142: -31456667
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_143: -897980363
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_144: -155128415
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_145: -91055712
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_146: 111008054
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_147: 735292271
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_148: -797180264
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_15: 2008761266
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_16: -1262470737
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_17: -1525156621
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_18: 2140981326
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_19: 464559204
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_2: 282861940
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_20: -68492885
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_21: -1254524049
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_22: 1791659190
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_23: 294406240
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_24: 449039694
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_25: 346409346
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_26: -890834763
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_27: 306615207
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_28: 1943231867
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_29: -2141858944
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_3: -182743785
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_30: 810433654
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_31: 469764178
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_32: -1877784448
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_33: -744472574
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_34: 1170148659
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_35: 1643301852
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_36: -510001690
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_37: 838125432
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_38: 800674144
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_39: 1930333163
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_4: -1299407269
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_40: 1835377222
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_41: 393804309
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_42: 2013398569
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_43: -938920254
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_44: 1019555131
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_45: 1141607426
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_46: -1728922869
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_47: -35789029
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_48: -1500964855
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_49: -886326462
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_5: -509047959
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_50: -2093066
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_51: 1502689869
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_52: -785052109
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_53: 254042667
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_54: -933762560
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_55: -930995991
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_56: -864936912
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_57: -2061445306
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_58: 1289364024
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_59: 222679165
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_6: -1700514455
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_60: 1081837745
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_61: -783720909
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_62: -307400063
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_63: 2000288923
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_64: -1155209824
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_65: 252363872
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_66: -936874244
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_67: 885612004
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_68: -960902569
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_69: -1893905426
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_7: -1595989531
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_70: 577296201
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_71: -1501335881
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_72: 416191464
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_73: 914561328
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_74: 999130648
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_75: 1154888128
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_76: -1353170008
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_77: -889693181
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_78: 1975300911
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_79: 2007935880
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_8: -34776160
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_80: -1695286376
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_81: -990954743
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_82: -173708690
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_83: 2027999083
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_84: -1364404089
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_85: 1225369654
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_86: 2001533648
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_87: 772486543
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_88: 425919343
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_89: -1773800385
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_9: -901427114
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_90: 795368529
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_91: 1329759573
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_92: -592728956
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_93: 1997634168
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_94: -1517877653
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_95: 1314674011
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_96: -859773621
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_97: -265896389
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_98: 803740475
+      Mobile_-_Octopath_Traveler_Champions_of_the_Continent_-_2B_99: -1706752397
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
