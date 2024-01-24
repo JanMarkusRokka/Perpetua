@@ -15,66 +15,80 @@ public class TransparencyController : MonoBehaviour
         {
             isTransparent = false;
 
-            StartCoroutine(FadeIn());
+            FadeIn();
         }
     }
 
     public void MakeTransparent()
     {
-        if (!isTransparent) StartCoroutine(FadeOut());
+        if (!isTransparent) FadeOut();
 
         isTransparent = true;
 
         invisibilityEnds = Time.time + 0.1f;
     }
 
-    IEnumerator FadeOut()
+    private void FadeOut()
     {
-        for (float alpha = 1f; alpha >= 0.4; alpha -= 0.1f)
-        {
-            Renderer[] childRenderers = GetComponentsInChildren<Renderer>();
+        //for (float alpha = 1f; alpha >= 0.4; alpha -= 0.1f)
+        //{
+            Renderer[] childRenderers = GetComponentsInChildren<MeshRenderer>();
 
             foreach (Renderer r in childRenderers)
             {
-                Color c = r.material.color;
+                r.enabled = false;
+                /**
+                Color c = r.material.GetColor("_Color");
                 c.a = alpha;
-                r.material.color = c;
+                r.material.SetColor("_Color", c);
+                */
             }
-            Renderer renderer = GetComponent<Renderer>();
+            Renderer renderer = GetComponent<MeshRenderer>();
 
             if (renderer)
             {
-                Color c = renderer.material.color;
+                renderer.enabled = false;
+
+                /**
+                Color c = renderer.material.GetColor("_Color");
                 c.a = alpha;
-                renderer.material.color = c;
+                renderer.material.SetColor("_Color", c);
+                */
             }
-            yield return new WaitForSeconds(.001f);
-        }
-        this.enabled = false;
+            //yield return new WaitForSeconds(.001f);
+        //}
     }
 
-    IEnumerator FadeIn()
+    private void FadeIn()
     {
 
-        for (float alpha = 0.4f; alpha <= 1.1f; alpha += 0.1f)
-        {
-            Renderer[] childRenderers = GetComponentsInChildren<Renderer>();
+        //for (float alpha = 0.4f; alpha <= 1.1f; alpha += 0.1f)
+        //{
+            Renderer[] childRenderers = GetComponentsInChildren<MeshRenderer>();
 
             foreach (Renderer r in childRenderers)
             {
-                Color c = r.material.color;
+                r.enabled = true;
+                /**
+                Color c = r.material.GetColor("_Color");
                 c.a = alpha;
-                r.material.color = c;
+                r.material.SetColor("_Color", c);
+                */
             }
-            Renderer renderer = GetComponent<Renderer>();
+            Renderer renderer = GetComponent<MeshRenderer>();
 
             if (renderer)
             {
-                Color c = renderer.material.color;
+                renderer.enabled = true;
+                /**
+                Color c = renderer.material.GetColor("_Color");
                 c.a = alpha;
-                renderer.material.color = c;
+                renderer.material.SetColor("_Color", c);
+                */
             }
-            yield return new WaitForSeconds(.001f);
-        }
+        //yield return new WaitForSeconds(.001f);
+        //}
+        this.enabled = false;
+
     }
 }

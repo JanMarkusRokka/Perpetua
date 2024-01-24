@@ -34,7 +34,7 @@ public class NotificationPresenter : MonoBehaviour
     public void ShowNotification(string text, Sprite image)
     {
         GameObject notification = Instantiate(NotificationPrefab, transform);
-        notification.GetComponentInChildren<Image>().sprite = image;
+        notification.transform.Find("Preview").GetComponent<Image>().sprite = image;
         notification.GetComponentInChildren<TextMeshProUGUI>().text = text;
     }
 }

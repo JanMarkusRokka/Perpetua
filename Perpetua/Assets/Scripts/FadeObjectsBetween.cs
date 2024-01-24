@@ -19,7 +19,7 @@ public class FadeObjectsBetween : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        raycastHits = Physics.RaycastAll(transform.position, transform.forward, Vector3.Distance(transform.position, target.transform.position));
+        raycastHits = Physics.RaycastAll(transform.position, transform.forward, Vector3.Distance(transform.position, target.transform.position) - Vector3.Distance(transform.position, target.transform.position) * 0.01f);
 
         foreach(RaycastHit hit in raycastHits)
         {
