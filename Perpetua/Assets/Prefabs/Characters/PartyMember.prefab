@@ -47,7 +47,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261476881108139715}
   serializedVersion: 4
-  m_Mass: 0.0000001
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -62,10 +62,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!212 &7096123677331812306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1746706824, guid: c70874dc684440546a2fc947f9944900, type: 3}
+  m_Sprite: {fileID: 564991546, guid: e8777422c3f41e943a42e442b870b9ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261476881108139715}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 091f0df08b3b83c4bbfd02a3c3a6a1e6, type: 3}
   m_Name: 
@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterData: {fileID: 0}
   Player: {fileID: 0}
+  _rb: {fileID: 0}
 --- !u!1 &3969420300223865192
 GameObject:
   m_ObjectHideFlags: 0
