@@ -26,7 +26,7 @@ public class OverworldPlayer : MonoBehaviour
         for (int i = 0; i < partyMembers.Count - 1; i++)
         {
             PartyCharacterData member = partyMembers[i];
-            GameObject memberObject = Instantiate(PartyMemberPrefab, transform.position, transform.rotation);
+            GameObject memberObject = Instantiate(PartyMemberPrefab, transform.position + new Vector3(0f, 3f, 0f), transform.rotation);
             memberObject.GetComponent<OverworldPartyMember>().SetupCharacter(member, transform);
         }
         GetComponent<SpriteRenderer>().sprite = partyMembers[partyMembers.Count - 1].image;
