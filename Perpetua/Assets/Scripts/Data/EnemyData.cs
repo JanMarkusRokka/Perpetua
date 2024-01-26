@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(menuName = "Characters/PartyCharacter")]
+[CreateAssetMenu(menuName = "Enemies/Enemy")]
 public class EnemyData : ScriptableObject
 {
     public Sprite image;
     public new string name;
     public string description;
-    public StatsData stats;
+    public EnemyStatsData stats;
     public List<ItemData> loot;
 
-    private void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot)
+    private void Init(Sprite _image, string _name, string _description, EnemyStatsData _stats, List<ItemData> _loot)
     {
         image = _image;
         name = _name;

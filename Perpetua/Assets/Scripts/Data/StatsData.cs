@@ -7,16 +7,22 @@ using UnityEngine.UI;
 public class StatsData : ScriptableObject
 {
     public float healthPoints;
-    private void Init(float _healthPoints)
+    public float baseAttack;
+    public float baseDefense;
+    public int agility;
+    private void Init(float _healthPoints, float _baseAttack, float _baseDefense, int _agility)
     {
         healthPoints = _healthPoints;
+        baseAttack = _baseAttack;
+        baseDefense = _baseDefense;
+        agility = _agility;
     }
 
-    public static StatsData New(float healthPoints)
+    public static StatsData New(float healthPoints, float baseAttack, float baseDefense, int agility)
     {
         var statsData = ScriptableObject.CreateInstance<StatsData>();
 
-        statsData.Init(healthPoints);
+        statsData.Init(healthPoints, baseAttack, baseDefense, agility);
         return statsData;
     }
 }

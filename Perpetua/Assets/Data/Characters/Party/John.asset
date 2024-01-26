@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa25e95f9e2f28a4ca8c0ac498b68246, type: 3}
   m_Name: John
   m_EditorClassIdentifier: 
-  image: {fileID: 1728626153, guid: 40d32b0106097bc458bf34b2157d2364, type: 3}
+  image: {fileID: -1999497370, guid: f619e779a92a48f498c2a0d3a0f4664f, type: 3}
   name: John Personimus
   description: A man of focus, commitment and sheer will.
-  weapon: {fileID: 11400000, guid: 875d26044df198447ac08eec71514e43, type: 2}
   stats: {fileID: 11400000, guid: 92cf16ef6696a66429d0a97a434ef121, type: 2}
   equipment: {fileID: 11400000, guid: 4cf1fb92b91b0f240b2eb02b2224bfb5, type: 2}

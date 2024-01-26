@@ -16,6 +16,17 @@ public class OverworldPartyMember : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
         _rb = GetComponent<Rigidbody>();
+        //Events.OnBattleTriggered += OnBattleTriggered;
+    }
+    /*
+    public void OnDestroy()
+    {
+        Events.OnBattleTriggered -= OnBattleTriggered;
+    }
+    */
+    private void OnBattleTriggered(EnemyData enemyData)
+    {
+        enabled = false;
     }
 
     public void SetupCharacter(PartyCharacterData _CharacterData, Transform _Player)

@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: PeterStats
   m_EditorClassIdentifier: 
   healthPoints: 103
+  baseAttack: 17
+  baseDefense: 1
+  agility: 15

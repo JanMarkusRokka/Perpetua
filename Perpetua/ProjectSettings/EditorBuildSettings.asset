@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SnowScene.unity
     guid: a76de2e51cb56714d99685696b2266ea
+  - enabled: 1
+    path: Assets/Scenes/SnowBattleScene.unity
+    guid: 14a5f2316ea051448beb1436fbc62f4d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

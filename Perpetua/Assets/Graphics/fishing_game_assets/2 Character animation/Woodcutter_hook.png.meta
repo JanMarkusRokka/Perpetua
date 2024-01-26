@@ -110,12 +110,12 @@ TextureImporter:
       name: Woodcutter_hook_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 6
         y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 39
+        height: 32
+      alignment: 9
+      pivot: {x: 0.2878637, y: 0.4815327}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,12 +131,12 @@ TextureImporter:
       name: Woodcutter_hook_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 55
         y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 38
+        height: 32
+      alignment: 9
+      pivot: {x: 0.2745054, y: 0.4907663}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,12 +152,12 @@ TextureImporter:
       name: Woodcutter_hook_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 103
         y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 38
+        height: 32
+      alignment: 9
+      pivot: {x: 0.30560824, y: 0.4907663}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: Woodcutter_hook_3
       rect:
         serializedVersion: 2
-        x: 144
+        x: 151
         y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 41
+        height: 40
+      alignment: 9
+      pivot: {x: 0.23335117, y: 0.44829172}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,12 +194,12 @@ TextureImporter:
       name: Woodcutter_hook_4
       rect:
         serializedVersion: 2
-        x: 192
+        x: 199
         y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 41
+        height: 42
+      alignment: 9
+      pivot: {x: 0.29100484, y: 0.42964864}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: Woodcutter_hook_5
       rect:
         serializedVersion: 2
-        x: 240
+        x: 247
         y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 27
+        height: 43
+      alignment: 9
+      pivot: {x: 0.42339522, y: 0.42441323}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

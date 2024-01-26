@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: JohnStats
   m_EditorClassIdentifier: 
   healthPoints: 100
+  baseAttack: 12
+  baseDefense: 5
+  agility: 24

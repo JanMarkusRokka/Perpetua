@@ -12,13 +12,15 @@ public class OverworldEnemy : MonoBehaviour
     private Vector3 KnownPlayerLocation;
     private float stopFollowing;
     private Transform playerTransform;
-    public float FightTriggerDistance;
+    public float FightTriggerDistance = 1;
     public EnemyData EnemyData;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
+        EnemyData = EnemyData.Clone(EnemyData);
+        EnemyData.stats = EnemyStatsData.Clone(EnemyData.stats);
     }
 
     private void Start()
@@ -42,7 +44,8 @@ public class OverworldEnemy : MonoBehaviour
 
     private void TriggerFight()
     {
-        Debug.Log("Fight started");
+        Events.TriggerBattle(gameObject, playerTransform.gameObject);
+        enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)

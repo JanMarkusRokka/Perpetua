@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa25e95f9e2f28a4ca8c0ac498b68246, type: 3}
   m_Name: Mary
   m_EditorClassIdentifier: 
-  image: {fileID: -1743509828, guid: e8777422c3f41e943a42e442b870b9ff, type: 3}
+  image: {fileID: 2044774044, guid: f619e779a92a48f498c2a0d3a0f4664f, type: 3}
   name: Mary Mule Jr.
   description: A mysterious woman from the Northern Regions.
   stats: {fileID: 11400000, guid: 3e94f5c0d468ad84faf7b215e50dbaf5, type: 2}

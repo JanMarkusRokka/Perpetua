@@ -9,6 +9,9 @@ public class PartyMemberSaveData
 {
     public string name;
     public float healthPoints;
+    public float baseAttack;
+    public float baseDefense;
+    public int agility;
     public string weapon;
     public string rune1;
     public string rune2;
@@ -21,6 +24,9 @@ public class PartyMemberSaveData
 
         partyMemberSaveData.name = "";
         partyMemberSaveData.healthPoints = 100;
+        partyMemberSaveData.baseAttack = 10;
+        partyMemberSaveData.baseDefense = 5;
+        partyMemberSaveData.agility = 20;
         partyMemberSaveData.weapon = "";
         partyMemberSaveData.rune1 = "";
         partyMemberSaveData.rune2 = "";
@@ -34,6 +40,9 @@ public class PartyMemberSaveData
         PartyMemberSaveData data = new PartyMemberSaveData();
         data.name = member.name;
         data.healthPoints = member.stats.healthPoints;
+        data.baseAttack = member.stats.baseAttack;
+        data.baseDefense = member.stats.baseDefense;
+        data.agility = member.stats.agility;
         EquipmentData equipment = member.equipment;
         data.weapon = NameOrNull(equipment.weapon);
         data.rune1 = NameOrNull(equipment.rune1);
@@ -52,7 +61,7 @@ public class PartyMemberSaveData
     public static PartyCharacterData DataToScriptable(PartyMemberSaveData data, InventoryData inventory)
     {
         PartyCharacterData member = PartyCharacterData.Clone(SerializationMethods.allCharactersDict[data.name]);
-        member.stats = StatsData.New(data.healthPoints);
+        member.stats = StatsData.New(data.healthPoints, data.baseAttack, data.baseDefense, data.agility);
         member.equipment = EquipmentData.New(SerializationMethods.GetItemFromDict(data.weapon),
             SerializationMethods.GetItemFromDict(data.rune1),
             SerializationMethods.GetItemFromDict(data.rune2),

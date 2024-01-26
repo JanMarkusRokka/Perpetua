@@ -36,7 +36,8 @@ public class PartyMembersPresenter : MonoBehaviour
         {
             Button pres = Instantiate(PartyMemberPresenter, transform);
             pres.onClick.AddListener(delegate { FocusOnMember(member); });
-            pres.GetComponentInChildren<Image>().sprite = member.image;
+            pres.transform.Find("Image").GetComponent<Image>().sprite = member.image;
+            pres.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = member.image.textureRect.size * 6;
             pres.GetComponentInChildren<TextMeshProUGUI>().text = member.name;
         }
     }
@@ -83,7 +84,8 @@ public class PartyMembersPresenter : MonoBehaviour
         Clear();
         Button pres = Instantiate(PartyMemberPresenter, transform);
         pres.onClick.AddListener(delegate { FocusOnMember(member); });
-        pres.GetComponentInChildren<Image>().sprite = member.image;
+        pres.transform.Find("Image").GetComponent<Image>().sprite = member.image;
+        pres.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = member.image.textureRect.size * 6;
         pres.GetComponentInChildren<TextMeshProUGUI>().text = member.name;
 
         CharacterCustomizer.SetActive(true);

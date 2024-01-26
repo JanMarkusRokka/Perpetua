@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: MaryStats
   m_EditorClassIdentifier: 
   healthPoints: 105
+  baseAttack: 13
+  baseDefense: 3
+  agility: 22

@@ -110,10 +110,10 @@ TextureImporter:
       name: GraveRobber_hook_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 9
         y: 0
-        width: 48
-        height: 48
+        width: 36
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,10 +131,10 @@ TextureImporter:
       name: GraveRobber_hook_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 57
         y: 0
-        width: 48
-        height: 48
+        width: 36
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,10 +152,10 @@ TextureImporter:
       name: GraveRobber_hook_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 105
         y: 0
-        width: 48
-        height: 48
+        width: 36
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: GraveRobber_hook_3
       rect:
         serializedVersion: 2
-        x: 144
+        x: 153
         y: 0
-        width: 48
-        height: 48
+        width: 39
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,10 +194,10 @@ TextureImporter:
       name: GraveRobber_hook_4
       rect:
         serializedVersion: 2
-        x: 192
+        x: 201
         y: 0
-        width: 48
-        height: 48
+        width: 38
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +215,10 @@ TextureImporter:
       name: GraveRobber_hook_5
       rect:
         serializedVersion: 2
-        x: 240
+        x: 249
         y: 0
-        width: 48
-        height: 48
+        width: 25
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
