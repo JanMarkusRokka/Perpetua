@@ -26,7 +26,7 @@ public class InventoryManager : MonoBehaviour
 
     public void OnItemReceived(ItemData item)
     {
-        inventory.items.Add(ItemData.Clone(item));
+        inventory.items.Add(item.Clone());
     }
 
     public void SetInventory(InventoryData _inventory)

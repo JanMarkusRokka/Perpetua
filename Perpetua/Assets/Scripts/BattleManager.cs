@@ -8,17 +8,17 @@ using UnityEngine.UI;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance;
-    public EnemyData EnemyData;
-    public int enemyOrderId;
+    public List<EnemyData> EnemyData;
     public List<PartyCharacterData> party;
-    public List<ScriptableObject> agilityOrder;
+    public List<BattleParticipant> agilityOrder;
     public int currentTurn;
     public BattleCanvas BattleCanvas;
-    public GameObject Enemy;
-    public Queue<Tuple<int, string, int>> actionQueue;
+    public GameObject EnemyPresenter;
+    public Queue<BattleAction> actionQueue;
     public GameObject MissText;
     public Image HealthValue;
     private int deadPartyCount;
+    private int deadEnemyCount;
 
     public void Awake()
     {
@@ -34,7 +34,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         party = PartyManager.Instance.party.PartyMembers;
-        actionQueue = new Queue<Tuple<int, string, int>>();
+        actionQueue = new Queue<BattleAction>();
         SortOrderList();
         currentTurn = -1;
         TakeTurn();
@@ -43,18 +43,30 @@ public class BattleManager : MonoBehaviour
     public void TakeTurn()
     {
         currentTurn += 1;
-        if (deadPartyCount == party.Count)
+        BattleParticipant participant = agilityOrder[currentTurn];
+        if (deadPartyCount == party.Count && deadEnemyCount == EnemyData.Count)
         {
             EndGame();
+            return;
         }
-        else if (currentTurn <= agilityOrder.Count - 1)
+        else if (currentTurn < agilityOrder.Count)
         {
-            if (agilityOrder[currentTurn].GetType() == typeof(PartyCharacterData))
+            if (participant.health() <= 0)
             {
-                PartyCharacterData member = (PartyCharacterData)agilityOrder[currentTurn];
-                if (member.stats.healthPoints <= 0)
+                TakeTurn();
+            }
+            else
+            {
+                if (participant.IsPartyMember)
                 {
-                    TakeTurn();
+                    Debug.Log(participant.GetPartyMember().name + "'s turn");
+                    BattleCanvas.SetTurn();
+                }
+                else
+                {
+                    Debug.Log(participant.GetEnemy().name + "'s turn");
+                    BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
+                    EnemyTurn();
                 }
             }
         }
@@ -66,38 +78,54 @@ public class BattleManager : MonoBehaviour
             CommitNextAction();
             return;
         }
-        ScriptableObject turnTaker = agilityOrder[currentTurn];
-        Debug.Log(turnTaker.name);
-        if (turnTaker.GetType() == typeof(PartyCharacterData))
-        {
-            Debug.Log(((PartyCharacterData)turnTaker).name + "'s turn");
-            BattleCanvas.SetTurn();
-        } 
-        else if (turnTaker.GetType() == typeof(EnemyData))
-        {
-            Debug.Log(((EnemyData)turnTaker).name + "'s turn");
-            BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
-            EnemyTurn();
-        }
     }
 
     public void EnemyTurn()
     {
+        BattleParticipant participant = agilityOrder[currentTurn];
         if (UnityEngine.Random.Range(0, 100) > 25)
         {
-            PartyCharacterData recipient = party[UnityEngine.Random.Range(0, party.Count)];
+            int recipientId = UnityEngine.Random.Range(0, party.Count);
 
-            AddActionToQueue(enemyOrderId, "Attack", agilityOrder.IndexOf(recipient));
+            Attack attack = new Attack();
+            attack.attacker = participant;
+            attack.recipient = GetPartyMemberFromNumber(recipientId);
+            AddActionToQueue(attack);
         }
         else
         {
-            AddActionToQueue(enemyOrderId, "Guard", -1);
+            Debug.Log("Guard");
+            //AddActionToQueue(enemyOrderId, "Guard", -1);
         }
     }
 
-    public void AddActionToQueue(int turnTaker, string action, int receiver)
+    private BattleParticipant GetPartyMemberFromNumber(int memberId)
     {
-        actionQueue.Enqueue(new Tuple<int, string, int>(turnTaker, action, receiver));
+        int count = 0;
+        int id = 0;
+
+        BattleParticipant member = null;
+
+        while (true)
+        {
+            if (agilityOrder[id].IsPartyMember)
+            {
+                if (count == memberId)
+                {
+                    member = agilityOrder[id];
+                    break;
+                }
+                count++;
+            }
+            id++;
+        }
+
+        return member;
+    }
+
+    public void AddActionToQueue(BattleAction action)
+    {
+        actionQueue.Enqueue(action);
         TakeTurn();
     }
 
@@ -105,28 +133,9 @@ public class BattleManager : MonoBehaviour
     {
         if (actionQueue.Count > 0)
         {
-            Tuple<int, string, int> action = actionQueue.Dequeue();
-            if (action.Item2 == "Attack")
-            {
-                if (agilityOrder[action.Item1].GetType() == typeof(PartyCharacterData))
-                {
-                    AttackEnemy(action.Item1);
-                } else
-                {
-                    AttackPlayer(action.Item3);
-                }
-            }
-            else if (action.Item2 == "Guard")
-            {
-                if (agilityOrder[action.Item1].GetType() == typeof(PartyCharacterData))
-                {
-                    GuardAsPlayer(action.Item1);
-                }
-                else
-                {
-                    GuardAsEnemy(action.Item1);
-                }
-            }
+            BattleAction action = actionQueue.Dequeue();
+            action.CommitAction();
+            CommitNextAction();
         }
         else
         {
@@ -134,6 +143,16 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    public BattleParticipant GetCurrentTurnTaker()
+    {
+        return agilityOrder[currentTurn];
+    }
+
+    private void EndGame()
+    {
+        BattleCanvas.ThanksForPlaying.SetActive(true);
+    }
+    /*
     private void GuardAsPlayer(int turnTakerId)
     {
         Debug.Log("Player guards (Not implemented)");
@@ -201,14 +220,9 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator DisplayEnemyDeathAnimationCoroutine()
     {
-        Enemy.GetComponent<BattleEnemyAnimator>().PlayDeathAnimation();
+        EnemyPresenter.GetComponent<BattleEnemyAnimator>().PlayDeathAnimation();
         yield return new WaitForSeconds(1f);
         EndGame();
-    }
-
-    private void EndGame()
-    {
-        BattleCanvas.ThanksForPlaying.SetActive(true);
     }
 
     private void AttackPlayer(int recipient)
@@ -232,7 +246,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator DisplayEnemyAttackAnimationCoroutine(PartyCharacterData partyMember, int recipient, bool miss)
     {
-        Enemy.GetComponent<BattleEnemyAnimator>().PlayAttackAnimation();
+        EnemyPresenter.GetComponent<BattleEnemyAnimator>().PlayAttackAnimation();
         yield return new WaitForSeconds(0.5f);
         Color color = Color.red;
         color.a = 0.5f;
@@ -253,24 +267,23 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Party member has died");
         }
         CommitNextAction();
-    }
+    }*/
 
     private void SortOrderList()
     {
-        List<ScriptableObject> sortedByAgility = new List<ScriptableObject>(party.OrderByDescending(x => x.stats.agility));
-        bool enemyIsSlowest = true;
-        for (int i = 0; i < sortedByAgility.Count; i++)
+        List<BattleParticipant> battleParticipants = new List<BattleParticipant>();
+        foreach(PartyCharacterData member in party)
         {
-            if (((PartyCharacterData)sortedByAgility[i]).stats.agility <= EnemyData.stats.agility)
-            {
-                sortedByAgility.Insert(i, EnemyData);
-                enemyOrderId = i;
-                enemyIsSlowest = false;
-                break;
-            }
+            battleParticipants.Add(BattleParticipant.New(member));
         }
-        if (enemyIsSlowest) sortedByAgility.Add(EnemyData);
-        agilityOrder = sortedByAgility;
+        foreach(EnemyData enemy in EnemyData)
+        {
+            battleParticipants.Add(BattleParticipant.New(enemy));
+        }
+
+        battleParticipants = battleParticipants.OrderByDescending(x => x.agility()).ToList();
+        
+        agilityOrder = battleParticipants;
     }
 
     private void OnDestroy()
@@ -278,10 +291,9 @@ public class BattleManager : MonoBehaviour
         Events.OnSetEnemy -= OnSetEnemy;
     }
 
-    private void OnSetEnemy(EnemyData enemyData)
+    private void OnSetEnemy(List<EnemyData> enemyData)
     {
         EnemyData = enemyData;
-
     }
 
     public void Attack()

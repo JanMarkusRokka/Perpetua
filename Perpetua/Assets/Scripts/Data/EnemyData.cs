@@ -9,10 +9,10 @@ public class EnemyData : ScriptableObject
     public Sprite image;
     public new string name;
     public string description;
-    public EnemyStatsData stats;
+    public StatsData stats;
     public List<ItemData> loot;
 
-    private void Init(Sprite _image, string _name, string _description, EnemyStatsData _stats, List<ItemData> _loot)
+    private void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot)
     {
         image = _image;
         name = _name;

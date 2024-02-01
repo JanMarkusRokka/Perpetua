@@ -32,7 +32,7 @@ public class SavesPresenter : MonoBehaviour
         foreach(int save in saves)
         {
             GameObject saveSelectButton = Instantiate(SaveLoadButtonPrefab, transform);
-            saveSelectButton.GetComponent<Button>().onClick.AddListener(delegate { LoadData(save); });
+            //saveSelectButton.GetComponent<Button>().onClick.AddListener(delegate { LoadData(save); });
             saveSelectButton.GetComponentInChildren<TextMeshProUGUI>().text = "" + save;
         }
     }
@@ -54,6 +54,7 @@ public class SavesPresenter : MonoBehaviour
         return saves;
     }
 
+    /*
     public virtual void LoadData(int saveNum)
     {
         ScenarioData saveScenario = ScriptableObject.CreateInstance<ScenarioData>();
@@ -61,4 +62,5 @@ public class SavesPresenter : MonoBehaviour
         saveScenario.StartingParty = SerializationMethods.LoadParty(saveNum, saveScenario.StartingInventory);
         MenuPresenter.LoadSave(saveScenario);
     }
+    */
 }

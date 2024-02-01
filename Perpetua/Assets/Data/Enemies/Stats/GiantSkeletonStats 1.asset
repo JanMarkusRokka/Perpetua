@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
-  m_Name: MaryStats
+  m_Name: GiantSkeletonStats 1
   m_EditorClassIdentifier: 
-  HealthPoints: 103
-  PhysicalDamage: 15
-  MagicDamage: 1
-  PhysicalDefense: 10
-  MagicDefense: 1
-  AilmentResistance: 1
-  AttackSpeed: 8
-  Dodge: 2
-  Accuracy: 85
-  CriticalChance: 5
-  CriticalMultiplier: 1.5
+  HealthPoints: 200
+  MaxHealthPoints: 200
+  PhysicalDamage: 55
+  MagicDamage: 5
+  PhysicalDefense: 5
+  MagicDefense: 10
+  AilmentResistance: 10
+  AttackSpeed: 10
+  Dodge: 5
+  Accuracy: 80
+  CriticalChance: 3
+  CriticalMultiplier: 150

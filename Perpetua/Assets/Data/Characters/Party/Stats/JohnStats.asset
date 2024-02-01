@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
   m_Name: JohnStats
   m_EditorClassIdentifier: 
-  healthPoints: 100
-  baseAttack: 12
-  baseDefense: 5
-  agility: 24
+  HealthPoints: 105
+  PhysicalDamage: 1
+  MagicDamage: 10
+  PhysicalDefense: 1
+  MagicDefense: 8
+  AilmentResistance: 2
+  AttackSpeed: 9
+  Dodge: 4
+  Accuracy: 80
+  CriticalChance: 10
+  CriticalMultiplier: 2

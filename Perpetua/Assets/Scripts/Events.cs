@@ -23,6 +23,6 @@ public static class Events
     public static event Action<string> OnBattleSceneChanged;
     public static void SetBattleScene(string battleScene) => OnBattleSceneChanged?.Invoke(battleScene);
 
-    public static event Action<EnemyData> OnSetEnemy;
-    public static void SetEnemy(EnemyData enemyData) => OnSetEnemy?.Invoke(enemyData);
+    public static event Action<List<EnemyData>> OnSetEnemy;
+    public static void SetEnemy(List<EnemyData> enemyData) => OnSetEnemy?.Invoke(enemyData);
 }

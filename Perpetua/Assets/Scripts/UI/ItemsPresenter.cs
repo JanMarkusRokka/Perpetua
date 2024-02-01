@@ -24,11 +24,23 @@ public class ItemsPresenter : MonoBehaviour
 
         if (InventoryManager.Instance.inventory.items.Count > 0)
         {
+            List<ItemData> removables = new List<ItemData>();
             foreach (ItemData item in InventoryManager.Instance.inventory.items)
             {
+                if (item != null)
+                {
                 Button itemPres = Instantiate(ItemPresenter, transform);
                 itemPres.GetComponentInChildren<Image>().sprite = item.image;
                 itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
+                }
+                else
+                {
+                    removables.Add(item);
+                }
+            }
+            foreach(ItemData item in removables)
+            {
+                InventoryManager.Instance.inventory.items.Remove(item);
             }
         }
     }

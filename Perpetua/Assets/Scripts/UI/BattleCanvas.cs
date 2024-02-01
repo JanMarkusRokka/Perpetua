@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BattleCanvas : MonoBehaviour
 {
+    public BattleManager BattleManager;
     public GameObject OptionsPanel;
     public GameObject PartyPresenter;
     public GameObject ActionsPresenter;
@@ -14,12 +17,13 @@ public class BattleCanvas : MonoBehaviour
     public GameObject ActionOptionPresenterPrefab;
     public GameObject AttackEffectsPresenter;
     public GameObject ThanksForPlaying;
+    public TextMeshProUGUI TextPresenter;
     public List<Sprite> BattleEffects;
-    public BattleManager BattleManager;
     public Sprite CrossImage;
     private Color pmPresDefaultColor;
     private Color partyMemberHighlightColor = Color.green;
     private TabsController _tc;
+    private IEnumerator RevealTextCoroutine = null;
 
     void Start()
     {
@@ -30,11 +34,12 @@ public class BattleCanvas : MonoBehaviour
         };
         partyMemberHighlightColor.a = 0.5f;
         pmPresDefaultColor = PartyMemberPresenterPrefab.GetComponent<Image>().color;
+        TextPresenter.text = "";
     }
 
     public void DisplayAttackEffect()
     {
-        AttackEffectsPresenter.GetComponent<SpriteRenderer>().sprite = BattleEffects[Random.Range(0, BattleEffects.Count)];
+        AttackEffectsPresenter.GetComponent<SpriteRenderer>().sprite = BattleEffects[UnityEngine.Random.Range(0, BattleEffects.Count)];
         AttackEffectsPresenter.SetActive(true);
     }
     public void StopDisplayingAttackEffect()
@@ -53,7 +58,7 @@ public class BattleCanvas : MonoBehaviour
         ClearTab(ActionsPresenter);
         GameObject attackButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         attackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Attack";
-        attackButton.GetComponent<Button>().onClick.AddListener( delegate { BattleManager.Instance.AddActionToQueue(BattleManager.Instance.currentTurn, "Attack", BattleManager.Instance.enemyOrderId); } );
+        attackButton.GetComponent<Button>().onClick.AddListener( delegate { SelectEnemy(typeof(Attack)); } );
         GameObject b = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         b.GetComponentInChildren<TextMeshProUGUI>().text = "More options coming soon";
         /*
@@ -65,24 +70,39 @@ public class BattleCanvas : MonoBehaviour
         itemButton.GetComponentInChildren<TextMeshProUGUI>().text = "Item";*/
     }
 
+    private void SelectEnemy(Type actionType)
+    {
+        StopTextCoroutine();
+        RevealTextCoroutine = TextMethods.RevealText("Select Enemy", TextPresenter, 1);
+        StartCoroutine(RevealTextCoroutine);
+
+        //BattleManager.AddActionToQueue(actionType.New(BattleManager.GetCurrentTurnTaker(),));
+    }
+
+    public void StopTextCoroutine()
+    {
+        if (RevealTextCoroutine != null)
+            StopCoroutine(RevealTextCoroutine);
+    }
+
     private string StatsToText(StatsData stats)
     {
-        return stats.healthPoints + "\n" + stats.agility;
+        return stats.HealthPoints + "\n" + stats.AttackSpeed;
     }
 
     public void PopulatePartyTab()
     {
         ClearTab(PartyPresenter);
-        List<ScriptableObject> agilityOrder = BattleManager.Instance.agilityOrder;
+        List<BattleParticipant> agilityOrder = BattleManager.agilityOrder;
 
         for (int i = 0; i < agilityOrder.Count; i++)
         {
-            ScriptableObject turnTaker = agilityOrder[i];
-            if (turnTaker.GetType() == typeof(PartyCharacterData))
+            BattleParticipant turnTaker = agilityOrder[i];
+            if (turnTaker.IsPartyMember)
             {
-                PartyCharacterData partyMember = (PartyCharacterData)turnTaker;
+                PartyCharacterData partyMember = turnTaker.GetPartyMember();
                 GameObject partyMemberPresenter = Instantiate(PartyMemberPresenterPrefab, PartyPresenter.transform);
-                if (partyMember.stats.healthPoints <= 0)
+                if (partyMember.stats.HealthPoints <= 0)
                 {
                     partyMemberPresenter.transform.Find("Image").GetComponent<Image>().sprite = CrossImage;
                 }
@@ -94,7 +114,7 @@ public class BattleCanvas : MonoBehaviour
                 partyMemberPresenter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = partyMember.name;
                 partyMemberPresenter.transform.Find("Stats").GetComponent<TextMeshProUGUI>().text = StatsToText(partyMember.stats);
                 partyMemberPresenter.name = i.ToString();
-                if (i == BattleManager.Instance.currentTurn)
+                if (i == BattleManager.currentTurn)
                 {
                     partyMemberPresenter.GetComponent<Image>().color = partyMemberHighlightColor;
                 }

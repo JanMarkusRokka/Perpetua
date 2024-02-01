@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,8 +25,17 @@ public class PartyCharacterData : ScriptableObject
     public static PartyCharacterData Clone(PartyCharacterData character)
     {
         var characterData = ScriptableObject.CreateInstance<PartyCharacterData>();
+        var statsData = StatsData.Clone(character.stats);
+        var equipmentData = EquipmentData.Clone(character.equipment);
 
-        characterData.Init(character.image, character.name, character.description, character.stats, character.equipment);
+        characterData.Init(character.image, character.name, character.description, statsData, equipmentData);
+        return characterData;
+    }
+
+    public static PartyCharacterData CloneCharAndAddEquipmentToInventory(PartyCharacterData character, InventoryData inventory)
+    {
+        var characterData = Clone(character);
+        characterData.equipment.AddItemsToInventory(inventory);
         return characterData;
     }
 }

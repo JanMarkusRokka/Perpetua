@@ -32,12 +32,11 @@ public class ItemSlotPresenter : MonoBehaviour
             button.onClick.AddListener(delegate { PartyMembersPresenter.Instance.SelectEquipmentSlot(this, member); });
         } else if (itemType == newItem.type)
         {
-
             item = newItem;
             ItemData currentlyInSlot = GetMemberSlotItem();
             if (currentlyInSlot != null)
                 currentlyInSlot.equipped = false;
-            SetMemberSlotItem(item);
+            SetMemberSlotItem(newItem);
             item.equipped = true;
             itemImage.sprite = item.image;
             itemImage.color = Color.white;

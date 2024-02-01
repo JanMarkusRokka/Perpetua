@@ -27,10 +27,10 @@ public class PartyManager : MonoBehaviour
         party.PartyMembers = new List<PartyCharacterData>();
         foreach(PartyCharacterData member in _party.PartyMembers)
         {
-            party.PartyMembers.Add(PartyMemberSaveData.DataToScriptable(PartyMemberSaveData.ScriptableToData(member), inventory));
+            party.PartyMembers.Add(PartyCharacterData.CloneCharAndAddEquipmentToInventory(member, inventory));
         }
     }
-
+    /*
     private void OnSave(int value)
     {
         if (!Directory.Exists(Application.persistentDataPath + "/Saves/Party"))
@@ -51,5 +51,5 @@ public class PartyManager : MonoBehaviour
 
             System.IO.File.WriteAllText(Application.persistentDataPath + "/Saves/Party" + i +".json", json);
         }
-    }
+    }*/
 }

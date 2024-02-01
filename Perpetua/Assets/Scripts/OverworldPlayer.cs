@@ -19,6 +19,11 @@ public class OverworldPlayer : MonoBehaviour
     public GameObject PartyMemberPrefab;
     private List<Interactable> interactables = new List<Interactable>();
 
+    private void Awake()
+    {
+        _anim = GetComponent<Animator>();
+    }
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -29,8 +34,6 @@ public class OverworldPlayer : MonoBehaviour
             GameObject memberObject = Instantiate(PartyMemberPrefab, transform.position + new Vector3(0f, 3f, 0f), transform.rotation);
             memberObject.GetComponent<OverworldPartyMember>().SetupCharacter(member, transform);
         }
-        GetComponent<SpriteRenderer>().sprite = partyMembers[partyMembers.Count - 1].image;
-        _anim = GetComponent<Animator>();
     }
     /*
     public void Awake()

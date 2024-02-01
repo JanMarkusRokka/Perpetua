@@ -75,7 +75,7 @@ public class PartyMembersPresenter : MonoBehaviour
         }
 
         GameObject healthPresenter = Instantiate(StatisticPresenterPrefab, pres);
-        healthPresenter.GetComponent<TextMeshProUGUI>().text = "Health: " + stats.healthPoints;
+        healthPresenter.GetComponent<TextMeshProUGUI>().text = "Health: " + stats.HealthPoints;
     }
 
     public void FocusOnMember(PartyCharacterData member)
@@ -133,7 +133,8 @@ public class PartyMembersPresenter : MonoBehaviour
                     GameObject itemPres = Instantiate(ItemPresenterPrefab, panel.transform);
                     itemPres.GetComponent<Image>().sprite = item.image;
                     itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
-                    itemPres.GetComponent<Button>().onClick.AddListener(delegate { slot.SetItem(item); FocusOnMember(member); });
+                    Debug.Log(item.GetType());
+                    itemPres.GetComponent<Button>().onClick.AddListener( delegate { slot.SetItem(item); FocusOnMember(member); } );
                 }
             }
         }

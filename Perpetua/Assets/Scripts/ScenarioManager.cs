@@ -10,7 +10,7 @@ public class ScenarioManager : MonoBehaviour
     private ScenarioData currentScenario;
     private string currentBattleScene;
     private Vector3 lastPlayerLocation;
-    private EnemyData enemyData;
+    private List<EnemyData> enemyData;
     public void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -30,7 +30,7 @@ public class ScenarioManager : MonoBehaviour
 
     private void OnBattleTriggered(GameObject enemy, GameObject player)
     {
-        enemyData = enemy.GetComponent<OverworldEnemy>().EnemyData;
+        enemyData = new List<EnemyData>{ enemy.GetComponent<OverworldEnemy>().EnemyData};
         List<PartyCharacterData> partyMembersData = PartyManager.Instance.party.PartyMembers;
         lastPlayerLocation = player.transform.position;
         SceneManager.LoadScene(currentBattleScene);

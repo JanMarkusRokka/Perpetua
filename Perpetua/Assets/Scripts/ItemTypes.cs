@@ -10,6 +10,7 @@ public class ItemTypes : MonoBehaviour
     public ItemTypeData Armour;
     public ItemTypeData Accessory;
     public ItemTypeData Miscellaneous;
+    public ItemTypeData KeyItem;
     void Awake()
     {
         Instance = this;

@@ -20,7 +20,7 @@ public class OverworldEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
         EnemyData = EnemyData.Clone(EnemyData);
-        EnemyData.stats = EnemyStatsData.Clone(EnemyData.stats);
+        EnemyData.stats = StatsData.Clone(EnemyData.stats);
     }
 
     private void Start()

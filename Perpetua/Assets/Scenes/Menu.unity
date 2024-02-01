@@ -67,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -793,15 +796,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
+  m_sharedMaterial: {fileID: -4135747526499374348, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 523383346
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.12156863}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -925,10 +928,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Perpetua
+  m_text: perpetua
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
+  m_sharedMaterial: {fileID: -4135747526499374348, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1673,7 +1676,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1681,7 +1684,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1737,7 +1740,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1312287931
@@ -1928,15 +1931,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Exit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
+  m_sharedMaterial: {fileID: -4135747526499374348, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2062,7 +2065,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Load Save
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2070,7 +2073,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2126,7 +2129,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1454130602
@@ -2272,6 +2275,7 @@ GameObject:
   - component: {fileID: 1741351520}
   - component: {fileID: 1741351519}
   - component: {fileID: 1741351524}
+  - component: {fileID: 1741351525}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2395,16 +2399,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004f10172fb5ba34bacf30c5212e6d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allCharacters:
-  - {fileID: 11400000, guid: 5677b7a2d1541f843b147177ce2d964c, type: 2}
-  - {fileID: 11400000, guid: d7e334a78097a4541ad864d1201b6e61, type: 2}
-  - {fileID: 11400000, guid: 617ce77bfac8df24c9341572c585c533, type: 2}
-  - {fileID: 11400000, guid: b0242f78717e9b04eb59d49ac9540f57, type: 2}
-  allItems:
-  - {fileID: 11400000, guid: c09fb460ea4aaf0448a134e6e4a89395, type: 2}
-  - {fileID: 11400000, guid: e9e1140dfcc196d48b4fb972e75a5ab5, type: 2}
-  - {fileID: 11400000, guid: 875d26044df198447ac08eec71514e43, type: 2}
-  - {fileID: 11400000, guid: dbb6a1ffbdb1bef47ab266e81232c94b, type: 2}
+--- !u!114 &1741351525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741351518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e0d16cc7126f244a1ab72249d5e107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 11400000, guid: 9e4d05a3a852b3d468c1dbd36c131be1, type: 2}
+  Rune: {fileID: 11400000, guid: f93aaf84a891446489da57e467f24a02, type: 2}
+  Armour: {fileID: 11400000, guid: 97194480644489643bc3e1c09ff31b7c, type: 2}
+  Accessory: {fileID: 11400000, guid: 37fc5d2e71a34274aa5e0285f7d8ca13, type: 2}
+  Miscellaneous: {fileID: 11400000, guid: 66a6f9a10a1dcb149ae4558e76effd78, type: 2}
+  KeyItem: {fileID: 11400000, guid: c9edce408430feb40bd4168cf6355789, type: 2}
 --- !u!1 &1751412222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,15 +2660,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Campaign
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
+  m_sharedMaterial: {fileID: -4135747526499374348, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2814,6 +2826,26 @@ PrefabInstance:
     - target: {fileID: 5884400000676005253, guid: 6049e5930e0685e428e0eaf5c84cce2b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171033966140912848, guid: 6049e5930e0685e428e0eaf5c84cce2b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
+    - target: {fileID: 8171033966140912848, guid: 6049e5930e0685e428e0eaf5c84cce2b, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171033966140912848, guid: 6049e5930e0685e428e0eaf5c84cce2b, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171033966140912848, guid: 6049e5930e0685e428e0eaf5c84cce2b, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171033966140912848, guid: 6049e5930e0685e428e0eaf5c84cce2b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+/*
 [Serializable]
 public class PartyMemberSaveData
 {
@@ -176,3 +176,4 @@ public class SerializationMethods : MonoBehaviour
         return null;
     }
 }
+*/
