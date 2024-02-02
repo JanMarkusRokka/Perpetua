@@ -34,7 +34,7 @@ public class PartyMembersPresenter : MonoBehaviour
         foreach (PartyCharacterData member in party.PartyMembers)
         {
             Button pres = Instantiate(PartyMemberPresenter, transform);
-            pres.onClick.AddListener(delegate { FocusOnMember(member); });
+            pres.onClick.AddListener(delegate { FocusOnMember(member); CharacterCustomizer.transform.Find("EquipmentPanel").Find("WeaponSlot").GetComponentInChildren<Button>().Select(); });
             pres.transform.Find("Image").GetComponent<Image>().sprite = member.image;
             pres.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = member.image.textureRect.size * 6;
             pres.GetComponentInChildren<TextMeshProUGUI>().text = member.name;
@@ -87,6 +87,7 @@ public class PartyMembersPresenter : MonoBehaviour
         pres.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = member.image.textureRect.size * 6;
         pres.GetComponentInChildren<TextMeshProUGUI>().text = member.name;
 
+        Destroy(pres);
         CharacterCustomizer.SetActive(true);
         CharacterCustomizer.transform.Find("EquipmentOptionsPanel").gameObject.SetActive(false);
         RefreshEquipmentSlots(member);
@@ -119,10 +120,10 @@ public class PartyMembersPresenter : MonoBehaviour
         panel.SetActive(true);
         InventoryData inventory = InventoryManager.Instance.inventory;
         GameObject nullItemPres = Instantiate(ItemPresenterPrefab, panel.transform);
-        nullItemPres.GetComponent<Image>().sprite = EmptySlot;
+        nullItemPres.transform.Find("Image").GetComponent<Image>().sprite = EmptySlot;
         nullItemPres.GetComponentInChildren<TextMeshProUGUI>().text = null;
-        nullItemPres.GetComponent<Button>().onClick.AddListener(delegate { slot.SetItem(null); FocusOnMember(member); });
-
+        nullItemPres.GetComponent<Button>().onClick.AddListener(delegate { slot.SetItem(null); FocusOnMember(member); slot.GetComponent<Button>().Select(); });
+        nullItemPres.GetComponent<Button>().Select();
         if (inventory.items.Count > 0)
         {
             foreach (ItemData item in inventory.items)
@@ -131,10 +132,10 @@ public class PartyMembersPresenter : MonoBehaviour
                 {
                     Debug.Log("shown: " + item);
                     GameObject itemPres = Instantiate(ItemPresenterPrefab, panel.transform);
-                    itemPres.GetComponent<Image>().sprite = item.image;
+                    itemPres.transform.Find("Image").GetComponent<Image>().sprite = item.image;
                     itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
                     Debug.Log(item.GetType());
-                    itemPres.GetComponent<Button>().onClick.AddListener( delegate { slot.SetItem(item); FocusOnMember(member); } );
+                    itemPres.GetComponent<Button>().onClick.AddListener( delegate { slot.GetComponent<Button>().Select(); slot.SetItem(item); FocusOnMember(member); } );
                 }
             }
         }

@@ -1,3 +1,4 @@
+using Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,20 +27,26 @@ public class MainCanvas : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ProcessTabOpenClose(InventoryPanel);
+            TabsChanger.transform.Find("InventoryTab").GetComponent<CustomSelectableButton>().Select();
         }
         else if (Input.GetKeyDown(KeyCode.P))
         {
             ProcessTabOpenClose(PartyPanel);
+            TabsChanger.transform.Find("PartyTab").GetComponent<CustomSelectableButton>().Select();
         }
         else if (Input.GetKeyDown(KeyCode.O))
         {
             ProcessTabOpenClose(OptionsPanel);
+            TabsChanger.transform.Find("OptionsTab").GetComponent<CustomSelectableButton>().Select();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (TabsChanger.activeInHierarchy)
                 DisableTabs();
-            else ProcessTabOpenClose(OptionsPanel);
+            else {
+                TabsChanger.transform.Find("OptionsTab").GetComponent<CustomSelectableButton>().Select();
+                ProcessTabOpenClose(OptionsPanel);
+            }
         }
     }
     public void ProcessTabOpenClose(GameObject tab)

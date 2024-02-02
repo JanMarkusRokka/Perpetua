@@ -30,7 +30,7 @@ public class ItemsPresenter : MonoBehaviour
                 if (item != null)
                 {
                 Button itemPres = Instantiate(ItemPresenter, transform);
-                itemPres.GetComponentInChildren<Image>().sprite = item.image;
+                itemPres.transform.Find("Image").GetComponentInChildren<Image>().sprite = item.image;
                 itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
                 }
                 else

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,10 @@ public class BattleManager : MonoBehaviour
     public GameObject EnemyPresenter;
     public Queue<BattleAction> actionQueue;
     public GameObject MissText;
+    public Transform EnemyPositions;
+    public Transform Enemies;
+    public GameObject EnemyPrefab;
+
     public Image HealthValue;
     private int deadPartyCount;
     private int deadEnemyCount;
@@ -29,6 +34,7 @@ public class BattleManager : MonoBehaviour
         else Instance = this;
         Events.OnSetEnemy += OnSetEnemy;
         deadPartyCount = 0;
+        deadEnemyCount = 0;
     }
 
     void Start()
@@ -37,7 +43,24 @@ public class BattleManager : MonoBehaviour
         actionQueue = new Queue<BattleAction>();
         SortOrderList();
         currentTurn = -1;
+        SpawnEnemies();
         TakeTurn();
+    }
+
+    private void SpawnEnemies()
+    {
+        int spawnLocationId = 0;
+
+        for (int i = 0; i < agilityOrder.Count; i++)
+        {
+            if (!agilityOrder[i].IsPartyMember)
+            {
+                GameObject enemy = Instantiate(EnemyPrefab, Enemies);
+                enemy.transform.position = EnemyPositions.Find("Enemy" + spawnLocationId).position;
+                enemy.name = i.ToString();
+                spawnLocationId++;
+            }
+        }
     }
 
     public void TakeTurn()
@@ -51,7 +74,7 @@ public class BattleManager : MonoBehaviour
         }
         else if (currentTurn < agilityOrder.Count)
         {
-            if (participant.health() <= 0)
+            if (participant.Health() <= 0)
             {
                 TakeTurn();
             }
@@ -281,7 +304,7 @@ public class BattleManager : MonoBehaviour
             battleParticipants.Add(BattleParticipant.New(enemy));
         }
 
-        battleParticipants = battleParticipants.OrderByDescending(x => x.agility()).ToList();
+        battleParticipants = battleParticipants.OrderByDescending(x => x.Agility()).ToList();
         
         agilityOrder = battleParticipants;
     }

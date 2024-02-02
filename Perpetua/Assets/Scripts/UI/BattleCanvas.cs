@@ -1,7 +1,9 @@
+using Sirenix.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,6 +26,8 @@ public class BattleCanvas : MonoBehaviour
     private Color partyMemberHighlightColor = Color.green;
     private TabsController _tc;
     private IEnumerator RevealTextCoroutine = null;
+    private bool SelectEnm;
+    private string currentActionType;
 
     void Start()
     {
@@ -35,6 +39,44 @@ public class BattleCanvas : MonoBehaviour
         partyMemberHighlightColor.a = 0.5f;
         pmPresDefaultColor = PartyMemberPresenterPrefab.GetComponent<Image>().color;
         TextPresenter.text = "";
+        SelectEnm = false;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (OptionsPanel.activeInHierarchy)
+                _tc.DisableTabs();
+            else _tc.SetTab(OptionsPanel);
+        }
+        if (SelectEnm && Input.GetMouseButtonDown(0))
+        {
+            Transform selected = SelectRay(BattleManager.Enemies);
+            if (selected != null)
+            {
+                SelectEnemy(selected);
+            }
+        }
+    }
+
+    // Finds transform from list of parent's children
+    private Transform SelectRay(Transform parent)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray.origin, ray.direction * 100, out hit))
+        {
+            foreach(Transform child in parent)
+            {
+                if (child.GetInstanceID() == hit.collider.GetComponent<Transform>().GetInstanceID())
+                {
+                    return child;
+                }
+            }
+        }
+        return null;
     }
 
     public void DisplayAttackEffect()
@@ -58,7 +100,7 @@ public class BattleCanvas : MonoBehaviour
         ClearTab(ActionsPresenter);
         GameObject attackButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         attackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Attack";
-        attackButton.GetComponent<Button>().onClick.AddListener( delegate { SelectEnemy(typeof(Attack)); } );
+        attackButton.GetComponent<Button>().onClick.AddListener( delegate { StartSelectEnemy("Atk"); } );
         GameObject b = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         b.GetComponentInChildren<TextMeshProUGUI>().text = "More options coming soon";
         /*
@@ -70,13 +112,48 @@ public class BattleCanvas : MonoBehaviour
         itemButton.GetComponentInChildren<TextMeshProUGUI>().text = "Item";*/
     }
 
-    private void SelectEnemy(Type actionType)
+    private void StartSelectEnemy(string actionType)
     {
         StopTextCoroutine();
-        RevealTextCoroutine = TextMethods.RevealText("Select Enemy", TextPresenter, 1);
+        RevealTextCoroutine = TextMethods.RevealText("Select Enemy", TextPresenter, 0.1f);
         StartCoroutine(RevealTextCoroutine);
+        currentActionType = actionType;
+        SelectEnm = true;
+        SetEnemyHoverHighlight(true);
 
         //BattleManager.AddActionToQueue(actionType.New(BattleManager.GetCurrentTurnTaker(),));
+    }
+
+    private void SetEnemyHoverHighlight(bool value)
+    {
+        Transform Enemies = BattleManager.Enemies;
+        for (int i = 0; i < Enemies.childCount; i++)
+        {
+            Transform child = Enemies.GetChild(i);
+            child.GetComponent<HoverHighlight>().SetActiveValue(value);
+        }
+    }
+
+    private void SelectEnemy(Transform Enemy)
+    {
+        SelectEnm = false;
+        SetEnemyHoverHighlight(false);
+        StopTextCoroutine();
+        TextPresenter.text = "";
+        BattleAction action = CreateDoubleParticipantAction(BattleManager.agilityOrder[BattleManager.currentTurn], BattleManager.agilityOrder[int.Parse(Enemy.name)], currentActionType);
+        BattleManager.AddActionToQueue(action);
+    }
+
+    private BattleAction CreateDoubleParticipantAction(BattleParticipant giver, BattleParticipant recipient, string action)
+    {
+        if (action == "Atk")
+        {
+            // Temp
+            BattleAction a = Attack.New(giver, recipient);
+            a.CommitAction();
+            return a;
+        }
+        return null;
     }
 
     public void StopTextCoroutine()
@@ -140,16 +217,6 @@ public class BattleCanvas : MonoBehaviour
         for (int i = children - 1; i >= 0; i--)
         {
             GameObject.Destroy(tabTransform.GetChild(i).gameObject);
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (OptionsPanel.activeInHierarchy)
-                _tc.DisableTabs();
-            else _tc.SetTab(OptionsPanel);
         }
     }
 }

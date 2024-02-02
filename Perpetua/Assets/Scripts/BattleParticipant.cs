@@ -30,13 +30,13 @@ public class BattleParticipant : ScriptableObject
         return battleParticipant;
     }
 
-    public int agility()
+    public int Agility()
     {
         if (IsPartyMember) return participantPartyMember.stats.AttackSpeed;
         else return enemyData.stats.AttackSpeed;
     }
 
-    public float health()
+    public float Health()
     {
         if (IsPartyMember) return participantPartyMember.stats.HealthPoints;
         else return enemyData.stats.HealthPoints;
