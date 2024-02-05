@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: PeterStats
   m_EditorClassIdentifier: 
   HealthPoints: 90
+  MaxHealthPoints: 0
   PhysicalDamage: 8
   MagicDamage: 8
   PhysicalDefense: 6
   MagicDefense: 6
   AilmentResistance: 3
   AttackSpeed: 11
-  Dodge: 9
+  Dodge: 0.09
   Accuracy: 80
   CriticalChance: 10
   CriticalMultiplier: 150

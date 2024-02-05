@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,12 +12,14 @@ public class MenuPresenter : MonoBehaviour
     public static MenuPresenter Instance;
     public GameObject TitleScreen;
     public GameObject SavesTab;
+    public GameObject SettingsTab;
     public Button NewCampaignButton;
     public Button LoadSaveButton;
     public Button SettingsButton;
     public Button ExitButton;
     public ScenarioData StartingScenario;
     private ScenarioData currentScenario;
+    private TabsController _tc;
     private List<ScenarioData> saves;
 
     private void Awake()
@@ -26,6 +29,9 @@ public class MenuPresenter : MonoBehaviour
         NewCampaignButton.onClick.AddListener(NewCampaign);
         LoadSaveButton.onClick.AddListener(OpenSavesTab);
         ExitButton.onClick.AddListener(ExitGame);
+        SettingsButton.onClick.AddListener(OpenSettingsTab);
+        _tc = GetComponent<TabsController>();
+        _tc.tabs = new List<GameObject> { TitleScreen, SavesTab, SettingsTab };
         currentScenario = null;
     }
 
@@ -44,14 +50,17 @@ public class MenuPresenter : MonoBehaviour
 
     private void OpenSavesTab()
     {
-        TitleScreen.SetActive(false);
-        SavesTab.SetActive(true);
+        _tc.SetTab(SavesTab);
     }
 
     public void BackToMainScreen()
     {
-        TitleScreen.SetActive(true);
-        SavesTab.SetActive(false);
+        _tc.SetTab(TitleScreen);
+    }
+
+    public void OpenSettingsTab()
+    {
+        _tc.SetTab(SettingsTab);
     }
 
     public void LoadSave(ScenarioData scenario)

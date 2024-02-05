@@ -20,7 +20,7 @@ MonoBehaviour:
   MagicDefense: 10
   AilmentResistance: 10
   AttackSpeed: 10
-  Dodge: 5
+  Dodge: 0.05
   Accuracy: 80
   CriticalChance: 3
   CriticalMultiplier: 150

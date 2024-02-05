@@ -5,6 +5,7 @@ using UnityEngine;
 public class TabsController : MonoBehaviour
 {
     public List<GameObject> tabs;
+    public int id;
     public void DisableTabs()
     {
         foreach(GameObject tab in tabs)

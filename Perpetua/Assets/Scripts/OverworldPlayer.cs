@@ -16,6 +16,8 @@ public class OverworldPlayer : MonoBehaviour
     private float horizontalRaw;
     private float verticalRaw;
     private bool interact;
+    private float sprint;
+    public float SprintSpeedMultiplier;
     public GameObject PartyMemberPrefab;
     private List<Interactable> interactables = new List<Interactable>();
 
@@ -58,6 +60,14 @@ public class OverworldPlayer : MonoBehaviour
         horizontalRaw = Input.GetAxisRaw("Horizontal");
         verticalRaw = Input.GetAxisRaw("Vertical");
         interact = Input.GetKeyDown(KeyCode.E);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            sprint = 1f;
+        }
+        else
+        {
+            sprint = 0f;
+        }
 
         // Keeps count of chests within interacting area.
         if (interact && interactables.Count > 0)
@@ -105,7 +115,8 @@ public class OverworldPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = new Vector3(horizontal, 0, vertical) * MoveSpeed + new Vector3(0, _rb.velocity.y, 0);
+        float speedMultiplier = MoveSpeed * Mathf.Max(1f, sprint * SprintSpeedMultiplier);
+        _rb.velocity = new Vector3(horizontal, 0, vertical) * speedMultiplier + new Vector3(0, _rb.velocity.y, 0);
     }
 
     private void OnTriggerEnter(Collider other)

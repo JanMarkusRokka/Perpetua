@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: JohnStats
   m_EditorClassIdentifier: 
   HealthPoints: 105
+  MaxHealthPoints: 0
   PhysicalDamage: 1
   MagicDamage: 10
   PhysicalDefense: 1
   MagicDefense: 8
   AilmentResistance: 2
   AttackSpeed: 9
-  Dodge: 4
+  Dodge: 0.04
   Accuracy: 80
   CriticalChance: 10
   CriticalMultiplier: 2

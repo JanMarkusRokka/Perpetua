@@ -27,6 +27,7 @@ public class InventoryManager : MonoBehaviour
     public void OnItemReceived(ItemData item)
     {
         inventory.items.Add(item.Clone());
+        inventory.items = inventory.items.OrderByDescending(x => x.name).ToList();
     }
 
     public void SetInventory(InventoryData _inventory)

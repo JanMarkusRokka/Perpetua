@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7460b3313ae8442967d40baffb2d96, type: 3}
+  m_Name: UISFX
+  m_EditorClassIdentifier: 
+  VolumeMin: 1
+  VolumeMax: 1
+  PitchMin: 1
+  PitchMax: 1
+  AudioClipGroups:
+  - {fileID: 11400000, guid: 6af77898cad840e4c89c324c9d1840b7, type: 2}
+  - {fileID: 11400000, guid: 88a28d7ae0ad21b4ebecefc05faf450e, type: 2}

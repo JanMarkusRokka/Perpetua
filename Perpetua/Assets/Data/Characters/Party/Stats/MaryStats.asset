@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: MaryStats
   m_EditorClassIdentifier: 
   HealthPoints: 103
+  MaxHealthPoints: 0
   PhysicalDamage: 15
   MagicDamage: 1
   PhysicalDefense: 10
   MagicDefense: 1
   AilmentResistance: 1
   AttackSpeed: 8
-  Dodge: 2
+  Dodge: 0.02
   Accuracy: 85
   CriticalChance: 5
   CriticalMultiplier: 1.5

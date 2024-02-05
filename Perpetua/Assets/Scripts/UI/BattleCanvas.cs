@@ -7,39 +7,78 @@ using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 public class BattleCanvas : MonoBehaviour
 {
     public BattleManager BattleManager;
+    [Header("Main tabs")]
     public GameObject OptionsPanel;
-    public GameObject PartyPresenter;
+
+    [Header("Left tabs")]
     public GameObject ActionsPresenter;
-    public GameObject PartyMemberPresenterPrefab;
     public GameObject ActionOptionPresenterPrefab;
-    public GameObject AttackEffectsPresenter;
+    public GameObject SelectTargetLeftPanel;
+
+    [Header("Right tabs")]
+    public GameObject PartyPresenter;
+    public GameObject PartyMemberPresenterPrefab;
+
+    [Header("Turn order")]
+    public GameObject TurnOrderPresenter;
+    public GameObject OrderCharPresenter;
+
+    [Header("Enemy stuff")]
+    public GameObject Selections;
+    public GameObject EnemySelectionPrefab;
+    public GameObject HealthBars;
+    public GameObject HealthBarPrefab;
+
+    [Header("Effects")]
     public GameObject ThanksForPlaying;
     public TextMeshProUGUI TextPresenter;
-    public List<Sprite> BattleEffects;
     public Sprite CrossImage;
+    public BattleEffects battleEffects;
+
     private Color pmPresDefaultColor;
     private Color partyMemberHighlightColor = Color.green;
-    private TabsController _tc;
+    public TabsController TC;
+    public TabsController LeftTC;
+    public TabsController RightTC;
     private IEnumerator RevealTextCoroutine = null;
     private bool SelectEnm;
     private string currentActionType;
 
     void Start()
     {
-        _tc = GetComponent<TabsController>();
-        _tc.tabs = new List<GameObject>
-        {
-            OptionsPanel
-        };
+        setupTabControllers();
         partyMemberHighlightColor.a = 0.5f;
         pmPresDefaultColor = PartyMemberPresenterPrefab.GetComponent<Image>().color;
         TextPresenter.text = "";
         SelectEnm = false;
+        battleEffects = GetComponent<BattleEffects>();
+    }
+
+    private void setupTabControllers()
+    {
+        TabsController[] tcArray = GetComponents<TabsController>();
+        foreach (TabsController tc in tcArray)
+        {
+            if (tc.id == 0) TC = tc;
+            else if (tc.id == 1) LeftTC = tc;
+            else if (tc.id == 2) RightTC = tc;
+        }
+        TC.tabs = new List<GameObject>
+        {
+            OptionsPanel
+        };
+
+        LeftTC.tabs = new List<GameObject>
+        {
+            ActionsPresenter,
+            SelectTargetLeftPanel
+        };
     }
 
     void Update()
@@ -47,9 +86,11 @@ public class BattleCanvas : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (OptionsPanel.activeInHierarchy)
-                _tc.DisableTabs();
-            else _tc.SetTab(OptionsPanel);
+                TC.DisableTabs();
+            else TC.SetTab(OptionsPanel);
         }
+        /*
+        // Alternative mouse selection
         if (SelectEnm && Input.GetMouseButtonDown(0))
         {
             Transform selected = SelectRay(BattleManager.Enemies);
@@ -58,9 +99,88 @@ public class BattleCanvas : MonoBehaviour
                 SelectEnemy(selected);
             }
         }
+        */
     }
 
-    // Finds transform from list of parent's children
+    public void SetSelectEnm(bool value)
+    {
+        SelectEnm = value;
+        SetEnemySelectionButtons(value);
+        SetEnemyHealthBars(value);
+        //SetEnemyHoverHighlight(value);
+    }
+
+    public void SetEnemySelectionButtons(bool value)
+    {
+        if (value)
+        {
+            Transform Enemies = BattleManager.Enemies;
+            for (int i = 0; i < Enemies.childCount; i++)
+            {
+                Transform child = Enemies.GetChild(i);
+                Vector3 pos = Camera.main.WorldToScreenPoint(child.position);
+                GameObject selectable = Instantiate(EnemySelectionPrefab, Selections.transform);
+                selectable.transform.position = pos;
+                selectable.transform.rotation = transform.rotation;
+                selectable.GetComponent<Button>().onClick.AddListener(delegate { SelectEnemy(child); });
+                if (i == 0) selectable.GetComponent<Button>().Select();
+            }
+        }
+        else
+        {
+            ClearTab(Selections);
+        }
+    }
+
+    public void SetEnemyHealthBars(bool value)
+    {
+        if (value)
+        {
+            Transform Enemies = BattleManager.Enemies;
+            for (int i = 0; i < Enemies.childCount; i++)
+            {
+                Transform child = Enemies.GetChild(i);
+                Vector3 pos = Camera.main.WorldToScreenPoint(child.position);
+                GameObject healthBar = Instantiate(HealthBarPrefab, HealthBars.transform);
+                healthBar.transform.position = pos + new Vector3(0, 120f, 0);
+                healthBar.transform.rotation = transform.rotation;
+                StatsData stats = BattleManager.agilityOrder[int.Parse(child.name)].GetStatsData();
+                healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = stats.HealthPoints / stats.MaxHealthPoints;
+            }
+        }
+        else
+        {
+            ClearTab(HealthBars);
+        }
+    }
+
+    public void RefreshEnemyHealthBars()
+    {
+        ClearTab(HealthBars);
+        Transform Enemies = BattleManager.Enemies;
+        for (int i = 0; i < Enemies.childCount; i++)
+        {
+            Transform child = Enemies.GetChild(i);
+            Vector3 pos = Camera.main.WorldToScreenPoint(child.position);
+            GameObject healthBar = Instantiate(HealthBarPrefab, HealthBars.transform);
+            healthBar.transform.position = pos + new Vector3(0, 120f, 0);
+            healthBar.transform.rotation = transform.rotation;
+            StatsData stats = BattleManager.agilityOrder[int.Parse(child.name)].GetStatsData();
+            healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = stats.HealthPoints / stats.MaxHealthPoints;
+        }
+    }
+
+    private void SetEnemyHoverHighlight(bool value)
+    {
+        Transform Enemies = BattleManager.Enemies;
+        for (int i = 0; i < Enemies.childCount; i++)
+        {
+            Transform child = Enemies.GetChild(i);
+            child.GetComponent<HoverHighlight>().SetActiveValue(value);
+        }
+    }
+
+    // Finds transform from list of parent's children based on mouse position
     private Transform SelectRay(Transform parent)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -79,15 +199,7 @@ public class BattleCanvas : MonoBehaviour
         return null;
     }
 
-    public void DisplayAttackEffect()
-    {
-        AttackEffectsPresenter.GetComponent<SpriteRenderer>().sprite = BattleEffects[UnityEngine.Random.Range(0, BattleEffects.Count)];
-        AttackEffectsPresenter.SetActive(true);
-    }
-    public void StopDisplayingAttackEffect()
-    {
-        AttackEffectsPresenter.SetActive(false);
-    }
+
 
     public void SetTurn()
     {
@@ -95,50 +207,68 @@ public class BattleCanvas : MonoBehaviour
         DisplayMainActionOptions();
     }
 
-    private void DisplayMainActionOptions()
+    public void DisplayMainActionOptions()
     {
+        LeftTC.SetTab(ActionsPresenter);
         ClearTab(ActionsPresenter);
         GameObject attackButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         attackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Attack";
         attackButton.GetComponent<Button>().onClick.AddListener( delegate { StartSelectEnemy("Atk"); } );
-        GameObject b = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
-        b.GetComponentInChildren<TextMeshProUGUI>().text = "More options coming soon";
-        /*
         GameObject skillsButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         skillsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Skills";
         GameObject guardButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         guardButton.GetComponentInChildren<TextMeshProUGUI>().text = "Guard";
         GameObject itemButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
-        itemButton.GetComponentInChildren<TextMeshProUGUI>().text = "Item";*/
+        itemButton.GetComponentInChildren<TextMeshProUGUI>().text = "Item";
+        attackButton.GetComponent<Button>().Select();
     }
 
     private void StartSelectEnemy(string actionType)
     {
-        StopTextCoroutine();
-        RevealTextCoroutine = TextMethods.RevealText("Select Enemy", TextPresenter, 0.1f);
-        StartCoroutine(RevealTextCoroutine);
+        //StopTextCoroutine();
+        //RevealTextCoroutine = TextMethods.RevealText("Select your target", TextPresenter, 0.1f);
+        //StartCoroutine(RevealTextCoroutine);
         currentActionType = actionType;
-        SelectEnm = true;
-        SetEnemyHoverHighlight(true);
-
+        SetSelectEnm(true);
+        LeftTC.SetTab(SelectTargetLeftPanel);
+        //SelectTargetLeftPanel.GetComponentInChildren<Button>().Select();
         //BattleManager.AddActionToQueue(actionType.New(BattleManager.GetCurrentTurnTaker(),));
     }
 
-    private void SetEnemyHoverHighlight(bool value)
+    public void DisplayTurnOrder()
     {
-        Transform Enemies = BattleManager.Enemies;
-        for (int i = 0; i < Enemies.childCount; i++)
+        ClearTab(TurnOrderPresenter);
+        List<BattleParticipant> participants = BattleManager.agilityOrder;
+        foreach (BattleParticipant participant in participants)
         {
-            Transform child = Enemies.GetChild(i);
-            child.GetComponent<HoverHighlight>().SetActiveValue(value);
+            Sprite image = null;
+            Transform imagePresenter = null;
+            if (participant.IsPartyMember)
+            {
+                GameObject p = Instantiate(OrderCharPresenter, TurnOrderPresenter.transform);
+                foreach (Transform child in p.transform)
+                {
+                    imagePresenter = child;
+                    image = participant.GetPartyMember().image;
+                }
+            } else
+            {
+                GameObject p = Instantiate(OrderCharPresenter, TurnOrderPresenter.transform);
+                foreach (Transform child in p.transform)
+                {
+                    imagePresenter = child;
+                    image = participant.GetEnemy().image;
+                }
+            }
+            imagePresenter.GetComponent<Image>().sprite = image;
+            imagePresenter.GetComponent<RectTransform>().sizeDelta = image.textureRect.size;
         }
     }
 
     private void SelectEnemy(Transform Enemy)
     {
-        SelectEnm = false;
-        SetEnemyHoverHighlight(false);
-        StopTextCoroutine();
+        SetSelectEnm(false);
+        //StopTextCoroutine();
         TextPresenter.text = "";
         BattleAction action = CreateDoubleParticipantAction(BattleManager.agilityOrder[BattleManager.currentTurn], BattleManager.agilityOrder[int.Parse(Enemy.name)], currentActionType);
         BattleManager.AddActionToQueue(action);
@@ -150,7 +280,6 @@ public class BattleCanvas : MonoBehaviour
         {
             // Temp
             BattleAction a = Attack.New(giver, recipient);
-            a.CommitAction();
             return a;
         }
         return null;

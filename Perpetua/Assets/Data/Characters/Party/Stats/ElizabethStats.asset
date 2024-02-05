@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: ElizabethStats
   m_EditorClassIdentifier: 
   HealthPoints: 100
+  MaxHealthPoints: 0
   PhysicalDamage: 11
   MagicDamage: 2
   PhysicalDefense: 5
   MagicDefense: 2
   AilmentResistance: 1
   AttackSpeed: 10
-  Dodge: 5
+  Dodge: 0.05
   Accuracy: 80
   CriticalChance: 5
   CriticalMultiplier: 1.5

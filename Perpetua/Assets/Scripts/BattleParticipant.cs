@@ -51,4 +51,16 @@ public class BattleParticipant : ScriptableObject
     {
         return enemyData;
     }
+
+    public StatsData GetStatsData()
+    {
+        if (IsPartyMember) return participantPartyMember.stats;
+        else return enemyData.stats;
+    }
+
+    public EquipmentData GetEquipmentData()
+    {
+        if (IsPartyMember) return participantPartyMember.equipment;
+        return null;
+    }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,9 +30,11 @@ public class ItemsPresenter : MonoBehaviour
             {
                 if (item != null)
                 {
-                Button itemPres = Instantiate(ItemPresenter, transform);
-                itemPres.transform.Find("Image").GetComponentInChildren<Image>().sprite = item.image;
-                itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
+                    Button itemPres = Instantiate(ItemPresenter, transform);
+                    itemPres.transform.Find("Image").GetComponentInChildren<Image>().sprite = item.image;
+                    itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
+                    if (item.equipped)
+                        itemPres.transform.Find("Equipped").GetComponent<TextMeshProUGUI>().text = "eq.";
                 }
                 else
                 {

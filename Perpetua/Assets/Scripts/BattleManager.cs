@@ -20,11 +20,6 @@ public class BattleManager : MonoBehaviour
     public Transform EnemyPositions;
     public Transform Enemies;
     public GameObject EnemyPrefab;
-
-    public Image HealthValue;
-    private int deadPartyCount;
-    private int deadEnemyCount;
-
     public void Awake()
     {
         if (BattleManager.Instance)
@@ -33,8 +28,6 @@ public class BattleManager : MonoBehaviour
         }
         else Instance = this;
         Events.OnSetEnemy += OnSetEnemy;
-        deadPartyCount = 0;
-        deadEnemyCount = 0;
     }
 
     void Start()
@@ -44,6 +37,8 @@ public class BattleManager : MonoBehaviour
         SortOrderList();
         currentTurn = -1;
         SpawnEnemies();
+        BattleCanvas.DisplayTurnOrder();
+        BattleCanvas.SetSelectEnm(false);
         TakeTurn();
     }
 
@@ -63,17 +58,49 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    private int GetOutOfActionPartyCount()
+    {
+        int count = 0;
+        foreach(PartyCharacterData member in party)
+        {
+            if (member.stats.HealthPoints <= 0)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int GetOutOfActionEnemyCount()
+    {
+        int count = 0;
+        foreach(EnemyData enemy in EnemyData)
+        {
+            if (enemy.stats.HealthPoints <= 0)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public void TakeTurn()
     {
         currentTurn += 1;
-        BattleParticipant participant = agilityOrder[currentTurn];
-        if (deadPartyCount == party.Count && deadEnemyCount == EnemyData.Count)
+        
+        if (GetOutOfActionPartyCount() == party.Count)
+        {
+            EndGame();
+            return;
+        }
+        else if (GetOutOfActionEnemyCount() == EnemyData.Count)
         {
             EndGame();
             return;
         }
         else if (currentTurn < agilityOrder.Count)
         {
+            BattleParticipant participant = agilityOrder[currentTurn];
             if (participant.Health() <= 0)
             {
                 TakeTurn();
@@ -88,6 +115,7 @@ public class BattleManager : MonoBehaviour
                 else
                 {
                     Debug.Log(participant.GetEnemy().name + "'s turn");
+                    BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
                     BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
                     EnemyTurn();
                 }
@@ -96,7 +124,8 @@ public class BattleManager : MonoBehaviour
         else
         {
             currentTurn = -1;
-            BattleCanvas.SetTurn();
+            //BattleCanvas.SetTurn();
+            BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
             BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
             CommitNextAction();
             return;
@@ -117,8 +146,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Guard");
-            //AddActionToQueue(enemyOrderId, "Guard", -1);
+            AddActionToQueue(Guard.New(participant));
         }
     }
 
@@ -158,7 +186,8 @@ public class BattleManager : MonoBehaviour
         {
             BattleAction action = actionQueue.Dequeue();
             action.CommitAction();
-            CommitNextAction();
+
+            //CommitNextAction();
         }
         else
         {
@@ -317,10 +346,5 @@ public class BattleManager : MonoBehaviour
     private void OnSetEnemy(List<EnemyData> enemyData)
     {
         EnemyData = enemyData;
-    }
-
-    public void Attack()
-    {
-
     }
 }
