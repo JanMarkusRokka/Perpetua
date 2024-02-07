@@ -6,28 +6,28 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Characters/Stats")]
 public class StatsData : ScriptableObject
 {
-    public float HealthPoints;
-    public float MaxHealthPoints;
+    public int HealthPoints;
+    public int MaxHealthPoints;
 
-    public float PhysicalDamage;
-    public float MagicDamage;
+    public int PhysicalDamage;
+    public int MagicDamage;
 
-    public float PhysicalDefense;
-    public float MagicDefense;
+    public int PhysicalDefense;
+    public int MagicDefense;
 
     public float AilmentResistance;
 
     public int AttackSpeed;
 
     public float Dodge;
-    public float Accuracy;
+    public int Accuracy;
 
-    public float CriticalChance;
+    public int CriticalChance;
     public float CriticalMultiplier;
 
-    private void Init(float _HealthPoints, float _MaxHealthPoints, float _PhysicalDamage, float _MagicDamage, float _PhysicalDefense,
-        float _MagicDefense, float _AilmentResistance, int _AttackSpeed, float _Dodge, float _Accuracy,
-        float _CriticalChance, float _CriticalMultiplier)
+    private void Init(int _HealthPoints, int _MaxHealthPoints, int _PhysicalDamage, int _MagicDamage, int _PhysicalDefense,
+        int _MagicDefense, float _AilmentResistance, int _AttackSpeed, float _Dodge, int _Accuracy,
+        int _CriticalChance, float _CriticalMultiplier)
     {
         HealthPoints = _HealthPoints;
         MaxHealthPoints = _MaxHealthPoints;
@@ -49,9 +49,9 @@ public class StatsData : ScriptableObject
         CriticalMultiplier = _CriticalMultiplier;
     }
 
-    public static StatsData New(float HealthPoints, float MaxHealthPoints, float PhysicalDamage, float MagicDamage, float PhysicalDefense,
-        float MagicDefense, float AilmentResistance, int AttackSpeed, float Dodge, float Accuracy,
-        float CriticalChance, float CriticalMultiplier)
+    public static StatsData New(int HealthPoints, int MaxHealthPoints, int PhysicalDamage, int MagicDamage, int PhysicalDefense,
+        int MagicDefense, float AilmentResistance, int AttackSpeed, float Dodge, int Accuracy,
+        int CriticalChance, float CriticalMultiplier)
     {
         var statsData = ScriptableObject.CreateInstance<StatsData>();
 

@@ -25,14 +25,14 @@ public class Attack : BattleAction
 
         if (Random.Range(0, 100) > landChance)
         {
-            Debug.Log(participant.participant.name + " Miss");
+            //Debug.Log(participant.participant.name + " Miss");
             battleManager.StartCoroutine(animateMiss(battleManager, battleCanvas));
             return;
         }
-        Debug.Log(participant.participant.name + "Hit");
+        //Debug.Log(participant.participant.name + "Hit");
 
-        float baseDamage = attackerStats.PhysicalDamage;
-        float baseMagicDamage = attackerStats.MagicDamage;
+        int baseDamage = attackerStats.PhysicalDamage;
+        int baseMagicDamage = attackerStats.MagicDamage;
         if (attackerEquipment)
         {
             if (attackerEquipment.weapon)
@@ -42,8 +42,8 @@ public class Attack : BattleAction
             }
         }
 
-        baseDamage += Random.Range(-0.15f, 0.15f) * baseDamage;
-        baseMagicDamage += Random.Range(-0.15f, 0.15f) * baseMagicDamage;
+        baseDamage += (int) (Random.Range(-0.15f, 0.15f) * baseDamage);
+        baseMagicDamage += (int) (Random.Range(-0.15f, 0.15f) * baseMagicDamage);
 
         float criticalMultiplier = 1f;
 
@@ -53,8 +53,8 @@ public class Attack : BattleAction
             criticalMultiplier = attackerStats.CriticalMultiplier;
         }
 
-        float physicalDefense = recipientStats.PhysicalDefense;
-        float magicDefense = recipientStats.MagicDefense;
+        int physicalDefense = recipientStats.PhysicalDefense;
+        int magicDefense = recipientStats.MagicDefense;
         if (recipientEquipment)
         {
             if (recipientEquipment.armour)
@@ -64,18 +64,18 @@ public class Attack : BattleAction
             }
         }
 
-        float totalDamage = Mathf.Max(0f, baseDamage * criticalMultiplier - physicalDefense) + 
-            Mathf.Max(0f, baseMagicDamage * criticalMultiplier - magicDefense);
+        int totalDamage = (int) Mathf.Round(Mathf.Max(0f, baseDamage * criticalMultiplier - physicalDefense) + 
+            Mathf.Max(0f, baseMagicDamage * criticalMultiplier - magicDefense));
 
         //Later add ailments here (if skill only, then not?)
-
 
         battleManager.StartCoroutine(animateAttack(battleManager, battleCanvas, totalDamage));
         
     }
 
-    IEnumerator animateAttack(BattleManager battleManager, BattleCanvas battleCanvas, float totalDamage)
+    IEnumerator animateAttack(BattleManager battleManager, BattleCanvas battleCanvas, int totalDamage)
     {
+        yield return new WaitForSeconds(0.1f);
         if (participant.IsPartyMember)
         {
             BattleEffects battleEffects = battleCanvas.battleEffects;
@@ -86,7 +86,7 @@ public class Attack : BattleAction
             battleEffects.DisplayAttackEnemyEffect(recipientTransform);
 
             yield return new WaitForSeconds(0.5f);
-            recipient.GetStatsData().HealthPoints = Mathf.Max(0f, recipient.GetStatsData().HealthPoints - totalDamage);
+            recipient.GetStatsData().HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
 
             Color defaultColor = recipientTransform.GetComponent<SpriteRenderer>().color;
             recipientTransform.GetComponent<SpriteRenderer>().color = Color.red;
@@ -110,9 +110,9 @@ public class Attack : BattleAction
             yield return new WaitForSeconds(0.75f);
 
             battleEffects.DisplayDamageValueHUD(battleCanvas.PartyPresenter.transform.Find(orderId.ToString()).transform, totalDamage);
-            recipient.GetStatsData().HealthPoints = Mathf.Max(0f, recipient.GetStatsData().HealthPoints - totalDamage);
+            recipient.GetStatsData().HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
             battleCanvas.UpdatePartyTabStats();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.75f);
             battleCanvas.ResetPartyMemberColor(orderId);
 
         }
@@ -122,6 +122,8 @@ public class Attack : BattleAction
 
     IEnumerator animateMiss(BattleManager battleManager, BattleCanvas battleCanvas)
     {
+        yield return new WaitForSeconds(0.1f);
+
         if (participant.IsPartyMember)
         {
             BattleEffects battleEffects = battleCanvas.battleEffects;
@@ -157,11 +159,33 @@ public class Guard : BattleAction
     public BattleParticipant participant;
     public void CommitAction()
     {
-        Debug.Log("Guard action");
+        BattleManager battleManager = BattleManager.Instance;
+        battleManager.GuardDuringTurn.Add(participant);
+
+        battleManager.StartCoroutine(AnimateGuard());
+
+        //make attack take guard into account (-50% damage taken and heal?)
+    }
+
+    IEnumerator AnimateGuard()
+    {
         BattleManager battleManager = BattleManager.Instance;
         BattleCanvas battleCanvas = battleManager.BattleCanvas;
+        BattleEffects battleEffects = battleCanvas.battleEffects;
+        if (participant.IsPartyMember)
+        {
+            Transform participantTransform = battleCanvas.PartyPresenter.transform.Find(battleManager.agilityOrder.IndexOf(participant).ToString());
+            battleEffects.DisplayGuardEffect(participantTransform, true);
+        }
+        else
+        {
+            Transform participantTransform = battleManager.Enemies.Find(battleManager.agilityOrder.IndexOf(participant).ToString());
+            battleEffects.DisplayGuardEffect(participantTransform, false);
+        }
+        yield return new WaitForSeconds(0.5f);
         battleManager.CommitNextAction();
     }
+
     public static Guard New(BattleParticipant _participant)
     {
         return new Guard()

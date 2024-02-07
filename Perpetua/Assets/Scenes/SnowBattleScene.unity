@@ -7098,6 +7098,7 @@ MonoBehaviour:
   AttackEffectsPresenter: {fileID: 745420472}
   TextDisplay: {fileID: 5294212726548999038, guid: 941cab2f7d28dc2439ac9fa18ead3895, type: 3}
   TextDisplayHUD: {fileID: 613556940004988359, guid: 4bb02655d8272b542bb753113fbcb92b, type: 3}
+  ShieldImage: {fileID: 2382169373452235494, guid: 21af0eca6e8acc44bae4388759e3affa, type: 3}
 --- !u!1 &917562646
 GameObject:
   m_ObjectHideFlags: 0
@@ -9119,6 +9120,7 @@ MonoBehaviour:
   EnemyPositions: {fileID: 824410604}
   Enemies: {fileID: 838536326}
   EnemyPrefab: {fileID: 1064550698876330674, guid: 679f7bb2369e83c47b4d345a7bd05c18, type: 3}
+  GuardDuringTurn: []
 --- !u!4 &1429271335
 Transform:
   m_ObjectHideFlags: 0

@@ -9,18 +9,18 @@ using UnityEngine.UI;
 public struct WeaponVariables
 {
     [SerializeField]
-    public float WeaponDamage;
+    public int WeaponDamage;
     [SerializeField]
-    public float WeaponMagicDamage;
+    public int WeaponMagicDamage;
 }
 
 [Serializable]
 public struct ArmorVariables
 {
     [SerializeField]
-    public float ArmorDefense;
+    public int ArmorDefense;
     [SerializeField]
-    public float ArmorMagicDefense;
+    public int ArmorMagicDefense;
 }
 
 [CreateAssetMenu(menuName = "Items/RegularItem")]

@@ -10,11 +10,16 @@ public class Chest : Interactable
     private SpriteRenderer _sr;
     private Animator _anim;
 
-    private void Start()
+    private void Awake()
     {
-        chestData = ChestData.Clone(chestData);
         _anim = GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
+        SetupChest(ChestData.Clone(chestData));
+    }
+
+    public void SetupChest(ChestData _chestData)
+    {
+        chestData = _chestData;
         if (chestData.items.Count > 0)
         {
             _sr.sprite = chestData.ClosedSprite;

@@ -35,7 +35,6 @@ public class AudioClipGroup : ScriptableObject
         if (timestamp > Time.time && Time.timeScale != 0) return;
         if (Clips.Count <= 0) return;
 
-        Debug.Log("AudioClipGroup Play Sound");
         timestamp = Time.time + Cooldown;
         source.volume = Random.Range(VolumeMin, VolumeMax);
         source.pitch = Random.Range(PitchMin, PitchMax);

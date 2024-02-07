@@ -14,6 +14,7 @@ public class AutoGuid : MonoBehaviour
             if (!obj.GetComponent<GuidGenerator>())
             obj.AddComponent<GuidGenerator>();
             obj.GetComponent<GuidGenerator>().GenGuid();
+            obj.name = obj.GetComponent<GuidGenerator>().guidString;
         }
         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
     }

@@ -150,7 +150,7 @@ public class BattleCanvas : MonoBehaviour
                 healthBar.transform.position = pos + new Vector3(0, 150f, 0);
                 healthBar.transform.rotation = transform.rotation;
                 StatsData stats = BattleManager.agilityOrder[int.Parse(child.name)].GetStatsData();
-                healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = stats.HealthPoints / stats.MaxHealthPoints;
+                healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = ((float)stats.HealthPoints) / ((float)stats.MaxHealthPoints);
             }
         }
         else
@@ -171,7 +171,7 @@ public class BattleCanvas : MonoBehaviour
             healthBar.transform.position = pos + new Vector3(0, 150f, 0);
             healthBar.transform.rotation = transform.rotation;
             StatsData stats = BattleManager.agilityOrder[int.Parse(child.name)].GetStatsData();
-            healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = stats.HealthPoints / stats.MaxHealthPoints;
+            healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = ((float)stats.HealthPoints) / ((float)stats.MaxHealthPoints);
         }
     }
 
@@ -223,6 +223,7 @@ public class BattleCanvas : MonoBehaviour
         skillsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Skills";
         GameObject guardButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         guardButton.GetComponentInChildren<TextMeshProUGUI>().text = "Guard";
+        guardButton.GetComponent<Button>().onClick.AddListener(delegate { BattleManager.AddActionToQueue(Guard.New(BattleManager.GetCurrentTurnTaker())); });
         GameObject itemButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         itemButton.GetComponentInChildren<TextMeshProUGUI>().text = "Item";
         attackButton.GetComponent<Button>().Select();
@@ -318,8 +319,8 @@ public class BattleCanvas : MonoBehaviour
                 }
                 partyMemberPresenter.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = partyMember.image.textureRect.size * 2;
                 partyMemberPresenter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = partyMember.name;
-                partyMemberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = partyMember.stats.HealthPoints / partyMember.stats.MaxHealthPoints;
-                partyMemberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = Math.Round(partyMember.stats.HealthPoints, 1) + "/" + Math.Round(partyMember.stats.MaxHealthPoints, 1);
+                partyMemberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.HealthPoints) / ((float)partyMember.stats.MaxHealthPoints);
+                partyMemberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.HealthPoints + "/" + partyMember.stats.MaxHealthPoints;
                 partyMemberPresenter.name = i.ToString();
                 if (i == BattleManager.currentTurn)
                 {
@@ -342,14 +343,13 @@ public class BattleCanvas : MonoBehaviour
                 memberPresenter.transform.Find("Image").GetComponent<Image>().sprite = CrossImage;
             }
 
-            memberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = partyMember.stats.HealthPoints / partyMember.stats.MaxHealthPoints;
-            memberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = Math.Round(partyMember.stats.HealthPoints, 1) + "/" + Math.Round(partyMember.stats.MaxHealthPoints, 1);
+            memberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.HealthPoints) / ((float)partyMember.stats.MaxHealthPoints);
+            memberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.HealthPoints + "/" + partyMember.stats.MaxHealthPoints;
         }
     }
 
     public void SetPartyMemberColor(int member, Color color)
     {
-        Debug.Log("setting member " + member + " color");
         PartyPresenter.transform.Find(member.ToString()).GetComponent<Image>().color = color;
     }
 

@@ -16,13 +16,14 @@ public class BattleManager : MonoBehaviour
     public int currentTurn;
     public BattleCanvas BattleCanvas;
     public GameObject EnemyPresenter;
-    public Queue<BattleAction> actionQueue;
+    public BattleActionQueue<BattleAction> actionQueue;
     public GameObject MissText;
     public Transform EnemyPositions;
     public Transform Enemies;
     public GameObject EnemyPrefab;
     [NonSerialized]
-    public string CurrentOverworldScene;
+    public ScenarioData returnScenario;
+    public List<BattleParticipant> GuardDuringTurn;
     public void Awake()
     {
         if (BattleManager.Instance)
@@ -36,7 +37,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         party = PartyManager.Instance.party.PartyMembers;
-        actionQueue = new Queue<BattleAction>();
+        actionQueue = new BattleActionQueue<BattleAction>();
         SortOrderList();
         currentTurn = -1;
         SpawnEnemies();
@@ -112,12 +113,12 @@ public class BattleManager : MonoBehaviour
             {
                 if (participant.IsPartyMember)
                 {
-                    Debug.Log(participant.GetPartyMember().name + "'s turn");
+                    //Debug.Log(participant.GetPartyMember().name + "'s turn");
                     BattleCanvas.SetTurn();
                 }
                 else
                 {
-                    Debug.Log(participant.GetEnemy().name + "'s turn");
+                    //Debug.Log(participant.GetEnemy().name + "'s turn");
                     BattleCanvas.PopulatePartyTab();
                     BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
                     BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
@@ -134,6 +135,8 @@ public class BattleManager : MonoBehaviour
 
             BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
             BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
+
+
             CommitNextAction();
             return;
         }
@@ -190,7 +193,7 @@ public class BattleManager : MonoBehaviour
 
     public void CommitNextAction()
     {
-        if (actionQueue.Count > 0)
+        if (actionQueue.Count() > 0)
         {
             BattleAction action = actionQueue.Dequeue();
             if (action.GetParticipant().GetStatsData().HealthPoints > 0)
@@ -199,11 +202,10 @@ public class BattleManager : MonoBehaviour
             {
                 CommitNextAction();
             }
-
-            //CommitNextAction();
         }
         else
         {
+            GuardDuringTurn = new List<BattleParticipant>();
             TakeTurn();
         }
     }
@@ -215,7 +217,7 @@ public class BattleManager : MonoBehaviour
 
     private void EndGame()
     {
-        SceneManager.LoadScene(CurrentOverworldScene);
+        MenuPresenter.Instance.LoadSave(returnScenario);
         //BattleCanvas.ThanksForPlaying.SetActive(true);
     }
     /*

@@ -13,12 +13,13 @@ public class MenuPresenter : MonoBehaviour
     public GameObject TitleScreen;
     public GameObject SavesTab;
     public GameObject SettingsTab;
+    public GameObject LoadingScreen;
     public Button NewCampaignButton;
     public Button LoadSaveButton;
     public Button SettingsButton;
     public Button ExitButton;
     public ScenarioData StartingScenario;
-    private ScenarioData currentScenario;
+    public ScenarioData currentScenario;
     private TabsController _tc;
     private List<ScenarioData> saves;
 
@@ -31,7 +32,7 @@ public class MenuPresenter : MonoBehaviour
         ExitButton.onClick.AddListener(ExitGame);
         SettingsButton.onClick.AddListener(OpenSettingsTab);
         _tc = GetComponent<TabsController>();
-        _tc.tabs = new List<GameObject> { TitleScreen, SavesTab, SettingsTab };
+        _tc.tabs = new List<GameObject> { TitleScreen, SavesTab, SettingsTab, LoadingScreen };
         currentScenario = null;
     }
 
@@ -40,11 +41,13 @@ public class MenuPresenter : MonoBehaviour
         if (level == 0)
         {
             gameObject.SetActive(true);
+            _tc.SetTab(TitleScreen);
             Debug.Log("active main menu");
             Debug.Log(gameObject.activeInHierarchy);
             return;
         }
         gameObject.SetActive(false);
+        Debug.Log("Setting " + currentScenario.name);
         Events.SelectScenario(currentScenario);
     }
 
@@ -66,6 +69,8 @@ public class MenuPresenter : MonoBehaviour
     public void LoadSave(ScenarioData scenario)
     {
         currentScenario = scenario;
+        gameObject.SetActive(true);
+        _tc.SetTab(LoadingScreen);
         SceneManager.LoadScene(scenario.scene);
     }
 

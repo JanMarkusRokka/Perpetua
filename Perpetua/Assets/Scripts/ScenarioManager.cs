@@ -9,14 +9,11 @@ using UnityEngine.SceneManagement;
 public class ScenarioManager : MonoBehaviour
 {
     private ScenarioData currentScenario;
-    private string currentOverworldScene;
     private string currentBattleScene;
-    private Vector3 lastPlayerLocation;
     private List<EnemyData> enemyData;
-    private SaveData save;
     public void Awake()
     {
-        if (FindObjectOfType(typeof(ScenarioManager)).GetInstanceID() != this.GetInstanceID())
+        if (FindObjectsOfType(typeof(ScenarioManager)).Count() > 1)
         {
             Destroy(this);
         }
@@ -38,10 +35,9 @@ public class ScenarioManager : MonoBehaviour
     private void OnBattleTriggered(GameObject enemy, GameObject player)
     {
         Debug.Log("Battle Triggered");
-        enemyData = new List<EnemyData>{ enemy.GetComponent<OverworldEnemy>().EnemyData};
+        enemyData = new List<EnemyData> { enemy.GetComponent<OverworldEnemy>().EnemyData };
         List<PartyCharacterData> partyMembersData = PartyManager.Instance.party.PartyMembers;
-        SaveData saveData = SaveDataBeforeBattle(player.transform);
-        lastPlayerLocation = player.transform.position;
+        currentScenario = SaveDataBeforeBattle(player.transform);
         SceneManager.LoadScene(currentBattleScene);
         Debug.Log("ScenarioManager: Battle triggered");
     }
@@ -51,7 +47,7 @@ public class ScenarioManager : MonoBehaviour
         if (currentBattleScene == scene.name)
         {
             Events.SetEnemy(enemyData);
-            BattleManager.Instance.CurrentOverworldScene = currentOverworldScene;
+            BattleManager.Instance.returnScenario = currentScenario;
         }
     }
 
@@ -64,50 +60,51 @@ public class ScenarioManager : MonoBehaviour
     {
         Debug.Log("Setting up scenario: " + scenario.name);
         currentScenario = scenario;
-        currentOverworldScene = SceneManager.GetActiveScene().name;
         if (scenario.isSave)
         {
-            // Instantiates new items, party members, etc.
-            InventoryManager.Instance.SetInventory(scenario.StartingInventory);
-            PartyManager.Instance.SetParty(scenario.StartingParty);
+            RestoreDataFromSave(scenario);
         } else
         {
             // Instantiates new items, party members, etc.
-            // Temp for
+
             InventoryData inventory = ScriptableObject.CreateInstance<InventoryData>();
             inventory.items = new List<ItemData>();
             InventoryManager.Instance.SetInventory(inventory);
 
             //InventoryManager.Instance.SetInventoryInstantiate(scenario.StartingInventory);
             PartyManager.Instance.SetPartyInstantiate(scenario.StartingParty, InventoryManager.Instance.inventory);
-            Debug.Log(PartyManager.Instance.party.PartyMembers);
         }
 
         //Events.Save(0);
     }
 
-    private SaveData SaveDataBeforeBattle(Transform player)
+    private ScenarioData SaveDataBeforeBattle(Transform player)
     {
         Debug.Log("save data before battle");
-        SaveData saveData = ScriptableObject.CreateInstance<SaveData>();
-        saveData.name = "temp";
-        saveData.PlayerLocation = player.position;
-        saveData.ScenarioData = ScriptableObject.CreateInstance<ScenarioData>();
-        saveData.ScenarioData.StartingParty = PartyManager.Instance.party;
-        saveData.ScenarioData.scene = currentOverworldScene;
-        saveData.ScenarioData.isSave = true;
-        saveData.ScenarioData.StartingInventory = InventoryManager.Instance.inventory;
-        saveData.ScenarioData.name = "temp";
-        Dictionary<string, ChestData> chests = GetAllChestStates();
-        return saveData;
+        ScenarioData scenarioData = ScenarioData.New("temp", PartyManager.Instance.party, InventoryManager.Instance.inventory, SceneManager.GetActiveScene().name, true, player.position, GetAllChestStates(), GetAllEnemyStates());
+        return scenarioData;
+    }
+
+    private Dictionary<string, EnemyData> GetAllEnemyStates()
+    {
+        Dictionary<string, EnemyData> enemies = new();
+        OverworldEnemy[] enemiesInScene = FindObjectsOfType(typeof(OverworldEnemy)) as OverworldEnemy[];
+
+        foreach (OverworldEnemy enemy in enemiesInScene)
+        {
+            enemies.Add(enemy.GetComponent<GuidGenerator>().guidString, enemy.GetComponent<OverworldEnemy>().EnemyData);
+            Debug.Log(enemy.GetComponent<GuidGenerator>().guidString + " " + enemy.GetComponent<OverworldEnemy>().EnemyData + " " + enemy.gameObject.name);
+        }
+
+        return enemies;
     }
 
     private Dictionary<string, ChestData> GetAllChestStates()
     {
-        Dictionary<string, ChestData> chests = new Dictionary<string, ChestData>();
+        Dictionary<string, ChestData> chests = new();
         Chest[] chestsInScene = FindObjectsOfType(typeof(Chest)) as Chest[];
 
-        foreach(Chest chest in chestsInScene)
+        foreach (Chest chest in chestsInScene)
         {
             chests.Add(chest.GetComponent<GuidGenerator>().guidString, chest.GetComponent<Chest>().chestData);
             Debug.Log(chest.GetComponent<GuidGenerator>().guidString + " " + chest.GetComponent<Chest>().chestData + " " + chest.gameObject.name);
@@ -115,4 +112,21 @@ public class ScenarioManager : MonoBehaviour
 
         return chests;
     }
+
+    //Presumes that scene has been loaded
+    private void RestoreDataFromSave(ScenarioData saveData)
+    {
+        PartyManager.Instance.SetParty(saveData.StartingParty);
+        InventoryManager.Instance.SetInventory(saveData.StartingInventory);
+
+        SetChestsFromSave(saveData);
+        //SetEnemiesFromSave(saveData);
+    }
+
+    private void SetChestsFromSave(ScenarioData saveData)
+    {
+        Dictionary<string, ChestData> chestsData = saveData.Chests;
+        ChestsLoader.Instance.SetAllChests(chestsData);
+    }
+
 }

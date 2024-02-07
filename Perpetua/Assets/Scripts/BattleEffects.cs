@@ -10,6 +10,7 @@ public class BattleEffects : MonoBehaviour
     public GameObject AttackEffectsPresenter;
     public GameObject TextDisplay;
     public GameObject TextDisplayHUD;
+    public GameObject ShieldImage;
     private Animator _anim;
     //public List<Sprite> SpriteEffects;
 
@@ -62,5 +63,11 @@ public class BattleEffects : MonoBehaviour
         GameObject damageValue = Instantiate(TextDisplayHUD, BattleManager.Instance.BattleCanvas.transform);
         damageValue.transform.position = target.position;
         damageValue.transform.GetComponentInChildren<TextMeshProUGUI>().text = text;
+    }
+
+    public void DisplayGuardEffect(Transform participant, bool targetOnHUD)
+    {
+        GameObject guardEffect = Instantiate(ShieldImage, BattleManager.Instance.BattleCanvas.transform);
+        guardEffect.transform.position = (targetOnHUD) ? participant.position : Camera.main.WorldToScreenPoint(participant.position);
     }
 }
