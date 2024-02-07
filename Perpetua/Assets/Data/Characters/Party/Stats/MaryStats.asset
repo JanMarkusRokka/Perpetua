@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MaryStats
   m_EditorClassIdentifier: 
   HealthPoints: 103
-  MaxHealthPoints: 0
+  MaxHealthPoints: 103
   PhysicalDamage: 15
   MagicDamage: 1
   PhysicalDefense: 10

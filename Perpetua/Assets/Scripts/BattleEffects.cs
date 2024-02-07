@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class BattleEffects : MonoBehaviour
 {
     public GameObject AttackEffectsPresenter;
+    public GameObject TextDisplay;
+    public GameObject TextDisplayHUD;
     private Animator _anim;
     //public List<Sprite> SpriteEffects;
 
@@ -15,21 +20,47 @@ public class BattleEffects : MonoBehaviour
 
     public void DisplayAttackEnemyEffect(Transform enemy)
     {
-        SetEffectsBetweenCameraAndEnemy(enemy);
+        SetBetween(Camera.main.transform, enemy, AttackEffectsPresenter.transform);
+        AimTowards(AttackEffectsPresenter.transform, Camera.main.transform);
         _anim.SetTrigger("BasicAttack");
         //_anim.ResetTrigger("BasicAttack");
-        // Make enemy different colour for a bit:
-
     }
 
-    private void SetEffectsBetweenCameraAndEnemy(Transform enemy)
+    private void SetBetween(Transform first, Transform second, Transform obj)
     {
-        AttackEffectsPresenter.transform.position = (Camera.main.transform.position + enemy.position) / 2;
-        AttackEffectsPresenter.transform.rotation = Quaternion.LookRotation(Camera.main.transform.position - AttackEffectsPresenter.transform.position);
+        obj.position = (first.position + second.position) / 2;
     }
 
-    public void DisplayDamageValue(float value)
+    private void AimTowards(Transform aimable, Transform target)
     {
-        
+        aimable.rotation = Quaternion.LookRotation(target.position - aimable.position);
+    }
+
+    public void DisplayDamageValue(Transform target, float value)
+    {
+        string valueString = Math.Round(value, 1).ToString();
+        DisplayFloatingText(target, valueString);
+    }
+
+    public void DisplayFloatingText(Transform target, string text)
+    {
+        GameObject damageValue = Instantiate(TextDisplay);
+        SetBetween(Camera.main.transform, target, damageValue.transform);
+        Transform MovementTransform = damageValue.transform.GetChild(0);
+        MovementTransform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+        MovementTransform.GetChild(1).GetComponent<TextMeshPro>().text = text;
+    }
+
+    public void DisplayDamageValueHUD(Transform target, float value)
+    {
+        string valueString = Math.Round(value, 1).ToString();
+        DisplayFloatingTextHUD(target, valueString);
+    }
+
+    public void DisplayFloatingTextHUD(Transform target, string text)
+    {
+        GameObject damageValue = Instantiate(TextDisplayHUD, BattleManager.Instance.BattleCanvas.transform);
+        damageValue.transform.position = target.position;
+        damageValue.transform.GetComponentInChildren<TextMeshProUGUI>().text = text;
     }
 }

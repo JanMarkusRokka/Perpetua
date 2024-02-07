@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ElizabethStats
   m_EditorClassIdentifier: 
   HealthPoints: 100
-  MaxHealthPoints: 0
+  MaxHealthPoints: 100
   PhysicalDamage: 11
   MagicDamage: 2
   PhysicalDefense: 5

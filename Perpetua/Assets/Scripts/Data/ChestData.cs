@@ -11,6 +11,8 @@ public class ChestData : ScriptableObject
     public Sprite OpenSprite;
     public new string name;
 
+    private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
+
     private void Init(List<ItemData> _items, Sprite _closedSprite, Sprite _openSprite ,string _name)
     {
         items = _items;

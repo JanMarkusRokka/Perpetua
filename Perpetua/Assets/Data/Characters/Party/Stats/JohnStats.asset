@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JohnStats
   m_EditorClassIdentifier: 
   HealthPoints: 105
-  MaxHealthPoints: 0
+  MaxHealthPoints: 105
   PhysicalDamage: 1
   MagicDamage: 10
   PhysicalDefense: 1

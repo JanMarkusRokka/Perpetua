@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
@@ -20,6 +21,8 @@ public class BattleManager : MonoBehaviour
     public Transform EnemyPositions;
     public Transform Enemies;
     public GameObject EnemyPrefab;
+    [NonSerialized]
+    public string CurrentOverworldScene;
     public void Awake()
     {
         if (BattleManager.Instance)
@@ -115,6 +118,7 @@ public class BattleManager : MonoBehaviour
                 else
                 {
                     Debug.Log(participant.GetEnemy().name + "'s turn");
+                    BattleCanvas.PopulatePartyTab();
                     BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
                     BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
                     EnemyTurn();
@@ -125,6 +129,9 @@ public class BattleManager : MonoBehaviour
         {
             currentTurn = -1;
             //BattleCanvas.SetTurn();
+            if (agilityOrder[agilityOrder.Count - 1].IsPartyMember)
+            BattleCanvas.ResetPartyMemberColor(agilityOrder.Count - 1);
+
             BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
             BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
             CommitNextAction();
@@ -134,13 +141,14 @@ public class BattleManager : MonoBehaviour
 
     public void EnemyTurn()
     {
+        // Move enemy turn selection logic to EnemyData - specific moves, patterns for specific enemies
         BattleParticipant participant = agilityOrder[currentTurn];
         if (UnityEngine.Random.Range(0, 100) > 25)
         {
             int recipientId = UnityEngine.Random.Range(0, party.Count);
 
             Attack attack = new Attack();
-            attack.attacker = participant;
+            attack.participant = participant;
             attack.recipient = GetPartyMemberFromNumber(recipientId);
             AddActionToQueue(attack);
         }
@@ -185,7 +193,12 @@ public class BattleManager : MonoBehaviour
         if (actionQueue.Count > 0)
         {
             BattleAction action = actionQueue.Dequeue();
+            if (action.GetParticipant().GetStatsData().HealthPoints > 0)
             action.CommitAction();
+            else
+            {
+                CommitNextAction();
+            }
 
             //CommitNextAction();
         }
@@ -202,7 +215,8 @@ public class BattleManager : MonoBehaviour
 
     private void EndGame()
     {
-        BattleCanvas.ThanksForPlaying.SetActive(true);
+        SceneManager.LoadScene(CurrentOverworldScene);
+        //BattleCanvas.ThanksForPlaying.SetActive(true);
     }
     /*
     private void GuardAsPlayer(int turnTakerId)

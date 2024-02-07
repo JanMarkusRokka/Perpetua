@@ -4,18 +4,19 @@ using UnityEngine;
 
 public interface BattleAction
 {
+    public BattleParticipant GetParticipant();
     public void CommitAction();
 }
 
 public class Attack : BattleAction
 {
-    public BattleParticipant attacker;
+    public BattleParticipant participant;
     public BattleParticipant recipient;
     public void CommitAction()
     {
-        StatsData attackerStats = attacker.GetStatsData();
+        StatsData attackerStats = participant.GetStatsData();
         StatsData recipientStats = recipient.GetStatsData();
-        EquipmentData attackerEquipment = attacker.GetEquipmentData();
+        EquipmentData attackerEquipment = participant.GetEquipmentData();
         EquipmentData recipientEquipment = recipient.GetEquipmentData();
         BattleManager battleManager = BattleManager.Instance;
         BattleCanvas battleCanvas = battleManager.BattleCanvas;
@@ -24,11 +25,11 @@ public class Attack : BattleAction
 
         if (Random.Range(0, 100) > landChance)
         {
-            Debug.Log(attacker.participant.name + " Miss");
+            Debug.Log(participant.participant.name + " Miss");
             battleManager.StartCoroutine(animateMiss(battleManager, battleCanvas));
             return;
         }
-        Debug.Log(attacker.participant.name + "Hit");
+        Debug.Log(participant.participant.name + "Hit");
 
         float baseDamage = attackerStats.PhysicalDamage;
         float baseMagicDamage = attackerStats.MagicDamage;
@@ -75,20 +76,23 @@ public class Attack : BattleAction
 
     IEnumerator animateAttack(BattleManager battleManager, BattleCanvas battleCanvas, float totalDamage)
     {
-        if (attacker.IsPartyMember)
+        if (participant.IsPartyMember)
         {
             BattleEffects battleEffects = battleCanvas.battleEffects;
             battleCanvas.SetEnemyHealthBars(true);
-            int orderId = battleManager.agilityOrder.IndexOf(attacker);
+            int orderId = battleManager.agilityOrder.IndexOf(participant);
             battleCanvas.SetPartyMemberColor(orderId, Color.blue);
             Transform recipientTransform = battleManager.Enemies.Find(battleManager.agilityOrder.IndexOf(recipient).ToString());
             battleEffects.DisplayAttackEnemyEffect(recipientTransform);
+
             yield return new WaitForSeconds(0.5f);
             recipient.GetStatsData().HealthPoints = Mathf.Max(0f, recipient.GetStatsData().HealthPoints - totalDamage);
+
             Color defaultColor = recipientTransform.GetComponent<SpriteRenderer>().color;
             recipientTransform.GetComponent<SpriteRenderer>().color = Color.red;
             battleCanvas.RefreshEnemyHealthBars();
-            // Add damage number
+
+            battleEffects.DisplayDamageValue(recipientTransform, totalDamage);
 
             yield return new WaitForSeconds(0.5f);
             recipientTransform.GetComponent<SpriteRenderer>().color = defaultColor;
@@ -98,6 +102,19 @@ public class Attack : BattleAction
         else
         {
             // Enemy attacks player
+            BattleEffects battleEffects = battleCanvas.battleEffects;
+            Transform attackerTransform = battleManager.Enemies.Find(battleManager.agilityOrder.IndexOf(participant).ToString());
+            attackerTransform.GetComponent<BattleEnemyAnimator>().PlayAttackAnimation();
+            int orderId = battleManager.agilityOrder.IndexOf(recipient);
+            battleCanvas.SetPartyMemberColor(orderId, Color.red);
+            yield return new WaitForSeconds(0.75f);
+
+            battleEffects.DisplayDamageValueHUD(battleCanvas.PartyPresenter.transform.Find(orderId.ToString()).transform, totalDamage);
+            recipient.GetStatsData().HealthPoints = Mathf.Max(0f, recipient.GetStatsData().HealthPoints - totalDamage);
+            battleCanvas.UpdatePartyTabStats();
+            yield return new WaitForSeconds(0.5f);
+            battleCanvas.ResetPartyMemberColor(orderId);
+
         }
 
         battleManager.CommitNextAction();
@@ -105,8 +122,18 @@ public class Attack : BattleAction
 
     IEnumerator animateMiss(BattleManager battleManager, BattleCanvas battleCanvas)
     {
-        // Add text "miss" on top of character
-        yield return new WaitForSeconds(1f);
+        if (participant.IsPartyMember)
+        {
+            BattleEffects battleEffects = battleCanvas.battleEffects;
+            int orderId = battleManager.agilityOrder.IndexOf(participant);
+            battleCanvas.SetPartyMemberColor(orderId, Color.blue);
+            Transform recipientTransform = battleManager.Enemies.Find(battleManager.agilityOrder.IndexOf(recipient).ToString());
+            yield return new WaitForSeconds(0.5f);
+            battleEffects.DisplayFloatingText(recipientTransform, "Miss");
+            yield return new WaitForSeconds(0.5f);
+            battleCanvas.ResetPartyMemberColor(orderId);
+        }
+
         battleManager.CommitNextAction();
 
     }
@@ -114,9 +141,14 @@ public class Attack : BattleAction
     public static Attack New(BattleParticipant _attacker, BattleParticipant _recipient)
     {
         return new Attack() {
-        attacker = _attacker,
+        participant = _attacker,
         recipient = _recipient
         };
+    }
+
+    public BattleParticipant GetParticipant()
+    {
+        return participant;
     }
 }
 
@@ -136,5 +168,9 @@ public class Guard : BattleAction
         {
             participant = _participant
         };
+    }
+    public BattleParticipant GetParticipant()
+    {
+        return participant;
     }
 }

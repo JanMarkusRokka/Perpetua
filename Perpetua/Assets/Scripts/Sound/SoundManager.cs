@@ -32,6 +32,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayUINavigationSound()
     {
+        Debug.Log("PlayUINavSound");
         MoveSelectionSound.Play();
     }
 

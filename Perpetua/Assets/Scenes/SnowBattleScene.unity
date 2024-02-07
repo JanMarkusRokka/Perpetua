@@ -7055,10 +7055,6 @@ MonoBehaviour:
   ThanksForPlaying: {fileID: 2007168413}
   TextPresenter: {fileID: 1294285556}
   CrossImage: {fileID: 21300000, guid: 9b3091f4e9729c24b8605cac4a78a38c, type: 3}
-  battleEffects: {fileID: 0}
-  TC: {fileID: 0}
-  LeftTC: {fileID: 0}
-  RightTC: {fileID: 0}
 --- !u!114 &874412180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7100,6 +7096,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackEffectsPresenter: {fileID: 745420472}
+  TextDisplay: {fileID: 5294212726548999038, guid: 941cab2f7d28dc2439ac9fa18ead3895, type: 3}
+  TextDisplayHUD: {fileID: 613556940004988359, guid: 4bb02655d8272b542bb753113fbcb92b, type: 3}
 --- !u!1 &917562646
 GameObject:
   m_ObjectHideFlags: 0

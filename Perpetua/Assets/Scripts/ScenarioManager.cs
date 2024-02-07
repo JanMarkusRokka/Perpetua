@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScenarioManager : MonoBehaviour
 {
     private ScenarioData currentScenario;
+    private string currentOverworldScene;
     private string currentBattleScene;
     private Vector3 lastPlayerLocation;
     private List<EnemyData> enemyData;
+    private SaveData save;
     public void Awake()
     {
+        if (FindObjectOfType(typeof(ScenarioManager)).GetInstanceID() != this.GetInstanceID())
+        {
+            Destroy(this);
+        }
         DontDestroyOnLoad(gameObject);
         Events.OnSelectedScenario += OnSelectedScenario;
         Events.OnBattleTriggered += OnBattleTriggered;
@@ -30,8 +37,10 @@ public class ScenarioManager : MonoBehaviour
 
     private void OnBattleTriggered(GameObject enemy, GameObject player)
     {
+        Debug.Log("Battle Triggered");
         enemyData = new List<EnemyData>{ enemy.GetComponent<OverworldEnemy>().EnemyData};
         List<PartyCharacterData> partyMembersData = PartyManager.Instance.party.PartyMembers;
+        SaveData saveData = SaveDataBeforeBattle(player.transform);
         lastPlayerLocation = player.transform.position;
         SceneManager.LoadScene(currentBattleScene);
         Debug.Log("ScenarioManager: Battle triggered");
@@ -42,6 +51,7 @@ public class ScenarioManager : MonoBehaviour
         if (currentBattleScene == scene.name)
         {
             Events.SetEnemy(enemyData);
+            BattleManager.Instance.CurrentOverworldScene = currentOverworldScene;
         }
     }
 
@@ -54,6 +64,7 @@ public class ScenarioManager : MonoBehaviour
     {
         Debug.Log("Setting up scenario: " + scenario.name);
         currentScenario = scenario;
+        currentOverworldScene = SceneManager.GetActiveScene().name;
         if (scenario.isSave)
         {
             // Instantiates new items, party members, etc.
@@ -75,4 +86,33 @@ public class ScenarioManager : MonoBehaviour
         //Events.Save(0);
     }
 
+    private SaveData SaveDataBeforeBattle(Transform player)
+    {
+        Debug.Log("save data before battle");
+        SaveData saveData = ScriptableObject.CreateInstance<SaveData>();
+        saveData.name = "temp";
+        saveData.PlayerLocation = player.position;
+        saveData.ScenarioData = ScriptableObject.CreateInstance<ScenarioData>();
+        saveData.ScenarioData.StartingParty = PartyManager.Instance.party;
+        saveData.ScenarioData.scene = currentOverworldScene;
+        saveData.ScenarioData.isSave = true;
+        saveData.ScenarioData.StartingInventory = InventoryManager.Instance.inventory;
+        saveData.ScenarioData.name = "temp";
+        Dictionary<string, ChestData> chests = GetAllChestStates();
+        return saveData;
+    }
+
+    private Dictionary<string, ChestData> GetAllChestStates()
+    {
+        Dictionary<string, ChestData> chests = new Dictionary<string, ChestData>();
+        Chest[] chestsInScene = FindObjectsOfType(typeof(Chest)) as Chest[];
+
+        foreach(Chest chest in chestsInScene)
+        {
+            chests.Add(chest.GetComponent<GuidGenerator>().guidString, chest.GetComponent<Chest>().chestData);
+            Debug.Log(chest.GetComponent<GuidGenerator>().guidString + " " + chest.GetComponent<Chest>().chestData + " " + chest.gameObject.name);
+        }
+
+        return chests;
+    }
 }

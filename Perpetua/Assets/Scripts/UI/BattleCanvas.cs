@@ -39,12 +39,17 @@ public class BattleCanvas : MonoBehaviour
     public GameObject ThanksForPlaying;
     public TextMeshProUGUI TextPresenter;
     public Sprite CrossImage;
+
+    [NonSerialized]
     public BattleEffects battleEffects;
 
     private Color pmPresDefaultColor;
     private Color partyMemberHighlightColor = Color.green;
+    [NonSerialized]
     public TabsController TC;
+    [NonSerialized]
     public TabsController LeftTC;
+    [NonSerialized]
     public TabsController RightTC;
     private IEnumerator RevealTextCoroutine = null;
     private bool SelectEnm;
@@ -142,7 +147,7 @@ public class BattleCanvas : MonoBehaviour
                 Transform child = Enemies.GetChild(i);
                 Vector3 pos = Camera.main.WorldToScreenPoint(child.position);
                 GameObject healthBar = Instantiate(HealthBarPrefab, HealthBars.transform);
-                healthBar.transform.position = pos + new Vector3(0, 120f, 0);
+                healthBar.transform.position = pos + new Vector3(0, 150f, 0);
                 healthBar.transform.rotation = transform.rotation;
                 StatsData stats = BattleManager.agilityOrder[int.Parse(child.name)].GetStatsData();
                 healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = stats.HealthPoints / stats.MaxHealthPoints;
@@ -163,7 +168,7 @@ public class BattleCanvas : MonoBehaviour
             Transform child = Enemies.GetChild(i);
             Vector3 pos = Camera.main.WorldToScreenPoint(child.position);
             GameObject healthBar = Instantiate(HealthBarPrefab, HealthBars.transform);
-            healthBar.transform.position = pos + new Vector3(0, 120f, 0);
+            healthBar.transform.position = pos + new Vector3(0, 150f, 0);
             healthBar.transform.rotation = transform.rotation;
             StatsData stats = BattleManager.agilityOrder[int.Parse(child.name)].GetStatsData();
             healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = stats.HealthPoints / stats.MaxHealthPoints;
@@ -291,11 +296,6 @@ public class BattleCanvas : MonoBehaviour
             StopCoroutine(RevealTextCoroutine);
     }
 
-    private string StatsToText(StatsData stats)
-    {
-        return stats.HealthPoints + "\n" + stats.AttackSpeed;
-    }
-
     public void PopulatePartyTab()
     {
         ClearTab(PartyPresenter);
@@ -318,13 +318,32 @@ public class BattleCanvas : MonoBehaviour
                 }
                 partyMemberPresenter.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = partyMember.image.textureRect.size * 2;
                 partyMemberPresenter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = partyMember.name;
-                partyMemberPresenter.transform.Find("Stats").GetComponent<TextMeshProUGUI>().text = StatsToText(partyMember.stats);
+                partyMemberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = partyMember.stats.HealthPoints / partyMember.stats.MaxHealthPoints;
+                partyMemberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = Math.Round(partyMember.stats.HealthPoints, 1) + "/" + Math.Round(partyMember.stats.MaxHealthPoints, 1);
                 partyMemberPresenter.name = i.ToString();
                 if (i == BattleManager.currentTurn)
                 {
                     partyMemberPresenter.GetComponent<Image>().color = partyMemberHighlightColor;
                 }
             }
+        }
+    }
+
+    public void UpdatePartyTabStats()
+    {
+        for (int i = 0; i < PartyPresenter.transform.childCount; i++)
+        {
+            Transform memberPresenter = PartyPresenter.transform.GetChild(i);
+            int orderId = int.Parse(memberPresenter.gameObject.name);
+            PartyCharacterData partyMember = BattleManager.agilityOrder[orderId].GetPartyMember();
+
+            if (partyMember.stats.HealthPoints <= 0)
+            {
+                memberPresenter.transform.Find("Image").GetComponent<Image>().sprite = CrossImage;
+            }
+
+            memberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = partyMember.stats.HealthPoints / partyMember.stats.MaxHealthPoints;
+            memberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = Math.Round(partyMember.stats.HealthPoints, 1) + "/" + Math.Round(partyMember.stats.MaxHealthPoints, 1);
         }
     }
 
