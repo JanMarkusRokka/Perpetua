@@ -17,6 +17,7 @@ public class ScenarioData : ScriptableObject
     public Vector3 PlayerLocation;
     public Dictionary<string, ChestData> Chests;
     public Dictionary<string, EnemyData> Enemies;
+    //public List<EnemyData> SlowedEnemies;
 
     private void Init(string _name, PartyData _StartingParty, InventoryData _StartingInventory, string _scene, bool _isSave, Vector3 _PlayerLocation, Dictionary<string, ChestData> _Chests, Dictionary<string, EnemyData> _Enemies)
     {

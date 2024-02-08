@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87eea6d31515e8044838e022bb1bace6, type: 2}
   - {fileID: 11400000, guid: 87eea6d31515e8044838e022bb1bace6, type: 2}
   - {fileID: 11400000, guid: 87eea6d31515e8044838e022bb1bace6, type: 2}
+  - {fileID: 11400000, guid: 875d26044df198447ac08eec71514e43, type: 2}
   ClosedSprite: {fileID: 21300000, guid: 7a39eda6416e3bd45a55ea804da81993, type: 3}
   OpenSprite: {fileID: 21300000, guid: 28a0450a80cb5fa479d2925222763763, type: 3}
   name: BasicChest

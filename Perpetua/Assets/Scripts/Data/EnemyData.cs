@@ -11,6 +11,7 @@ public class EnemyData : ScriptableObject
     public string description;
     public StatsData stats;
     public List<ItemData> loot;
+    public Sprite gonerSprite;
 
     private void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot)
     {

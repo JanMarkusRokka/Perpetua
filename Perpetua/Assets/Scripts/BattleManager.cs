@@ -23,7 +23,7 @@ public class BattleManager : MonoBehaviour
     public GameObject EnemyPrefab;
     [NonSerialized]
     public ScenarioData returnScenario;
-    public List<BattleParticipant> GuardDuringTurn;
+    public HashSet<BattleParticipant> GuardDuringTurn;
     public void Awake()
     {
         if (BattleManager.Instance)
@@ -37,7 +37,8 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         party = PartyManager.Instance.party.PartyMembers;
-        actionQueue = new BattleActionQueue<BattleAction>();
+        actionQueue = new();
+        GuardDuringTurn = new();
         SortOrderList();
         currentTurn = -1;
         SpawnEnemies();
@@ -205,7 +206,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            GuardDuringTurn = new List<BattleParticipant>();
+            GuardDuringTurn = new();
             TakeTurn();
         }
     }

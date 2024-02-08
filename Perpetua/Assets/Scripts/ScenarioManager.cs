@@ -118,9 +118,9 @@ public class ScenarioManager : MonoBehaviour
     {
         PartyManager.Instance.SetParty(saveData.StartingParty);
         InventoryManager.Instance.SetInventory(saveData.StartingInventory);
-
+        FindObjectOfType<OverworldPlayer>().transform.position = saveData.PlayerLocation;
         SetChestsFromSave(saveData);
-        //SetEnemiesFromSave(saveData);
+        SetEnemiesFromSave(saveData);
     }
 
     private void SetChestsFromSave(ScenarioData saveData)
@@ -129,4 +129,9 @@ public class ScenarioManager : MonoBehaviour
         ChestsLoader.Instance.SetAllChests(chestsData);
     }
 
+    private void SetEnemiesFromSave(ScenarioData saveData)
+    {
+        Dictionary<string, EnemyData> enemiesData = saveData.Enemies;
+        EnemiesLoader.Instance.SetAllEnemies(enemiesData);
+    }
 }

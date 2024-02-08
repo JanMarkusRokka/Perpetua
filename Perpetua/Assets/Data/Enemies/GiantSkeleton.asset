@@ -17,3 +17,4 @@ MonoBehaviour:
   description: Big skelly innit
   stats: {fileID: 11400000, guid: d88f5799ea60d3d45a40dc2320bacded, type: 2}
   loot: []
+  gonerSprite: {fileID: -1366797135, guid: 2b4b29ad300cc4a4f97468ffcf949caa, type: 3}

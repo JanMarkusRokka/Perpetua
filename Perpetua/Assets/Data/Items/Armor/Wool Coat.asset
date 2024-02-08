@@ -20,5 +20,5 @@ MonoBehaviour:
     WeaponDamage: 0
     WeaponMagicDamage: 0
   ArmorVariables:
-    ArmorDefense: 6
-    ArmorMagicDefense: 1
+    ArmorDefense: 15
+    ArmorMagicDefense: 2

@@ -19,8 +19,20 @@ public class OverworldEnemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
-        EnemyData = EnemyData.Clone(EnemyData);
-        EnemyData.stats = StatsData.Clone(EnemyData.stats);
+        EnemyData enemyData = EnemyData.Clone(EnemyData);
+        enemyData.stats = StatsData.Clone(EnemyData.stats);
+        SetupEnemy(enemyData);
+    }
+
+    public void SetupEnemy(EnemyData enemyData)
+    {
+        EnemyData = enemyData;
+        if (enemyData.stats.HealthPoints <= 0)
+        {
+            agent.enabled = false;
+            GetComponent<SpriteRenderer>().sprite = enemyData.gonerSprite;
+            enabled = false;
+        }
     }
 
     private void Start()

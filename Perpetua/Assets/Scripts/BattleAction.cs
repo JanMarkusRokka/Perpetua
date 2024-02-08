@@ -64,6 +64,14 @@ public class Attack : BattleAction
             }
         }
 
+        bool recipientGuarding = (battleManager.GuardDuringTurn.Contains(recipient));
+
+        Debug.Log("Damage without guarding: " + (int)Mathf.Round(Mathf.Max(0f, baseDamage * criticalMultiplier - physicalDefense) +
+    Mathf.Max(0f, baseMagicDamage * criticalMultiplier - magicDefense)));
+
+        physicalDefense = physicalDefense * ( recipientGuarding ? 2 : 1 );
+        magicDefense = (int) (magicDefense * (recipientGuarding ? 1.5 : 1));
+
         int totalDamage = (int) Mathf.Round(Mathf.Max(0f, baseDamage * criticalMultiplier - physicalDefense) + 
             Mathf.Max(0f, baseMagicDamage * criticalMultiplier - magicDefense));
 

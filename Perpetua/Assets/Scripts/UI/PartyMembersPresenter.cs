@@ -36,6 +36,12 @@ public class PartyMembersPresenter : MonoBehaviour
             Button pres = Instantiate(PartyMemberPresenter, transform);
             pres.onClick.AddListener(delegate { FocusOnMember(member); CharacterCustomizer.transform.Find("EquipmentPanel").Find("WeaponSlot").GetComponentInChildren<Button>().Select(); });
             pres.transform.Find("Image").GetComponent<Image>().sprite = member.image;
+            if (member.stats.HealthPoints <= 0)
+            {
+                Color grey = Color.grey;
+                grey.a = 0.5f;
+                pres.transform.Find("Image").GetComponent<Image>().color = grey;
+            }
             pres.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = member.image.textureRect.size * 6;
             pres.GetComponentInChildren<TextMeshProUGUI>().text = member.name;
         }
