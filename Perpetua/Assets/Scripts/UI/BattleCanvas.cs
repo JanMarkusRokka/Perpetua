@@ -226,6 +226,9 @@ public class BattleCanvas : MonoBehaviour
         guardButton.GetComponent<Button>().onClick.AddListener(delegate { BattleManager.AddActionToQueue(Guard.New(BattleManager.GetCurrentTurnTaker())); });
         GameObject itemButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         itemButton.GetComponentInChildren<TextMeshProUGUI>().text = "Item";
+        GameObject fleeButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
+        fleeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Flee";
+        fleeButton.GetComponent<Button>().onClick.AddListener(delegate { BattleManager.Flee(); });
         attackButton.GetComponent<Button>().Select();
     }
 

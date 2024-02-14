@@ -63,4 +63,10 @@ public class BattleParticipant : ScriptableObject
         if (IsPartyMember) return participantPartyMember.equipment;
         return null;
     }
+
+    public StatusEffectsData GetStatusEffectsData()
+    {
+        if (IsPartyMember) return participantPartyMember.statusEffects;
+        return enemyData.statusEffects;
+    }
 }

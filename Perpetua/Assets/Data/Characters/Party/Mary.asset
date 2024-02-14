@@ -17,3 +17,4 @@ MonoBehaviour:
   description: A mysterious woman from the Northern Regions.
   stats: {fileID: 11400000, guid: 3e94f5c0d468ad84faf7b215e50dbaf5, type: 2}
   equipment: {fileID: 11400000, guid: 49bb74f6b279a3b48bdb37ddafb75702, type: 2}
+  statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}

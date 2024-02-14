@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SetACGGroup : MonoBehaviour
 {
-    public ACGGroup UISounds;
+    public ACGGroup SFX;
     public ACGGroup Music;
     public ACGGroup Ambiance;
 
-    public void SetUISoundsVolume(float volume)
+    public void SetSFXVolume(float volume)
     {
-        SetACGGroupVolume(UISounds, volume);
+        SetACGGroupVolume(SFX, volume);
     }
 
     public void SetMusicVolume(float volume)

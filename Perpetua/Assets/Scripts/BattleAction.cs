@@ -1,18 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public interface BattleAction
+public abstract class BattleAction
 {
-    public BattleParticipant GetParticipant();
-    public void CommitAction();
+    public abstract BattleParticipant GetParticipant();
+    public abstract void CommitAction();
 }
 
-public class Attack : BattleAction
+// Main class for all attacks (skills) that inflict status effects
+public class AttackAction : BattleAction
 {
     public BattleParticipant participant;
     public BattleParticipant recipient;
-    public void CommitAction()
+    public override void CommitAction()
+    {
+        InflictStatusEffects();
+        CommitAttack();
+    }
+
+    public void InflictStatusEffects()
+    {
+        Debug.Log("Inflicting status effects");
+        List<StatusEffect> statusEffects = new();
+        EquipmentData equipmentData = participant.GetEquipmentData();
+        if (equipmentData)
+        {
+            InflictRuneStatusEffects(equipmentData.rune1);
+            InflictRuneStatusEffects(equipmentData.rune2);
+        }
+    }
+
+    public void InflictRuneStatusEffects(ItemData rune)
+    {
+        if (rune)
+        {
+            RuneVariables runeVariables = rune.RuneVariables;
+            foreach (StatusEffect statusEffect in runeVariables.recipientStatusEffects)
+            {
+                StatusEffectsData statusEffectsData = recipient.GetStatusEffectsData();
+                List<StatusEffect> sameType = statusEffectsData.statusEffects.Where(statusEf => statusEf.GetType() == statusEffect.GetType()).ToList();
+                if (sameType.Count > 0)
+                {
+                    statusEffectsData.statusEffects.Remove(sameType[0]);
+                }
+                statusEffectsData.statusEffects.Add(statusEffect.Clone());
+            }
+        }
+
+    }
+
+    public virtual void CommitAttack() 
+    {
+        Debug.Log("CommitAttack");
+    }
+
+    public override BattleParticipant GetParticipant()
+    {
+        return participant;
+    }
+}
+
+// Regular attack
+public class Attack : AttackAction
+{
+    public override void CommitAction()
+    {
+        CommitAttack();
+    }
+    public override void CommitAttack()
     {
         StatsData attackerStats = participant.GetStatsData();
         StatsData recipientStats = recipient.GetStatsData();
@@ -30,7 +87,7 @@ public class Attack : BattleAction
             return;
         }
         //Debug.Log(participant.participant.name + "Hit");
-
+        InflictStatusEffects();
         int baseDamage = attackerStats.PhysicalDamage;
         int baseMagicDamage = attackerStats.MagicDamage;
         if (attackerEquipment)
@@ -116,6 +173,7 @@ public class Attack : BattleAction
             int orderId = battleManager.agilityOrder.IndexOf(recipient);
             battleCanvas.SetPartyMemberColor(orderId, Color.red);
             yield return new WaitForSeconds(0.75f);
+            participant.GetEnemy().attackSound.Play();
 
             battleEffects.DisplayDamageValueHUD(battleCanvas.PartyPresenter.transform.Find(orderId.ToString()).transform, totalDamage);
             recipient.GetStatsData().HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
@@ -155,17 +213,12 @@ public class Attack : BattleAction
         recipient = _recipient
         };
     }
-
-    public BattleParticipant GetParticipant()
-    {
-        return participant;
-    }
 }
 
 public class Guard : BattleAction
 {
     public BattleParticipant participant;
-    public void CommitAction()
+    public override void CommitAction()
     {
         BattleManager battleManager = BattleManager.Instance;
         battleManager.GuardDuringTurn.Add(participant);
@@ -201,7 +254,7 @@ public class Guard : BattleAction
             participant = _participant
         };
     }
-    public BattleParticipant GetParticipant()
+    public override BattleParticipant GetParticipant()
     {
         return participant;
     }

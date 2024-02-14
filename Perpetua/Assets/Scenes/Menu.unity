@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UI Sounds
+  m_text: SFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
   m_sharedMaterial: {fileID: -4135747526499374348, guid: 50e1895cdf873c04884162217f3b2843, type: 2}
@@ -1428,7 +1428,7 @@ GameObject:
   - component: {fileID: 715597832}
   - component: {fileID: 715597833}
   m_Layer: 5
-  m_Name: UISFXVolume
+  m_Name: SFXVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,7 +1510,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1276954156}
         m_TargetAssemblyTypeName: SetACGGroup, Assembly-CSharp
-        m_MethodName: SetUISoundsVolume
+        m_MethodName: SetSFXVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2545,7 +2545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed745ee68585f154e969bd6731882ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISounds: {fileID: 11400000, guid: dc73739a0ab0fe245831573d81dfc6cf, type: 2}
+  SFX: {fileID: 11400000, guid: dc73739a0ab0fe245831573d81dfc6cf, type: 2}
   Music: {fileID: 11400000, guid: c6ecd36bae9f0fc4db146beab730120c, type: 2}
   Ambiance: {fileID: 11400000, guid: e5cfdad5a01e6c14584cb44fd467aec3, type: 2}
 --- !u!1 &1312287928

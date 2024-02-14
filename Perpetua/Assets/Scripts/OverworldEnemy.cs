@@ -8,7 +8,7 @@ public class OverworldEnemy : MonoBehaviour
     public float AggroTime;
     private NavMeshAgent agent;
     Vector3 velocity = Vector3.zero;
-    private Vector3 IdleLocation;
+    public Vector3 IdleLocation;
     private Vector3 KnownPlayerLocation;
     private float stopFollowing;
     private Transform playerTransform;
@@ -17,6 +17,7 @@ public class OverworldEnemy : MonoBehaviour
 
     private void Awake()
     {
+        IdleLocation = transform.position;
         agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
         EnemyData enemyData = EnemyData.Clone(EnemyData);
@@ -32,12 +33,20 @@ public class OverworldEnemy : MonoBehaviour
             agent.enabled = false;
             GetComponent<SpriteRenderer>().sprite = enemyData.gonerSprite;
             enabled = false;
+        } else if (enemyData.stunSeconds > 0)
+        {
+            float time = enemyData.stunSeconds;
+            transform.position = enemyData.stunLocation;
+            agent.SetDestination(transform.position);
+            agent.transform.position = enemyData.stunLocation;
+            enemyData.stunSeconds = 0f;
+            GetComponent<DisableScriptForSeconds>().DisableNavAgent(time);
+            GetComponent<DisableScriptForSeconds>().DisableOverworldEnemy(time);
         }
     }
 
     private void Start()
     {
-        IdleLocation = transform.position;
     }
 
     private void FixedUpdate()
@@ -56,6 +65,7 @@ public class OverworldEnemy : MonoBehaviour
 
     private void TriggerFight()
     {
+        EnemyData.stunLocation = transform.position;
         Events.TriggerBattle(gameObject, playerTransform.gameObject);
         enabled = false;
     }
@@ -84,8 +94,9 @@ public class OverworldEnemy : MonoBehaviour
 
     private void GoToIdleLocation()
     {
+        Debug.Log("Going to idle: " + IdleLocation);
         agent.SetDestination(IdleLocation);
-        transform.position = Vector3.SmoothDamp(transform.position, agent.nextPosition, ref velocity, 0.1f);
+        transform.position = Vector3.SmoothDamp(transform.position, agent.nextPosition, ref velocity, 0.001f);
     }
 
     private void FollowPlayer()
@@ -104,6 +115,7 @@ public class OverworldEnemy : MonoBehaviour
             KnownPlayerLocation = playerTransform.position;
         }
         Debug.DrawLine(transform.position, new Vector3(agent.destination.x, agent.destination.y, agent.destination.z), Color.red);
-        transform.position = Vector3.SmoothDamp(transform.position, agent.nextPosition, ref velocity, 0.1f);
+        transform.position = Vector3.SmoothDamp(transform.position, agent.nextPosition, ref velocity, 0.001f);
+        //transform.position = Vector3.MoveTowards(transform.position, agent.nextPosition, 10f);
     }
 }

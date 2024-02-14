@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e7460b3313ae8442967d40baffb2d96, type: 3}
-  m_Name: UISFX
+  m_Name: SFX
   m_EditorClassIdentifier: 
   VolumeMin: 1
   VolumeMax: 1
@@ -19,3 +19,4 @@ MonoBehaviour:
   AudioClipGroups:
   - {fileID: 11400000, guid: 6af77898cad840e4c89c324c9d1840b7, type: 2}
   - {fileID: 11400000, guid: 88a28d7ae0ad21b4ebecefc05faf450e, type: 2}
+  - {fileID: 11400000, guid: 89b8a6e014175bf48b299d89506231bc, type: 2}

@@ -12,14 +12,16 @@ public class PartyCharacterData : ScriptableObject
     public string description;
     public StatsData stats;
     public EquipmentData equipment;
+    public StatusEffectsData statusEffects;
 
-    private void Init(Sprite _image, string _name, string _description, StatsData _stats, EquipmentData _equipment)
+    private void Init(Sprite _image, string _name, string _description, StatsData _stats, EquipmentData _equipment, StatusEffectsData _statusEffects)
     {
         image = _image;
         name = _name;
         description = _description;
         stats = _stats;
         equipment = _equipment;
+        statusEffects = _statusEffects;
     }
 
     public static PartyCharacterData Clone(PartyCharacterData character)
@@ -27,8 +29,9 @@ public class PartyCharacterData : ScriptableObject
         var characterData = ScriptableObject.CreateInstance<PartyCharacterData>();
         var statsData = StatsData.Clone(character.stats);
         var equipmentData = EquipmentData.Clone(character.equipment);
+        var statusEffects = StatusEffectsData.Clone(character.statusEffects);
 
-        characterData.Init(character.image, character.name, character.description, statsData, equipmentData);
+        characterData.Init(character.image, character.name, character.description, statsData, equipmentData, statusEffects);
         return characterData;
     }
 

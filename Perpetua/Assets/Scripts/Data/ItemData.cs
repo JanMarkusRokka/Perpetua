@@ -23,6 +23,13 @@ public struct ArmorVariables
     public int ArmorMagicDefense;
 }
 
+[Serializable]
+public struct RuneVariables
+{
+    [SerializeField]
+    public List<StatusEffect> recipientStatusEffects;
+}
+
 [CreateAssetMenu(menuName = "Items/RegularItem")]
 [Serializable]
 public class ItemData : ScriptableObject
@@ -33,8 +40,9 @@ public class ItemData : ScriptableObject
     public bool equipped;
     public WeaponVariables WeaponVariables;
     public ArmorVariables ArmorVariables;
+    public RuneVariables RuneVariables;
 
-    private void Init(Sprite _image, string _name, ItemTypeData _type, bool _equipped, WeaponVariables _WeaponVariables, ArmorVariables _ArmorVariables)
+    private void Init(Sprite _image, string _name, ItemTypeData _type, bool _equipped, WeaponVariables _WeaponVariables, ArmorVariables _ArmorVariables, RuneVariables _RuneVariables)
     {
         image = _image;
         name = _name;
@@ -42,6 +50,7 @@ public class ItemData : ScriptableObject
         equipped = _equipped;
         WeaponVariables = _WeaponVariables;
         ArmorVariables = _ArmorVariables;
+        RuneVariables = _RuneVariables;
     }
 
     public static ItemData Clone(ItemData item)
@@ -49,7 +58,7 @@ public class ItemData : ScriptableObject
         if (item == null) return null;
         var itemData = ScriptableObject.CreateInstance<ItemData>();
 
-        itemData.Init(item.image, item.name, item.type, item.equipped, item.WeaponVariables, item.ArmorVariables);
+        itemData.Init(item.image, item.name, item.type, item.equipped, item.WeaponVariables, item.ArmorVariables, item.RuneVariables);
         return itemData;
     }
 
@@ -57,7 +66,7 @@ public class ItemData : ScriptableObject
     {
         var itemData = ScriptableObject.CreateInstance<ItemData>();
 
-        itemData.Init(image, name, type, equipped, WeaponVariables, ArmorVariables);
+        itemData.Init(image, name, type, equipped, WeaponVariables, ArmorVariables, RuneVariables);
         return itemData;
     }
 

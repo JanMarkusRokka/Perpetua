@@ -137,10 +137,42 @@ public class BattleManager : MonoBehaviour
             BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
             BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
 
-
-            CommitNextAction();
+            ApplyStatusEffectsAndStartCommitingActions();
             return;
         }
+    }
+
+    private void ApplyStatusEffectsAndStartCommitingActions()
+    {
+        bool statusEffectsApplied = false;
+        foreach (BattleParticipant participant in agilityOrder)
+        {
+            List<StatusEffect> statusEffects = participant.GetStatusEffectsData().statusEffects;
+            foreach (StatusEffect statusEffect in statusEffects)
+            {
+                statusEffectsApplied = true;
+                statusEffect.InflictStatusEffect(participant);
+                if (statusEffect.GetTurnsLeft() <= 0)
+                {
+                    // Dependent on the fact that Destroy replaces position in List with null
+                    Destroy(statusEffect);
+                }
+            }
+            participant.GetStatusEffectsData().statusEffects.RemoveAll(sf => sf == null);
+        }
+        if (statusEffectsApplied)
+        {
+            StartCoroutine(WaitBeforeNextAction(0.5f));
+        }
+        else
+            CommitNextAction();
+
+    }
+
+    private IEnumerator WaitBeforeNextAction(float secs)
+    {
+        yield return new WaitForSeconds(secs);
+        CommitNextAction();
     }
 
     public void EnemyTurn()
@@ -214,6 +246,16 @@ public class BattleManager : MonoBehaviour
     public BattleParticipant GetCurrentTurnTaker()
     {
         return agilityOrder[currentTurn];
+    }
+
+    public void Flee()
+    {
+        Debug.Log("Flee");
+        foreach(EnemyData enemy in EnemyData)
+        {
+            enemy.stunSeconds = 2f;
+        }
+        MenuPresenter.Instance.LoadSave(returnScenario);
     }
 
     private void EndGame()

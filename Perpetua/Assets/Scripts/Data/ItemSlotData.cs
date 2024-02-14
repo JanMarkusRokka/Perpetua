@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(menuName = "Items/RegularItem")]
+[CreateAssetMenu(menuName = "Items/ItemSlotData")]
 public class ItemSlotData : ScriptableObject
 {
     //Could add specific images to specific slots
