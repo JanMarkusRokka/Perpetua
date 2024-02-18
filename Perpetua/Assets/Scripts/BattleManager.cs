@@ -160,6 +160,7 @@ public class BattleManager : MonoBehaviour
             }
             participant.GetStatusEffectsData().statusEffects.RemoveAll(sf => sf == null);
         }
+        BattleCanvas.RefreshEnemyStatusEffects();
         if (statusEffectsApplied)
         {
             StartCoroutine(WaitBeforeNextAction(0.5f));
@@ -177,24 +178,11 @@ public class BattleManager : MonoBehaviour
 
     public void EnemyTurn()
     {
-        // Move enemy turn selection logic to EnemyData - specific moves, patterns for specific enemies
         BattleParticipant participant = agilityOrder[currentTurn];
-        if (UnityEngine.Random.Range(0, 100) > 25)
-        {
-            int recipientId = UnityEngine.Random.Range(0, party.Count);
-
-            Attack attack = new Attack();
-            attack.participant = participant;
-            attack.recipient = GetPartyMemberFromNumber(recipientId);
-            AddActionToQueue(attack);
-        }
-        else
-        {
-            AddActionToQueue(Guard.New(participant));
-        }
+        participant.GetEnemy().SelectTurn(participant);
     }
 
-    private BattleParticipant GetPartyMemberFromNumber(int memberId)
+    public BattleParticipant GetPartyMemberFromNumber(int memberId)
     {
         int count = 0;
         int id = 0;

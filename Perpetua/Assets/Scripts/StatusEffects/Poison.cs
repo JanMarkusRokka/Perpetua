@@ -51,16 +51,17 @@ public class Poison : StatusEffect
         }
     }
 
-    private void Init(int _turnsLeft, float _damagePerTurn)
+    private void Init(int _turnsLeft, float _damagePerTurn, Sprite _image)
     {
         turnsLeft = _turnsLeft;
         damagePerTurn = _damagePerTurn;
+        image = _image;
     }
 
     public override StatusEffect Clone()
     {
         Poison poison = ScriptableObject.CreateInstance<Poison>();
-        poison.Init(turnsLeft, damagePerTurn);
+        poison.Init(turnsLeft, damagePerTurn, image);
         return poison;
     }
 

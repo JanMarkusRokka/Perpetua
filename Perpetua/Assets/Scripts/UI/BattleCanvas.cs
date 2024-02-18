@@ -20,6 +20,7 @@ public class BattleCanvas : MonoBehaviour
     public GameObject ActionsPresenter;
     public GameObject ActionOptionPresenterPrefab;
     public GameObject SelectTargetLeftPanel;
+    public GameObject SkillsPresenter;
 
     [Header("Right tabs")]
     public GameObject PartyPresenter;
@@ -34,6 +35,9 @@ public class BattleCanvas : MonoBehaviour
     public GameObject EnemySelectionPrefab;
     public GameObject HealthBars;
     public GameObject HealthBarPrefab;
+    public GameObject StatusEffects;
+    public GameObject StatusEffectsPrefab;
+    public GameObject StatusEffectPresenterPrefab;
 
     [Header("Effects")]
     public GameObject ThanksForPlaying;
@@ -82,7 +86,8 @@ public class BattleCanvas : MonoBehaviour
         LeftTC.tabs = new List<GameObject>
         {
             ActionsPresenter,
-            SelectTargetLeftPanel
+            SelectTargetLeftPanel,
+            SkillsPresenter
         };
     }
 
@@ -159,6 +164,29 @@ public class BattleCanvas : MonoBehaviour
         }
     }
 
+    public void RefreshEnemyStatusEffects()
+    {
+        ClearTab(StatusEffects);
+        Transform Enemies = BattleManager.Enemies;
+        for (int i = 0; i < Enemies.childCount; i++)
+        {
+            Transform child = Enemies.GetChild(i);
+            StatusEffectsData statusEfs = BattleManager.agilityOrder[int.Parse(child.name)].GetStatusEffectsData();
+            if (statusEfs.statusEffects.Count > 0)
+            {
+                Vector3 pos = Camera.main.WorldToScreenPoint(child.position);
+                GameObject statusEffectsBar = Instantiate(StatusEffectsPrefab, StatusEffects.transform);
+                statusEffectsBar.transform.position = pos + new Vector3(0, 170f, 0);
+                statusEffectsBar.transform.rotation = transform.rotation;
+                foreach (StatusEffect statusEffect in statusEfs.statusEffects)
+                {
+                    GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsBar.transform);
+                    statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
+                }
+            }
+        }
+    }
+
     public void RefreshEnemyHealthBars()
     {
         ClearTab(HealthBars);
@@ -219,16 +247,22 @@ public class BattleCanvas : MonoBehaviour
         GameObject attackButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         attackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Attack";
         attackButton.GetComponent<Button>().onClick.AddListener( delegate { StartSelectEnemy("Atk"); } );
+
         GameObject skillsButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         skillsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Skills";
+        skillsButton.GetComponent<Button>().onClick.AddListener( delegate { LeftTC.SetTab(SkillsPresenter); } );
+
         GameObject guardButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         guardButton.GetComponentInChildren<TextMeshProUGUI>().text = "Guard";
-        guardButton.GetComponent<Button>().onClick.AddListener(delegate { BattleManager.AddActionToQueue(Guard.New(BattleManager.GetCurrentTurnTaker())); });
+        guardButton.GetComponent<Button>().onClick.AddListener( delegate { BattleManager.AddActionToQueue(Guard.New(BattleManager.GetCurrentTurnTaker())); } );
+
         GameObject itemButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         itemButton.GetComponentInChildren<TextMeshProUGUI>().text = "Item";
+
         GameObject fleeButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         fleeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Flee";
-        fleeButton.GetComponent<Button>().onClick.AddListener(delegate { BattleManager.Flee(); });
+        fleeButton.GetComponent<Button>().onClick.AddListener( delegate { BattleManager.Flee(); } );
+
         attackButton.GetComponent<Button>().Select();
     }
 
@@ -324,6 +358,12 @@ public class BattleCanvas : MonoBehaviour
                 partyMemberPresenter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = partyMember.name;
                 partyMemberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.HealthPoints) / ((float)partyMember.stats.MaxHealthPoints);
                 partyMemberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.HealthPoints + "/" + partyMember.stats.MaxHealthPoints;
+                Transform statusEffectsPresenter = partyMemberPresenter.transform.Find("StatusEffectsPresenter");
+                foreach(StatusEffect statusEffect in partyMember.statusEffects.statusEffects)
+                {
+                    GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsPresenter.transform);
+                    statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
+                }
                 partyMemberPresenter.name = i.ToString();
                 if (i == BattleManager.currentTurn)
                 {
@@ -348,6 +388,13 @@ public class BattleCanvas : MonoBehaviour
 
             memberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.HealthPoints) / ((float)partyMember.stats.MaxHealthPoints);
             memberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.HealthPoints + "/" + partyMember.stats.MaxHealthPoints;
+            Transform statusEffectsPresenter = memberPresenter.transform.Find("StatusEffectsPresenter");
+            ClearTab(statusEffectsPresenter.gameObject);
+            foreach (StatusEffect statusEffect in partyMember.statusEffects.statusEffects)
+            {
+                GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsPresenter.transform);
+                statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
+            }
         }
     }
 

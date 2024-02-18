@@ -35,7 +35,7 @@ public class OverworldPlayer : MonoBehaviour
             PartyCharacterData member = partyMembers[i];
             if (member.stats.HealthPoints > 0)
             {
-                GameObject memberObject = Instantiate(PartyMemberPrefab, transform.position + new Vector3(0f, 3f, 0f), transform.rotation);
+                GameObject memberObject = Instantiate(PartyMemberPrefab, transform.position + new Vector3(0f, 0f, 1f), transform.rotation);
                 memberObject.GetComponent<OverworldPartyMember>().SetupCharacter(member, transform);
                 memberObject.name = member.name;
             }

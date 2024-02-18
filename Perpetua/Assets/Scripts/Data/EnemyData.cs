@@ -4,8 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(menuName = "Enemies/Enemy")]
-public class EnemyData : ScriptableObject
+public abstract class EnemyData : ScriptableObject
 {
     public Sprite image;
     public new string name;
@@ -18,7 +17,7 @@ public class EnemyData : ScriptableObject
     public AudioClipGroup attackSound;
     public StatusEffectsData statusEffects;
 
-    private void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot, Sprite _gonerSprite, float _stunSeconds, AudioClipGroup _attackSound, StatusEffectsData _statusEffects)
+    public void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot, Sprite _gonerSprite, float _stunSeconds, AudioClipGroup _attackSound, StatusEffectsData _statusEffects)
     {
         image = _image;
         name = _name;
@@ -31,11 +30,7 @@ public class EnemyData : ScriptableObject
         statusEffects = _statusEffects;
     }
 
-    public static EnemyData Clone(EnemyData character)
-    {
-        var enemyData = ScriptableObject.CreateInstance<EnemyData>();
-        StatusEffectsData statusEffectsData = StatusEffectsData.Clone(character.statusEffects);
-        enemyData.Init(character.image, character.name, character.description, character.stats, character.loot, character.gonerSprite, character.stunSeconds, character.attackSound, statusEffectsData);
-        return enemyData;
-    }
+    public abstract EnemyData Clone(EnemyData character);
+
+    public abstract void SelectTurn(BattleParticipant participant);
 }

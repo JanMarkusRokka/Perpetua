@@ -21436,6 +21436,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
+      propertyPath: EnemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: ee972dbf611535f439f6fe062ee09ed4, type: 2}
+    - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
       propertyPath: IdleLocation.x
       value: -6.569801
       objectReference: {fileID: 0}

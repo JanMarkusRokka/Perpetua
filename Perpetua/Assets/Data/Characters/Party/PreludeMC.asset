@@ -19,3 +19,5 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 156342c91c138aa4789ef1492adda373, type: 2}
   equipment: {fileID: 11400000, guid: 1190d83c34b60174ba4c8765e3b645b4, type: 2}
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
+  skills:
+  - {fileID: 11400000, guid: 72c9351f45716844fad5240bb76be92a, type: 2}

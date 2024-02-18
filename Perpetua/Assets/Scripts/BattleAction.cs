@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class BattleAction
+public abstract class BattleAction : ScriptableObject
 {
+    public abstract string GetName();
     public abstract BattleParticipant GetParticipant();
     public abstract void CommitAction();
 }
@@ -59,6 +60,11 @@ public class AttackAction : BattleAction
     public override BattleParticipant GetParticipant()
     {
         return participant;
+    }
+
+    public override string GetName()
+    {
+        return "Attack";
     }
 }
 
@@ -156,6 +162,7 @@ public class Attack : AttackAction
             Color defaultColor = recipientTransform.GetComponent<SpriteRenderer>().color;
             recipientTransform.GetComponent<SpriteRenderer>().color = Color.red;
             battleCanvas.RefreshEnemyHealthBars();
+            battleCanvas.RefreshEnemyStatusEffects();
 
             battleEffects.DisplayDamageValue(recipientTransform, totalDamage);
 
@@ -208,10 +215,17 @@ public class Attack : AttackAction
 
     public static Attack New(BattleParticipant _attacker, BattleParticipant _recipient)
     {
-        return new Attack() {
-        participant = _attacker,
-        recipient = _recipient
-        };
+        Attack attack = ScriptableObject.CreateInstance<Attack>();
+
+        attack.participant = _attacker;
+        attack.recipient = _recipient;
+
+        return attack;
+    }
+
+    public override string GetName()
+    {
+        return "Regular Attack";
     }
 }
 
@@ -249,13 +263,17 @@ public class Guard : BattleAction
 
     public static Guard New(BattleParticipant _participant)
     {
-        return new Guard()
-        {
-            participant = _participant
-        };
+        Guard guard = ScriptableObject.CreateInstance<Guard>();
+        guard.participant = _participant;
+        return guard;
     }
     public override BattleParticipant GetParticipant()
     {
         return participant;
+    }
+
+    public override string GetName()
+    {
+        return "Guard";
     }
 }
