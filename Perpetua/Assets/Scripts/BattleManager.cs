@@ -39,10 +39,10 @@ public class BattleManager : MonoBehaviour
         party = PartyManager.Instance.party.PartyMembers;
         actionQueue = new();
         GuardDuringTurn = new();
-        SortOrderList();
+        agilityOrder = CreateAgilityOrderList(party, EnemyData);
         currentTurn = -1;
         SpawnEnemies();
-        BattleCanvas.DisplayTurnOrder();
+        BattleCanvas.DisplayTurnOrder(agilityOrder);
         BattleCanvas.SetSelectEnm(false);
         TakeTurn();
     }
@@ -58,7 +58,20 @@ public class BattleManager : MonoBehaviour
                 GameObject enemy = Instantiate(EnemyPrefab, Enemies);
                 enemy.transform.position = EnemyPositions.Find("Enemy" + spawnLocationId).position;
                 enemy.name = i.ToString();
+                agilityOrder[i].transform = enemy.transform;
                 spawnLocationId++;
+            }
+        }
+    }
+
+    private void UpdateEnemyNames()
+    {
+        for (int i = 0; i < agilityOrder.Count; i++)
+        {
+            BattleParticipant participant = agilityOrder[i];
+            if (!participant.IsPartyMember)
+            {
+                participant.transform.gameObject.name = i.ToString();
             }
         }
     }
@@ -132,7 +145,9 @@ public class BattleManager : MonoBehaviour
             currentTurn = -1;
             //BattleCanvas.SetTurn();
             if (agilityOrder[agilityOrder.Count - 1].IsPartyMember)
-            BattleCanvas.ResetPartyMemberColor(agilityOrder.Count - 1);
+            {
+                BattleCanvas.ResetPartyMemberColor(agilityOrder[agilityOrder.Count - 1].transform);
+            }
 
             BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
             BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
@@ -151,7 +166,7 @@ public class BattleManager : MonoBehaviour
             foreach (StatusEffect statusEffect in statusEffects)
             {
                 statusEffectsApplied = true;
-                statusEffect.InflictStatusEffect(participant);
+                statusEffect.InflictActiveStatusEffect(participant);
                 if (statusEffect.GetTurnsLeft() <= 0)
                 {
                     // Dependent on the fact that Destroy replaces position in List with null
@@ -161,13 +176,12 @@ public class BattleManager : MonoBehaviour
             participant.GetStatusEffectsData().statusEffects.RemoveAll(sf => sf == null);
         }
         BattleCanvas.RefreshEnemyStatusEffects();
-        if (statusEffectsApplied)
-        {
-            StartCoroutine(WaitBeforeNextAction(0.5f));
-        }
-        else
-            CommitNextAction();
+        agilityOrder = SortAgilityOrderList(agilityOrder);
+        BattleCanvas.DisplayTurnOrder(agilityOrder);
+        BattleCanvas.PopulatePartyTab();
+        UpdateEnemyNames(); // from agilityOrder
 
+        StartCoroutine(WaitBeforeNextAction(0.5f));
     }
 
     private IEnumerator WaitBeforeNextAction(float secs)
@@ -217,6 +231,8 @@ public class BattleManager : MonoBehaviour
         if (actionQueue.Count() > 0)
         {
             BattleAction action = actionQueue.Dequeue();
+            Debug.Log(agilityOrder.IndexOf(action.GetParticipant()).ToString());
+            BattleCanvas.TurnOrderPresenter.transform.Find(agilityOrder.IndexOf(action.GetParticipant()).ToString()).GetComponent<TriggerAnimation>().TriggerAnim();
             if (action.GetParticipant().GetStatsData().HealthPoints > 0)
             action.CommitAction();
             else
@@ -227,8 +243,17 @@ public class BattleManager : MonoBehaviour
         else
         {
             GuardDuringTurn = new();
-            TakeTurn();
+            agilityOrder = SortAgilityOrderList(agilityOrder);
+            BattleCanvas.DisplayTurnOrder(agilityOrder);
+            UpdateEnemyNames(); // from agilityOrder
+            StartCoroutine(WaitBeforeTurn(0.5f));
         }
+    }
+
+    private IEnumerator WaitBeforeTurn(float secs)
+    {
+        yield return new WaitForSeconds(secs);
+        TakeTurn();
     }
 
     public BattleParticipant GetCurrentTurnTaker()
@@ -368,21 +393,23 @@ public class BattleManager : MonoBehaviour
         CommitNextAction();
     }*/
 
-    private void SortOrderList()
+    private List<BattleParticipant> CreateAgilityOrderList(List<PartyCharacterData> partyMembers, List<EnemyData> enemies)
     {
         List<BattleParticipant> battleParticipants = new List<BattleParticipant>();
-        foreach(PartyCharacterData member in party)
+        foreach (PartyCharacterData member in partyMembers)
         {
             battleParticipants.Add(BattleParticipant.New(member));
         }
-        foreach(EnemyData enemy in EnemyData)
+        foreach (EnemyData enemy in enemies)
         {
             battleParticipants.Add(BattleParticipant.New(enemy));
         }
+        return SortAgilityOrderList(battleParticipants);
+    }
 
-        battleParticipants = battleParticipants.OrderByDescending(x => x.Agility()).ToList();
-        
-        agilityOrder = battleParticipants;
+    private List<BattleParticipant> SortAgilityOrderList(List<BattleParticipant> agilityOrderList)
+    {
+        return agilityOrderList.OrderByDescending(x => x.GetStatsData().AttackSpeed).ToList();
     }
 
     private void OnDestroy()

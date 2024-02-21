@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BattleParticipant : ScriptableObject
 {
-    public ScriptableObject participant;
+    public CharacterData participant;
     public bool IsPartyMember;
     private PartyCharacterData participantPartyMember;
     private EnemyData enemyData;
 
-    private void Init(ScriptableObject _participant)
+    public Transform transform;
+
+    private void Init(CharacterData _participant)
     {
         participant = _participant;
         if (participant.GetType() == typeof(PartyCharacterData))
@@ -23,7 +25,7 @@ public class BattleParticipant : ScriptableObject
         }
     }
 
-    public static BattleParticipant New(ScriptableObject participant)
+    public static BattleParticipant New(CharacterData participant)
     {
         BattleParticipant battleParticipant = ScriptableObject.CreateInstance<BattleParticipant>();
         battleParticipant.Init(participant);
@@ -32,14 +34,12 @@ public class BattleParticipant : ScriptableObject
 
     public int Agility()
     {
-        if (IsPartyMember) return participantPartyMember.stats.AttackSpeed;
-        else return enemyData.stats.AttackSpeed;
+        return participant.GetStatsWithAllEffects().AttackSpeed;
     }
 
     public float Health()
     {
-        if (IsPartyMember) return participantPartyMember.stats.HealthPoints;
-        else return enemyData.stats.HealthPoints;
+        return participant.GetStatsWithAllEffects().HealthPoints;
     }
 
     public PartyCharacterData GetPartyMember()
@@ -54,8 +54,7 @@ public class BattleParticipant : ScriptableObject
 
     public StatsData GetStatsData()
     {
-        if (IsPartyMember) return participantPartyMember.stats;
-        else return enemyData.stats;
+        return participant.GetStatsWithAllEffects();
     }
 
     public EquipmentData GetEquipmentData()
@@ -66,7 +65,6 @@ public class BattleParticipant : ScriptableObject
 
     public StatusEffectsData GetStatusEffectsData()
     {
-        if (IsPartyMember) return participantPartyMember.statusEffects;
-        return enemyData.statusEffects;
+        return participant.statusEffects;
     }
 }

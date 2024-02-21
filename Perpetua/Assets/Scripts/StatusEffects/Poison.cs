@@ -18,7 +18,7 @@ public class Poison : StatusEffect
         return turnsLeft;
     }
 
-    public override void InflictStatusEffect(BattleParticipant participant)
+    public override void InflictActiveStatusEffect(BattleParticipant participant)
     {
         StatsData stats = participant.GetStatsData();
         int damage = Mathf.RoundToInt(stats.MaxHealthPoints * damagePerTurn);
@@ -34,12 +34,12 @@ public class Poison : StatusEffect
         int orderId = battleManager.agilityOrder.IndexOf(battleParticipant);
         if (battleParticipant.IsPartyMember)
         {
-            battleCanvas.battleEffects.DisplayDamageValueHUD(battleCanvas.PartyPresenter.transform.Find(orderId.ToString()), (float) damage);
+            battleCanvas.battleEffects.DisplayDamageValueHUD(battleParticipant.transform, (float) damage);
             yield return new WaitForSeconds(0.5f);
         }
         else
         {
-            Transform recipientTransform = battleManager.Enemies.Find(orderId.ToString());
+            Transform recipientTransform = battleParticipant.transform;
             Color defaultColor = recipientTransform.GetComponent<SpriteRenderer>().color;
             recipientTransform.GetComponent<SpriteRenderer>().color = Color.green;
             battleCanvas.RefreshEnemyHealthBars();

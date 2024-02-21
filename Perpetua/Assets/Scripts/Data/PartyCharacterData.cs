@@ -5,15 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Characters/PartyCharacter")]
-public class PartyCharacterData : ScriptableObject
+public class PartyCharacterData : CharacterData
 {
-    public Sprite image;
-    public new string name;
-    public string description;
-    public StatsData stats;
     public EquipmentData equipment;
-    public StatusEffectsData statusEffects;
-    public List<BattleAction> skills;
 
     private void Init(Sprite _image, string _name, string _description, StatsData _stats, EquipmentData _equipment, StatusEffectsData _statusEffects, List<BattleAction> _skills)
     {
@@ -24,6 +18,14 @@ public class PartyCharacterData : ScriptableObject
         equipment = _equipment;
         statusEffects = _statusEffects;
         skills = _skills;
+    }
+
+    public override StatsData GetStatsWithAllEffects()
+    {
+        StatsData statsWithEffects = StatsData.Clone(stats);
+        statsWithEffects.ApplyStatusEffects(statusEffects.statusEffects);
+        statsWithEffects.ApplyEquipment(equipment);
+        return statsWithEffects;
     }
 
     public static PartyCharacterData Clone(PartyCharacterData character)

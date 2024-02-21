@@ -278,17 +278,19 @@ public class BattleCanvas : MonoBehaviour
         //BattleManager.AddActionToQueue(actionType.New(BattleManager.GetCurrentTurnTaker(),));
     }
 
-    public void DisplayTurnOrder()
+    public void DisplayTurnOrder(List<BattleParticipant> participants)
     {
         ClearTab(TurnOrderPresenter);
-        List<BattleParticipant> participants = BattleManager.agilityOrder;
-        foreach (BattleParticipant participant in participants)
+        for (int i = 0; i < participants.Count; i++)
         {
+            BattleParticipant participant = participants[i];
+
             Sprite image = null;
             Transform imagePresenter = null;
             if (participant.IsPartyMember)
             {
                 GameObject p = Instantiate(OrderCharPresenter, TurnOrderPresenter.transform);
+                p.name = i.ToString();
                 foreach (Transform child in p.transform)
                 {
                     imagePresenter = child;
@@ -297,6 +299,7 @@ public class BattleCanvas : MonoBehaviour
             } else
             {
                 GameObject p = Instantiate(OrderCharPresenter, TurnOrderPresenter.transform);
+                p.name = i.ToString();
                 foreach (Transform child in p.transform)
                 {
                     imagePresenter = child;
@@ -346,6 +349,7 @@ public class BattleCanvas : MonoBehaviour
             {
                 PartyCharacterData partyMember = turnTaker.GetPartyMember();
                 GameObject partyMemberPresenter = Instantiate(PartyMemberPresenterPrefab, PartyPresenter.transform);
+                turnTaker.transform = partyMemberPresenter.transform;
                 if (partyMember.stats.HealthPoints <= 0)
                 {
                     partyMemberPresenter.transform.Find("Image").GetComponent<Image>().sprite = CrossImage;
@@ -381,7 +385,7 @@ public class BattleCanvas : MonoBehaviour
             int orderId = int.Parse(memberPresenter.gameObject.name);
             PartyCharacterData partyMember = BattleManager.agilityOrder[orderId].GetPartyMember();
 
-            if (partyMember.stats.HealthPoints <= 0)
+            if (partyMember.GetStatsWithAllEffects().HealthPoints <= 0)
             {
                 memberPresenter.transform.Find("Image").GetComponent<Image>().sprite = CrossImage;
             }
@@ -398,12 +402,12 @@ public class BattleCanvas : MonoBehaviour
         }
     }
 
-    public void SetPartyMemberColor(int member, Color color)
+    public void SetPartyMemberColor(Transform member, Color color)
     {
-        PartyPresenter.transform.Find(member.ToString()).GetComponent<Image>().color = color;
+        member.GetComponent<Image>().color = color;
     }
 
-    public void ResetPartyMemberColor(int member)
+    public void ResetPartyMemberColor(Transform member)
     {
         SetPartyMemberColor(member, pmPresDefaultColor);
     }
