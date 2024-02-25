@@ -59,9 +59,22 @@ public class TransparencyController : MonoBehaviour
                 
                 Color c = r.material.GetColor("_Color");
                 c.a = alpha;
+                Debug.Log(c);
                 r.material.SetColor("_Color", c);
                 
             }
+            childRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+
+            foreach (Renderer r in childRenderers)
+            {
+                //r.enabled = false;
+
+                Color c = r.material.GetColor("_Color");
+                c.a = alpha;
+                r.material.SetColor("_Color", c);
+
+            }
+
             Renderer renderer = GetComponent<MeshRenderer>();
 
             if (renderer)
@@ -94,6 +107,19 @@ public class TransparencyController : MonoBehaviour
                 r.material.SetColor("_Color", c);
                 
             }
+
+            childRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+
+            foreach (Renderer r in childRenderers)
+            {
+                //r.enabled = true;
+
+                Color c = r.material.GetColor("_Color");
+                c.a = alpha;
+                r.material.SetColor("_Color", c);
+
+            }
+
             Renderer renderer = GetComponent<MeshRenderer>();
 
             if (renderer)
