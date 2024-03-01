@@ -12,7 +12,7 @@ public abstract class EnemyData : CharacterData
     public Vector3 stunLocation;
     public AudioClipGroup attackSound;
 
-    public void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot, Sprite _gonerSprite, float _stunSeconds, AudioClipGroup _attackSound, StatusEffectsData _statusEffects)
+    public void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot, Sprite _gonerSprite, float _stunSeconds, AudioClipGroup _attackSound, StatusEffectsData _statusEffects, List<BattleAction> _skills)
     {
         image = _image;
         name = _name;
@@ -23,6 +23,7 @@ public abstract class EnemyData : CharacterData
         stunSeconds = _stunSeconds;
         attackSound = _attackSound;
         statusEffects = _statusEffects;
+        skills = _skills;
     }
 
     public abstract EnemyData Clone(EnemyData character);

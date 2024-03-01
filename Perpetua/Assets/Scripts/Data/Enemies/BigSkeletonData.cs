@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -13,10 +14,21 @@ public class BigSkeletonData : EnemyData
         {
             int recipientId = UnityEngine.Random.Range(0, BattleManager.Instance.party.Count);
 
-            Attack attack = ScriptableObject.CreateInstance<Attack>();
-            attack.participant = participant;
-            attack.recipient = BattleManager.Instance.GetPartyMemberFromNumber(recipientId);
-            BattleManager.Instance.AddActionToQueue(attack);
+            if (UnityEngine.Random.Range(0,100) > 50)
+            {
+                AttackWithSpecificStatusEffect awsse = (AttackWithSpecificStatusEffect) skills[0].Clone();
+                awsse.participant = participant;
+                awsse.recipient = BattleManager.Instance.GetPartyMemberFromNumber(recipientId);
+                BattleManager.Instance.AddActionToQueue(awsse);
+            }
+            else
+            {
+
+                Attack attack = ScriptableObject.CreateInstance<Attack>();
+                attack.participant = participant;
+                attack.recipient = BattleManager.Instance.GetPartyMemberFromNumber(recipientId);
+                BattleManager.Instance.AddActionToQueue(attack);
+            }
         }
         else
         {
@@ -28,7 +40,7 @@ public class BigSkeletonData : EnemyData
     {
         var enemyData = ScriptableObject.CreateInstance<BigSkeletonData>();
         StatusEffectsData statusEffectsData = StatusEffectsData.Clone(character.statusEffects);
-        enemyData.Init(character.image, character.name, character.description, character.stats, character.loot, character.gonerSprite, character.stunSeconds, character.attackSound, statusEffectsData);
+        enemyData.Init(character.image, character.name, character.description, character.stats, character.loot, character.gonerSprite, character.stunSeconds, character.attackSound, statusEffectsData, character.skills);
         return enemyData;
     }
 }

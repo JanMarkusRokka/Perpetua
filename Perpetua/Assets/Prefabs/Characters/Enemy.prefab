@@ -4901,6 +4901,7 @@ GameObject:
   - component: {fileID: 3463062336238731722}
   - component: {fileID: 5288915243266651377}
   - component: {fileID: 3686280835197829767}
+  - component: {fileID: 4753839699918829715}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5061,8 +5062,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 8952021306042982066}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 12
+  m_Radius: 0.38
+  m_Speed: 10
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 0
@@ -5108,9 +5109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AggroTime: 5
-  IdleLocation: {x: 0, y: 0, z: 0}
+  IdleLocation: {x: -6.569801, y: -4.651791, z: -815.335}
   FightTriggerDistance: 1.5
-  EnemyData: {fileID: 11400000, guid: c2d721360680e7d4e9d5b7971c648d3f, type: 2}
+  EnemyData: {fileID: 11400000, guid: ee972dbf611535f439f6fe062ee09ed4, type: 2}
 --- !u!114 &3686280835197829767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5123,3 +5124,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807281fe15bd0654fa304d3c221166cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4753839699918829715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952021306042982066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5723bf95df75e0438d294a91e09c4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guidString: f7ae2ed3-15ab-4436-8ddd-06f6dd7c42f7

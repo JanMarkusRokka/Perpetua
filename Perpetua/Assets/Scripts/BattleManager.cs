@@ -231,7 +231,6 @@ public class BattleManager : MonoBehaviour
         if (actionQueue.Count() > 0)
         {
             BattleAction action = actionQueue.Dequeue();
-            Debug.Log(agilityOrder.IndexOf(action.GetParticipant()).ToString());
             BattleCanvas.TurnOrderPresenter.transform.Find(agilityOrder.IndexOf(action.GetParticipant()).ToString()).GetComponent<TriggerAnimation>().TriggerAnim();
             if (action.GetParticipant().GetStatsData().HealthPoints > 0)
             action.CommitAction();

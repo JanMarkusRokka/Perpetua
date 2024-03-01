@@ -20,7 +20,7 @@ public class Poison : StatusEffect
 
     public override void InflictActiveStatusEffect(BattleParticipant participant)
     {
-        StatsData stats = participant.GetStatsData();
+        StatsData stats = participant.participant.stats;
         int damage = Mathf.RoundToInt(stats.MaxHealthPoints * damagePerTurn);
         stats.HealthPoints = Mathf.Max(0, stats.HealthPoints - damage);
         turnsLeft -= 1;
@@ -35,6 +35,7 @@ public class Poison : StatusEffect
         if (battleParticipant.IsPartyMember)
         {
             battleCanvas.battleEffects.DisplayDamageValueHUD(battleParticipant.transform, (float) damage);
+            battleManager.StartCoroutine(AttackAction.ShowNegativeStatusEffectColor(battleParticipant, 0.5f));
             yield return new WaitForSeconds(0.5f);
         }
         else

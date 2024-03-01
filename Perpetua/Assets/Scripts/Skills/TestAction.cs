@@ -38,6 +38,7 @@ public class TestAction : BattleAction
     public static TestAction New(BattleParticipant _participant)
     {
         TestAction testAction = ScriptableObject.CreateInstance<TestAction>();
+        testAction.participant = _participant;
         return testAction;
     }
     public override BattleParticipant GetParticipant()
@@ -48,5 +49,12 @@ public class TestAction : BattleAction
     public override string GetName()
     {
         return "Test Action";
+    }
+
+    public override BattleAction Clone()
+    {
+        TestAction testAction = ScriptableObject.CreateInstance<TestAction>();
+        testAction.participant = participant;
+        return testAction;
     }
 }

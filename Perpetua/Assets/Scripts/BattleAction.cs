@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ public abstract class BattleAction : ScriptableObject
     public abstract string GetName();
     public abstract BattleParticipant GetParticipant();
     public abstract void CommitAction();
+    public abstract BattleAction Clone();
 }
 
 // Main class for all attacks (skills) that inflict status effects
@@ -24,7 +26,6 @@ public class AttackAction : BattleAction
 
     public void InflictStatusEffects()
     {
-        Debug.Log("Inflicting status effects");
         List<StatusEffect> statusEffects = new();
         EquipmentData equipmentData = participant.GetEquipmentData();
         if (equipmentData)
@@ -41,16 +42,19 @@ public class AttackAction : BattleAction
             RuneVariables runeVariables = rune.RuneVariables;
             foreach (StatusEffect statusEffect in runeVariables.recipientStatusEffects)
             {
-                StatusEffectsData statusEffectsData = recipient.GetStatusEffectsData();
-                List<StatusEffect> sameType = statusEffectsData.statusEffects.Where(statusEf => statusEf.GetType() == statusEffect.GetType()).ToList();
-                if (sameType.Count > 0)
-                {
-                    statusEffectsData.statusEffects.Remove(sameType[0]);
-                }
-                statusEffectsData.statusEffects.Add(statusEffect.Clone());
+                InflictStatusEffect(statusEffect, recipient);
             }
         }
 
+    }
+
+    public static void InflictStatusEffect(StatusEffect statusEffect, BattleParticipant recipient)
+    {
+        StatusEffectsData statusEffectsData = recipient.GetStatusEffectsData();
+
+        statusEffectsData.statusEffects.RemoveAll(statusEf => statusEf.GetType() == statusEffect.GetType());
+
+        statusEffectsData.statusEffects.Add(statusEffect.Clone());
     }
 
     public virtual void CommitAttack() 
@@ -67,6 +71,26 @@ public class AttackAction : BattleAction
     {
         return "Attack";
     }
+
+    public override BattleAction Clone()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public static IEnumerator ShowNegativeStatusEffectColor(BattleParticipant participant, float length)
+    {
+        BattleManager battleManager = BattleManager.Instance;
+        BattleCanvas battleCanvas = battleManager.BattleCanvas;
+
+        Color purple = Color.white;
+        purple.r = 216;
+        purple.g = 191;
+        purple.b = 216;
+        battleCanvas.SetPartyMemberColor(participant.transform, purple);
+        Debug.Log("Set Color Purple");
+        yield return new WaitForSeconds(length);
+        battleCanvas.ResetPartyMemberColor(participant.transform);
+    }
 }
 
 // Regular attack
@@ -78,23 +102,37 @@ public class Attack : AttackAction
     }
     public override void CommitAttack()
     {
+        BattleManager battleManager = BattleManager.Instance;
+        BattleCanvas battleCanvas = battleManager.BattleCanvas;
+        int damage = CalculateAttackDamage(participant, recipient);
+        if (damage > -1)
+        {
+            InflictStatusEffects();
+            battleManager.StartCoroutine(AnimateAttack(battleManager, battleCanvas, damage));
+        }
+        else
+        {
+            battleManager.StartCoroutine(AnimateMiss(battleManager, battleCanvas));
+        }
+
+    }
+
+    public static int CalculateAttackDamage(BattleParticipant participant, BattleParticipant recipient)
+    {
         StatsData attackerStats = participant.GetStatsData();
         StatsData recipientStats = recipient.GetStatsData();
         EquipmentData attackerEquipment = participant.GetEquipmentData();
         EquipmentData recipientEquipment = recipient.GetEquipmentData();
         BattleManager battleManager = BattleManager.Instance;
-        BattleCanvas battleCanvas = battleManager.BattleCanvas;
 
         float landChance = attackerStats.Accuracy - attackerStats.Accuracy * recipientStats.Dodge;
 
-        if (Random.Range(0, 100) > landChance)
+        if (UnityEngine.Random.Range(0, 100) > landChance)
         {
             //Debug.Log(participant.participant.name + " Miss");
-            battleManager.StartCoroutine(AnimateMiss(battleManager, battleCanvas));
-            return;
+            return -1;
         }
         //Debug.Log(participant.participant.name + "Hit");
-        InflictStatusEffects();
         int baseDamage = attackerStats.PhysicalDamage;
         int baseMagicDamage = attackerStats.MagicDamage;
         if (attackerEquipment)
@@ -106,12 +144,12 @@ public class Attack : AttackAction
             }
         }
 
-        baseDamage += (int) (Random.Range(-0.15f, 0.15f) * baseDamage);
-        baseMagicDamage += (int) (Random.Range(-0.15f, 0.15f) * baseMagicDamage);
+        baseDamage += (int)(UnityEngine.Random.Range(-0.15f, 0.15f) * baseDamage);
+        baseMagicDamage += (int)(UnityEngine.Random.Range(-0.15f, 0.15f) * baseMagicDamage);
 
         float criticalMultiplier = 1f;
 
-        if (Random.Range(0, 100) < attackerStats.CriticalChance)
+        if (UnityEngine.Random.Range(0, 100) < attackerStats.CriticalChance)
         {
             //Critical Strike
             criticalMultiplier = attackerStats.CriticalMultiplier;
@@ -130,20 +168,15 @@ public class Attack : AttackAction
 
         bool recipientGuarding = (battleManager.GuardDuringTurn.Contains(recipient));
 
-        Debug.Log("Damage without guarding: " + (int)Mathf.Round(Mathf.Max(0f, baseDamage * criticalMultiplier - physicalDefense) +
-    Mathf.Max(0f, baseMagicDamage * criticalMultiplier - magicDefense)));
+        physicalDefense = physicalDefense * (recipientGuarding ? 2 : 1);
+        magicDefense = (int)(magicDefense * (recipientGuarding ? 1.5 : 1));
 
-        physicalDefense = physicalDefense * ( recipientGuarding ? 2 : 1 );
-        magicDefense = (int) (magicDefense * (recipientGuarding ? 1.5 : 1));
-
-        int totalDamage = (int) Mathf.Round(Mathf.Max(0f, baseDamage * criticalMultiplier - physicalDefense) + 
+        int totalDamage = (int)Mathf.Round(Mathf.Max(0f, baseDamage * criticalMultiplier - physicalDefense) +
             Mathf.Max(0f, baseMagicDamage * criticalMultiplier - magicDefense));
-
-        battleManager.StartCoroutine(AnimateAttack(battleManager, battleCanvas, totalDamage));
-        
+        return totalDamage;
     }
 
-    IEnumerator AnimateAttack(BattleManager battleManager, BattleCanvas battleCanvas, int totalDamage)
+    public IEnumerator AnimateAttack(BattleManager battleManager, BattleCanvas battleCanvas, int totalDamage)
     {
         yield return new WaitForSeconds(0.1f);
         if (participant.IsPartyMember)
@@ -175,7 +208,6 @@ public class Attack : AttackAction
             BattleEffects battleEffects = battleCanvas.battleEffects;
             Transform attackerTransform = participant.transform;
             attackerTransform.GetComponent<BattleEnemyAnimator>().PlayAttackAnimation();
-            Debug.Log(recipient);
             battleCanvas.SetPartyMemberColor(recipient.transform, Color.red);
             yield return new WaitForSeconds(0.75f);
             participant.GetEnemy().attackSound.Play();
@@ -191,7 +223,7 @@ public class Attack : AttackAction
         battleManager.CommitNextAction();
     }
 
-    IEnumerator AnimateMiss(BattleManager battleManager, BattleCanvas battleCanvas)
+    public IEnumerator AnimateMiss(BattleManager battleManager, BattleCanvas battleCanvas)
     {
         yield return new WaitForSeconds(0.1f);
 
@@ -215,6 +247,16 @@ public class Attack : AttackAction
 
         attack.participant = _attacker;
         attack.recipient = _recipient;
+
+        return attack;
+    }
+
+    public override BattleAction Clone()
+    {
+        Attack attack = ScriptableObject.CreateInstance<Attack>();
+
+        attack.participant = participant;
+        attack.recipient = recipient;
 
         return attack;
     }
@@ -271,5 +313,14 @@ public class Guard : BattleAction
     public override string GetName()
     {
         return "Guard";
+    }
+
+    public override BattleAction Clone()
+    {
+        Guard guard = ScriptableObject.CreateInstance<Guard>();
+
+        guard.participant = participant;
+
+        return guard;
     }
 }
