@@ -67,4 +67,13 @@ public class BattleParticipant : ScriptableObject
     {
         return participant.statusEffects;
     }
+
+    public void InflictStatusEffect(StatusEffect statusEffect)
+    {
+        StatusEffectsData statusEffectsData = GetStatusEffectsData();
+
+        statusEffectsData.statusEffects.RemoveAll(statusEf => statusEf.GetType() == statusEffect.GetType());
+
+        statusEffectsData.statusEffects.Add(statusEffect.Clone());
+    }
 }

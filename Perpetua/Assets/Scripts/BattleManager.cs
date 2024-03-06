@@ -159,13 +159,11 @@ public class BattleManager : MonoBehaviour
 
     private void ApplyStatusEffectsAndStartCommitingActions()
     {
-        bool statusEffectsApplied = false;
         foreach (BattleParticipant participant in agilityOrder)
         {
             List<StatusEffect> statusEffects = participant.GetStatusEffectsData().statusEffects;
             foreach (StatusEffect statusEffect in statusEffects)
             {
-                statusEffectsApplied = true;
                 statusEffect.InflictActiveStatusEffect(participant);
                 if (statusEffect.GetTurnsLeft() <= 0)
                 {
@@ -231,9 +229,14 @@ public class BattleManager : MonoBehaviour
         if (actionQueue.Count() > 0)
         {
             BattleAction action = actionQueue.Dequeue();
+            // Displays turn order advancing (character icons are removed based on action order)
             BattleCanvas.TurnOrderPresenter.transform.Find(agilityOrder.IndexOf(action.GetParticipant()).ToString()).GetComponent<TriggerAnimation>().TriggerAnim();
             if (action.GetParticipant().GetStatsData().HealthPoints > 0)
-            action.CommitAction();
+            {
+                action.GetParticipant().participant.stats.WillPower = Mathf.Max(0, action.GetParticipant().participant.stats.WillPower - action.GetWillPowerUsage());
+                BattleCanvas.UpdatePartyTabStats();
+                action.CommitAction();
+            }
             else
             {
                 CommitNextAction();

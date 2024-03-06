@@ -6,6 +6,7 @@ using UnityEngine;
 public class TestAction : BattleAction
 {
     public BattleParticipant participant;
+    int willPowerUsage = 5;
     public override void CommitAction()
     {
         BattleManager battleManager = BattleManager.Instance;
@@ -56,5 +57,15 @@ public class TestAction : BattleAction
         TestAction testAction = ScriptableObject.CreateInstance<TestAction>();
         testAction.participant = participant;
         return testAction;
+    }
+
+    public override int GetWillPowerUsage()
+    {
+        return willPowerUsage;
+    }
+
+    public override BattleAction CreateFromUI(List<BattleParticipant> participants)
+    {
+        throw new System.NotImplementedException();
     }
 }

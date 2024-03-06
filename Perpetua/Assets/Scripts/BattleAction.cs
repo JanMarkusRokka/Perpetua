@@ -11,6 +11,8 @@ public abstract class BattleAction : ScriptableObject
     public abstract BattleParticipant GetParticipant();
     public abstract void CommitAction();
     public abstract BattleAction Clone();
+    public abstract int GetWillPowerUsage();
+    public abstract BattleAction CreateFromUI(List<BattleParticipant> participants);
 }
 
 // Main class for all attacks (skills) that inflict status effects
@@ -18,13 +20,14 @@ public class AttackAction : BattleAction
 {
     public BattleParticipant participant;
     public BattleParticipant recipient;
+    int willPowerUsage = 5;
     public override void CommitAction()
     {
-        InflictStatusEffects();
+        InflictRuneStatusEffects();
         CommitAttack();
     }
 
-    public void InflictStatusEffects()
+    public void InflictRuneStatusEffects()
     {
         List<StatusEffect> statusEffects = new();
         EquipmentData equipmentData = participant.GetEquipmentData();
@@ -42,19 +45,10 @@ public class AttackAction : BattleAction
             RuneVariables runeVariables = rune.RuneVariables;
             foreach (StatusEffect statusEffect in runeVariables.recipientStatusEffects)
             {
-                InflictStatusEffect(statusEffect, recipient);
+                recipient.InflictStatusEffect(statusEffect);
             }
         }
 
-    }
-
-    public static void InflictStatusEffect(StatusEffect statusEffect, BattleParticipant recipient)
-    {
-        StatusEffectsData statusEffectsData = recipient.GetStatusEffectsData();
-
-        statusEffectsData.statusEffects.RemoveAll(statusEf => statusEf.GetType() == statusEffect.GetType());
-
-        statusEffectsData.statusEffects.Add(statusEffect.Clone());
     }
 
     public virtual void CommitAttack() 
@@ -91,11 +85,21 @@ public class AttackAction : BattleAction
         yield return new WaitForSeconds(length);
         battleCanvas.ResetPartyMemberColor(participant.transform);
     }
+
+    public override int GetWillPowerUsage()
+    {
+        return willPowerUsage;
+    }
+    public override BattleAction CreateFromUI(List<BattleParticipant> participants)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 // Regular attack
 public class Attack : AttackAction
 {
+    int willPowerUsage = 5;
     public override void CommitAction()
     {
         CommitAttack();
@@ -107,12 +111,12 @@ public class Attack : AttackAction
         int damage = CalculateAttackDamage(participant, recipient);
         if (damage > -1)
         {
-            InflictStatusEffects();
-            battleManager.StartCoroutine(AnimateAttack(battleManager, battleCanvas, damage));
+            InflictRuneStatusEffects();
+            battleManager.StartCoroutine(AnimateAttack(battleManager, battleCanvas, damage, true));
         }
         else
         {
-            battleManager.StartCoroutine(AnimateMiss(battleManager, battleCanvas));
+            battleManager.StartCoroutine(AnimateMiss(battleManager, battleCanvas, true));
         }
 
     }
@@ -176,7 +180,7 @@ public class Attack : AttackAction
         return totalDamage;
     }
 
-    public IEnumerator AnimateAttack(BattleManager battleManager, BattleCanvas battleCanvas, int totalDamage)
+    public IEnumerator AnimateAttack(BattleManager battleManager, BattleCanvas battleCanvas, int totalDamage, bool commitNextAction)
     {
         yield return new WaitForSeconds(0.1f);
         if (participant.IsPartyMember)
@@ -219,11 +223,12 @@ public class Attack : AttackAction
             battleCanvas.ResetPartyMemberColor(recipient.transform);
 
         }
-
+        if (commitNextAction)
         battleManager.CommitNextAction();
+        yield break;
     }
 
-    public IEnumerator AnimateMiss(BattleManager battleManager, BattleCanvas battleCanvas)
+    public IEnumerator AnimateMiss(BattleManager battleManager, BattleCanvas battleCanvas, bool commitNextAction)
     {
         yield return new WaitForSeconds(0.1f);
 
@@ -236,9 +241,9 @@ public class Attack : AttackAction
             yield return new WaitForSeconds(0.5f);
             battleCanvas.ResetPartyMemberColor(participant.transform);
         }
-
+        if (commitNextAction)
         battleManager.CommitNextAction();
-
+        yield break;
     }
 
     public static Attack New(BattleParticipant _attacker, BattleParticipant _recipient)
@@ -265,11 +270,23 @@ public class Attack : AttackAction
     {
         return "Regular Attack";
     }
+    public override int GetWillPowerUsage()
+    {
+        return willPowerUsage;
+    }
+    public override BattleAction CreateFromUI(List<BattleParticipant> participants)
+    {
+        Attack attack = (Attack) Clone();
+        attack.participant = participants[0];
+        attack.recipient = participants[1];
+        return attack;
+    }
 }
 
 public class Guard : BattleAction
 {
     public BattleParticipant participant;
+    int willPowerUsage = 0;
     public override void CommitAction()
     {
         BattleManager battleManager = BattleManager.Instance;
@@ -321,6 +338,17 @@ public class Guard : BattleAction
 
         guard.participant = participant;
 
+        return guard;
+    }
+
+    public override int GetWillPowerUsage()
+    {
+        return willPowerUsage;
+    }
+    public override BattleAction CreateFromUI(List<BattleParticipant> participants)
+    {
+        Guard guard = (Guard) Clone();
+        guard.participant = participants[0];
         return guard;
     }
 }

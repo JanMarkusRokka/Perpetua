@@ -7,6 +7,7 @@ using UnityEngine;
 public class AttackWithSpecificStatusEffect : Attack
 {
     public StatusEffect statusEffect;
+    public int WillPowerUsage;
     public override void CommitAction()
     {
         BattleManager battleManager = BattleManager.Instance;
@@ -15,12 +16,12 @@ public class AttackWithSpecificStatusEffect : Attack
         int damage = Attack.CalculateAttackDamage(participant, recipient);
         if (damage > -1)
         {
-            InflictStatusEffect(statusEffect, recipient);
-            battleManager.StartCoroutine(AnimateAttack(battleManager, battleCanvas, damage));
+            recipient.InflictStatusEffect(statusEffect);
+            battleManager.StartCoroutine(AnimateAttack(battleManager, battleCanvas, damage, true));
         }
         else
         {
-            battleManager.StartCoroutine(AnimateMiss(battleManager, battleCanvas));
+            battleManager.StartCoroutine(AnimateMiss(battleManager, battleCanvas, true));
         }
     }
 
@@ -54,5 +55,19 @@ public class AttackWithSpecificStatusEffect : Attack
         attack.statusEffect = statusEffect;
 
         return attack;
+    }
+
+    public override int GetWillPowerUsage()
+    {
+        return WillPowerUsage;
+    }
+
+    public override BattleAction CreateFromUI(List<BattleParticipant> participants)
+    {
+        BattleManager battleManager = BattleManager.Instance;
+        AttackWithSpecificStatusEffect awsse = (AttackWithSpecificStatusEffect)Clone();
+        awsse.participant = participants[0];
+        awsse.recipient = participants[1];
+        return awsse;
     }
 }

@@ -57,7 +57,7 @@ public class BattleCanvas : MonoBehaviour
     public TabsController RightTC;
     private IEnumerator RevealTextCoroutine = null;
     private bool SelectEnm;
-    private string currentActionType;
+    private BattleAction currentAction;
 
     void Start()
     {
@@ -246,7 +246,7 @@ public class BattleCanvas : MonoBehaviour
         ClearTab(ActionsPresenter);
         GameObject attackButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         attackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Attack";
-        attackButton.GetComponent<Button>().onClick.AddListener( delegate { StartSelectEnemy("Atk"); } );
+        attackButton.GetComponent<Button>().onClick.AddListener( delegate { StartSelectEnemy(new Attack()); } );
 
         GameObject skillsButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         skillsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Skills";
@@ -266,12 +266,12 @@ public class BattleCanvas : MonoBehaviour
         attackButton.GetComponent<Button>().Select();
     }
 
-    private void StartSelectEnemy(string actionType)
+    public void StartSelectEnemy(BattleAction battleAction)
     {
         //StopTextCoroutine();
         //RevealTextCoroutine = TextMethods.RevealText("Select your target", TextPresenter, 0.1f);
         //StartCoroutine(RevealTextCoroutine);
-        currentActionType = actionType;
+        currentAction = battleAction;
         SetSelectEnm(true);
         LeftTC.SetTab(SelectTargetLeftPanel);
         //SelectTargetLeftPanel.GetComponentInChildren<Button>().Select();
@@ -316,19 +316,8 @@ public class BattleCanvas : MonoBehaviour
         SetSelectEnm(false);
         //StopTextCoroutine();
         TextPresenter.text = "";
-        BattleAction action = CreateDoubleParticipantAction(BattleManager.agilityOrder[BattleManager.currentTurn], BattleManager.agilityOrder[int.Parse(Enemy.name)], currentActionType);
+        BattleAction action = currentAction.CreateFromUI(new List<BattleParticipant> { BattleManager.agilityOrder[BattleManager.currentTurn], BattleManager.agilityOrder[int.Parse(Enemy.name)] });
         BattleManager.AddActionToQueue(action);
-    }
-
-    private BattleAction CreateDoubleParticipantAction(BattleParticipant giver, BattleParticipant recipient, string action)
-    {
-        if (action == "Atk")
-        {
-            // Temp
-            BattleAction a = Attack.New(giver, recipient);
-            return a;
-        }
-        return null;
     }
 
     public void StopTextCoroutine()
@@ -362,6 +351,8 @@ public class BattleCanvas : MonoBehaviour
                 partyMemberPresenter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = partyMember.name;
                 partyMemberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.HealthPoints) / ((float)partyMember.stats.MaxHealthPoints);
                 partyMemberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.HealthPoints + "/" + partyMember.stats.MaxHealthPoints;
+                partyMemberPresenter.transform.Find("WillPowerBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.WillPower) / ((float)partyMember.stats.MaxWillPower);
+                partyMemberPresenter.transform.Find("WillPowerStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.WillPower + "/" + partyMember.stats.MaxWillPower;
                 Transform statusEffectsPresenter = partyMemberPresenter.transform.Find("StatusEffectsPresenter");
                 foreach(StatusEffect statusEffect in partyMember.statusEffects.statusEffects)
                 {
@@ -393,6 +384,8 @@ public class BattleCanvas : MonoBehaviour
 
             memberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.HealthPoints) / ((float)partyMember.stats.MaxHealthPoints);
             memberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.HealthPoints + "/" + partyMember.stats.MaxHealthPoints;
+            memberPresenter.transform.Find("WillPowerBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.WillPower) / ((float)partyMember.stats.MaxWillPower);
+            memberPresenter.transform.Find("WillPowerStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.WillPower + "/" + partyMember.stats.MaxWillPower;
             Transform statusEffectsPresenter = memberPresenter.transform.Find("StatusEffectsPresenter");
             ClearTab(statusEffectsPresenter.gameObject);
             foreach (StatusEffect statusEffect in partyMember.statusEffects.statusEffects)
