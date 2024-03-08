@@ -31,16 +31,17 @@ public class Poison : StatusEffect
     {
         BattleManager battleManager = BattleManager.Instance;
         BattleCanvas battleCanvas = battleManager.BattleCanvas;
-        int orderId = battleManager.agilityOrder.IndexOf(battleParticipant);
+        Transform recipientTransform = battleParticipant.transform;
+
         if (battleParticipant.IsPartyMember)
         {
-            battleCanvas.battleEffects.DisplayDamageValueHUD(battleParticipant.transform, (float) damage);
+            Debug.Log(battleParticipant.transform.position);
+            battleCanvas.battleEffects.DisplayDamageValueHUD(recipientTransform, (float) damage);
             battleManager.StartCoroutine(AttackAction.ShowNegativeStatusEffectColor(battleParticipant, 0.5f));
             yield return new WaitForSeconds(0.5f);
         }
         else
         {
-            Transform recipientTransform = battleParticipant.transform;
             Color defaultColor = recipientTransform.GetComponent<SpriteRenderer>().color;
             recipientTransform.GetComponent<SpriteRenderer>().color = Color.green;
             battleCanvas.RefreshEnemyHealthBars();

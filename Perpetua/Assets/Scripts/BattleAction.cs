@@ -13,6 +13,7 @@ public abstract class BattleAction : ScriptableObject
     public abstract BattleAction Clone();
     public abstract int GetWillPowerUsage();
     public abstract BattleAction CreateFromUI(List<BattleParticipant> participants);
+    public abstract bool SelectEnemy();
 }
 
 // Main class for all attacks (skills) that inflict status effects
@@ -81,7 +82,6 @@ public class AttackAction : BattleAction
         purple.g = 191;
         purple.b = 216;
         battleCanvas.SetPartyMemberColor(participant.transform, purple);
-        Debug.Log("Set Color Purple");
         yield return new WaitForSeconds(length);
         battleCanvas.ResetPartyMemberColor(participant.transform);
     }
@@ -93,6 +93,11 @@ public class AttackAction : BattleAction
     public override BattleAction CreateFromUI(List<BattleParticipant> participants)
     {
         throw new NotImplementedException();
+    }
+
+    public override bool SelectEnemy()
+    {
+        return true;
     }
 }
 
@@ -350,5 +355,10 @@ public class Guard : BattleAction
         Guard guard = (Guard) Clone();
         guard.participant = participants[0];
         return guard;
+    }
+
+    public override bool SelectEnemy()
+    {
+        return false;
     }
 }

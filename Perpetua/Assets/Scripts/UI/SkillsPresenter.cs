@@ -40,7 +40,17 @@ public class SkillsPresenter : MonoBehaviour
             {
                 GameObject button = Instantiate(battleCanvas.ActionOptionPresenterPrefab, transform);
                 button.GetComponentInChildren<TextMeshProUGUI>().text = action.GetName();
-                button.GetComponent<Button>().onClick.AddListener( delegate { battleCanvas.StartSelectEnemy(action); } );
+                if (action.SelectEnemy())
+                {
+                    button.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.StartSelectEnemy(action); });
+                }
+                else
+                {
+                    button.GetComponent<Button>().onClick.AddListener(delegate { battleManager.AddActionToQueue(action.CreateFromUI(new List<BattleParticipant> {
+                        participant 
+                    }
+                    )); });
+                }
             }
         }
     }

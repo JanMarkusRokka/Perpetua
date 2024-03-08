@@ -359,7 +359,6 @@ public class BattleCanvas : MonoBehaviour
                     GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsPresenter.transform);
                     statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
                 }
-                Debug.Log("Reset Party Tab");
                 partyMemberPresenter.name = i.ToString();
                 if (i == BattleManager.currentTurn)
                 {

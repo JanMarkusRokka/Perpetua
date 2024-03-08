@@ -24,3 +24,5 @@ MonoBehaviour:
   Accuracy: 85
   CriticalChance: 5
   CriticalMultiplier: 1.5
+  WillPower: 100
+  MaxWillPower: 100

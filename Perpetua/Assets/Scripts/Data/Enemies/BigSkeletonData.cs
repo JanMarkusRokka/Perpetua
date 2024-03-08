@@ -9,7 +9,6 @@ public class BigSkeletonData : EnemyData
 {
     public override void SelectTurn(BattleParticipant participant)
     {
-        Debug.Log("Big skelly");
         if (UnityEngine.Random.Range(0, 100) > 25)
         {
             int recipientId = UnityEngine.Random.Range(0, BattleManager.Instance.party.Count);

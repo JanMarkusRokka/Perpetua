@@ -68,4 +68,9 @@ public class TestAction : BattleAction
     {
         throw new System.NotImplementedException();
     }
+
+    public override bool SelectEnemy()
+    {
+        return false;
+    }
 }
