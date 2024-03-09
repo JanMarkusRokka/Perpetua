@@ -20,6 +20,7 @@ public class MenuPresenter : MonoBehaviour
     public Button ExitButton;
     public ScenarioData StartingScenario;
     public ScenarioData currentScenario;
+    public GameObject FPSCounter;
     private TabsController _tc;
     private List<ScenarioData> saves;
 

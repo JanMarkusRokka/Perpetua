@@ -26,3 +26,4 @@ MonoBehaviour:
   CriticalMultiplier: 2
   WillPower: 100
   MaxWillPower: 100
+  Detectability: 10

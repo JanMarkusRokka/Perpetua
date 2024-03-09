@@ -11,7 +11,7 @@ public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance;
     public List<EnemyData> EnemyData;
-    public List<PartyCharacterData> party;
+    public List<BattleParticipant> party;
     public List<BattleParticipant> agilityOrder;
     public int currentTurn;
     public BattleCanvas BattleCanvas;
@@ -36,10 +36,10 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
-        party = PartyManager.Instance.party.PartyMembers;
         actionQueue = new();
         GuardDuringTurn = new();
-        agilityOrder = CreateAgilityOrderList(party, EnemyData);
+        agilityOrder = CreateAgilityOrderList(PartyManager.Instance.party.PartyMembers, EnemyData);
+        party = BattleParticipant.GetPartyMembers(agilityOrder);
         currentTurn = -1;
         SpawnEnemies();
         BattleCanvas.DisplayTurnOrder(agilityOrder);
@@ -79,9 +79,9 @@ public class BattleManager : MonoBehaviour
     private int GetOutOfActionPartyCount()
     {
         int count = 0;
-        foreach(PartyCharacterData member in party)
+        foreach(BattleParticipant member in party)
         {
-            if (member.stats.HealthPoints <= 0)
+            if (member.GetStatsData().HealthPoints <= 0)
             {
                 count++;
             }
@@ -136,7 +136,7 @@ public class BattleManager : MonoBehaviour
                     BattleCanvas.PopulatePartyTab();
                     BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
                     BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
-                    EnemyTurn();
+                    AddEnemyTurnAction(participant);
                 }
             }
         }
@@ -198,10 +198,14 @@ public class BattleManager : MonoBehaviour
         CommitNextAction();
     }
 
-    public void EnemyTurn()
+    public void AddEnemyTurnAction(BattleParticipant participant)
     {
-        BattleParticipant participant = agilityOrder[currentTurn];
-        participant.GetEnemy().SelectTurn(participant);
+        BattleAction action = participant.GetEnemy().SelectTurn(participant, true);
+        if (action.GetType() == typeof(Guard)) AddActionToQueue(action);
+        else
+        {
+            AddActionToQueue(EnemyTurn.New(participant));
+        }
     }
 
     public BattleParticipant GetPartyMemberFromNumber(int memberId)

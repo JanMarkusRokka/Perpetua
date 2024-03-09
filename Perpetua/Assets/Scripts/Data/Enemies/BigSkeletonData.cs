@@ -7,32 +7,28 @@ using UnityEngine.TextCore.Text;
 [CreateAssetMenu(menuName = "Enemies/BigSkeleton")]
 public class BigSkeletonData : EnemyData
 {
-    public override void SelectTurn(BattleParticipant participant)
+    // make this into a battleAction (EnemyTurn or sth), have enemy decide when turn comes and then execute action
+    public override BattleAction SelectTurn(BattleParticipant participant, bool guardIncluded)
     {
-        if (UnityEngine.Random.Range(0, 100) > 25)
-        {
-            int recipientId = UnityEngine.Random.Range(0, BattleManager.Instance.party.Count);
+        BattleParticipant target = DetectTarget(BattleManager.Instance.party);
 
-            if (UnityEngine.Random.Range(0,100) > 50)
-            {
-                AttackWithSpecificStatusEffect awsse = (AttackWithSpecificStatusEffect) skills[0].Clone();
-                awsse.participant = participant;
-                awsse.recipient = BattleManager.Instance.GetPartyMemberFromNumber(recipientId);
-                BattleManager.Instance.AddActionToQueue(awsse);
-            }
-            else
-            {
+        AttackWithSpecificStatusEffect awsse = (AttackWithSpecificStatusEffect)skills[0].Clone();
+        awsse.participant = participant;
+        awsse.recipient = target;
 
-                Attack attack = ScriptableObject.CreateInstance<Attack>();
-                attack.participant = participant;
-                attack.recipient = BattleManager.Instance.GetPartyMemberFromNumber(recipientId);
-                BattleManager.Instance.AddActionToQueue(attack);
-            }
-        }
-        else
+        Attack attack = Attack.New(participant, target);
+
+        Guard guard = Guard.New(participant);
+
+        Dictionary<BattleAction, int> actionsAndWeights = new Dictionary<BattleAction, int>
         {
-            BattleManager.Instance.AddActionToQueue(Guard.New(participant));
-        }
+            {awsse, 10},
+            {attack, 10},
+        };
+
+        if (guardIncluded) actionsAndWeights.Add(guard, 10);
+
+        return SelectAction(actionsAndWeights);
     }
 
     public override EnemyData Clone(EnemyData character)

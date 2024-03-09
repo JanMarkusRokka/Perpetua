@@ -76,4 +76,14 @@ public class BattleParticipant : ScriptableObject
 
         statusEffectsData.statusEffects.Add(statusEffect.Clone());
     }
+    
+    public static List<BattleParticipant> GetPartyMembers(List<BattleParticipant> participants)
+    {
+        List<BattleParticipant> partyMembers = new();
+        foreach (BattleParticipant participant in participants)
+        {
+            if (participant.IsPartyMember) partyMembers.Add(participant);
+        }
+        return partyMembers;
+    }
 }

@@ -29,4 +29,11 @@ public class SetACGGroup : MonoBehaviour
         acgg.VolumeMax = volume;
         acgg.SetSettings();
     }
+    public void SetFPSTarget(float targetFPS)
+    {
+        if (targetFPS == 4)
+            Application.targetFrameRate = -1;
+        else
+            Application.targetFrameRate = (int) targetFPS * 30;
+    }
 }

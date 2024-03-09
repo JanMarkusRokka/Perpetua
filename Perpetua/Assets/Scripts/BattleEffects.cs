@@ -11,6 +11,7 @@ public class BattleEffects : MonoBehaviour
     public GameObject TextDisplay;
     public GameObject TextDisplayHUD;
     public GameObject ShieldImage;
+    public GameObject SmokeEffect;
     private Animator _anim;
     //public List<Sprite> SpriteEffects;
 
@@ -69,5 +70,12 @@ public class BattleEffects : MonoBehaviour
     {
         GameObject guardEffect = Instantiate(ShieldImage, BattleManager.Instance.BattleCanvas.transform);
         guardEffect.transform.position = (targetOnHUD) ? participant.position : Camera.main.WorldToScreenPoint(participant.position);
+    }
+
+    // HUD
+    public void ShroudedEffect(Transform participant)
+    {
+        GameObject smokeEffect = Instantiate(SmokeEffect, BattleManager.Instance.BattleCanvas.transform);
+        smokeEffect.transform.position = participant.position;
     }
 }

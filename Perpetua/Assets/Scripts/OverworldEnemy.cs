@@ -94,7 +94,6 @@ public class OverworldEnemy : MonoBehaviour
 
     private void GoToIdleLocation()
     {
-        Debug.Log("Going to idle: " + IdleLocation);
         agent.SetDestination(IdleLocation);
         transform.position = Vector3.SmoothDamp(transform.position, agent.nextPosition, ref velocity, 0.001f);
     }

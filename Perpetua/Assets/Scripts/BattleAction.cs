@@ -220,13 +220,14 @@ public class Attack : AttackAction
             battleCanvas.SetPartyMemberColor(recipient.transform, Color.red);
             yield return new WaitForSeconds(0.75f);
             participant.GetEnemy().attackSound.Play();
-
             battleEffects.DisplayDamageValueHUD(recipient.transform, totalDamage);
             recipient.participant.stats.HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
+            StatusEffectsData recipientSF = recipient.GetStatusEffectsData();
+            List<StatusEffect> shrouded = recipientSF.statusEffects.Where(a => a.GetType() == typeof(Shrouded)).ToList();
+            if (shrouded.Count > 0) recipientSF.statusEffects.Remove(shrouded[0]);
             battleCanvas.UpdatePartyTabStats();
             yield return new WaitForSeconds(0.75f);
             battleCanvas.ResetPartyMemberColor(recipient.transform);
-
         }
         if (commitNextAction)
         battleManager.CommitNextAction();
@@ -355,6 +356,55 @@ public class Guard : BattleAction
         Guard guard = (Guard) Clone();
         guard.participant = participants[0];
         return guard;
+    }
+
+    public override bool SelectEnemy()
+    {
+        return false;
+    }
+}
+
+public class EnemyTurn : BattleAction
+{
+    public BattleParticipant participant;
+
+    public override BattleAction Clone()
+    {
+        EnemyTurn enemyTurn = ScriptableObject.CreateInstance<EnemyTurn>();
+        enemyTurn.participant = participant;
+        return enemyTurn;
+    }
+
+    public static BattleAction New(BattleParticipant participant)
+    {
+        EnemyTurn enemyTurn = ScriptableObject.CreateInstance<EnemyTurn>();
+        enemyTurn.participant = participant;
+        return enemyTurn;
+    }
+
+    public override void CommitAction()
+    {
+        participant.GetEnemy().SelectTurn(participant, false).CommitAction();
+    }
+
+    public override BattleAction CreateFromUI(List<BattleParticipant> participants)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override string GetName()
+    {
+        return "Enemy Turn";
+    }
+
+    public override BattleParticipant GetParticipant()
+    {
+        return participant;
+    }
+
+    public override int GetWillPowerUsage()
+    {
+        return 0;
     }
 
     public override bool SelectEnemy()

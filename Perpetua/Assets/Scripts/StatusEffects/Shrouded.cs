@@ -18,6 +18,11 @@ public class Shrouded : StatusEffect
         return turnsLeft;
     }
 
+    public override void InflictActiveStatusEffect(BattleParticipant participant)
+    {
+        turnsLeft -= 1;
+    }
+
     public override void InflictPassiveStatusEffect(StatsData stats)
     {
         stats.Detectability = (int)(stats.Detectability * detectabilityMultiplier);

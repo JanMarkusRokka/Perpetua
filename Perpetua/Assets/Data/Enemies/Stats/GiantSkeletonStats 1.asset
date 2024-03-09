@@ -23,4 +23,7 @@ MonoBehaviour:
   Dodge: 0.05
   Accuracy: 80
   CriticalChance: 3
-  CriticalMultiplier: 150
+  CriticalMultiplier: 1.5
+  WillPower: 0
+  MaxWillPower: 0
+  Detectability: 0
