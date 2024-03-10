@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67690887a4ea4d43814e8b8f2c0d8f2, type: 3}
-  m_Name: PurgeAndPunish
+  m_Script: {fileID: 11500000, guid: ee1798a3310155f429d6a1ef8e126f38, type: 3}
+  m_Name: RegularFocused
   m_EditorClassIdentifier: 
-  tooltip: Deals more damage depending on the number of ailments the user has, while
-    also curing them.
-  participant: {fileID: 0}
-  recipient: {fileID: 0}
-  WPowerUsage: 20
+  image: {fileID: 21300000, guid: 21eda70a63839e94cb4c4064d9e18187, type: 3}
+  criticalChanceMultiplier: 2

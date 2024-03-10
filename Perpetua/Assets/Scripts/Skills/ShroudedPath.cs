@@ -32,11 +32,12 @@ public class ShroudedPath : BattleAction
         return participant;
     }
 
-    public static BattleAction New(BattleParticipant _attacker, BattleParticipant _recipient, StatusEffect _statusEffect)
+    public static BattleAction New(BattleParticipant _attacker, BattleParticipant _recipient, StatusEffect _statusEffect, int _willPowerUsage)
     {
         ShroudedPath skill = ScriptableObject.CreateInstance<ShroudedPath>();
 
         skill.participant = _attacker;
+        skill.WPowerUsage = _willPowerUsage;
 
         return skill;
     }
@@ -46,7 +47,7 @@ public class ShroudedPath : BattleAction
         ShroudedPath skill = ScriptableObject.CreateInstance<ShroudedPath>();
 
         skill.participant = participant;
-
+        skill.WPowerUsage = WPowerUsage;
         return skill;
     }
 
@@ -64,6 +65,6 @@ public class ShroudedPath : BattleAction
 
     public override bool SelectEnemy()
     {
-        return true;
+        return false;
     }
 }

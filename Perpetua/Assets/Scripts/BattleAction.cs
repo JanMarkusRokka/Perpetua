@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public abstract class BattleAction : ScriptableObject
 {
+    public string tooltip;
     public abstract string GetName();
     public abstract BattleParticipant GetParticipant();
     public abstract void CommitAction();
@@ -206,6 +207,10 @@ public class Attack : AttackAction
 
             battleEffects.DisplayDamageValue(recipientTransform, totalDamage);
 
+            HashSet<Type> types = new HashSet<Type> { typeof(Shrouded), typeof(Focused) };
+            StatusEffectsData participantSF = participant.GetStatusEffectsData();
+            participantSF.statusEffects.RemoveAll(a => types.Contains(a.GetType()));
+
             yield return new WaitForSeconds(0.5f);
             recipientTransform.GetComponent<SpriteRenderer>().color = defaultColor;
             battleCanvas.ResetPartyMemberColor(participant.transform);
@@ -222,9 +227,11 @@ public class Attack : AttackAction
             participant.GetEnemy().attackSound.Play();
             battleEffects.DisplayDamageValueHUD(recipient.transform, totalDamage);
             recipient.participant.stats.HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
+
+            HashSet<Type> types = new HashSet<Type> { typeof(Shrouded), typeof(Focused) };
             StatusEffectsData recipientSF = recipient.GetStatusEffectsData();
-            List<StatusEffect> shrouded = recipientSF.statusEffects.Where(a => a.GetType() == typeof(Shrouded)).ToList();
-            if (shrouded.Count > 0) recipientSF.statusEffects.Remove(shrouded[0]);
+            recipientSF.statusEffects.RemoveAll(a => types.Contains(a.GetType()));
+
             battleCanvas.UpdatePartyTabStats();
             yield return new WaitForSeconds(0.75f);
             battleCanvas.ResetPartyMemberColor(recipient.transform);

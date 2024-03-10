@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0d0fc572b6c33458e9c44d9e20151e, type: 3}
-  m_Name: ShroudedPath
+  m_Name: CounterbalanceStance
   m_EditorClassIdentifier: 
-  tooltip: "Temporarily reduces a character\u2019s chances of being targeted by enemies."
-  statusEffect: {fileID: 11400000, guid: cb8265506c1dd0843851f793afe7a992, type: 2}
-  WillPowerUsage: 5
+  tooltip: Increases the likelihood of the user scoring a critical hit for the next
+    turn.
+  statusEffect: {fileID: 11400000, guid: 7a0cd353108b7914e9e0e47b265dc56c, type: 2}
+  WillPowerUsage: 10
   participant: {fileID: 0}
-  SkillName: Shrouded Path
+  SkillName: Counterbalance Stance

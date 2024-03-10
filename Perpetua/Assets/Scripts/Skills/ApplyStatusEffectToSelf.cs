@@ -40,12 +40,13 @@ public class ApplyStatusEffectToSelf : BattleAction
         return participant;
     }
 
-    public static BattleAction New(BattleParticipant _attacker, StatusEffect _statusEffect)
+    public static BattleAction New(BattleParticipant _attacker, StatusEffect _statusEffect, int _willpowerUsage)
     {
         ApplyStatusEffectToSelf skill = ScriptableObject.CreateInstance<ApplyStatusEffectToSelf>();
 
         skill.participant = _attacker;
         skill.statusEffect = _statusEffect;
+        skill.WillPowerUsage = _willpowerUsage;
 
         return skill;
     }
@@ -56,6 +57,7 @@ public class ApplyStatusEffectToSelf : BattleAction
 
         skill.participant = participant;
         skill.statusEffect = statusEffect;
+        skill.WillPowerUsage = WillPowerUsage;
 
         return skill;
     }

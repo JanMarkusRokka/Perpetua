@@ -8,6 +8,7 @@ public class SkillsPresenter : MonoBehaviour
 {
     BattleManager battleManager;
     BattleCanvas battleCanvas;
+    public GameObject SkillPresenter;
 
     private void Update()
     {
@@ -38,8 +39,11 @@ public class SkillsPresenter : MonoBehaviour
             PartyCharacterData member = participant.GetPartyMember();
             foreach (BattleAction action in member.skills)
             {
-                GameObject button = Instantiate(battleCanvas.ActionOptionPresenterPrefab, transform);
+                GameObject button = Instantiate(SkillPresenter, transform);
                 button.GetComponentInChildren<TextMeshProUGUI>().text = action.GetName();
+                TooltipTrigger tooltipTrigger = button.GetComponent<TooltipTrigger>();
+                tooltipTrigger.header = action.GetName();
+                tooltipTrigger.description = action.tooltip;
                 if (action.SelectEnemy())
                 {
                     button.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.StartSelectEnemy(action); });

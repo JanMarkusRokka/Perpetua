@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99cf8e9a365c76478593e9fe8fbbf6b, type: 3}
   m_Name: TestAction
   m_EditorClassIdentifier: 
+  tooltip: Test
   participant: {fileID: 0}

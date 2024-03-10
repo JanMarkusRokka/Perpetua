@@ -35,13 +35,14 @@ public class AttackWithSpecificStatusEffect : Attack
         return participant;
     }
 
-    public static BattleAction New(BattleParticipant _attacker, BattleParticipant _recipient, StatusEffect _statusEffect)
+    public static BattleAction New(BattleParticipant _attacker, BattleParticipant _recipient, StatusEffect _statusEffect, int _willPowerUsage)
     {
         AttackWithSpecificStatusEffect attack = ScriptableObject.CreateInstance<AttackWithSpecificStatusEffect>();
 
         attack.participant = _attacker;
         attack.recipient = _recipient;
         attack.statusEffect = _statusEffect;
+        attack.WillPowerUsage = _willPowerUsage;
 
         return attack;
     }
@@ -53,6 +54,7 @@ public class AttackWithSpecificStatusEffect : Attack
         attack.participant = participant;
         attack.recipient = recipient;
         attack.statusEffect = statusEffect;
+        attack.WillPowerUsage = WillPowerUsage;
 
         return attack;
     }

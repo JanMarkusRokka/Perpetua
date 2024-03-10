@@ -7,6 +7,7 @@ using UnityEngine;
 public class StatusEffect : ScriptableObject
 {
     public Sprite image;
+    public string tooltip;
     public virtual int GetTurnsLeft() { return 0; }
     public virtual void InflictActiveStatusEffect(BattleParticipant participant) { }
     public virtual void InflictPassiveStatusEffect(StatsData stats) { }

@@ -7,6 +7,7 @@ public class SetACGGroup : MonoBehaviour
     public ACGGroup SFX;
     public ACGGroup Music;
     public ACGGroup Ambiance;
+    public GameObject FPSCounter;
 
     public void SetSFXVolume(float volume)
     {
@@ -35,5 +36,10 @@ public class SetACGGroup : MonoBehaviour
             Application.targetFrameRate = -1;
         else
             Application.targetFrameRate = (int) targetFPS * 30;
+    }
+
+    public void SetShowFPS(bool value)
+    {
+        FPSCounter.SetActive(value);
     }
 }
