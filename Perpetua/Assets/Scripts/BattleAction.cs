@@ -254,6 +254,21 @@ public class Attack : AttackAction
             yield return new WaitForSeconds(0.5f);
             battleCanvas.ResetPartyMemberColor(participant.transform);
         }
+        else
+        {
+            // Enemy attacks player
+            BattleEffects battleEffects = battleCanvas.battleEffects;
+            Transform attackerTransform = participant.transform;
+            attackerTransform.GetComponent<BattleEnemyAnimator>().PlayAttackAnimation();
+            battleCanvas.SetPartyMemberColor(recipient.transform, Color.red);
+            yield return new WaitForSeconds(0.75f);
+            participant.GetEnemy().attackSound.Play();
+            battleEffects.DisplayFloatingTextHUD(recipient.transform, "Miss");
+
+            battleCanvas.UpdatePartyTabStats();
+            yield return new WaitForSeconds(0.75f);
+            battleCanvas.ResetPartyMemberColor(recipient.transform);
+        }
         if (commitNextAction)
         battleManager.CommitNextAction();
         yield break;

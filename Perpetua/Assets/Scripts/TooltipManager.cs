@@ -15,6 +15,7 @@ public class TooltipManager : MonoBehaviour
     void Start()
     {
         Instance = this;
+        DontDestroyOnLoad(this);
         headerText = TooltipPresenter.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         descriptionText = TooltipPresenter.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         layoutElem = TooltipPresenter.transform.GetComponent<LayoutElement>();
@@ -24,8 +25,31 @@ public class TooltipManager : MonoBehaviour
     {
         Instance.headerText.text = header;
         Instance.descriptionText.text = description;
-        Instance.TooltipPresenter.SetActive(true);
         Instance.layoutElem.enabled = (Instance.headerText.text.Length > Instance.characterWrap || Instance.descriptionText.text.Length > Instance.characterWrap);
+        Instance.StartCoroutine(Instance.SlowReveal());
+    }
+
+    private IEnumerator SlowReveal()
+    {
+        yield return new WaitForSecondsRealtime(0.3f);
+        Image panel = TooltipPresenter.GetComponent<Image>();
+
+        Color color = headerText.color;
+        color.a = 0;
+        headerText.color = color;
+        descriptionText.color = color;
+        panel.color = color;
+
+        TooltipPresenter.SetActive(true);
+
+        for (float i = 0; i < 1; i+=0.1f)
+        {
+            color.a = i;
+            headerText.color = color;
+            descriptionText.color = color;
+            panel.color = color;
+            yield return new WaitForSecondsRealtime(0.05f);
+        }
     }
 
     public static void Hide()

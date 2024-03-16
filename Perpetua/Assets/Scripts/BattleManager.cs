@@ -161,7 +161,6 @@ public class BattleManager : MonoBehaviour
     {
         agilityOrder = SortAgilityOrderList(agilityOrder);
         BattleCanvas.DisplayTurnOrder(agilityOrder);
-        BattleCanvas.PopulatePartyTab();
         UpdateEnemyNames(); // from agilityOrder
 
         StartCoroutine(WaitForLayout());
@@ -176,17 +175,12 @@ public class BattleManager : MonoBehaviour
             foreach (StatusEffect statusEffect in statusEffects)
             {
                 statusEffect.InflictActiveStatusEffect(participant);
-                if (statusEffect.GetTurnsLeft() <= 0)
-                {
-                    // Dependent on the fact that Destroy replaces position in List with null
-                    Destroy(statusEffect);
-                }
             }
-            participant.GetStatusEffectsData().statusEffects.RemoveAll(sf => sf == null);
+            participant.GetStatusEffectsData().statusEffects.RemoveAll(sf => sf.GetTurnsLeft() <= 0);
         }
 
         BattleCanvas.RefreshEnemyStatusEffects();
-        BattleCanvas.UpdatePartyTabStats();
+        BattleCanvas.PopulatePartyTab();
 
 
         StartCoroutine(WaitBeforeNextAction(0.5f));
@@ -245,7 +239,8 @@ public class BattleManager : MonoBehaviour
             BattleAction action = actionQueue.Dequeue();
             // Displays turn order advancing (character icons are removed based on action order)
             BattleCanvas.TurnOrderPresenter.transform.Find(agilityOrder.IndexOf(action.GetParticipant()).ToString()).GetComponent<TriggerAnimation>().TriggerAnim();
-            if (action.GetParticipant().GetStatsData().HealthPoints > 0)
+            StatsData stats = action.GetParticipant().GetStatsData();
+            if (stats.HealthPoints > 0 && stats.AttackSpeed > 0)
             {
                 action.GetParticipant().participant.stats.WillPower = Mathf.Max(0, action.GetParticipant().participant.stats.WillPower - action.GetWillPowerUsage());
                 BattleCanvas.UpdatePartyTabStats();

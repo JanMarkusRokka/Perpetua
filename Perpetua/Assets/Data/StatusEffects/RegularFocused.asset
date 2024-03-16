@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: RegularFocused
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 21eda70a63839e94cb4c4064d9e18187, type: 3}
+  tooltip: Focused
   criticalChanceMultiplier: 2

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0432d85bfa5ec74ca08f509fc466016, type: 3}
   m_Name: RegularShrouded
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 9faa97e11d0274647a881d7d9291169c, type: 3}
+  image: {fileID: 21300000, guid: 2649de970c723eb4fa9ea3b8ba29d8b0, type: 3}
+  tooltip: Shrouded
   detectabilityMultiplier: 0.5

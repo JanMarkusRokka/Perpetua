@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 8312232585212274278}
   - component: {fileID: 4626212835961022572}
   - component: {fileID: 7091659549288270580}
+  - component: {fileID: 8987446336471245336}
   m_Layer: 5
   m_Name: EquipmentOptionPresenter
   m_TagString: Untagged
@@ -267,3 +268,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8987446336471245336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892173672266630941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75adbbd7a9fb2a943a05ff24aaca2275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  description: 

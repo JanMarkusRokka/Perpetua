@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,20 @@ public struct WeaponVariables
     public int WeaponDamage;
     [SerializeField]
     public int WeaponMagicDamage;
+
+    public string GetDescripion()
+    {
+        string desc = "";
+        if (WeaponDamage > 0)
+        {
+            desc += "Physical damage: " + WeaponDamage;
+        }
+        if (WeaponMagicDamage > 0)
+        {
+            desc += "\nMagic damage: " + WeaponMagicDamage;
+        }
+        return desc;
+    }
 }
 
 [Serializable]
@@ -21,6 +36,19 @@ public struct ArmorVariables
     public int ArmorDefense;
     [SerializeField]
     public int ArmorMagicDefense;
+    public string GetDescripion()
+    {
+        string desc = "";
+        if (ArmorDefense > 0)
+        {
+            desc += "Physical defense: " + ArmorDefense;
+        }
+        if (ArmorMagicDefense > 0)
+        {
+            desc += "\nMagic defense: " + ArmorMagicDefense;
+        }
+        return desc;
+    }
 }
 
 [Serializable]
@@ -28,6 +56,16 @@ public struct RuneVariables
 {
     [SerializeField]
     public List<StatusEffect> recipientStatusEffects;
+
+    public string GetDescripion()
+    {
+        string desc = "";
+        foreach(StatusEffect statusEffect in recipientStatusEffects)
+        {
+            desc += "\n" + statusEffect.name;
+        }
+        return desc;
+    }
 }
 
 [CreateAssetMenu(menuName = "Items/RegularItem")]
@@ -41,6 +79,7 @@ public class ItemData : ScriptableObject
     public WeaponVariables WeaponVariables;
     public ArmorVariables ArmorVariables;
     public RuneVariables RuneVariables;
+    public string description;
 
     private void Init(Sprite _image, string _name, ItemTypeData _type, bool _equipped, WeaponVariables _WeaponVariables, ArmorVariables _ArmorVariables, RuneVariables _RuneVariables)
     {
@@ -70,4 +109,21 @@ public class ItemData : ScriptableObject
         return itemData;
     }
 
+    public string GetDescription()
+    {
+        string desc = description;
+        if (!WeaponVariables.Equals(null))
+        {
+            desc += WeaponVariables.GetDescripion();
+        }
+        if (!ArmorVariables.Equals(null))
+        {
+            desc += ArmorVariables.GetDescripion();
+        }
+        if (!RuneVariables.Equals(null))
+        {
+            desc += RuneVariables.GetDescripion();
+        }
+        return desc;
+    }
 }

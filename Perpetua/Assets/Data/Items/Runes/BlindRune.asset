@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a712662c7cf8c8341af87f9b739cebc4, type: 3}
+  m_Name: BlindRune
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 92d74557d033a444fb1227699c380bbd, type: 3}
+  name: Blinding Rune
+  type: {fileID: 11400000, guid: f93aaf84a891446489da57e467f24a02, type: 2}
+  equipped: 0
+  WeaponVariables:
+    WeaponDamage: 0
+    WeaponMagicDamage: 0
+  ArmorVariables:
+    ArmorDefense: 0
+    ArmorMagicDefense: 0
+  RuneVariables:
+    recipientStatusEffects:
+    - {fileID: 11400000, guid: 6178de2512372cc4087dcedfa24dbc11, type: 2}

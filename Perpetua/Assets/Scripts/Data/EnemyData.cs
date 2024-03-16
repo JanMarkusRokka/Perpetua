@@ -38,8 +38,8 @@ public abstract class EnemyData : CharacterData
         int total = 0;
         foreach(BattleParticipant participant in participantsAndWeights)
         {
+            Debug.Log(participant.GetStatsData().Detectability + participant.GetPartyMember().name);
             total += participant.GetStatsData().Detectability;
-            Debug.Log(participant.GetStatsData().Detectability);
         }
 
         int random = Random.Range(1, total + 1);

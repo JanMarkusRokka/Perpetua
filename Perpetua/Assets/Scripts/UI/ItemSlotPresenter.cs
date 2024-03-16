@@ -40,6 +40,9 @@ public class ItemSlotPresenter : MonoBehaviour
             item.equipped = true;
             itemImage.sprite = item.image;
             itemImage.color = Color.white;
+            TooltipTrigger tooltip = GetComponent<TooltipTrigger>();
+            tooltip.header = item.name;
+            tooltip.description = item.GetDescription();
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(delegate { PartyMembersPresenter.Instance.SelectEquipmentSlot(this, member); });
         }

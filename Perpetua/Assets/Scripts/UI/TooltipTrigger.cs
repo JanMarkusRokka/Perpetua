@@ -11,12 +11,6 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        StartCoroutine(WaitAndShow());
-    }
-
-    IEnumerator WaitAndShow()
-    {
-        yield return new WaitForSeconds(0.5f);
         TooltipManager.Show(header, description);
     }
 
@@ -31,7 +25,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void Hide()
     {
-        this.StopAllCoroutines();
+        TooltipManager.Instance.StopAllCoroutines();
         TooltipManager.Hide();
     }
 }

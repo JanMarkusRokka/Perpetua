@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: RegularSlowed
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 87443e2107223034893c8f5b0aee94b0, type: 3}
+  tooltip: Slowed
   slowMultiplier: 0.5

@@ -136,11 +136,12 @@ public class PartyMembersPresenter : MonoBehaviour
             {
                 if (item.type == slot.itemType && !item.equipped)
                 {
-                    Debug.Log("shown: " + item);
                     GameObject itemPres = Instantiate(ItemPresenterPrefab, panel.transform);
                     itemPres.transform.Find("Image").GetComponent<Image>().sprite = item.image;
-                    itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
-                    Debug.Log(item.GetType());
+                    itemPres.GetComponentInChildren<TextMeshProUGUI>().text = null;
+                    TooltipTrigger tooltip = itemPres.GetComponent<TooltipTrigger>();
+                    tooltip.header = item.name;
+                    tooltip.description = item.GetDescription();
                     itemPres.GetComponent<Button>().onClick.AddListener( delegate { slot.GetComponent<Button>().Select(); slot.SetItem(item); FocusOnMember(member); } );
                 }
             }

@@ -35,6 +35,9 @@ public class ItemsPresenter : MonoBehaviour
                     itemPres.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
                     if (item.equipped)
                         itemPres.transform.Find("Equipped").GetComponent<TextMeshProUGUI>().text = "eq.";
+                    TooltipTrigger tooltip = itemPres.GetComponent<TooltipTrigger>();
+                    tooltip.header = item.name;
+                    tooltip.description = item.GetDescription();
                 }
                 else
                 {
