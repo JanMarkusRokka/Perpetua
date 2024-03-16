@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InfoPresenter : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         if (FindObjectsOfType(typeof(InfoPresenter)).Count() > 1)
         {

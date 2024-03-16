@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,10 +13,24 @@ public class TooltipManager : MonoBehaviour
     public GameObject TooltipPresenter;
     private LayoutElement layoutElem;
     public int characterWrap;
-    void Start()
+    void Awake()
     {
-        Instance = this;
-        DontDestroyOnLoad(this);
+        if (FindObjectsOfType(typeof(TooltipManager)).Count() > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            SetPresenter(TooltipPresenter);
+        }
+
+    }
+
+    private void SetPresenter(GameObject presenter)
+    {
+        TooltipPresenter = presenter;
         headerText = TooltipPresenter.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         descriptionText = TooltipPresenter.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         layoutElem = TooltipPresenter.transform.GetComponent<LayoutElement>();

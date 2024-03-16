@@ -25,3 +25,4 @@ MonoBehaviour:
   RuneVariables:
     recipientStatusEffects:
     - {fileID: 11400000, guid: 4b5fa7265db4c614f9dbb1ee6718b3e1, type: 2}
+  description: Inflicts poison on the target, making them slowly lose health.

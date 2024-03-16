@@ -7272,6 +7272,7 @@ MonoBehaviour:
   SkillsPresenter: {fileID: 453560577}
   PartyPresenter: {fileID: 618926314}
   PartyMemberPresenterPrefab: {fileID: 4592739849310349065, guid: 8bbe7efa455007f45b973087bb550e72, type: 3}
+  ItemPresenterPrefab: {fileID: 3892173672266630941, guid: 90524c804148e1b42a23bbba2c1e76a3, type: 3}
   TurnOrderPresenter: {fileID: 827329875}
   OrderCharPresenter: {fileID: 6717963599998115886, guid: 94dba216e4026cf45b066d7e8e6bd97e, type: 3}
   Selections: {fileID: 1622284703}

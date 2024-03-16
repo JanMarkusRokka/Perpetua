@@ -20,6 +20,8 @@ public class OverworldPlayer : MonoBehaviour
     public float SprintSpeedMultiplier;
     public GameObject PartyMemberPrefab;
     private List<Interactable> interactables = new List<Interactable>();
+    [SerializeField]
+    private bool canMove;
 
     private void Awake()
     {
@@ -59,10 +61,20 @@ public class OverworldPlayer : MonoBehaviour
     */
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-        horizontalRaw = Input.GetAxisRaw("Horizontal");
-        verticalRaw = Input.GetAxisRaw("Vertical");
+        if (canMove)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+            horizontalRaw = Input.GetAxisRaw("Horizontal");
+            verticalRaw = Input.GetAxisRaw("Vertical");
+        } else
+        {
+            horizontal = 0;
+            vertical = 0;
+            horizontalRaw = 0;
+            verticalRaw = 0;
+        }
+
         interact = Input.GetKeyDown(KeyCode.E);
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -141,5 +153,14 @@ public class OverworldPlayer : MonoBehaviour
             interactables.Remove(interactable);
             interactable.OnExitRange();
         }
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+    public void DisableMovement()
+    {
+        canMove = false;
     }
 }

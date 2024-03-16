@@ -25,3 +25,4 @@ MonoBehaviour:
   RuneVariables:
     recipientStatusEffects:
     - {fileID: 11400000, guid: 429ae8bb613fc0c47ae82f7495656a99, type: 2}
+  description: Stuns the target.

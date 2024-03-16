@@ -15,8 +15,11 @@ public class InventoryManager : MonoBehaviour
 
     public void Awake()
     {
-        Instance = this;
-        Events.OnItemReceived += OnItemReceived;
+        if (FindObjectsOfType(typeof(InventoryManager)).Count() == 1)
+        {
+            Instance = this;
+            Events.OnItemReceived += OnItemReceived;
+        }
     }
 
     public void OnDestroy()

@@ -25,6 +25,7 @@ public class BattleCanvas : MonoBehaviour
     [Header("Right tabs")]
     public GameObject PartyPresenter;
     public GameObject PartyMemberPresenterPrefab;
+    public GameObject ItemPresenterPrefab;
 
     [Header("Turn order")]
     public GameObject TurnOrderPresenter;
@@ -358,6 +359,19 @@ public class BattleCanvas : MonoBehaviour
                 {
                     GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsPresenter.transform);
                     statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
+                }
+                Transform runesPresenter = partyMemberPresenter.transform.Find("RunesPresenter");
+                List<ItemData> runes = new List<ItemData> { partyMember.equipment.rune1, partyMember.equipment.rune2 };
+                foreach(ItemData rune in runes)
+                {
+                    if (rune)
+                    {
+                        GameObject itemPres = Instantiate(ItemPresenterPrefab, runesPresenter.transform);
+                        itemPres.transform.GetChild(0).GetComponent<Image>().sprite = rune.image;
+                        TooltipTrigger tooltip = itemPres.GetComponent<TooltipTrigger>();
+                        tooltip.header = rune.name;
+                        tooltip.description = rune.GetDescription();
+                    }
                 }
                 partyMemberPresenter.name = i.ToString();
                 if (i == BattleManager.currentTurn)

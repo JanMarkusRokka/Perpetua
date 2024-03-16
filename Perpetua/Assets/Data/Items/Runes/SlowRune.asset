@@ -25,3 +25,4 @@ MonoBehaviour:
   RuneVariables:
     recipientStatusEffects:
     - {fileID: 11400000, guid: b3727e2b1e33d194f9d3830bd9cc719f, type: 2}
+  description: Slows the target down, altering the turn order.

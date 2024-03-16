@@ -12,6 +12,7 @@ public class MainCanvas : MonoBehaviour
     public GameObject OptionsPanel;
     public GameObject TabsChanger;
     private TabsController _tc;
+    public AudioClipGroup MenuSound;
 
     public void Awake()
     {
@@ -42,8 +43,12 @@ public class MainCanvas : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (TabsChanger.activeInHierarchy)
+            {
+                MenuSound.Play();
                 DisableTabs();
-            else {
+            }
+            else
+            {
                 TabsChanger.transform.Find("OptionsTab").GetComponent<CustomSelectableButton>().Select();
                 ProcessTabOpenClose(OptionsPanel);
             }
@@ -53,6 +58,8 @@ public class MainCanvas : MonoBehaviour
     {
         bool wasOpen = tab.activeInHierarchy;
         _tc.DisableTabs();
+        MenuSound.Play();
+
         if (wasOpen)
         {
             Time.timeScale = 1f;
@@ -73,6 +80,7 @@ public class MainCanvas : MonoBehaviour
     }
     public void SetTab(GameObject tab)
     {
+        MenuSound.Play();
         _tc.DisableTabs();
         Time.timeScale = 0f;
         TabsChanger.SetActive(true);

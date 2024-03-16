@@ -15,7 +15,7 @@ public class ScenarioManager : MonoBehaviour
     {
         if (FindObjectsOfType(typeof(ScenarioManager)).Count() > 1)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
         Events.OnSelectedScenario += OnSelectedScenario;

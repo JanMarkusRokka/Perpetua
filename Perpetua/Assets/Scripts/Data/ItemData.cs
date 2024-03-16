@@ -60,9 +60,14 @@ public struct RuneVariables
     public string GetDescripion()
     {
         string desc = "";
-        foreach(StatusEffect statusEffect in recipientStatusEffects)
+        if (recipientStatusEffects.Count > 0)
         {
-            desc += "\n" + statusEffect.name;
+            desc = "\nInflicts:";
+        }
+        for (int i = 0; i < recipientStatusEffects.Count; i++)
+        {
+            desc += "\n" + recipientStatusEffects[i].name;
+            
         }
         return desc;
     }
@@ -81,7 +86,7 @@ public class ItemData : ScriptableObject
     public RuneVariables RuneVariables;
     public string description;
 
-    private void Init(Sprite _image, string _name, ItemTypeData _type, bool _equipped, WeaponVariables _WeaponVariables, ArmorVariables _ArmorVariables, RuneVariables _RuneVariables)
+    private void Init(Sprite _image, string _name, ItemTypeData _type, bool _equipped, WeaponVariables _WeaponVariables, ArmorVariables _ArmorVariables, RuneVariables _RuneVariables, string _description)
     {
         image = _image;
         name = _name;
@@ -90,6 +95,7 @@ public class ItemData : ScriptableObject
         WeaponVariables = _WeaponVariables;
         ArmorVariables = _ArmorVariables;
         RuneVariables = _RuneVariables;
+        description = _description;
     }
 
     public static ItemData Clone(ItemData item)
@@ -97,7 +103,7 @@ public class ItemData : ScriptableObject
         if (item == null) return null;
         var itemData = ScriptableObject.CreateInstance<ItemData>();
 
-        itemData.Init(item.image, item.name, item.type, item.equipped, item.WeaponVariables, item.ArmorVariables, item.RuneVariables);
+        itemData.Init(item.image, item.name, item.type, item.equipped, item.WeaponVariables, item.ArmorVariables, item.RuneVariables, item.description);
         return itemData;
     }
 
@@ -105,13 +111,14 @@ public class ItemData : ScriptableObject
     {
         var itemData = ScriptableObject.CreateInstance<ItemData>();
 
-        itemData.Init(image, name, type, equipped, WeaponVariables, ArmorVariables, RuneVariables);
+        itemData.Init(image, name, type, equipped, WeaponVariables, ArmorVariables, RuneVariables, description);
         return itemData;
     }
 
     public string GetDescription()
     {
         string desc = description;
+        Debug.Log(description);
         if (!WeaponVariables.Equals(null))
         {
             desc += WeaponVariables.GetDescripion();

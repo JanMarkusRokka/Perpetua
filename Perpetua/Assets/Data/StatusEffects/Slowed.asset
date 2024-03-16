@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21fd171d80ba4c40ba27410f931e1be, type: 3}
-  m_Name: RegularPoison
+  m_Script: {fileID: 11500000, guid: 8073d25440b6cf0409eea1ac598c12c6, type: 3}
+  m_Name: Slowed
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: ff40a92cd8cb9ef4e9ea4698802cd6ec, type: 3}
-  tooltip: Poisoned
-  damagePerTurn: 0.05
+  image: {fileID: 21300000, guid: 87443e2107223034893c8f5b0aee94b0, type: 3}
+  tooltip: Slowed
+  slowMultiplier: 0.5

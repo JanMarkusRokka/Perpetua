@@ -25,3 +25,4 @@ MonoBehaviour:
   RuneVariables:
     recipientStatusEffects:
     - {fileID: 11400000, guid: 6178de2512372cc4087dcedfa24dbc11, type: 2}
+  description: Makes the enemy more likely to miss their attacks.

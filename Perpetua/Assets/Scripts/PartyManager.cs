@@ -13,7 +13,10 @@ public class PartyManager : MonoBehaviour
     
     public void Awake()
     {
-        Instance = this;
+        if (FindObjectsOfType(typeof(PartyManager)).Count() == 1)
+        {
+            Instance = this;
+        }
     }
 
     public void SetParty(PartyData _party)
