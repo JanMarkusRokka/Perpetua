@@ -75,14 +75,20 @@ public class ScenarioManager : MonoBehaviour
             RestoreDataFromSave(scenario);
         } else
         {
-            // Instantiates new items, party members, etc.
-
-            InventoryData inventory = ScriptableObject.CreateInstance<InventoryData>();
-            inventory.items = new List<ItemData>();
-            InventoryManager.Instance.SetInventory(inventory);
+            if (scenario.isLoadNextScene)
+            {
+                InventoryManager.Instance.SetInventory(scenario.StartingInventory);
+                PartyManager.Instance.SetParty(scenario.StartingParty);
+            }
+            else
+            {
+                InventoryData inventory = ScriptableObject.CreateInstance<InventoryData>();
+                inventory.items = new List<ItemData>();
+                InventoryManager.Instance.SetInventory(inventory);
+                PartyManager.Instance.SetPartyInstantiate(scenario.StartingParty, InventoryManager.Instance.inventory);
+            }
 
             //InventoryManager.Instance.SetInventoryInstantiate(scenario.StartingInventory);
-            PartyManager.Instance.SetPartyInstantiate(scenario.StartingParty, InventoryManager.Instance.inventory);
         }
 
         //Events.Save(0);
@@ -90,13 +96,13 @@ public class ScenarioManager : MonoBehaviour
 
     public static ScenarioData NextSceneScenarioData(string nextScene)
     {
-        return ScenarioData.New("temp", PartyManager.Instance.party, InventoryManager.Instance.inventory, nextScene, false, Vector3.zero, null, null);
+        return ScenarioData.New("temp", PartyManager.Instance.party, InventoryManager.Instance.inventory, nextScene, false, true, Vector3.zero, null, null);
     }
 
     private ScenarioData SaveDataBeforeBattle(Transform player)
     {
         Debug.Log("save data before battle");
-        ScenarioData scenarioData = ScenarioData.New("temp", PartyManager.Instance.party, InventoryManager.Instance.inventory, SceneManager.GetActiveScene().name, true, player.position, GetAllChestStates(), GetAllEnemyStates());
+        ScenarioData scenarioData = ScenarioData.New("temp", PartyManager.Instance.party, InventoryManager.Instance.inventory, SceneManager.GetActiveScene().name, true, false, player.position, GetAllChestStates(), GetAllEnemyStates());
         return scenarioData;
     }
 
