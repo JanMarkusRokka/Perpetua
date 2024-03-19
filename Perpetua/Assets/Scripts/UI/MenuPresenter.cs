@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,35 +22,53 @@ public class MenuPresenter : MonoBehaviour
     public ScenarioData StartingScenario;
     public ScenarioData currentScenario;
     public GameObject FPSCounter;
-    private TabsController _tc;
+    public TabsController _tc;
     private List<ScenarioData> saves;
 
     private void Awake()
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-        NewCampaignButton.onClick.AddListener(NewCampaign);
-        LoadSaveButton.onClick.AddListener(OpenSavesTab);
-        ExitButton.onClick.AddListener(ExitGame);
-        SettingsButton.onClick.AddListener(OpenSettingsTab);
-        _tc = GetComponent<TabsController>();
-        _tc.tabs = new List<GameObject> { TitleScreen, SavesTab, SettingsTab, LoadingScreen };
-        currentScenario = null;
+        if (MenuPresenter.Instance == null)
+        {
+            Instance = this;
+            Debug.Log(Instance == this);
+            DontDestroyOnLoad(gameObject);
+            NewCampaignButton.onClick.AddListener(NewCampaign);
+            LoadSaveButton.onClick.AddListener(OpenSavesTab);
+            ExitButton.onClick.AddListener(ExitGame);
+            SettingsButton.onClick.AddListener(OpenSettingsTab);
+            _tc = GetComponent<TabsController>();
+            _tc.tabs = new List<GameObject> { TitleScreen, SavesTab, SettingsTab, LoadingScreen };
+            currentScenario = null;
+        }
+        else if (Instance != this)
+        {
+            Debug.Log("Destroying menu, duplicate");
+            Destroy(this);
+        }
     }
 
     private void OnLevelWasLoaded(int level)
     {
-        if (level == 0)
+        if (Instance == this)
         {
-            gameObject.SetActive(true);
-            _tc.SetTab(TitleScreen);
-            Debug.Log("active main menu");
-            Debug.Log(gameObject.activeInHierarchy);
-            return;
+            if (level == 0)
+            {
+                ColorOverlay.FadeToTransparent();
+                gameObject.SetActive(true);
+                _tc.SetTab(TitleScreen);
+                return;
+            }
+            gameObject.SetActive(false);
+            Debug.Log("Setting " + currentScenario.name);
+            Events.SelectScenario(currentScenario);
         }
-        gameObject.SetActive(false);
-        Debug.Log("Setting " + currentScenario.name);
-        Events.SelectScenario(currentScenario);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+        Destroy(gameObject);
     }
 
     private void OpenSavesTab()
@@ -72,13 +91,21 @@ public class MenuPresenter : MonoBehaviour
         currentScenario = scenario;
         gameObject.SetActive(true);
         _tc.SetTab(LoadingScreen);
+        StartCoroutine(WaitBeforeLoad(scenario));
+    }
+
+    private IEnumerator WaitBeforeLoad(ScenarioData scenario)
+    {
+        ColorOverlay.FadeToBlack();
+        yield return new WaitForSecondsRealtime(3f);
         SceneManager.LoadScene(scenario.scene);
     }
 
     private void NewCampaign()
     {
-        currentScenario = StartingScenario;
-        SceneManager.LoadScene(StartingScenario.scene);
+        LoadSave(StartingScenario);
+        //currentScenario = StartingScenario;
+        //SceneManager.LoadScene(StartingScenario.scene);
     }
 
     public void ExitGame()

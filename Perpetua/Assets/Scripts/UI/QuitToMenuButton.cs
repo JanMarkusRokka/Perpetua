@@ -8,6 +8,15 @@ public class QuitToMenuButton : MonoBehaviour
 {
     private void Awake()
     {
-        GetComponent<Button>().onClick.AddListener( delegate { Time.timeScale = 1f; SceneManager.LoadScene(0); } );
+        GetComponent<Button>().onClick.AddListener( delegate { StartCoroutine(LoadMainMenu()); } );
+    }
+
+    private IEnumerator LoadMainMenu()
+    {
+        ColorOverlay.FadeToBlack();
+        yield return new WaitForSecondsRealtime(3f);
+        Time.timeScale = 1f;
+        MenuPresenter.Instance.gameObject.SetActive(true);
+        SceneManager.LoadScene(0);
     }
 }

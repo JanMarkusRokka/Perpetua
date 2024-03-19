@@ -9,10 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: b18b929e6ff971048be5b9c5c912bb89
   - enabled: 1
+    path: Assets/Scenes/StartingScene.unity
+    guid: cd997d6781f4af24bad087c8e4be1111
+  - enabled: 1
+    path: Assets/Scenes/TrudgingThroughSnowScene.unity
+    guid: 6a1963c625aca2348bf40be6aa338d94
+  - enabled: 1
     path: Assets/Scenes/SnowScene.unity
     guid: a76de2e51cb56714d99685696b2266ea
   - enabled: 1
     path: Assets/Scenes/SnowBattleScene.unity
     guid: 14a5f2316ea051448beb1436fbc62f4d
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0

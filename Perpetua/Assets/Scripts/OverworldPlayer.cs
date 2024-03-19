@@ -22,6 +22,8 @@ public class OverworldPlayer : MonoBehaviour
     private List<Interactable> interactables = new List<Interactable>();
     [SerializeField]
     private bool canMove;
+    [SerializeField]
+    private bool spawnPartyMembersAtStart;
 
     private void Awake()
     {
@@ -31,7 +33,13 @@ public class OverworldPlayer : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        List<PartyCharacterData> partyMembers = PartyManager.Instance.party.PartyMembers;
+        if (spawnPartyMembersAtStart)
+        SpawnPartyMembers(PartyManager.Instance.party);
+    }
+
+    public void SpawnPartyMembers(PartyData partyData)
+    {
+        List<PartyCharacterData> partyMembers = partyData.PartyMembers;
         for (int i = 0; i < partyMembers.Count - 1; i++)
         {
             PartyCharacterData member = partyMembers[i];

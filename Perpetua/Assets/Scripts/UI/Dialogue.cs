@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,4 +10,5 @@ public class Dialogue {
     public Sprite spriteRight;
     [TextArea(3, 100)]
     public string message;
+    public TriggerAction triggerAction;
 }

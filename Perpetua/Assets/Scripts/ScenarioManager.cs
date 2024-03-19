@@ -38,12 +38,22 @@ public class ScenarioManager : MonoBehaviour
         enemyData = new List<EnemyData> { enemy.GetComponent<OverworldEnemy>().EnemyData };
         List<PartyCharacterData> partyMembersData = PartyManager.Instance.party.PartyMembers;
         currentScenario = SaveDataBeforeBattle(player.transform);
+        Time.timeScale = 0.1f;
+        ColorOverlay.FadeToBlack();
+        StartCoroutine(WaitBeforeBattle());
+    }
+
+    private IEnumerator WaitBeforeBattle()
+    {
+        yield return new WaitForSecondsRealtime(3f);
         SceneManager.LoadScene(currentBattleScene);
         Debug.Log("ScenarioManager: Battle triggered");
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
+        Time.timeScale = 1f;
+        ColorOverlay.FadeToTransparent();
         if (currentBattleScene == scene.name)
         {
             Events.SetEnemy(enemyData);
@@ -76,6 +86,11 @@ public class ScenarioManager : MonoBehaviour
         }
 
         //Events.Save(0);
+    }
+
+    public static ScenarioData NextSceneScenarioData(string nextScene)
+    {
+        return ScenarioData.New("temp", PartyManager.Instance.party, InventoryManager.Instance.inventory, nextScene, false, Vector3.zero, null, null);
     }
 
     private ScenarioData SaveDataBeforeBattle(Transform player)

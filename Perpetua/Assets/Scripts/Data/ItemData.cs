@@ -118,7 +118,6 @@ public class ItemData : ScriptableObject
     public string GetDescription()
     {
         string desc = description;
-        Debug.Log(description);
         if (!WeaponVariables.Equals(null))
         {
             desc += WeaponVariables.GetDescripion();

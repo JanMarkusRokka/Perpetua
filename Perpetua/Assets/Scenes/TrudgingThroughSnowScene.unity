@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.011599228, g: 0.024826597, b: 0.07361381, a: 1}
+  m_IndirectSpecularColor: {r: 0.007006351, g: 0.013279578, b: 0.037543938, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -457,7 +457,7 @@ Light:
   m_BounceIntensity: 0.5
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 6.9e-44, w: -8.390145e+29}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.14e-43, z: 9.682e-42, w: -1.0419989e+32}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -816,8 +816,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.104788825, y: 0, z: 0, w: 0.9944945}
-  m_LocalPosition: {x: 1.3000001, y: 26.381147, z: -6.6400013}
+  m_LocalRotation: {x: 0.13121833, y: 0, z: 0, w: 0.9913535}
+  m_LocalPosition: {x: 1.3000001, y: 27.081148, z: -8.000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 4.3, z: -13.08}
+  m_TrackedObjectOffset: {x: 0, y: 5, z: -14.44}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -1299,6 +1299,7 @@ MonoBehaviour:
     spriteLeft: {fileID: -971000949, guid: 434713cda93a88147901f5f116074e61, type: 3}
     spriteRight: {fileID: 0}
     message: There is a rock on the ground...
+    triggerAction: {fileID: 0}
 --- !u!114 &1142852909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6443,22 +6444,27 @@ MonoBehaviour:
     spriteLeft: {fileID: 575218675, guid: a511b441918fb934bba92a02ca6a1fe1, type: 3}
     spriteRight: {fileID: 0}
     message: Hello!
+    triggerAction: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 1390579992, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Hi there, fella...
+    triggerAction: {fileID: 0}
   - name: Elizabeth
     spriteLeft: {fileID: 575218675, guid: a511b441918fb934bba92a02ca6a1fe1, type: 3}
     spriteRight: {fileID: 0}
     message: Catch any fish today?
+    triggerAction: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 866955322, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Nah... Them folk don't seem to happy to see me lately...
+    triggerAction: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: -263004192, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Maybe I been catchin em in the wrong place after all...
+    triggerAction: {fileID: 0}
 --- !u!65 &1200387787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6543,7 +6549,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.08
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: e41d0c3ca1250b145919b2938326f76a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 13d06bb1b10e59e4fa86061a31444826, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &1448896806
 MonoBehaviour:
@@ -8398,7 +8404,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 13.63
-      minScalar: 0
+      minScalar: 14.28
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11933,7 +11939,7 @@ Transform:
   m_GameObject: {fileID: 1924557765}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3000001, y: 26.381147, z: -6.6400013}
+  m_LocalPosition: {x: 1.3000001, y: 27.081148, z: -8.000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11953,7 +11959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ApplyAfter: 0
-  m_Tilt: 12.03
+  m_Tilt: 15.08
   m_Pan: 0
   m_Dutch: 0
   m_ZoomScale: 1
@@ -12124,6 +12130,8 @@ MonoBehaviour:
   MoveSpeed: 7
   SprintSpeedMultiplier: 1.5
   PartyMemberPrefab: {fileID: 1261476881108139715, guid: 1790d714d7fe42247847c7470f729b44, type: 3}
+  canMove: 1
+  spawnPartyMembersAtStart: 1
 --- !u!114 &2112152361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12369,6 +12377,10 @@ PrefabInstance:
     - target: {fileID: 761012839858732538, guid: e69a0f74397346041a75b819b45ef29a, type: 3}
       propertyPath: m_Name
       value: WinterTree2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443073716592251190, guid: e69a0f74397346041a75b819b45ef29a, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2739807417197093044, guid: e69a0f74397346041a75b819b45ef29a, type: 3}
       propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer

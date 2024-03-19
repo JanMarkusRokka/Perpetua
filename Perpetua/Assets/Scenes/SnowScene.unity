@@ -12411,6 +12411,8 @@ MonoBehaviour:
   MoveSpeed: 7
   SprintSpeedMultiplier: 1.5
   PartyMemberPrefab: {fileID: 1261476881108139715, guid: 1790d714d7fe42247847c7470f729b44, type: 3}
+  canMove: 1
+  spawnPartyMembersAtStart: 1
 --- !u!114 &2112152361
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -367,7 +367,9 @@ public class BattleCanvas : MonoBehaviour
                     if (rune)
                     {
                         GameObject itemPres = Instantiate(ItemPresenterPrefab, runesPresenter.transform);
-                        itemPres.transform.GetChild(0).GetComponent<Image>().sprite = rune.image;
+                        Image image = itemPres.transform.GetChild(0).GetComponent<Image>();
+                        image.sprite = rune.image;
+                        image.GetComponent<RectTransform>().sizeDelta = rune.image.textureRect.size;
                         TooltipTrigger tooltip = itemPres.GetComponent<TooltipTrigger>();
                         tooltip.header = rune.name;
                         tooltip.description = rune.GetDescription();

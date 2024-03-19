@@ -18,10 +18,12 @@ public class DialogueManager : MonoBehaviour
     private Image _bg;
 
     private Queue<Dialogue> dialogues;
+    private Dialogue lastDialogue;
 
     public void Awake()
     {
         Events.OnDialogueEnded += OnDialogueEnded;
+        lastDialogue = null;
     }
 
     public void OnDestroy()
@@ -54,6 +56,9 @@ public class DialogueManager : MonoBehaviour
     
     public void ShowNextDialogue()
     {
+        if (lastDialogue != null)
+            if (lastDialogue.triggerAction != null) lastDialogue.triggerAction.DoAction();
+
         if (dialogues.Count > 0)
         {
             Dialogue dialogue = dialogues.Dequeue();
@@ -77,9 +82,11 @@ public class DialogueManager : MonoBehaviour
             {
                 RightSprite.enabled = false;
             }
+            lastDialogue = dialogue;
         }
         else
         {
+            lastDialogue = null;
             Events.EndDialogue(0);
         }
     }
