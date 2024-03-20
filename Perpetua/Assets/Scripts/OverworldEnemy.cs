@@ -32,6 +32,8 @@ public class OverworldEnemy : MonoBehaviour
         {
             agent.enabled = false;
             GetComponent<SpriteRenderer>().sprite = enemyData.gonerSprite;
+            agent.transform.position = enemyData.stunLocation;
+            transform.position = enemyData.stunLocation;
             enabled = false;
         } else if (enemyData.stunSeconds > 0)
         {

@@ -35,7 +35,6 @@ public class Poison : StatusEffect
 
         if (battleParticipant.IsPartyMember)
         {
-            Debug.Log(battleParticipant.transform.position);
             battleCanvas.battleEffects.DisplayDamageValueHUD(recipientTransform, (float) damage);
             battleManager.StartCoroutine(AttackAction.ShowNegativeStatusEffectColor(battleParticipant, 0.5f));
             yield return new WaitForSeconds(0.5f);

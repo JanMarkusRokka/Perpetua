@@ -42,12 +42,23 @@ public class AttackAction : BattleAction
 
     public void InflictRuneStatusEffects(ItemData rune)
     {
+        bool partyMemberAttacksEnemy = participant.IsPartyMember && !recipient.IsPartyMember;
+
         if (rune)
         {
             RuneVariables runeVariables = rune.RuneVariables;
             foreach (StatusEffect statusEffect in runeVariables.recipientStatusEffects)
             {
-                recipient.InflictStatusEffect(statusEffect);
+                if (partyMemberAttacksEnemy)
+                {
+                    Debug.Log(statusEffect.name + " resistance " + recipient.GetEnemy().GetSpecificAilmentResistance(statusEffect));
+                    if (UnityEngine.Random.Range(0, 100) > recipient.GetEnemy().GetSpecificAilmentResistance(statusEffect)) recipient.InflictStatusEffect(statusEffect);
+
+                }
+                else
+                {
+                    recipient.InflictStatusEffect(statusEffect);
+                }
             }
         }
 

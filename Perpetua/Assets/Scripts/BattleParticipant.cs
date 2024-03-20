@@ -70,6 +70,16 @@ public class BattleParticipant : ScriptableObject
 
     public void InflictStatusEffect(StatusEffect statusEffect)
     {
+        if (!IsPartyMember)
+        {
+            if (GetEnemy().ailmentsHistory.ContainsKey(statusEffect.name)) GetEnemy().ailmentsHistory[statusEffect.name] += 1;
+            else GetEnemy().ailmentsHistory[statusEffect.name] = 1;
+            
+            foreach(string ailment in GetEnemy().ailmentsHistory.Keys)
+            {
+                Debug.Log(ailment + ": " + GetEnemy().ailmentsHistory[ailment]);
+            }
+        }
         StatusEffectsData statusEffectsData = GetStatusEffectsData();
 
         statusEffectsData.statusEffects.RemoveAll(statusEf => statusEf.GetType() == statusEffect.GetType());

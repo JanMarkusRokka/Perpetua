@@ -11,7 +11,9 @@ public abstract class EnemyData : CharacterData
     public float stunSeconds;
     public Vector3 stunLocation;
     public AudioClipGroup attackSound;
-    public void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot, Sprite _gonerSprite, float _stunSeconds, AudioClipGroup _attackSound, StatusEffectsData _statusEffects, List<BattleAction> _skills)
+    // Used to keep track of different past ailments. Taken into account when calculating whether to inflict ailments (for example: an enemy that has been stunned 3 times is less likely to have Stunned inflicted on them than an enemy with 3 stuns in their ailment history)
+    public Dictionary<string, int> ailmentsHistory;
+    public void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot, Sprite _gonerSprite, float _stunSeconds, AudioClipGroup _attackSound, StatusEffectsData _statusEffects, List<BattleAction> _skills, Dictionary<string, int> _ailmentsHistory)
     {
         image = _image;
         name = _name;
@@ -23,6 +25,8 @@ public abstract class EnemyData : CharacterData
         attackSound = _attackSound;
         statusEffects = _statusEffects;
         skills = _skills;
+        ailmentsHistory = _ailmentsHistory;
+        if (_ailmentsHistory == null) ailmentsHistory = new();
     }
 
     public abstract EnemyData Clone(EnemyData character);
@@ -38,7 +42,6 @@ public abstract class EnemyData : CharacterData
         int total = 0;
         foreach(BattleParticipant participant in participantsAndWeights)
         {
-            Debug.Log(participant.GetStatsData().Detectability + participant.GetPartyMember().name);
             total += participant.GetStatsData().Detectability;
         }
 
@@ -79,5 +82,16 @@ public abstract class EnemyData : CharacterData
         }
 
         return null;
+    }
+
+    public float GetSpecificAilmentResistance(StatusEffect statusEffect)
+    {
+        StatsData stats = GetStatsWithAllEffects();
+        float ailmentResistance = stats.AilmentResistance;
+        if (ailmentsHistory.ContainsKey(statusEffect.name))
+        {
+            ailmentResistance *= ailmentsHistory[statusEffect.name];
+        }
+        return ailmentResistance;
     }
 }

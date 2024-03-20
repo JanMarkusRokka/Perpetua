@@ -33,6 +33,7 @@ public class PurgeAndPunish : Attack
         }
         if (damage > -1)
         {
+            InflictRuneStatusEffects();
             yield return battleManager.StartCoroutine(AnimateAttack(battleManager, battleCanvas, damage, false));
         }
         else
