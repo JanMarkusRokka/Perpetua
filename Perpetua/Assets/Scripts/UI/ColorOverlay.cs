@@ -21,8 +21,13 @@ public class ColorOverlay : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             img = GetComponent<UnityEngine.UI.Image>();
-            img.CrossFadeAlpha(0f, 0f, false);
+            img.color = Color.black;
         }
+    }
+
+    private void Start()
+    {
+        img.CrossFadeAlpha(0f, 0f, false);
     }
 
     public static void FadeToColor(Color toColor, float durationSeconds)

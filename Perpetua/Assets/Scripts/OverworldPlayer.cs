@@ -140,7 +140,7 @@ public class OverworldPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         float speedMultiplier = MoveSpeed * Mathf.Max(1f, sprint * SprintSpeedMultiplier);
-        _rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speedMultiplier + new Vector3(0, _rb.velocity.y, 0);
+        _rb.velocity = new Vector3(horizontal, 0, vertical).normalized * Mathf.Max(Mathf.Abs(horizontal), Mathf.Abs(vertical)) * speedMultiplier + new Vector3(0, _rb.velocity.y, 0);
     }
 
     private void OnTriggerEnter(Collider other)

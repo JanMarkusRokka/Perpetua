@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SnowBattleScene.unity
     guid: 14a5f2316ea051448beb1436fbc62f4d
+  - enabled: 1
+    path: Assets/Scenes/HubScene.unity
+    guid: 9e2bf401d5a81064095e354893e77bc9
+  - enabled: 1
+    path: Assets/Scenes/WoodcutterPathScene.unity
+    guid: 4ab09c14969530647ad4d00c2984e15a
   m_configObjects: {}
