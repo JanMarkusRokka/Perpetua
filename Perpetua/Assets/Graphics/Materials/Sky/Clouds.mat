@@ -114,11 +114,11 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Pixelation: 500
+    - _Pixelation: 1000
     - _QueueControl: 0
     - _QueueOffset: 1
     - _ReceiveShadows: 1
-    - _Shadow_Strength: 0.5
+    - _Shadow_Strength: 0.36
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

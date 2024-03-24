@@ -79,6 +79,10 @@ public class ScenarioManager : MonoBehaviour
             {
                 InventoryManager.Instance.SetInventory(scenario.StartingInventory);
                 PartyManager.Instance.SetParty(scenario.StartingParty);
+                if (scenario.PlayerLocation.magnitude != 0)
+                {
+                    FindObjectOfType<OverworldPlayer>().transform.position = scenario.PlayerLocation;
+                }
             }
             else
             {
