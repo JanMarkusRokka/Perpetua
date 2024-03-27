@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class DialogueObject : Interactable
     public bool ActivatesOnce = false;
     public bool HasBubble = false;
     public GameObject SpeechBubble;
-    private DialogueTrigger dialogueTrigger;
+    [NonSerialized]
+    public DialogueTrigger dialogueTrigger;
     public void Awake()
     {
         Events.OnDialogueEnded += OnDialogueEnded;

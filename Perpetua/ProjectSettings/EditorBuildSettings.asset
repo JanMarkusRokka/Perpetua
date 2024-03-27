@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TempleCrossroadsScene.unity
     guid: fd91bd03e27232f45b121da52fccdfc6
+  - enabled: 1
+    path: Assets/Scenes/InsideTempleScene.unity
+    guid: 33abf3a51ab208c47994a0a23a425bea
   m_configObjects: {}

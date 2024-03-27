@@ -113,6 +113,10 @@ public class BattleManager : MonoBehaviour
         }
         else if (GetOutOfActionEnemyCount() == EnemyData.Count)
         {
+            foreach(EnemyData enemy in EnemyData)
+            {
+                PartyManager.Instance.party.objectives.Find(o => o.id == enemy.objectiveToAdvance).Advance();                
+            }
             EndGame();
             return;
         }

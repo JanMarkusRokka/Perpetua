@@ -14,6 +14,7 @@ public class OverworldEnemy : MonoBehaviour
     private Transform playerTransform;
     public float FightTriggerDistance = 1;
     public EnemyData EnemyData;
+    public int ObjectiveToAdvance = -1;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class OverworldEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
         EnemyData enemyData = EnemyData.Clone(EnemyData);
+        enemyData.objectiveToAdvance = ObjectiveToAdvance;
         enemyData.stats = StatsData.Clone(EnemyData.stats);
         SetupEnemy(enemyData);
     }

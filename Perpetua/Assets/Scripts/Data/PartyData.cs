@@ -7,4 +7,5 @@ using UnityEngine.UI;
 public class PartyData : ScriptableObject
 {
     public List<PartyCharacterData> PartyMembers;
+    public List<Objective> objectives;
 }

@@ -35,7 +35,7 @@ public class BigSkeletonData : EnemyData
     {
         var enemyData = ScriptableObject.CreateInstance<BigSkeletonData>();
         StatusEffectsData statusEffectsData = StatusEffectsData.Clone(character.statusEffects);
-        enemyData.Init(character.image, character.name, character.description, character.stats, character.loot, character.gonerSprite, character.stunSeconds, character.attackSound, statusEffectsData, character.skills, character.ailmentsHistory);
+        enemyData.Init(character.image, character.name, character.description, character.stats, character.loot, character.gonerSprite, character.stunSeconds, character.attackSound, statusEffectsData, character.skills, character.ailmentsHistory, character.objectiveToAdvance);
         return enemyData;
     }
 }
