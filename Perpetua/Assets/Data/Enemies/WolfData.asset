@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7bd5e047f9ad0a4ca2ac2a2e91af894, type: 3}
+  m_Name: WolfData
+  m_EditorClassIdentifier: 
+  image: {fileID: 708676532, guid: e934aee113305f04ca818bc5288c6124, type: 3}
+  name: Wolf
+  description: Hungry wolf with ravenous instincts
+  stats: {fileID: 11400000, guid: fcd3b18ef87782841b112e62216803e7, type: 2}
+  statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
+  skills:
+  - {fileID: 11400000, guid: 7b7992b7799143846a46f727585cf770, type: 2}
+  loot: []
+  gonerSprite: {fileID: 21300000, guid: 7c69275e3be7cb641ad98c7d83a1fea6, type: 3}
+  stunSeconds: 0
+  stunLocation: {x: 0, y: 0, z: 0}
+  attackSound: {fileID: 11400000, guid: 89b8a6e014175bf48b299d89506231bc, type: 2}
+  objectiveToAdvance: {fileID: 0}
+  isStaticDialogueEnemy: 0
+  isEscapable: 1

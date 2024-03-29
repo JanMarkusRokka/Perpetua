@@ -13,8 +13,11 @@ public abstract class EnemyData : CharacterData
     public AudioClipGroup attackSound;
     // Used to keep track of different past ailments. Taken into account when calculating whether to inflict ailments (for example: an enemy that has been stunned 3 times is less likely to have Stunned inflicted on them than an enemy with 3 stuns in their ailment history)
     public Dictionary<string, int> ailmentsHistory;
-    public int objectiveToAdvance;
-    public void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot, Sprite _gonerSprite, float _stunSeconds, AudioClipGroup _attackSound, StatusEffectsData _statusEffects, List<BattleAction> _skills, Dictionary<string, int> _ailmentsHistory, int _objectiveToAdvance)
+    public Objective objectiveToAdvance;
+    public bool isStaticDialogueEnemy;
+    public bool isEscapable;
+
+    public void Init(Sprite _image, string _name, string _description, StatsData _stats, List<ItemData> _loot, Sprite _gonerSprite, float _stunSeconds, AudioClipGroup _attackSound, StatusEffectsData _statusEffects, List<BattleAction> _skills, Dictionary<string, int> _ailmentsHistory, Objective _objectiveToAdvance, bool _isStaticDialogueEnemy, bool _isEscapable)
     {
         image = _image;
         name = _name;
@@ -28,10 +31,12 @@ public abstract class EnemyData : CharacterData
         skills = _skills;
         ailmentsHistory = _ailmentsHistory;
         objectiveToAdvance = _objectiveToAdvance;
+        isStaticDialogueEnemy = _isStaticDialogueEnemy;
+        isEscapable = _isEscapable;
         if (_ailmentsHistory == null) ailmentsHistory = new();
     }
 
-    public abstract EnemyData Clone(EnemyData character);
+    public abstract EnemyData Clone();
 
     public abstract BattleAction SelectTurn(BattleParticipant participant, bool guardIncluded);
 

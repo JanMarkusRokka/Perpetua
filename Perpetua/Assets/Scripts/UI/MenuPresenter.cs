@@ -59,7 +59,6 @@ public class MenuPresenter : MonoBehaviour
                 return;
             }
             gameObject.SetActive(false);
-            Debug.Log("Setting " + currentScenario.name);
             Events.SelectScenario(currentScenario);
         }
     }

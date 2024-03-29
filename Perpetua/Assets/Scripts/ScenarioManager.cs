@@ -59,6 +59,24 @@ public class ScenarioManager : MonoBehaviour
             Events.SetEnemy(enemyData);
             BattleManager.Instance.returnScenario = currentScenario;
         }
+        else
+        {
+            Dictionary<string, ChestData> chests = GetAllChestStates();
+            Dictionary<string, EnemyData> enemies = GetAllEnemyStates();
+            if (PartyManager.Instance.party.Chests == null) PartyManager.Instance.party.Chests = new();
+            if (PartyManager.Instance.party.Enemies == null) PartyManager.Instance.party.Enemies = new();
+
+            foreach (string chestGuid in chests.Keys)
+            {
+                if (!PartyManager.Instance.party.Chests.ContainsKey(chestGuid)) PartyManager.Instance.party.Chests.Add(chestGuid, chests[chestGuid]);
+            }
+            foreach (string enemyGuid in enemies.Keys)
+            {
+                if (!PartyManager.Instance.party.Enemies.ContainsKey(enemyGuid)) PartyManager.Instance.party.Enemies.Add(enemyGuid, enemies[enemyGuid]);
+            }
+            SetChestsFromData(PartyManager.Instance.party.Chests);
+            SetEnemiesFromData(PartyManager.Instance.party.Enemies);
+        }
     }
 
     private void OnBattleSceneChanged(string battleScene)
@@ -114,9 +132,11 @@ public class ScenarioManager : MonoBehaviour
     {
         Dictionary<string, EnemyData> enemies = new();
         OverworldEnemy[] enemiesInScene = FindObjectsOfType(typeof(OverworldEnemy)) as OverworldEnemy[];
-
+        Debug.Log(enemiesInScene.Count());
         foreach (OverworldEnemy enemy in enemiesInScene)
         {
+            Debug.Log(enemy.name);
+            Debug.Log(enemy.GetComponent<GuidGenerator>().gameObject);
             enemies.Add(enemy.GetComponent<GuidGenerator>().guidString, enemy.GetComponent<OverworldEnemy>().EnemyData);
             Debug.Log(enemy.GetComponent<GuidGenerator>().guidString + " " + enemy.GetComponent<OverworldEnemy>().EnemyData + " " + enemy.gameObject.name);
         }
@@ -151,12 +171,22 @@ public class ScenarioManager : MonoBehaviour
     private void SetChestsFromSave(ScenarioData saveData)
     {
         Dictionary<string, ChestData> chestsData = saveData.Chests;
+        SetChestsFromData(chestsData);
+    }
+
+    private void SetChestsFromData(Dictionary<string, ChestData> chestsData)
+    {
         ChestsLoader.Instance.SetAllChests(chestsData);
     }
 
     private void SetEnemiesFromSave(ScenarioData saveData)
     {
         Dictionary<string, EnemyData> enemiesData = saveData.Enemies;
+        SetEnemiesFromData(enemiesData);
+    }
+
+    private void SetEnemiesFromData(Dictionary<string, EnemyData> enemiesData)
+    {
         EnemiesLoader.Instance.SetAllEnemies(enemiesData);
     }
 }

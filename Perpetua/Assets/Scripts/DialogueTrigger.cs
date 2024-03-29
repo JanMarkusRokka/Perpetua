@@ -13,12 +13,20 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (StartActions.Count > 0)
             {
-                foreach(TriggerAction action in StartActions)
+                foreach (TriggerAction action in StartActions)
                 {
-                    Debug.Log(action.name);
+                    if (action.GetType() == typeof(TriggerBattle))
+                    {
+                        TriggerBattle triggerBattleAction = ScriptableObject.CreateInstance<TriggerBattle>();
+                        triggerBattleAction.overworldEnemy = GetComponent<OverworldEnemy>();
+                    }
                     action.DoAction();
                 }
             }
+        }
+        foreach (Dialogue dialogue in dialogues)
+        {
+            dialogue.triggerer = this;
         }
         DialogueManager.Instance.StartDialogue(dialogues);
     }

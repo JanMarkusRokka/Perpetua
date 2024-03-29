@@ -9,7 +9,7 @@ public class StepsObjective : Objective
     public int GoalSteps;
     public override bool IsCompleted()
     {
-        if (CompletedSteps == GoalSteps)
+        if (CompletedSteps >= GoalSteps)
             return true;
         return false;
     }

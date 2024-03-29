@@ -31,11 +31,11 @@ public class BigSkeletonData : EnemyData
         return SelectAction(actionsAndWeights);
     }
 
-    public override EnemyData Clone(EnemyData character)
+    public override EnemyData Clone()
     {
         var enemyData = ScriptableObject.CreateInstance<BigSkeletonData>();
-        StatusEffectsData statusEffectsData = StatusEffectsData.Clone(character.statusEffects);
-        enemyData.Init(character.image, character.name, character.description, character.stats, character.loot, character.gonerSprite, character.stunSeconds, character.attackSound, statusEffectsData, character.skills, character.ailmentsHistory, character.objectiveToAdvance);
+        StatusEffectsData statusEffectsData = StatusEffectsData.Clone(statusEffects);
+        enemyData.Init(image, name, description, stats, loot, gonerSprite, stunSeconds, attackSound, statusEffectsData, skills, ailmentsHistory, objectiveToAdvance, isStaticDialogueEnemy, isEscapable);
         return enemyData;
     }
 }

@@ -11,4 +11,5 @@ public class Dialogue {
     [TextArea(3, 100)]
     public string message;
     public TriggerAction triggerAction;
+    public DialogueTrigger triggerer;
 }

@@ -6323,6 +6323,7 @@ MonoBehaviour:
     spriteRight: {fileID: 0}
     message: There is a rock on the ground...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
 --- !u!114 &1142852909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11469,26 +11470,31 @@ MonoBehaviour:
     spriteRight: {fileID: 0}
     message: Hello!
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 1390579992, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Hi there, fella...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: Elizabeth
     spriteLeft: {fileID: 575218675, guid: a511b441918fb934bba92a02ca6a1fe1, type: 3}
     spriteRight: {fileID: 0}
     message: Catch any fish today?
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 866955322, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Nah... Them folk don't seem to happy to see me lately...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: -263004192, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Maybe I been catchin em in the wrong place after all...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
 --- !u!65 &1200387787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33757,17 +33763,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartActions:
   - {fileID: 11400000, guid: 58fb21f33e8842748bdd2e2c60821408, type: 2}
+  - {fileID: 11400000, guid: f973bd3b7ac498e459b8d70289f8cb6d, type: 2}
   dialogues:
   - name: ...
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 0}
     message: Hello there...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: 
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 0}
     message: How about....
     triggerAction: {fileID: 11400000, guid: f53bd89f2387c3145ad911085791880e, type: 2}
+    triggerer: {fileID: 0}
 --- !u!65 &1630756461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33797,7 +33806,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630756459}
   m_Enabled: 0
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -33872,7 +33881,7 @@ MonoBehaviour:
   HasBubble: 1
   SpeechBubble: {fileID: 1476317002}
   SceneName: InsideTempleScene
-  objectiveId: 0
+  objective: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
 --- !u!1001 &1779270069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33883,11 +33892,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5114071781414668790, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 113.4302
+      value: 101.16
       objectReference: {fileID: 0}
     - target: {fileID: 5114071781414668790, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.0117912
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 5114071781414668790, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
       propertyPath: m_LocalPosition.z
@@ -33922,9 +33931,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
-      propertyPath: ObjectiveToAdvance
-      value: 0
+      propertyPath: Speed
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
+      propertyPath: RoamingSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
+      propertyPath: ObjectiveToAdvance
+      value: 
+      objectReference: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
     - target: {fileID: 8952021306042982066, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
       propertyPath: m_Name
       value: 555fa52e-47c2-47f0-87df-8bb7cef9aba5
@@ -34224,9 +34241,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
-      propertyPath: ObjectiveToAdvance
-      value: 0
+      propertyPath: Speed
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
+      propertyPath: RoamingSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
+      propertyPath: ObjectiveToAdvance
+      value: 
+      objectReference: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
     - target: {fileID: 8952021306042982066, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
       propertyPath: m_Name
       value: 5d439672-7ced-4cfa-8651-4393af0ab1ad
@@ -35039,9 +35064,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
-      propertyPath: ObjectiveToAdvance
-      value: 0
+      propertyPath: Speed
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
+      propertyPath: RoamingSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288915243266651377, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
+      propertyPath: ObjectiveToAdvance
+      value: 
+      objectReference: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
     - target: {fileID: 8952021306042982066, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
       propertyPath: m_Name
       value: 7da677b9-5d06-4b95-b6fd-6328a3ad1bd4

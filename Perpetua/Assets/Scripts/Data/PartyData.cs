@@ -8,4 +8,6 @@ public class PartyData : ScriptableObject
 {
     public List<PartyCharacterData> PartyMembers;
     public List<Objective> objectives;
+    public Dictionary<string, ChestData> Chests;
+    public Dictionary<string, EnemyData> Enemies;
 }

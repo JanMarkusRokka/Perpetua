@@ -6507,12 +6507,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b30d2722e9b5c40a8ed20056efebc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartActions: []
   dialogues:
   - name: Elizabeth
     spriteLeft: {fileID: 575218675, guid: a511b441918fb934bba92a02ca6a1fe1, type: 3}
     spriteRight: {fileID: 0}
     message: There is a rock on the ground...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
 --- !u!114 &1142852909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11652,32 +11654,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b30d2722e9b5c40a8ed20056efebc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartActions: []
   dialogues:
   - name: Elizabeth
     spriteLeft: {fileID: 575218675, guid: a511b441918fb934bba92a02ca6a1fe1, type: 3}
     spriteRight: {fileID: 0}
     message: Hello!
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 1390579992, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Hi there, fella...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: Elizabeth
     spriteLeft: {fileID: 575218675, guid: a511b441918fb934bba92a02ca6a1fe1, type: 3}
     spriteRight: {fileID: 0}
     message: Catch any fish today?
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 866955322, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Nah... Them folk don't seem to happy to see me lately...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: -263004192, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Maybe I been catchin em in the wrong place after all...
     triggerAction: {fileID: 0}
+    triggerer: {fileID: 0}
 --- !u!65 &1200387787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11980,7 +11988,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 873309184247012627, guid: 4a81133a3e4c208418962882c5e50518, type: 3}
       propertyPath: m_Name
-      value: dddc39be-068e-40da-9589-f0047ebebfa0
+      value: d06c15dd-7eea-4a90-8739-ae673254bcb1
       objectReference: {fileID: 0}
     - target: {fileID: 1311936478047361493, guid: 4a81133a3e4c208418962882c5e50518, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12072,7 +12080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5723bf95df75e0438d294a91e09c4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guidString: dddc39be-068e-40da-9589-f0047ebebfa0
+  guidString: d06c15dd-7eea-4a90-8739-ae673254bcb1
 --- !u!1 &1563137377
 GameObject:
   m_ObjectHideFlags: 0
@@ -12956,7 +12964,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 873309184247012627, guid: 4a81133a3e4c208418962882c5e50518, type: 3}
       propertyPath: m_Name
-      value: 35f7e539-f2d6-4aab-85f9-bb4a5883edb2
+      value: 03167c81-d4df-4baa-bc68-fe1fed72c1a0
       objectReference: {fileID: 0}
     - target: {fileID: 1311936478047361493, guid: 4a81133a3e4c208418962882c5e50518, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13040,7 +13048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5723bf95df75e0438d294a91e09c4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guidString: 35f7e539-f2d6-4aab-85f9-bb4a5883edb2
+  guidString: 03167c81-d4df-4baa-bc68-fe1fed72c1a0
 --- !u!1001 &2881402043803723180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13245,7 +13253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8952021306042982066, guid: 1625a8180f26ec744b0ff211750cb427, type: 3}
       propertyPath: m_Name
-      value: f7ae2ed3-15ab-4436-8ddd-06f6dd7c42f7
+      value: d0374a5c-7938-4f66-8582-4c1b8f654828
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

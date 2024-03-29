@@ -7,13 +7,13 @@ public class ObjectiveConditionalDoor : DialogueObject
     [SerializeField]
     private string SceneName;
     [SerializeField]
-    public int objectiveId;
+    public Objective objective;
     public override void Interact()
     {
-        Objective objective = PartyManager.Instance.party.objectives.Find(o => o.id == objectiveId);
-        if (objective != null)
+        Objective obj = PartyManager.Instance.party.objectives.Find(o => o.id == objective.id);
+        if (obj != null)
         {
-            if (objective.IsCompleted())
+            if (obj.IsCompleted())
             {
                 ScenarioData sceneScenarioData = ScenarioManager.NextSceneScenarioData(SceneName);
                 MenuPresenter.Instance.LoadSave(sceneScenarioData);

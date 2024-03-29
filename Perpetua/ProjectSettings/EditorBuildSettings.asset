@@ -32,4 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InsideTempleScene.unity
     guid: 33abf3a51ab208c47994a0a23a425bea
+  - enabled: 1
+    path: Assets/Scenes/WoodcutterAfterTempleScene.unity
+    guid: 7c131bef8fefb29429742065499040bf
+  - enabled: 1
+    path: Assets/Scenes/CultistsScene.unity
+    guid: 4cac799ddbda1ad44b95b9d01e518cf8
+  - enabled: 1
+    path: Assets/Scenes/TempleCrossroadsAfterScene.unity
+    guid: 1421a22b7a5f01e46afdddf76d282636
   m_configObjects: {}

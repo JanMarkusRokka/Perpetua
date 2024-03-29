@@ -9,21 +9,32 @@ public class OverworldEnemy : MonoBehaviour
     private NavMeshAgent agent;
     Vector3 velocity = Vector3.zero;
     public Vector3 IdleLocation;
+    public Vector3 RoamingDestination;
     private Vector3 KnownPlayerLocation;
     private float stopFollowing;
     private Transform playerTransform;
     public float FightTriggerDistance = 1;
     public EnemyData EnemyData;
-    public int ObjectiveToAdvance = -1;
+    public Objective ObjectiveToAdvance;
+    public bool Roaming;
+    public float Speed;
+    public float RoamingSpeed;
+    private SpriteRenderer _sr;
+    private SphereCollider _sc;
 
     private void Awake()
     {
+        Debug.Log(EnemyData.GetInstanceID());
         IdleLocation = transform.position;
+        RoamingDestination = IdleLocation;
         agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
-        EnemyData enemyData = EnemyData.Clone(EnemyData);
+        agent.speed = Speed;
+        EnemyData enemyData = EnemyData.Clone();
         enemyData.objectiveToAdvance = ObjectiveToAdvance;
         enemyData.stats = StatsData.Clone(EnemyData.stats);
+        _sr = GetComponent<SpriteRenderer>();
+        _sc = GetComponent<SphereCollider>();
         SetupEnemy(enemyData);
     }
 
@@ -55,19 +66,42 @@ public class OverworldEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (agent.nextPosition.x > transform.position.x) _sr.flipX = true;
+        else _sr.flipX = false;
         if (stopFollowing > Time.time) {
+            agent.speed = Speed;
             if (Vector3.Distance(playerTransform.position, transform.position) < FightTriggerDistance)
             {
                 TriggerFight();
             }
             FollowPlayer(); 
         }
-        else if (Vector3.Distance(transform.position, IdleLocation) > 1) {
-            GoToIdleLocation(); 
+        else if (Roaming) 
+        {
+            agent.speed = RoamingSpeed;
+            Roam();
+        } // Not roaming - stay at idle location
+        else if (Vector3.Distance(transform.position, IdleLocation) > 1)
+        {
+            agent.speed = RoamingSpeed;
+            GoToLocation(IdleLocation);
         }
     }
 
-    private void TriggerFight()
+    private void Roam()
+    {
+        if (Vector3.Distance(transform.position, new Vector3(RoamingDestination.x, transform.position.y, RoamingDestination.z)) > 1)
+        {
+            GoToLocation(RoamingDestination);
+        }
+        else
+        {   // at selected roaming destination, select new one
+            RoamingDestination = IdleLocation + new Vector3(Random.Range(-_sc.radius, _sc.radius), 0, Random.Range(-_sc.radius, _sc.radius));
+
+        }
+    }
+
+    public void TriggerFight()
     {
         EnemyData.stunLocation = transform.position;
         Events.TriggerBattle(gameObject, playerTransform.gameObject);
@@ -96,9 +130,9 @@ public class OverworldEnemy : MonoBehaviour
         }
     }
 
-    private void GoToIdleLocation()
+    private void GoToLocation(Vector3 position)
     {
-        agent.SetDestination(IdleLocation);
+        agent.SetDestination(position);
         transform.position = Vector3.SmoothDamp(transform.position, agent.nextPosition, ref velocity, 0.001f);
     }
 

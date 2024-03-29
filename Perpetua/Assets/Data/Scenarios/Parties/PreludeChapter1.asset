@@ -18,4 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5677b7a2d1541f843b147177ce2d964c, type: 2}
   - {fileID: 11400000, guid: b0242f78717e9b04eb59d49ac9540f57, type: 2}
   objectives:
+  - {fileID: 11400000, guid: eb204afdeb772eb48af89d7d4c7f1f31, type: 2}
   - {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}

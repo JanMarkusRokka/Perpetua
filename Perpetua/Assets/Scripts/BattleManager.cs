@@ -115,7 +115,8 @@ public class BattleManager : MonoBehaviour
         {
             foreach(EnemyData enemy in EnemyData)
             {
-                PartyManager.Instance.party.objectives.Find(o => o.id == enemy.objectiveToAdvance).Advance();                
+                if (enemy.objectiveToAdvance)
+                PartyManager.Instance.party.objectives.Find(o => o.id == enemy.objectiveToAdvance.id).Advance();                
             }
             EndGame();
             return;
@@ -278,7 +279,6 @@ public class BattleManager : MonoBehaviour
 
     public void Flee()
     {
-        Debug.Log("Flee");
         foreach(EnemyData enemy in EnemyData)
         {
             enemy.stunSeconds = 2f;

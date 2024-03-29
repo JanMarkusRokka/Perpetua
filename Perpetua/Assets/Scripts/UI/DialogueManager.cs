@@ -57,7 +57,17 @@ public class DialogueManager : MonoBehaviour
     public void ShowNextDialogue()
     {
         if (lastDialogue != null)
-            if (lastDialogue.triggerAction != null) lastDialogue.triggerAction.DoAction();
+        {
+            if (lastDialogue.triggerAction != null)
+            {
+                if (lastDialogue.triggerAction.GetType() == typeof(TriggerBattle))
+                {
+                    TriggerBattle triggerBattleAction = (TriggerBattle)lastDialogue.triggerAction;
+                    triggerBattleAction.overworldEnemy = lastDialogue.triggerer.GetComponent<OverworldEnemy>();
+                }
+                lastDialogue.triggerAction.DoAction();
+            }
+        }
 
         if (dialogues.Count > 0)
         {
