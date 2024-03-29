@@ -23,7 +23,7 @@ public class NotificationPresenter : MonoBehaviour
 
     public void OnItemReceived(ItemData item)
     {
-        ShowNotification("Received item: " + item.name, item.type.image);
+        ShowNotification("Received item: " + item.name, item.image);
     }
 
     private void Start()

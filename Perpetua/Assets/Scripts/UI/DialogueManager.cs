@@ -78,6 +78,7 @@ public class DialogueManager : MonoBehaviour
             {
                 LeftSprite.enabled = true;
                 LeftSprite.sprite = dialogue.spriteLeft;
+                LeftSprite.GetComponent<RectTransform>().sizeDelta = dialogue.spriteLeft.textureRect.size * 4;
             }
             else
             {
@@ -87,6 +88,7 @@ public class DialogueManager : MonoBehaviour
             {
                 RightSprite.enabled = true;
                 RightSprite.sprite = dialogue.spriteRight;
+                RightSprite.GetComponent<RectTransform>().sizeDelta = dialogue.spriteRight.textureRect.size * 4;
             }
             else
             {
