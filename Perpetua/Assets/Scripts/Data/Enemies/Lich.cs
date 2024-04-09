@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-[CreateAssetMenu(menuName = "Enemies/BigSkeleton")]
+[CreateAssetMenu(menuName = "Enemies/Lich")]
 public class LichData : EnemyData
 {
     // make this into a battleAction (EnemyTurn or sth), have enemy decide when turn comes and then execute action
@@ -34,8 +34,7 @@ public class LichData : EnemyData
     public override EnemyData Clone()
     {
         var enemyData = ScriptableObject.CreateInstance<LichData>();
-        StatusEffectsData statusEffectsData = StatusEffectsData.Clone(statusEffects);
-        enemyData.Init(image, name, description, stats, loot, gonerSprite, stunSeconds, attackSound, statusEffectsData, skills, ailmentsHistory, objectiveToAdvance, isStaticDialogueEnemy, isEscapable);
+        CloneData(this, enemyData);
         return enemyData;
     }
 }

@@ -23888,7 +23888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733654093755639316, guid: 2f7e1cc903a564446b33dc5ee7d88a9c, type: 3}
       propertyPath: PlayerLocation.y
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4733654093755639316, guid: 2f7e1cc903a564446b33dc5ee7d88a9c, type: 3}
       propertyPath: PlayerLocation.z
@@ -23900,7 +23900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4733654093755639316, guid: 2f7e1cc903a564446b33dc5ee7d88a9c, type: 3}
       propertyPath: SecondPlayerLocation.y
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4733654093755639316, guid: 2f7e1cc903a564446b33dc5ee7d88a9c, type: 3}
       propertyPath: SecondPlayerLocation.z
@@ -25386,8 +25386,8 @@ MonoBehaviour:
   IdleLocation: {x: -6.569801, y: -4.651791, z: -815.335}
   RoamingDestination: {x: 0, y: 0, z: 0}
   FightTriggerDistance: 1.5
-  EnemyData: {fileID: 11400000, guid: ec331601e2754f54da670923e0cf4287, type: 2}
-  ObjectiveToAdvance: {fileID: 0}
+  EnemyData: {fileID: 11400000, guid: 5773fb5f0b5f88b47b6d0ccfc4025cf8, type: 2}
+  ObjectiveToAdvance: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
   Roaming: 0
   Speed: 10
   RoamingSpeed: 5
@@ -26203,8 +26203,8 @@ MonoBehaviour:
   IdleLocation: {x: -6.569801, y: -4.651791, z: -815.335}
   RoamingDestination: {x: 0, y: 0, z: 0}
   FightTriggerDistance: 1.5
-  EnemyData: {fileID: 11400000, guid: ec331601e2754f54da670923e0cf4287, type: 2}
-  ObjectiveToAdvance: {fileID: 0}
+  EnemyData: {fileID: 11400000, guid: 0f469b8ffd39b394d8425f760d341308, type: 2}
+  ObjectiveToAdvance: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
   Roaming: 0
   Speed: 10
   RoamingSpeed: 5

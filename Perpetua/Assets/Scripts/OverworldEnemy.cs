@@ -32,7 +32,6 @@ public class OverworldEnemy : MonoBehaviour
         agent.speed = Speed;
         EnemyData enemyData = EnemyData.Clone();
         enemyData.objectiveToAdvance = ObjectiveToAdvance;
-        enemyData.stats = StatsData.Clone(EnemyData.stats);
         _sr = GetComponent<SpriteRenderer>();
         _sc = GetComponent<SphereCollider>();
         SetupEnemy(enemyData);

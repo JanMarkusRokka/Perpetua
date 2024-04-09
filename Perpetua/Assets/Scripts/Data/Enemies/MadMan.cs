@@ -4,8 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-[CreateAssetMenu(menuName = "Enemies/Wolf")]
-public class WolfData : EnemyData
+[CreateAssetMenu(menuName = "Enemies/MadMan")]
+public class MadManData : EnemyData
 {
     // make this into a battleAction (EnemyTurn or sth), have enemy decide when turn comes and then execute action
     public override BattleAction SelectTurn(BattleParticipant participant, bool guardIncluded)
@@ -33,7 +33,7 @@ public class WolfData : EnemyData
 
     public override EnemyData Clone()
     {
-        var enemyData = ScriptableObject.CreateInstance<WolfData>();
+        var enemyData = ScriptableObject.CreateInstance<MadManData>();
         CloneData(this, enemyData);
         return enemyData;
     }

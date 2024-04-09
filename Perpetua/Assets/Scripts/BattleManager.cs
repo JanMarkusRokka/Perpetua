@@ -57,6 +57,7 @@ public class BattleManager : MonoBehaviour
             {
                 GameObject enemy = Instantiate(EnemyPrefab, Enemies);
                 enemy.transform.position = EnemyPositions.Find("Enemy" + spawnLocationId).position;
+                enemy.GetComponent<Animator>().runtimeAnimatorController = agilityOrder[i].GetEnemy().animatorController;
                 enemy.name = i.ToString();
                 agilityOrder[i].transform = enemy.transform;
                 spawnLocationId++;

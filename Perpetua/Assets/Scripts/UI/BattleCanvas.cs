@@ -21,6 +21,7 @@ public class BattleCanvas : MonoBehaviour
     public GameObject ActionOptionPresenterPrefab;
     public GameObject SelectTargetLeftPanel;
     public GameObject SkillsPresenter;
+    public GameObject ItemsPresenter;
 
     [Header("Right tabs")]
     public GameObject PartyPresenter;
@@ -88,7 +89,8 @@ public class BattleCanvas : MonoBehaviour
         {
             ActionsPresenter,
             SelectTargetLeftPanel,
-            SkillsPresenter
+            SkillsPresenter,
+            ItemsPresenter
         };
     }
 
@@ -259,6 +261,8 @@ public class BattleCanvas : MonoBehaviour
 
         GameObject itemButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         itemButton.GetComponentInChildren<TextMeshProUGUI>().text = "Item";
+        itemButton.GetComponent<Button>().onClick.AddListener(delegate { LeftTC.SetTab(ItemsPresenter); });
+
 
         GameObject fleeButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         fleeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Flee";

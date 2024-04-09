@@ -73,6 +73,30 @@ public struct RuneVariables
     }
 }
 
+[Serializable]
+public struct ConsumableVariables
+{
+    [SerializeField]
+    public int healthChange;
+
+    [SerializeField]
+    public int willpowerChange;
+
+    public string GetDescription()
+    {
+        string desc = "";
+        if (healthChange != 0)
+        {
+            desc += "\nHealth: " + healthChange;
+        }
+        if (willpowerChange != 0)
+        {
+            desc += "\nWillpower: " + willpowerChange;
+        }
+        return desc;
+    }
+}
+
 [CreateAssetMenu(menuName = "Items/RegularItem")]
 [Serializable]
 public class ItemData : ScriptableObject
@@ -84,9 +108,10 @@ public class ItemData : ScriptableObject
     public WeaponVariables WeaponVariables;
     public ArmorVariables ArmorVariables;
     public RuneVariables RuneVariables;
+    public ConsumableVariables ConsumableVariables;
     public string description;
 
-    private void Init(Sprite _image, string _name, ItemTypeData _type, bool _equipped, WeaponVariables _WeaponVariables, ArmorVariables _ArmorVariables, RuneVariables _RuneVariables, string _description)
+    private void Init(Sprite _image, string _name, ItemTypeData _type, bool _equipped, WeaponVariables _WeaponVariables, ArmorVariables _ArmorVariables, RuneVariables _RuneVariables, ConsumableVariables _ConsumableVariables, string _description)
     {
         image = _image;
         name = _name;
@@ -95,6 +120,7 @@ public class ItemData : ScriptableObject
         WeaponVariables = _WeaponVariables;
         ArmorVariables = _ArmorVariables;
         RuneVariables = _RuneVariables;
+        ConsumableVariables = _ConsumableVariables;
         description = _description;
     }
 
@@ -103,7 +129,7 @@ public class ItemData : ScriptableObject
         if (item == null) return null;
         var itemData = ScriptableObject.CreateInstance<ItemData>();
 
-        itemData.Init(item.image, item.name, item.type, item.equipped, item.WeaponVariables, item.ArmorVariables, item.RuneVariables, item.description);
+        itemData.Init(item.image, item.name, item.type, item.equipped, item.WeaponVariables, item.ArmorVariables, item.RuneVariables, item.ConsumableVariables, item.description);
         return itemData;
     }
 
@@ -111,7 +137,7 @@ public class ItemData : ScriptableObject
     {
         var itemData = ScriptableObject.CreateInstance<ItemData>();
 
-        itemData.Init(image, name, type, equipped, WeaponVariables, ArmorVariables, RuneVariables, description);
+        itemData.Init(image, name, type, equipped, WeaponVariables, ArmorVariables, RuneVariables, ConsumableVariables, description);
         return itemData;
     }
 
@@ -129,6 +155,10 @@ public class ItemData : ScriptableObject
         if (!RuneVariables.Equals(null))
         {
             desc += RuneVariables.GetDescripion();
+        }
+        if (!ConsumableVariables.Equals(null))
+        {
+            desc += ConsumableVariables.GetDescription();
         }
         return desc;
     }

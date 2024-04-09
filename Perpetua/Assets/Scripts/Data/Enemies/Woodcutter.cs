@@ -34,8 +34,7 @@ public class Woodcutter : EnemyData
     public override EnemyData Clone()
     {
         var enemyData = ScriptableObject.CreateInstance<Woodcutter>();
-        StatusEffectsData statusEffectsData = StatusEffectsData.Clone(statusEffects);
-        enemyData.Init(image, name, description, stats, loot, gonerSprite, stunSeconds, attackSound, statusEffectsData, skills, ailmentsHistory, objectiveToAdvance, isStaticDialogueEnemy, isEscapable);
+        CloneData(this, enemyData);
         return enemyData;
     }
 }

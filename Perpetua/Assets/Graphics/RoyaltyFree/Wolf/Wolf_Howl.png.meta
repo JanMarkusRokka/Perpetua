@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,27 +34,27 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,18 +108,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Wolf_Howl_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 50
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20924a80e173b1f4e9a8362954b29333
+      internalID: -1411635737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 50
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 582fd0278c3ca40419e15774a3e21888
+      internalID: -1117174610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 48
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5125968, y: 0.45123848}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2704f9fc64bc5e648a6a4f05935fe7f5
+      internalID: 1635452957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_3
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 46
+        height: 35
+      alignment: 9
+      pivot: {x: 0.51314443, y: 0.42226005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35649ff32bbc8a641881e78e390356e7
+      internalID: 1568506835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_4
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 0
+        width: 48
+        height: 31
+      alignment: 9
+      pivot: {x: 0.51889545, y: 0.44148615}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8369c2d8ae459c4ebcbed97de0650b3
+      internalID: 1131240560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_5
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 0
+        width: 50
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5224457, y: 0.42759407}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c27dc4c3f7b4c5c43a98ffc36277571e
+      internalID: 1712276562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_6
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 0
+        width: 48
+        height: 31
+      alignment: 9
+      pivot: {x: 0.52338094, y: 0.45172933}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40181dfcb0000624a82373bf111cefbd
+      internalID: 1405025140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_7
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 0
+        width: 46
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5081323, y: 0.42518064}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d6aee130e2be844838e564d5dd3675
+      internalID: -933007566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_8
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 0
+        width: 48
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5077922, y: 0.42759407}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27a341d6e12a12479034feb838c1fc0
+      internalID: -757575037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wolf_Howl_9
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 0
+        width: 50
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369509dbae4ae4f4286074bcc36ab5b2
+      internalID: -2040334669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 98c167b95ba42ed46a09b7653e82c7f8
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wolf_Howl_0: -1411635737
+      Wolf_Howl_1: -1117174610
+      Wolf_Howl_2: 1635452957
+      Wolf_Howl_3: 1568506835
+      Wolf_Howl_4: 1131240560
+      Wolf_Howl_5: 1712276562
+      Wolf_Howl_6: 1405025140
+      Wolf_Howl_7: -933007566
+      Wolf_Howl_8: -757575037
+      Wolf_Howl_9: -2040334669
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
