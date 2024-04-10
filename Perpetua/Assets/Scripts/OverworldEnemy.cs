@@ -31,7 +31,6 @@ public class OverworldEnemy : MonoBehaviour
         agent.updatePosition = false;
         agent.speed = Speed;
         EnemyData enemyData = EnemyData.Clone();
-        enemyData.objectiveToAdvance = ObjectiveToAdvance;
         _sr = GetComponent<SpriteRenderer>();
         _sc = GetComponent<SphereCollider>();
         SetupEnemy(enemyData);
@@ -40,8 +39,15 @@ public class OverworldEnemy : MonoBehaviour
     public void SetupEnemy(EnemyData enemyData)
     {
         EnemyData = enemyData;
+        EnemyData.objectiveToAdvance = ObjectiveToAdvance;
         if (enemyData.stats.HealthPoints <= 0)
         {
+            if (EnemyData.isStaticDialogueEnemy)
+            {
+                _sr.sprite = EnemyData.gonerSprite;
+                GetComponent<DialogueObject>().enabled = false;
+            }
+
             agent.enabled = false;
             GetComponent<SpriteRenderer>().sprite = enemyData.gonerSprite;
             agent.transform.position = enemyData.stunLocation;

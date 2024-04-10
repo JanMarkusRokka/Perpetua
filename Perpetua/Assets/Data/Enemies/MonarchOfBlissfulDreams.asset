@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37ad7f3b92291a48874278cd83e6d70, type: 3}
-  m_Name: WoodcutterData
+  m_Script: {fileID: 11500000, guid: d2f21f1820a8fc24aa01544e211f7478, type: 3}
+  m_Name: MonarchOfBlissfulDreams
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 2fdafc0c427a37f4098b28c64f2c4e96, type: 3}
-  name: Woodcutter
-  description: Just a guy in the woods, or is he?
-  stats: {fileID: 11400000, guid: f0f92a7d57f3bde48b86765d6f2707f7, type: 2}
+  image: {fileID: 21300000, guid: bf6404a1f9c7f7545bbb197f59862d11, type: 3}
+  name: Monarch of Blissful Dreams
+  description: ...
+  stats: {fileID: 11400000, guid: d88f5799ea60d3d45a40dc2320bacded, type: 2}
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
   skills:
   - {fileID: 11400000, guid: 7b7992b7799143846a46f727585cf770, type: 2}
   loot: []
-  gonerSprite: {fileID: 2013937206, guid: 7598d671a42215c4899be9a79b58588d, type: 3}
+  gonerSprite: {fileID: 21300000, guid: 782592f783d07d24381d740fc9556ace, type: 3}
   stunSeconds: 0
   stunLocation: {x: 0, y: 0, z: 0}
-  animatorController: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: d73feee3aa98e944e850bfcb6ddb2c41, type: 2}
   attackSound: {fileID: 11400000, guid: 89b8a6e014175bf48b299d89506231bc, type: 2}
-  objectiveToAdvance: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
-  isStaticDialogueEnemy: 1
+  objectiveToAdvance: {fileID: 0}
+  isStaticDialogueEnemy: 0
   isEscapable: 0

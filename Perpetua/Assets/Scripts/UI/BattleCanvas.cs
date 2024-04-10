@@ -312,6 +312,11 @@ public class BattleCanvas : MonoBehaviour
                 }
             }
             imagePresenter.GetComponent<Image>().sprite = image;
+            if (image.textureRect.size.magnitude > new Vector2(32f, 32f).magnitude)
+            {
+                imagePresenter.GetComponent<RectTransform>().sizeDelta = image.textureRect.size / 4;
+            }
+            else
             imagePresenter.GetComponent<RectTransform>().sizeDelta = image.textureRect.size;
         }
     }

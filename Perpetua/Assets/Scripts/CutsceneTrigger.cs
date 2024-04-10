@@ -21,6 +21,7 @@ public class CutsceneTrigger : MonoBehaviour
 
     public void CutsceneEnded()
     {
+        GetComponent<BoxCollider>().enabled = false;
         player.EnableMovement();
     }
 }

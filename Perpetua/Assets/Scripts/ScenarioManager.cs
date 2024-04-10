@@ -104,16 +104,13 @@ public class ScenarioManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("not save or load next scene");
                 InventoryData inventory = ScriptableObject.CreateInstance<InventoryData>();
                 inventory.items = new List<ItemData>();
                 InventoryManager.Instance.SetInventory(inventory);
                 PartyManager.Instance.SetPartyInstantiate(scenario.StartingParty, InventoryManager.Instance.inventory);
             }
-
-            //InventoryManager.Instance.SetInventoryInstantiate(scenario.StartingInventory);
         }
-
-        //Events.Save(0);
     }
 
     public static ScenarioData NextSceneScenarioData(string nextScene)
