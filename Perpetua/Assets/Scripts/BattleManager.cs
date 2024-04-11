@@ -50,10 +50,10 @@ public class BattleManager : MonoBehaviour
     private void SpawnEnemies()
     {
         int spawnLocationId = 0;
-
+        List<EnemyData> spawnedEnemies = new();
         for (int i = 0; i < agilityOrder.Count; i++)
         {
-            if (!agilityOrder[i].IsPartyMember)
+            if (!agilityOrder[i].IsPartyMember && !spawnedEnemies.Contains(agilityOrder[i].GetEnemy()))
             {
                 GameObject enemy = Instantiate(EnemyPrefab, Enemies);
                 enemy.transform.position = EnemyPositions.Find("Enemy" + spawnLocationId).position;
@@ -61,6 +61,7 @@ public class BattleManager : MonoBehaviour
                 enemy.name = i.ToString();
                 agilityOrder[i].transform = enemy.transform;
                 spawnLocationId++;
+                spawnedEnemies.Add(agilityOrder[i].GetEnemy());
             }
         }
     }
@@ -297,11 +298,21 @@ public class BattleManager : MonoBehaviour
         List<BattleParticipant> battleParticipants = new List<BattleParticipant>();
         foreach (PartyCharacterData member in partyMembers)
         {
-            battleParticipants.Add(BattleParticipant.New(member));
+            BattleParticipant participant = BattleParticipant.New(member);
+            battleParticipants.Add(participant);
+            for (int i = 0; i < member.GetStatsWithAllEffects().ExtraTurnCount; i++)
+            {
+                battleParticipants.Add(participant);
+            }
         }
         foreach (EnemyData enemy in enemies)
         {
-            battleParticipants.Add(BattleParticipant.New(enemy));
+            BattleParticipant participant = BattleParticipant.New(enemy);
+            battleParticipants.Add(participant);
+            for (int i = 0; i < enemy.GetStatsWithAllEffects().ExtraTurnCount; i++)
+            {
+                battleParticipants.Add(participant);
+            }
         }
         return SortAgilityOrderList(battleParticipants);
     }

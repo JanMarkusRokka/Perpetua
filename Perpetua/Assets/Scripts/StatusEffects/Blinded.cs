@@ -28,17 +28,18 @@ public class Blinded : StatusEffect
         stats.Accuracy = (int)(stats.Accuracy * accuracyMultiplier); ;
     }
 
-    private void Init(int _turnsLeft, float _accuracyMultiplier, Sprite _image)
+    private void Init(int _turnsLeft, float _accuracyMultiplier, Sprite _image, string _tooltip)
     {
         turnsLeft = _turnsLeft;
         accuracyMultiplier = _accuracyMultiplier;
         image = _image;
+        tooltip = _tooltip;
     }
 
     public override StatusEffect Clone()
     {
         Blinded blinded = ScriptableObject.CreateInstance<Blinded>();
-        blinded.Init(turnsLeft, accuracyMultiplier, image);
+        blinded.Init(turnsLeft, accuracyMultiplier, image, tooltip);
         return blinded;
     }
 

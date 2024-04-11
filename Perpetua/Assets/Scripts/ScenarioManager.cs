@@ -36,6 +36,14 @@ public class ScenarioManager : MonoBehaviour
     {
         Debug.Log("Battle Triggered");
         enemyData = new List<EnemyData> { enemy.GetComponent<OverworldEnemy>().EnemyData };
+        List<GameObject> enemyGroup = enemy.GetComponent<OverworldEnemy>().EnemyGroup;
+        if (enemyGroup != null && enemyGroup.Count > 0)
+        {
+            foreach(GameObject enemyInGroup in enemyGroup)
+            {
+                enemyData.Add(enemyInGroup.GetComponent<OverworldEnemy>().EnemyData);
+            }
+        }
         List<PartyCharacterData> partyMembersData = PartyManager.Instance.party.PartyMembers;
         currentScenario = SaveDataBeforeBattle(player.transform);
         Time.timeScale = 0.1f;

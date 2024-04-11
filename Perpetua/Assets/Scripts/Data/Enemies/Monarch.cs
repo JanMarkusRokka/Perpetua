@@ -15,6 +15,9 @@ public class MonarchData : EnemyData
         AttackWithSpecificStatusEffect awsse = (AttackWithSpecificStatusEffect)skills[0].Clone();
         awsse.participant = participant;
         awsse.recipient = target;
+        AttackWithSpecificStatusEffect stunAttack = (AttackWithSpecificStatusEffect)skills[1].Clone();
+        stunAttack.participant = participant;
+        stunAttack.recipient = target;
 
         Attack attack = Attack.New(participant, target);
 
@@ -23,7 +26,8 @@ public class MonarchData : EnemyData
         Dictionary<BattleAction, int> actionsAndWeights = new Dictionary<BattleAction, int>
         {
             {awsse, 10},
-            {attack, 10},
+            {attack, 15},
+            {stunAttack, 10}
         };
 
         if (guardIncluded) actionsAndWeights.Add(guard, 10);

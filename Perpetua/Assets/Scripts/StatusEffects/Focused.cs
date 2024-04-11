@@ -28,17 +28,18 @@ public class Focused : StatusEffect
         stats.CriticalChance = (int)(Mathf.Max(100, stats.CriticalChance * criticalChanceMultiplier));
     }
 
-    private void Init(int _turnsLeft, float _criticalChanceMultiplier, Sprite _image)
+    private void Init(int _turnsLeft, float _criticalChanceMultiplier, Sprite _image, string _tooltip)
     {
         turnsLeft = _turnsLeft;
         criticalChanceMultiplier = _criticalChanceMultiplier;
         image = _image;
+        tooltip = _tooltip;
     }
 
     public override StatusEffect Clone()
     {
         Focused focused = ScriptableObject.CreateInstance<Focused>();
-        focused.Init(turnsLeft, criticalChanceMultiplier, image);
+        focused.Init(turnsLeft, criticalChanceMultiplier, image, tooltip);
         return focused;
     }
 

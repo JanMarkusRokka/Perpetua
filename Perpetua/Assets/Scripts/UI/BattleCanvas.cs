@@ -185,6 +185,7 @@ public class BattleCanvas : MonoBehaviour
                 {
                     GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsBar.transform);
                     statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
+                    SetStatusEffectTooltip(statusEffectPres, statusEffect);
                 }
             }
         }
@@ -339,6 +340,8 @@ public class BattleCanvas : MonoBehaviour
     public void PopulatePartyTab()
     {
         ClearTab(PartyPresenter);
+        List<BattleParticipant> spawnedMembers = new();
+
         List<BattleParticipant> agilityOrder = BattleManager.agilityOrder;
 
         for (int i = 0; i < agilityOrder.Count; i++)
@@ -346,48 +349,53 @@ public class BattleCanvas : MonoBehaviour
             BattleParticipant turnTaker = agilityOrder[i];
             if (turnTaker.IsPartyMember)
             {
-                PartyCharacterData partyMember = turnTaker.GetPartyMember();
-                GameObject partyMemberPresenter = Instantiate(PartyMemberPresenterPrefab, PartyPresenter.transform);
-                turnTaker.transform = partyMemberPresenter.transform;
-                if (partyMember.stats.HealthPoints <= 0)
+                if (!spawnedMembers.Contains(turnTaker))
                 {
-                    partyMemberPresenter.transform.Find("Image").GetComponent<Image>().sprite = CrossImage;
-                }
-                else
-                {
-                    partyMemberPresenter.transform.Find("Image").GetComponent<Image>().sprite = partyMember.image;
-                }
-                partyMemberPresenter.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = partyMember.image.textureRect.size * 2;
-                partyMemberPresenter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = partyMember.name;
-                partyMemberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.HealthPoints) / ((float)partyMember.stats.MaxHealthPoints);
-                partyMemberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.HealthPoints + "/" + partyMember.stats.MaxHealthPoints;
-                partyMemberPresenter.transform.Find("WillPowerBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.WillPower) / ((float)partyMember.stats.MaxWillPower);
-                partyMemberPresenter.transform.Find("WillPowerStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.WillPower + "/" + partyMember.stats.MaxWillPower;
-                Transform statusEffectsPresenter = partyMemberPresenter.transform.Find("StatusEffectsPresenter");
-                foreach(StatusEffect statusEffect in partyMember.statusEffects.statusEffects)
-                {
-                    GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsPresenter.transform);
-                    statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
-                }
-                Transform runesPresenter = partyMemberPresenter.transform.Find("RunesPresenter");
-                List<ItemData> runes = new List<ItemData> { partyMember.equipment.rune1, partyMember.equipment.rune2 };
-                foreach(ItemData rune in runes)
-                {
-                    if (rune)
+                    spawnedMembers.Add(turnTaker);
+                    PartyCharacterData partyMember = turnTaker.GetPartyMember();
+                    GameObject partyMemberPresenter = Instantiate(PartyMemberPresenterPrefab, PartyPresenter.transform);
+                    turnTaker.transform = partyMemberPresenter.transform;
+                    if (partyMember.stats.HealthPoints <= 0)
                     {
-                        GameObject itemPres = Instantiate(ItemPresenterPrefab, runesPresenter.transform);
-                        Image image = itemPres.transform.GetChild(0).GetComponent<Image>();
-                        image.sprite = rune.image;
-                        image.GetComponent<RectTransform>().sizeDelta = rune.image.textureRect.size;
-                        TooltipTrigger tooltip = itemPres.GetComponent<TooltipTrigger>();
-                        tooltip.header = rune.name;
-                        tooltip.description = rune.GetDescription();
+                        partyMemberPresenter.transform.Find("Image").GetComponent<Image>().sprite = CrossImage;
                     }
+                    else
+                    {
+                        partyMemberPresenter.transform.Find("Image").GetComponent<Image>().sprite = partyMember.image;
+                    }
+                    partyMemberPresenter.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = partyMember.image.textureRect.size * 2;
+                    partyMemberPresenter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = partyMember.name;
+                    partyMemberPresenter.transform.Find("HealthBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.HealthPoints) / ((float)partyMember.stats.MaxHealthPoints);
+                    partyMemberPresenter.transform.Find("HealthStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.HealthPoints + "/" + partyMember.stats.MaxHealthPoints;
+                    partyMemberPresenter.transform.Find("WillPowerBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.WillPower) / ((float)partyMember.stats.MaxWillPower);
+                    partyMemberPresenter.transform.Find("WillPowerStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.WillPower + "/" + partyMember.stats.MaxWillPower;
+                    Transform statusEffectsPresenter = partyMemberPresenter.transform.Find("StatusEffectsPresenter");
+                    foreach (StatusEffect statusEffect in partyMember.statusEffects.statusEffects)
+                    {
+                        GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsPresenter.transform);
+                        statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
+                        SetStatusEffectTooltip(statusEffectPres, statusEffect);
+                    }
+                    Transform runesPresenter = partyMemberPresenter.transform.Find("RunesPresenter");
+                    List<ItemData> runes = new List<ItemData> { partyMember.equipment.rune1, partyMember.equipment.rune2 };
+                    foreach (ItemData rune in runes)
+                    {
+                        if (rune)
+                        {
+                            GameObject itemPres = Instantiate(ItemPresenterPrefab, runesPresenter.transform);
+                            Image image = itemPres.transform.GetChild(0).GetComponent<Image>();
+                            image.sprite = rune.image;
+                            image.GetComponent<RectTransform>().sizeDelta = rune.image.textureRect.size;
+                            TooltipTrigger tooltip = itemPres.GetComponent<TooltipTrigger>();
+                            tooltip.header = rune.name;
+                            tooltip.description = rune.GetDescription();
+                        }
+                    }
+                    partyMemberPresenter.name = i.ToString();
                 }
-                partyMemberPresenter.name = i.ToString();
                 if (i == BattleManager.currentTurn)
                 {
-                    partyMemberPresenter.GetComponent<Image>().color = partyMemberHighlightColor;
+                    turnTaker.transform.GetComponent<Image>().color = partyMemberHighlightColor;
                 }
             }
         }
@@ -416,8 +424,16 @@ public class BattleCanvas : MonoBehaviour
             {
                 GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsPresenter.transform);
                 statusEffectPres.transform.GetChild(0).GetComponent<Image>().sprite = statusEffect.image;
+                SetStatusEffectTooltip(statusEffectPres, statusEffect);
             }
         }
+    }
+
+    private void SetStatusEffectTooltip(GameObject gameObject, StatusEffect statusEffect)
+    {
+        TooltipTrigger tooltip = gameObject.GetComponent<TooltipTrigger>();
+        tooltip.header = statusEffect.tooltip;
+        tooltip.description = "";
     }
 
     public void SetPartyMemberColor(Transform member, Color color)

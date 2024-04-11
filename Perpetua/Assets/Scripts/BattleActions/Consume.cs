@@ -27,7 +27,7 @@ public class Consume : BattleAction
         BattleCanvas battleCanvas = BattleManager.Instance.BattleCanvas;
         battleCanvas.SetPartyMemberColor(participant.transform, Color.green);
         battleCanvas.battleEffects.DisplayFloatingTextHUD(participant.transform, item.ConsumableVariables.healthChange.ToString() + "HP");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         battleCanvas.battleEffects.DisplayFloatingTextHUD(participant.transform, item.ConsumableVariables.willpowerChange.ToString() + "WP");
         yield return new WaitForSeconds(0.5f);
         battleCanvas.UpdatePartyTabStats();

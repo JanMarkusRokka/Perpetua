@@ -27,3 +27,4 @@ MonoBehaviour:
   WillPower: 0
   MaxWillPower: 0
   Detectability: 0
+  ExtraTurnCount: 1

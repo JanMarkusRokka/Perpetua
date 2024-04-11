@@ -21,6 +21,7 @@ public class OverworldEnemy : MonoBehaviour
     public float RoamingSpeed;
     private SpriteRenderer _sr;
     private SphereCollider _sc;
+    public List<GameObject> EnemyGroup;
 
     private void Awake()
     {
@@ -46,7 +47,13 @@ public class OverworldEnemy : MonoBehaviour
             {
                 _sr.sprite = EnemyData.gonerSprite;
                 GetComponent<DialogueObject>().enabled = false;
+                transform.GetChild(0).gameObject.SetActive(true);
             }
+            foreach(ItemData item in EnemyData.loot)
+            {
+                Events.ReceiveItem(item.Clone());
+            }
+            EnemyData.loot = new();
 
             agent.enabled = false;
             GetComponent<SpriteRenderer>().sprite = enemyData.gonerSprite;

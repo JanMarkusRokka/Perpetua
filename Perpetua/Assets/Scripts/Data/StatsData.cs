@@ -28,9 +28,11 @@ public class StatsData : ScriptableObject
 
     public int Detectability;
 
+    public int ExtraTurnCount;
+
     private void Init(int _HealthPoints, int _MaxHealthPoints, int _PhysicalDamage, int _MagicDamage, int _PhysicalDefense,
         int _MagicDefense, float _AilmentResistance, int _AttackSpeed, float _Dodge, int _Accuracy,
-        int _CriticalChance, float _CriticalMultiplier, int _WillPower, int _MaxWillPower, int _Detectability)
+        int _CriticalChance, float _CriticalMultiplier, int _WillPower, int _MaxWillPower, int _Detectability, int _ExtraTurnCount)
     {
         HealthPoints = _HealthPoints;
         MaxHealthPoints = _MaxHealthPoints;
@@ -55,17 +57,18 @@ public class StatsData : ScriptableObject
         MaxWillPower = _MaxWillPower;
 
         Detectability = _Detectability;
+        ExtraTurnCount = _ExtraTurnCount;
     }
 
     public static StatsData New(int HealthPoints, int MaxHealthPoints, int PhysicalDamage, int MagicDamage, int PhysicalDefense,
         int MagicDefense, float AilmentResistance, int AttackSpeed, float Dodge, int Accuracy,
-        int CriticalChance, float CriticalMultiplier, int WillPower, int MaxWillPower, int Detectability)
+        int CriticalChance, float CriticalMultiplier, int WillPower, int MaxWillPower, int Detectability, int ExtraTurnCount)
     {
         var statsData = ScriptableObject.CreateInstance<StatsData>();
 
         statsData.Init(HealthPoints, MaxHealthPoints, PhysicalDamage, MagicDamage, PhysicalDefense,
         MagicDefense, AilmentResistance, AttackSpeed, Dodge, Accuracy,
-        CriticalChance, CriticalMultiplier, WillPower, MaxWillPower, Detectability);
+        CriticalChance, CriticalMultiplier, WillPower, MaxWillPower, Detectability, ExtraTurnCount);
         return statsData;
     }
 
@@ -77,7 +80,7 @@ public class StatsData : ScriptableObject
 
         statsData.Init(stats.HealthPoints, stats.MaxHealthPoints, stats.PhysicalDamage, stats.MagicDamage, stats.PhysicalDefense,
         stats.MagicDefense, stats.AilmentResistance, stats.AttackSpeed, stats.Dodge, stats.Accuracy,
-        stats.CriticalChance, stats.CriticalMultiplier, stats.WillPower, stats.MaxWillPower, stats.Detectability);
+        stats.CriticalChance, stats.CriticalMultiplier, stats.WillPower, stats.MaxWillPower, stats.Detectability, stats.ExtraTurnCount);
         return statsData;
     }
 
@@ -106,6 +109,7 @@ public class StatsData : ScriptableObject
             MagicDamage += item.WeaponVariables.WeaponMagicDamage;
             PhysicalDefense += item.ArmorVariables.ArmorDefense;
             MagicDefense += item.ArmorVariables.ArmorMagicDefense;
+            ExtraTurnCount += item.RuneVariables.extraTurns;
         }
     }
 }

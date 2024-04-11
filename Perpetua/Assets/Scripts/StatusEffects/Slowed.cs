@@ -23,17 +23,18 @@ public class Slowed : StatusEffect
         stats.AttackSpeed = (int) (stats.AttackSpeed * slowMultiplier);
     }
 
-    private void Init(int _turnsLeft, float _slowMultiplier, Sprite _image)
+    private void Init(int _turnsLeft, float _slowMultiplier, Sprite _image, string _tooltip)
     {
         turnsLeft = _turnsLeft;
         slowMultiplier = _slowMultiplier;
         image = _image;
+        tooltip = _tooltip;
     }
 
     public override StatusEffect Clone()
     {
         Slowed slowed = ScriptableObject.CreateInstance<Slowed>();
-        slowed.Init(turnsLeft, slowMultiplier, image);
+        slowed.Init(turnsLeft, slowMultiplier, image, tooltip);
         return slowed;
     }
 

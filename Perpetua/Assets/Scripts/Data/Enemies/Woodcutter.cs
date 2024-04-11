@@ -24,6 +24,7 @@ public class Woodcutter : EnemyData
         {
             {awsse, 10},
             {attack, 10},
+            {Skip.New(participant), 10 }
         };
 
         if (guardIncluded) actionsAndWeights.Add(guard, 10);

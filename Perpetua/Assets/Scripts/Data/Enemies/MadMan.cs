@@ -7,6 +7,7 @@ using UnityEngine.TextCore.Text;
 [CreateAssetMenu(menuName = "Enemies/MadMan")]
 public class MadManData : EnemyData
 {
+    int turn;
     // make this into a battleAction (EnemyTurn or sth), have enemy decide when turn comes and then execute action
     public override BattleAction SelectTurn(BattleParticipant participant, bool guardIncluded)
     {
@@ -16,6 +17,13 @@ public class MadManData : EnemyData
         awsse.participant = participant;
         awsse.recipient = target;
 
+        if (turn < 4)
+        {
+            IntentionalMiss miss = (IntentionalMiss)IntentionalMiss.New(participant, target);
+            turn++;
+            return miss;
+        }
+
         Attack attack = Attack.New(participant, target);
 
         Guard guard = Guard.New(participant);
@@ -23,7 +31,7 @@ public class MadManData : EnemyData
         Dictionary<BattleAction, int> actionsAndWeights = new Dictionary<BattleAction, int>
         {
             {awsse, 10},
-            {attack, 10},
+            {attack, 10}
         };
 
         if (guardIncluded) actionsAndWeights.Add(guard, 10);
@@ -35,6 +43,7 @@ public class MadManData : EnemyData
     {
         var enemyData = ScriptableObject.CreateInstance<MadManData>();
         CloneData(this, enemyData);
+        enemyData.turn = turn;
         return enemyData;
     }
 }

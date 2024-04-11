@@ -27,16 +27,17 @@ public class Stunned : StatusEffect
         stats.AttackSpeed = 0;
     }
 
-    private void Init(int _turnsLeft, Sprite _image)
+    private void Init(int _turnsLeft, Sprite _image, string _tooltip)
     {
         turnsLeft = _turnsLeft;
         image = _image;
+        tooltip = _tooltip;
     }
 
     public override StatusEffect Clone()
     {
         Stunned stunned = ScriptableObject.CreateInstance<Stunned>();
-        stunned.Init(turnsLeft, image);
+        stunned.Init(turnsLeft, image, tooltip);
         return stunned;
     }
 

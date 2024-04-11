@@ -28,17 +28,18 @@ public class Shrouded : StatusEffect
         stats.Detectability = (int)(stats.Detectability * detectabilityMultiplier);
     }
 
-    private void Init(int _turnsLeft, float _detectabilityMultiplier, Sprite _image)
+    private void Init(int _turnsLeft, float _detectabilityMultiplier, Sprite _image, string _tooltip)
     {
         turnsLeft = _turnsLeft;
         detectabilityMultiplier = _detectabilityMultiplier;
         image = _image;
+        tooltip = _tooltip;
     }
 
     public override StatusEffect Clone()
     {
         Shrouded shrouded = ScriptableObject.CreateInstance<Shrouded>();
-        shrouded.Init(turnsLeft, detectabilityMultiplier, image);
+        shrouded.Init(turnsLeft, detectabilityMultiplier, image, tooltip);
         return shrouded;
     }
 

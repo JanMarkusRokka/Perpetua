@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5086017865a77848ae08f171ce82c8d, type: 3}
+  m_Name: WoodcutterSlowingAttack
+  m_EditorClassIdentifier: 
+  tooltip: 
+  participant: {fileID: 0}
+  recipient: {fileID: 0}
+  statusEffect: {fileID: 11400000, guid: b3727e2b1e33d194f9d3830bd9cc719f, type: 2}
+  WillPowerUsage: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -196,8 +197,12 @@ public class Attack : AttackAction
             Mathf.Max(0f, baseMagicDamage * criticalMultiplier - magicDefense));
         return totalDamage;
     }
-
     public IEnumerator AnimateAttack(BattleManager battleManager, BattleCanvas battleCanvas, int totalDamage, bool commitNextAction)
+    {
+        yield return BattleManager.Instance.StartCoroutine(AnimateAttack(battleManager, battleCanvas, totalDamage, commitNextAction, recipient));
+        yield break;
+    }
+    public IEnumerator AnimateAttack(BattleManager battleManager, BattleCanvas battleCanvas, int totalDamage, bool commitNextAction, BattleParticipant attackRecipient)
     {
         yield return new WaitForSeconds(0.1f);
         if (participant.IsPartyMember)
@@ -205,11 +210,11 @@ public class Attack : AttackAction
             BattleEffects battleEffects = battleCanvas.battleEffects;
             battleCanvas.SetEnemyHealthBars(true);
             battleCanvas.SetPartyMemberColor(participant.transform, Color.blue);
-            Transform recipientTransform = recipient.transform;
+            Transform recipientTransform = attackRecipient.transform;
             battleEffects.DisplayAttackEnemyEffect(recipientTransform);
 
             yield return new WaitForSeconds(0.5f);
-            recipient.participant.stats.HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
+            attackRecipient.participant.stats.HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
 
             Color defaultColor = recipientTransform.GetComponent<SpriteRenderer>().color;
             recipientTransform.GetComponent<SpriteRenderer>().color = Color.red;
@@ -233,19 +238,19 @@ public class Attack : AttackAction
             BattleEffects battleEffects = battleCanvas.battleEffects;
             Transform attackerTransform = participant.transform;
             attackerTransform.GetComponent<BattleEnemyAnimator>().PlayAttackAnimation();
-            battleCanvas.SetPartyMemberColor(recipient.transform, Color.red);
+            battleCanvas.SetPartyMemberColor(attackRecipient.transform, Color.red);
             yield return new WaitForSeconds(0.75f);
             participant.GetEnemy().attackSound.Play();
             battleEffects.DisplayDamageValueHUD(recipient.transform, totalDamage);
-            recipient.participant.stats.HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
+            attackRecipient.participant.stats.HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
 
             HashSet<Type> types = new HashSet<Type> { typeof(Shrouded), typeof(Focused) };
-            StatusEffectsData recipientSF = recipient.GetStatusEffectsData();
+            StatusEffectsData recipientSF = attackRecipient.GetStatusEffectsData();
             recipientSF.statusEffects.RemoveAll(a => types.Contains(a.GetType()));
 
             battleCanvas.UpdatePartyTabStats();
             yield return new WaitForSeconds(0.75f);
-            battleCanvas.ResetPartyMemberColor(recipient.transform);
+            battleCanvas.ResetPartyMemberColor(attackRecipient.transform);
         }
         if (commitNextAction)
         battleManager.CommitNextAction();
@@ -254,6 +259,12 @@ public class Attack : AttackAction
 
     public IEnumerator AnimateMiss(BattleManager battleManager, BattleCanvas battleCanvas, bool commitNextAction)
     {
+        yield return BattleManager.Instance.StartCoroutine(AnimateMiss(battleManager, battleCanvas, commitNextAction, recipient));
+        yield break;
+    }
+
+    public IEnumerator AnimateMiss(BattleManager battleManager, BattleCanvas battleCanvas, bool commitNextAction, BattleParticipant attackRecipient)
+    {
         yield return new WaitForSeconds(0.1f);
 
         if (participant.IsPartyMember)
@@ -261,7 +272,7 @@ public class Attack : AttackAction
             BattleEffects battleEffects = battleCanvas.battleEffects;
             battleCanvas.SetPartyMemberColor(participant.transform, Color.blue);
             yield return new WaitForSeconds(0.5f);
-            battleEffects.DisplayFloatingText(recipient.transform, "Miss");
+            battleEffects.DisplayFloatingText(attackRecipient.transform, "Miss");
             yield return new WaitForSeconds(0.5f);
             battleCanvas.ResetPartyMemberColor(participant.transform);
         }
@@ -271,14 +282,14 @@ public class Attack : AttackAction
             BattleEffects battleEffects = battleCanvas.battleEffects;
             Transform attackerTransform = participant.transform;
             attackerTransform.GetComponent<BattleEnemyAnimator>().PlayAttackAnimation();
-            battleCanvas.SetPartyMemberColor(recipient.transform, Color.red);
+            battleCanvas.SetPartyMemberColor(attackRecipient.transform, Color.red);
             yield return new WaitForSeconds(0.75f);
             participant.GetEnemy().attackSound.Play();
-            battleEffects.DisplayFloatingTextHUD(recipient.transform, "Miss");
+            battleEffects.DisplayFloatingTextHUD(attackRecipient.transform, "Miss");
 
             battleCanvas.UpdatePartyTabStats();
             yield return new WaitForSeconds(0.75f);
-            battleCanvas.ResetPartyMemberColor(recipient.transform);
+            battleCanvas.ResetPartyMemberColor(attackRecipient.transform);
         }
         if (commitNextAction)
         battleManager.CommitNextAction();
@@ -443,5 +454,103 @@ public class EnemyTurn : BattleAction
     public override bool SelectEnemy()
     {
         return false;
+    }
+}
+
+public class Skip : BattleAction
+{
+    public BattleParticipant participant;
+
+    public override BattleAction Clone()
+    {
+        Skip skip = ScriptableObject.CreateInstance<Skip>();
+        skip.participant = participant;
+        return skip;
+    }
+
+    public static BattleAction New(BattleParticipant participant)
+    {
+        Skip skip = ScriptableObject.CreateInstance<Skip>();
+        skip.participant = participant;
+        return skip;
+    }
+
+    public override void CommitAction()
+    {
+        BattleManager.Instance.CommitNextAction();
+    }
+
+    public override BattleAction CreateFromUI(List<BattleParticipant> participants)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override string GetName()
+    {
+        return "Skip";
+    }
+
+    public override BattleParticipant GetParticipant()
+    {
+        return participant;
+    }
+
+    public override int GetWillPowerUsage()
+    {
+        return 0;
+    }
+
+    public override bool SelectEnemy()
+    {
+        return false;
+    }
+}
+
+public class IntentionalMiss : Attack
+{
+    public override BattleAction Clone()
+    {
+        IntentionalMiss miss = ScriptableObject.CreateInstance<IntentionalMiss>();
+        miss.participant = participant;
+        miss.recipient = recipient;
+        return miss;
+    }
+
+    public new static Attack New(BattleParticipant _attacker, BattleParticipant _recipient)
+    {
+        IntentionalMiss miss = ScriptableObject.CreateInstance<IntentionalMiss>();
+        miss.participant = _attacker;
+        miss.recipient = _recipient;
+        return miss;
+    }
+
+    public override void CommitAction()
+    {
+        BattleManager.Instance.StartCoroutine(AnimateMiss(BattleManager.Instance, BattleManager.Instance.BattleCanvas, true));
+    }
+
+    public override BattleAction CreateFromUI(List<BattleParticipant> participants)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override string GetName()
+    {
+        return "Intentional Miss";
+    }
+
+    public override BattleParticipant GetParticipant()
+    {
+        return participant;
+    }
+
+    public override int GetWillPowerUsage()
+    {
+        return 0;
+    }
+
+    public override bool SelectEnemy()
+    {
+        return true;
     }
 }

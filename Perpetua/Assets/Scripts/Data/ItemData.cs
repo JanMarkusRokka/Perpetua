@@ -57,6 +57,9 @@ public struct RuneVariables
     [SerializeField]
     public List<StatusEffect> recipientStatusEffects;
 
+    [SerializeField]
+    public int extraTurns;
+
     public string GetDescripion()
     {
         string desc = "";
@@ -68,6 +71,10 @@ public struct RuneVariables
         {
             desc += "\n" + recipientStatusEffects[i].name;
             
+        }
+        if (extraTurns != 0)
+        {
+            desc += "\nExtra turns:" + extraTurns;
         }
         return desc;
     }

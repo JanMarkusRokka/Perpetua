@@ -18,12 +18,13 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: f0f92a7d57f3bde48b86765d6f2707f7, type: 2}
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
   skills:
-  - {fileID: 11400000, guid: 7b7992b7799143846a46f727585cf770, type: 2}
-  loot: []
+  - {fileID: 11400000, guid: 050ae747b91a61f4aba88ebfb9e8aeed, type: 2}
+  loot:
+  - {fileID: 11400000, guid: 0afd3b1a9fe2818488fd84a8e64ce674, type: 2}
   gonerSprite: {fileID: 2013937206, guid: 7598d671a42215c4899be9a79b58588d, type: 3}
   stunSeconds: 0
   stunLocation: {x: 0, y: 0, z: 0}
-  animatorController: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: 51d026586c1599a42bf57e3e9d55ac49, type: 2}
   attackSound: {fileID: 11400000, guid: 89b8a6e014175bf48b299d89506231bc, type: 2}
   objectiveToAdvance: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
   isStaticDialogueEnemy: 1
