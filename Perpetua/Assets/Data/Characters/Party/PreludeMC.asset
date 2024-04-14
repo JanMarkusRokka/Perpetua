@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PreludeMC
   m_EditorClassIdentifier: 
   image: {fileID: 575218675, guid: a511b441918fb934bba92a02ca6a1fe1, type: 3}
-  name: Elizabeth
+  name: "M\xE4rta"
   description: A person who wants to save others from suffering the same fate as
     her relatives. Good at using swords.
   stats: {fileID: 11400000, guid: 156342c91c138aa4789ef1492adda373, type: 2}

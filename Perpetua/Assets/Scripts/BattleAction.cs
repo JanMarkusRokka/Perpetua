@@ -16,6 +16,7 @@ public abstract class BattleAction : ScriptableObject
     public abstract int GetWillPowerUsage();
     public abstract BattleAction CreateFromUI(List<BattleParticipant> participants);
     public abstract bool SelectEnemy();
+    public abstract bool SelectPartyMember();
 }
 
 // Main class for all attacks (skills) that inflict status effects
@@ -111,6 +112,11 @@ public class AttackAction : BattleAction
     public override bool SelectEnemy()
     {
         return true;
+    }
+
+    public override bool SelectPartyMember()
+    {
+        return false;
     }
 }
 
@@ -406,6 +412,10 @@ public class Guard : BattleAction
     {
         return false;
     }
+    public override bool SelectPartyMember()
+    {
+        return false;
+    }
 }
 
 public class EnemyTurn : BattleAction
@@ -452,6 +462,10 @@ public class EnemyTurn : BattleAction
     }
 
     public override bool SelectEnemy()
+    {
+        return false;
+    }
+    public override bool SelectPartyMember()
     {
         return false;
     }
@@ -504,6 +518,10 @@ public class Skip : BattleAction
     {
         return false;
     }
+    public override bool SelectPartyMember()
+    {
+        return false;
+    }
 }
 
 public class IntentionalMiss : Attack
@@ -552,5 +570,9 @@ public class IntentionalMiss : Attack
     public override bool SelectEnemy()
     {
         return true;
+    }
+    public override bool SelectPartyMember()
+    {
+        return false;
     }
 }

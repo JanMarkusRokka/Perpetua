@@ -59,6 +59,7 @@ public class BattleCanvas : MonoBehaviour
     public TabsController RightTC;
     private IEnumerator RevealTextCoroutine = null;
     private bool SelectEnm;
+    private bool SelectPM;
     private BattleAction currentAction;
 
     void Start()
@@ -115,27 +116,34 @@ public class BattleCanvas : MonoBehaviour
         */
     }
 
+    public void SetSelectPartyMembers(bool value)
+    {
+        SelectPM = value;
+        SetSelectionButtons(value, PartyPresenter.transform);
+    }
+
     public void SetSelectEnm(bool value)
     {
         SelectEnm = value;
-        SetEnemySelectionButtons(value);
+        SetSelectionButtons(value, BattleManager.Enemies);
         SetEnemyHealthBars(value);
         //SetEnemyHoverHighlight(value);
     }
 
-    public void SetEnemySelectionButtons(bool value)
+    public void SetSelectionButtons(bool value, Transform trans)
     {
         if (value)
         {
-            Transform Enemies = BattleManager.Enemies;
-            for (int i = 0; i < Enemies.childCount; i++)
+            for (int i = 0; i < trans.childCount; i++)
             {
-                Transform child = Enemies.GetChild(i);
-                Vector3 pos = Camera.main.WorldToScreenPoint(child.position);
+                Transform child = trans.GetChild(i);
+                Vector3 pos = child.position;
+                if (!trans.GetComponent<RectTransform>())
+                    pos = Camera.main.WorldToScreenPoint(child.position);
                 GameObject selectable = Instantiate(EnemySelectionPrefab, Selections.transform);
                 selectable.transform.position = pos;
                 selectable.transform.rotation = transform.rotation;
-                selectable.GetComponent<Button>().onClick.AddListener(delegate { SelectEnemy(child); });
+                selectable.GetComponent<Button>().onClick.AddListener(delegate { SelectTarget(child); });
                 if (i == 0) selectable.GetComponent<Button>().Select();
             }
         }
@@ -218,6 +226,7 @@ public class BattleCanvas : MonoBehaviour
     }
 
     // Finds transform from list of parent's children based on mouse position
+    /*
     private Transform SelectRay(Transform parent)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -234,7 +243,7 @@ public class BattleCanvas : MonoBehaviour
             }
         }
         return null;
-    }
+    }*/
 
 
 
@@ -284,50 +293,61 @@ public class BattleCanvas : MonoBehaviour
         //BattleManager.AddActionToQueue(actionType.New(BattleManager.GetCurrentTurnTaker(),));
     }
 
+    public void StartSelectPartyMember(BattleAction battleAction)
+    {
+        currentAction = battleAction;
+        SetSelectPartyMembers(true);
+        LeftTC.SetTab(SelectTargetLeftPanel);
+    }
+
     public void DisplayTurnOrder(List<BattleParticipant> participants)
     {
         ClearTab(TurnOrderPresenter);
         for (int i = 0; i < participants.Count; i++)
         {
             BattleParticipant participant = participants[i];
-
-            Sprite image = null;
-            Transform imagePresenter = null;
-            if (participant.IsPartyMember)
+            if (participant.GetStatsData().HealthPoints > 0)
             {
-                GameObject p = Instantiate(OrderCharPresenter, TurnOrderPresenter.transform);
-                p.name = i.ToString();
-                foreach (Transform child in p.transform)
+                Sprite image = null;
+                Transform imagePresenter = null;
+                if (participant.IsPartyMember)
                 {
-                    imagePresenter = child;
-                    image = participant.GetPartyMember().image;
+                    GameObject p = Instantiate(OrderCharPresenter, TurnOrderPresenter.transform);
+                    p.name = i.ToString();
+                    foreach (Transform child in p.transform)
+                    {
+                        imagePresenter = child;
+                        image = participant.GetPartyMember().image;
+                    }
                 }
-            } else
-            {
-                GameObject p = Instantiate(OrderCharPresenter, TurnOrderPresenter.transform);
-                p.name = i.ToString();
-                foreach (Transform child in p.transform)
+                else
                 {
-                    imagePresenter = child;
-                    image = participant.GetEnemy().image;
+                    GameObject p = Instantiate(OrderCharPresenter, TurnOrderPresenter.transform);
+                    p.name = i.ToString();
+                    foreach (Transform child in p.transform)
+                    {
+                        imagePresenter = child;
+                        image = participant.GetEnemy().image;
+                    }
                 }
+                imagePresenter.GetComponent<Image>().sprite = image;
+                if (image.textureRect.size.magnitude > new Vector2(32f, 32f).magnitude)
+                {
+                    imagePresenter.GetComponent<RectTransform>().sizeDelta = image.textureRect.size / 4;
+                }
+                else
+                    imagePresenter.GetComponent<RectTransform>().sizeDelta = image.textureRect.size;
             }
-            imagePresenter.GetComponent<Image>().sprite = image;
-            if (image.textureRect.size.magnitude > new Vector2(32f, 32f).magnitude)
-            {
-                imagePresenter.GetComponent<RectTransform>().sizeDelta = image.textureRect.size / 4;
-            }
-            else
-            imagePresenter.GetComponent<RectTransform>().sizeDelta = image.textureRect.size;
         }
     }
 
-    private void SelectEnemy(Transform Enemy)
+    private void SelectTarget(Transform target)
     {
         SetSelectEnm(false);
+        SetSelectPartyMembers(false);
         //StopTextCoroutine();
         TextPresenter.text = "";
-        BattleAction action = currentAction.CreateFromUI(new List<BattleParticipant> { BattleManager.agilityOrder[BattleManager.currentTurn], BattleManager.agilityOrder[int.Parse(Enemy.name)] });
+        BattleAction action = currentAction.CreateFromUI(new List<BattleParticipant> { BattleManager.agilityOrder[BattleManager.currentTurn], BattleManager.agilityOrder[int.Parse(target.name)] });
         BattleManager.AddActionToQueue(action);
     }
 
@@ -396,6 +416,8 @@ public class BattleCanvas : MonoBehaviour
                 if (i == BattleManager.currentTurn)
                 {
                     turnTaker.transform.GetComponent<Image>().color = partyMemberHighlightColor;
+                    turnTaker.transform.GetComponent<RectTransform>().localScale = new Vector3(1.1f, 1.1f, 1f);
+
                 }
             }
         }

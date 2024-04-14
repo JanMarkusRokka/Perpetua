@@ -181,7 +181,7 @@ public class BattleManager : MonoBehaviour
             List<StatusEffect> statusEffects = participant.GetStatusEffectsData().statusEffects;
             foreach (StatusEffect statusEffect in statusEffects)
             {
-                statusEffect.InflictActiveStatusEffect(participant);
+                yield return StartCoroutine(statusEffect.InflictActiveStatusEffect(participant));
             }
             participant.GetStatusEffectsData().statusEffects.RemoveAll(sf => sf.GetTurnsLeft() <= 0);
         }
@@ -190,7 +190,7 @@ public class BattleManager : MonoBehaviour
         BattleCanvas.PopulatePartyTab();
 
 
-        StartCoroutine(WaitBeforeNextAction(0.5f));
+        StartCoroutine(WaitBeforeNextAction(1f));
     }
 
     private IEnumerator WaitBeforeNextAction(float secs)

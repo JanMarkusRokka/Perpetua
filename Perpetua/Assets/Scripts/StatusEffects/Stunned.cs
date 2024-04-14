@@ -17,9 +17,10 @@ public class Stunned : StatusEffect
         return turnsLeft;
     }
 
-    public override void InflictActiveStatusEffect(BattleParticipant participant)
+    public override IEnumerator InflictActiveStatusEffect(BattleParticipant participant)
     {
         turnsLeft--;
+        yield break;
     }
 
     public override void InflictPassiveStatusEffect(StatsData stats)
@@ -27,17 +28,11 @@ public class Stunned : StatusEffect
         stats.AttackSpeed = 0;
     }
 
-    private void Init(int _turnsLeft, Sprite _image, string _tooltip)
-    {
-        turnsLeft = _turnsLeft;
-        image = _image;
-        tooltip = _tooltip;
-    }
-
     public override StatusEffect Clone()
     {
         Stunned stunned = ScriptableObject.CreateInstance<Stunned>();
-        stunned.Init(turnsLeft, image, tooltip);
+        stunned.turnsLeft = turnsLeft;
+        stunned.CopyBase(this);
         return stunned;
     }
 

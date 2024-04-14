@@ -38,15 +38,22 @@ public class EquipmentData : ScriptableObject
 
     public void AddItemsToInventory(InventoryData inventory)
     {
+        List<ItemData> items = new();
         if (weapon != null)
-            inventory.items.Add(weapon);
+            items.Add(weapon);
         if (rune1 != null)
-            inventory.items.Add(rune1);
+            items.Add(rune1);
         if (rune2 != null)
-            inventory.items.Add(rune2);
+            items.Add(rune2);
         if (armour != null)
-            inventory.items.Add(armour);
+            items.Add(armour);
         if (accessory != null)
-            inventory.items.Add(accessory);
+            items.Add(accessory);
+
+        foreach(ItemData item in items)
+        {
+            item.equipped = true;
+            inventory.items.Add(item);
+        }
     }
 }

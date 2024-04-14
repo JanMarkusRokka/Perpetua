@@ -18,9 +18,10 @@ public class Blinded : StatusEffect
         return turnsLeft;
     }
 
-    public override void InflictActiveStatusEffect(BattleParticipant participant)
+    public override IEnumerator InflictActiveStatusEffect(BattleParticipant participant)
     {
         turnsLeft--;
+        yield break;
     }
 
     public override void InflictPassiveStatusEffect(StatsData stats)
@@ -28,18 +29,12 @@ public class Blinded : StatusEffect
         stats.Accuracy = (int)(stats.Accuracy * accuracyMultiplier); ;
     }
 
-    private void Init(int _turnsLeft, float _accuracyMultiplier, Sprite _image, string _tooltip)
-    {
-        turnsLeft = _turnsLeft;
-        accuracyMultiplier = _accuracyMultiplier;
-        image = _image;
-        tooltip = _tooltip;
-    }
-
     public override StatusEffect Clone()
     {
         Blinded blinded = ScriptableObject.CreateInstance<Blinded>();
-        blinded.Init(turnsLeft, accuracyMultiplier, image, tooltip);
+        blinded.turnsLeft = turnsLeft;
+        blinded.accuracyMultiplier = accuracyMultiplier;
+        blinded.CopyBase(this);
         return blinded;
     }
 

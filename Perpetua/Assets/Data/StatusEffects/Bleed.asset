@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 6cd3e720c285eef4b9b564ed0a32af71, type: 3}
   tooltip: Bleeding
+  isAilment: 1
   damagePerTurn: 0.05

@@ -60,4 +60,8 @@ public class Consume : BattleAction
     {
         return false;
     }
+    public override bool SelectPartyMember()
+    {
+        return false;
+    }
 }

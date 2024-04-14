@@ -57,15 +57,15 @@ public class OverworldEnemy : MonoBehaviour
 
             agent.enabled = false;
             GetComponent<SpriteRenderer>().sprite = enemyData.gonerSprite;
-            agent.transform.position = enemyData.stunLocation;
-            transform.position = enemyData.stunLocation;
+            agent.transform.position = enemyData.stunLocation + new Vector3(0f, 1f, 0f);
+            transform.position = enemyData.stunLocation + new Vector3(0f, 1f, 0f);
             enabled = false;
         } else if (enemyData.stunSeconds > 0)
         {
             float time = enemyData.stunSeconds;
-            transform.position = enemyData.stunLocation;
+            transform.position = enemyData.stunLocation + new Vector3(0f, 1f, 0f);
             agent.SetDestination(transform.position);
-            agent.transform.position = enemyData.stunLocation;
+            agent.transform.position = enemyData.stunLocation + new Vector3(0f, 1f, 0f);
             enemyData.stunSeconds = 0f;
             GetComponent<DisableScriptForSeconds>().DisableNavAgent(time);
             GetComponent<DisableScriptForSeconds>().DisableOverworldEnemy(time);

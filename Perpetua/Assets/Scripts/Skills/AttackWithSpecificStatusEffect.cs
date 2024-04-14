@@ -32,6 +32,7 @@ public class AttackWithSpecificStatusEffect : Attack
                 for (int i = 0; i < recipients.Count; i++)
                 {
                     BattleParticipant recipientMember = recipients[i];
+                    if (Random.Range(0, 100) > recipientMember.GetStatsData().AilmentResistance)
                     recipientMember.InflictStatusEffect(statusEffect);
 
                     int recipientDamage = Attack.CalculateAttackDamage(participant, recipientMember);
@@ -51,7 +52,8 @@ public class AttackWithSpecificStatusEffect : Attack
             }
             else
             {
-                recipient.InflictStatusEffect(statusEffect);
+                if (Random.Range(0, 100) > recipient.GetStatsData().AilmentResistance)
+                    recipient.InflictStatusEffect(statusEffect);
                 battleManager.StartCoroutine(AnimateAttack(battleManager, battleCanvas, damage, true));
             }
         }
@@ -109,5 +111,9 @@ public class AttackWithSpecificStatusEffect : Attack
         awsse.participant = participants[0];
         awsse.recipient = participants[1];
         return awsse;
+    }
+    public override bool SelectPartyMember()
+    {
+        return false;
     }
 }

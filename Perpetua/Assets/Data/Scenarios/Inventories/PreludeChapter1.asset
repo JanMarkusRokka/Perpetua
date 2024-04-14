@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4666c9c730eb242aa7602b777399d4, type: 3}
   m_Name: PreludeChapter1
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 11400000, guid: 8b4d228a48329f545818557c4723ea1d, type: 2}
+  - {fileID: 11400000, guid: 6a1f1cb40f7a637479426d72a3a68f63, type: 2}

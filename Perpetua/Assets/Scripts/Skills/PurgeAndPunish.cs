@@ -13,7 +13,7 @@ public class PurgeAndPunish : Attack
         BattleManager battleManager = BattleManager.Instance;
         BattleCanvas battleCanvas = battleManager.BattleCanvas;
         StatusEffectsData statusEffectsData = participant.GetStatusEffectsData();
-        int count = statusEffectsData.statusEffects.Count;
+        int count = statusEffectsData.statusEffects.FindAll(sf => sf.isAilment).Count;
         battleManager.StartCoroutine(commitAttacks(count));
     }
 
@@ -22,13 +22,13 @@ public class PurgeAndPunish : Attack
         BattleManager battleManager = BattleManager.Instance;
         BattleCanvas battleCanvas = battleManager.BattleCanvas;
         int damage = Attack.CalculateAttackDamage(participant, recipient);
-        if (participant.GetStatusEffectsData().statusEffects.Count > 0)
+        if (participant.GetStatusEffectsData().statusEffects.FindAll(sf => sf.isAilment).Count > 0)
         {
             if (count > 0)
             {
                 damage = (int) (damage * 0.3f);
             }
-            participant.GetStatusEffectsData().statusEffects.RemoveAt(0);
+            participant.GetStatusEffectsData().statusEffects.Remove(participant.GetStatusEffectsData().statusEffects.Find(sf => sf.isAilment));
             battleCanvas.UpdatePartyTabStats();
         }
         if (damage > -1)
@@ -89,5 +89,9 @@ public class PurgeAndPunish : Attack
         purgeAndPunish.participant = participants[0];
         purgeAndPunish.recipient = participants[1];
         return purgeAndPunish;
+    }
+    public override bool SelectPartyMember()
+    {
+        return false;
     }
 }

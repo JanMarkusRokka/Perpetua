@@ -18,9 +18,10 @@ public class Shrouded : StatusEffect
         return turnsLeft;
     }
 
-    public override void InflictActiveStatusEffect(BattleParticipant participant)
+    public override IEnumerator InflictActiveStatusEffect(BattleParticipant participant)
     {
         turnsLeft -= 1;
+        yield break;
     }
 
     public override void InflictPassiveStatusEffect(StatsData stats)
@@ -28,18 +29,12 @@ public class Shrouded : StatusEffect
         stats.Detectability = (int)(stats.Detectability * detectabilityMultiplier);
     }
 
-    private void Init(int _turnsLeft, float _detectabilityMultiplier, Sprite _image, string _tooltip)
-    {
-        turnsLeft = _turnsLeft;
-        detectabilityMultiplier = _detectabilityMultiplier;
-        image = _image;
-        tooltip = _tooltip;
-    }
-
     public override StatusEffect Clone()
     {
         Shrouded shrouded = ScriptableObject.CreateInstance<Shrouded>();
-        shrouded.Init(turnsLeft, detectabilityMultiplier, image, tooltip);
+        shrouded.turnsLeft = turnsLeft;
+        shrouded.detectabilityMultiplier = detectabilityMultiplier;
+        shrouded.CopyBase(this);
         return shrouded;
     }
 

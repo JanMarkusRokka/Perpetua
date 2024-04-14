@@ -10,7 +10,7 @@ public class BasicEnemy : EnemyData
     // make this into a battleAction (EnemyTurn or sth), have enemy decide when turn comes and then execute action
     public override BattleAction SelectTurn(BattleParticipant participant, bool guardIncluded)
     {
-        List<BattleParticipant> notGoner = BattleManager.Instance.party.FindAll(bp => bp.GetStatsData().HealthPoints > 0);
+        List<BattleParticipant> notGoner = GetNotGoner();
         BattleParticipant target = ScriptableObject.CreateInstance<BattleParticipant>();
         if (notGoner.Count > 0)
             target = DetectTarget(notGoner);
@@ -30,6 +30,11 @@ public class BasicEnemy : EnemyData
         if (guardIncluded) actionsAndWeights.Add(guard, 10);
 
         return SelectAction(actionsAndWeights);
+    }
+
+    public static List<BattleParticipant> GetNotGoner()
+    {   
+        return BattleManager.Instance.party.FindAll(bp => bp.GetStatsData().HealthPoints > 0);
     }
 
     public override EnemyData Clone()

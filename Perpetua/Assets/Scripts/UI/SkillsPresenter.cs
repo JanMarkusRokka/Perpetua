@@ -48,6 +48,10 @@ public class SkillsPresenter : MonoBehaviour
                 {
                     button.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.StartSelectEnemy(action); });
                 }
+                else if (action.SelectPartyMember())
+                {
+                    button.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.StartSelectPartyMember(action); }) ;
+                }
                 else
                 {
                     button.GetComponent<Button>().onClick.AddListener(delegate { battleManager.AddActionToQueue(action.CreateFromUI(new List<BattleParticipant> {

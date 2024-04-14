@@ -46,7 +46,6 @@ public class InventoryManager : MonoBehaviour
         {
             inventory.items.Add(ItemData.Clone(item));
         }
-        inventory = _inventory;
     }
     /*
     public void saveInventory()

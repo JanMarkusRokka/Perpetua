@@ -12038,6 +12038,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayableDirector: {fileID: 1057530824}
+  dependentOnEnemy: {fileID: 5288915242618078921}
+  CutsceneCounterpart: {fileID: 638363998}
+  timeToSkipTo: 577
 --- !u!114 &1210567993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40650,6 +40653,7 @@ MonoBehaviour:
   Roaming: 0
   Speed: 20
   RoamingSpeed: 5
+  EnemyGroup: []
 --- !u!199 &5870787196313384550
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -41018,7 +41022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

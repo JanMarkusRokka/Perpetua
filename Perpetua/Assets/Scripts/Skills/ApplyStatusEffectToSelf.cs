@@ -79,4 +79,8 @@ public class ApplyStatusEffectToSelf : BattleAction
     {
         return false;
     }
+    public override bool SelectPartyMember()
+    {
+        return false;
+    }
 }

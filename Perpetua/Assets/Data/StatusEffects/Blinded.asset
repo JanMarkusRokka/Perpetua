@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 9faa97e11d0274647a881d7d9291169c, type: 3}
   tooltip: Blinded
+  isAilment: 1

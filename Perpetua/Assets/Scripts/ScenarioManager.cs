@@ -113,9 +113,9 @@ public class ScenarioManager : MonoBehaviour
             else
             {
                 Debug.Log("not save or load next scene");
-                InventoryData inventory = ScriptableObject.CreateInstance<InventoryData>();
-                inventory.items = new List<ItemData>();
-                InventoryManager.Instance.SetInventory(inventory);
+                //InventoryData inventory = ScriptableObject.CreateInstance<InventoryData>();
+                //inventory.items = new List<ItemData>();
+                InventoryManager.Instance.SetInventoryInstantiate(scenario.StartingInventory);
                 PartyManager.Instance.SetPartyInstantiate(scenario.StartingParty, InventoryManager.Instance.inventory);
             }
         }

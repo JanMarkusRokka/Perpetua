@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,7 +25,8 @@ public class MenuPresenter : MonoBehaviour
     public GameObject FPSCounter;
     public TabsController _tc;
     private List<ScenarioData> saves;
-
+    [SerializeField]
+    public GameObject credits;
     private void Awake()
     {
         if (MenuPresenter.Instance == null)
@@ -110,5 +112,10 @@ public class MenuPresenter : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public static void ShowCredits()
+    {
+        Instance.credits.SetActive(true);
     }
 }

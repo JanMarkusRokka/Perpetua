@@ -15,7 +15,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: bf6404a1f9c7f7545bbb197f59862d11, type: 3}
   name: Monarch of Blissful Dreams
   description: ...
-  stats: {fileID: 11400000, guid: d88f5799ea60d3d45a40dc2320bacded, type: 2}
+  stats: {fileID: 11400000, guid: 9b277dc55c7f8904da5f144ccb0b5736, type: 2}
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
   skills:
   - {fileID: 11400000, guid: d7bbf530cbdb32a4db6c208c7f097ba7, type: 2}

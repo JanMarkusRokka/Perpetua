@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -41,13 +42,19 @@ public class BattleEffects : MonoBehaviour
     public void DisplayDamageValue(Transform target, float value)
     {
         string valueString = Math.Round(value, 1).ToString();
-        DisplayFloatingText(target, valueString);
+        DisplayFloatingText(target, valueString, 1f);
     }
 
     public void DisplayFloatingText(Transform target, string text)
     {
+        DisplayFloatingText(target, text, 0f);
+    }
+
+    public void DisplayFloatingText(Transform target, string text, float randomRange)
+    {
         GameObject damageValue = Instantiate(TextDisplay);
         SetBetween(Camera.main.transform, target, damageValue.transform);
+        damageValue.transform.position += new Vector3(UnityEngine.Random.Range(0-randomRange, 0+randomRange), UnityEngine.Random.Range(0-randomRange, 0+randomRange), 0f);
         Transform MovementTransform = damageValue.transform.GetChild(0);
         MovementTransform.GetChild(0).GetComponent<TextMeshPro>().text = text;
         MovementTransform.GetChild(1).GetComponent<TextMeshPro>().text = text;
@@ -56,12 +63,18 @@ public class BattleEffects : MonoBehaviour
     public void DisplayDamageValueHUD(Transform target, float value)
     {
         string valueString = Math.Round(value, 1).ToString();
-        DisplayFloatingTextHUD(target, valueString);
+        DisplayFloatingTextHUD(target, valueString, 25f);
     }
 
     public void DisplayFloatingTextHUD(Transform target, string text)
     {
+        DisplayFloatingTextHUD(target, text, 0f);
+    }
+
+    public void DisplayFloatingTextHUD(Transform target, string text, float randomRange)
+    {
         GameObject damageValue = Instantiate(TextDisplayHUD, BattleManager.Instance.BattleCanvas.transform);
+        damageValue.transform.position += new Vector3(UnityEngine.Random.Range(0 - randomRange, 0 + randomRange), UnityEngine.Random.Range(0 - randomRange, 0 + randomRange), 0f);
         damageValue.transform.position = target.position;
         damageValue.transform.GetComponentInChildren<TextMeshProUGUI>().text = text;
     }

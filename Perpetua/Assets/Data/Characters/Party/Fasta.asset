@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa25e95f9e2f28a4ca8c0ac498b68246, type: 3}
-  m_Name: Peter
+  m_Name: Fasta
   m_EditorClassIdentifier: 
-  image: {fileID: 245772794, guid: f619e779a92a48f498c2a0d3a0f4664f, type: 3}
-  name: Peter Purger
-  description: ...
-  stats: {fileID: 11400000, guid: 8ef81111a03373a40a66c87529953aae, type: 2}
+  image: {fileID: 2044774044, guid: f619e779a92a48f498c2a0d3a0f4664f, type: 3}
+  name: Fasta
+  description: A mysterious woman from the Northern Regions.
+  stats: {fileID: 11400000, guid: 3e94f5c0d468ad84faf7b215e50dbaf5, type: 2}
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
   skills:
-  - {fileID: 11400000, guid: 73d6d2f5cd1a20b4f831a4fe7ac5a860, type: 2}
-  - {fileID: 11400000, guid: a525bb20538b7d34aadc635c888ac5a5, type: 2}
-  equipment: {fileID: 11400000, guid: d8693590c3144474c8abfb287760ddd0, type: 2}
+  - {fileID: 11400000, guid: 0154907c4abdfd34faf813c6eb47db12, type: 2}
+  - {fileID: 11400000, guid: 49ddba082ce2a064484ba52ddd348ee8, type: 2}
+  equipment: {fileID: 11400000, guid: 49bb74f6b279a3b48bdb37ddafb75702, type: 2}

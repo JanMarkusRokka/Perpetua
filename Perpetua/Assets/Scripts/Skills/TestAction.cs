@@ -73,4 +73,8 @@ public class TestAction : BattleAction
     {
         return false;
     }
+    public override bool SelectPartyMember()
+    {
+        return false;
+    }
 }

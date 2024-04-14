@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
+using Image = UnityEngine.UI.Image;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<Dialogue> dialogues;
     private Dialogue lastDialogue;
+    private bool isTextBeingRevealed;
+    private string textBeingRevealed;
 
     public void Awake()
     {
@@ -53,9 +56,26 @@ public class DialogueManager : MonoBehaviour
         DialoguePresenter.SetActive(true);
         ShowNextDialogue();
     }
-    
+    private IEnumerator RevealTextDialogue(string message)
+    {
+        isTextBeingRevealed = true;
+        MessagePresenter.text = "";
+        foreach (char character in message)
+        {
+            yield return new WaitForSecondsRealtime(0.05f);
+            MessagePresenter.text += character;
+        }
+        isTextBeingRevealed = false;
+    }
     public void ShowNextDialogue()
     {
+        if (isTextBeingRevealed)
+        {
+            StopAllCoroutines();
+            MessagePresenter.text = textBeingRevealed;
+            isTextBeingRevealed = false;
+            return;
+        }
         if (lastDialogue != null)
         {
             if (lastDialogue.triggerAction != null)
@@ -73,7 +93,9 @@ public class DialogueManager : MonoBehaviour
         {
             Dialogue dialogue = dialogues.Dequeue();
             NamePresenter.text = dialogue.name;
-            MessagePresenter.text = dialogue.message;
+            textBeingRevealed = dialogue.message;
+            StartCoroutine(RevealTextDialogue(dialogue.message));
+            
             if (dialogue.spriteLeft)
             {
                 LeftSprite.enabled = true;

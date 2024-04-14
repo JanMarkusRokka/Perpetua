@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
-  m_Name: PeterStats
+  m_Name: MartaStats
   m_EditorClassIdentifier: 
-  HealthPoints: 90
-  MaxHealthPoints: 90
-  PhysicalDamage: 8
-  MagicDamage: 8
-  PhysicalDefense: 6
-  MagicDefense: 6
-  AilmentResistance: 3
-  AttackSpeed: 11
-  Dodge: 0.09
+  HealthPoints: 100
+  MaxHealthPoints: 100
+  PhysicalDamage: 11
+  MagicDamage: 2
+  PhysicalDefense: 5
+  MagicDefense: 2
+  AilmentResistance: 1
+  AttackSpeed: 10
+  Dodge: 0.05
   Accuracy: 80
-  CriticalChance: 10
+  CriticalChance: 5
   CriticalMultiplier: 1.5
   WillPower: 100
   MaxWillPower: 100

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -18,9 +19,10 @@ public class Taunting : StatusEffect
         return turnsLeft;
     }
 
-    public override void InflictActiveStatusEffect(BattleParticipant participant)
+    public override IEnumerator InflictActiveStatusEffect(BattleParticipant participant)
     {
         turnsLeft--;
+        yield break;
     }
 
     public override void InflictPassiveStatusEffect(StatsData stats)
@@ -28,18 +30,12 @@ public class Taunting : StatusEffect
         stats.Detectability = (int) (stats.Detectability * detectabilityMultiplier);
     }
 
-    private void Init(int _turnsLeft, float _detectabilityMultiplier, Sprite _image, string _tooltip)
-    {
-        turnsLeft = _turnsLeft;
-        detectabilityMultiplier = _detectabilityMultiplier;
-        image = _image;
-        tooltip = _tooltip;
-    }
-
     public override StatusEffect Clone()
     {
         Taunting taunting = ScriptableObject.CreateInstance<Taunting>();
-        taunting.Init(turnsLeft, detectabilityMultiplier, image, tooltip);
+        taunting.turnsLeft = turnsLeft;
+        taunting.detectabilityMultiplier = detectabilityMultiplier;
+        taunting.CopyBase(this);
         return taunting;
     }
 

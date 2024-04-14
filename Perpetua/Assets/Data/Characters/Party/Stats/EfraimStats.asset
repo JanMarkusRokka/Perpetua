@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
-  m_Name: JohnStats
+  m_Name: EfraimStats
   m_EditorClassIdentifier: 
-  HealthPoints: 105
-  MaxHealthPoints: 105
-  PhysicalDamage: 1
-  MagicDamage: 10
-  PhysicalDefense: 1
-  MagicDefense: 8
-  AilmentResistance: 2
-  AttackSpeed: 9
-  Dodge: 0.04
+  HealthPoints: 90
+  MaxHealthPoints: 90
+  PhysicalDamage: 8
+  MagicDamage: 8
+  PhysicalDefense: 6
+  MagicDefense: 6
+  AilmentResistance: 3
+  AttackSpeed: 11
+  Dodge: 0.09
   Accuracy: 80
   CriticalChance: 10
-  CriticalMultiplier: 2
+  CriticalMultiplier: 1.5
   WillPower: 100
   MaxWillPower: 100
   Detectability: 10

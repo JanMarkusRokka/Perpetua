@@ -18,9 +18,10 @@ public class Focused : StatusEffect
         return turnsLeft;
     }
 
-    public override void InflictActiveStatusEffect(BattleParticipant participant)
+    public override IEnumerator InflictActiveStatusEffect(BattleParticipant participant)
     {
         turnsLeft -= 1;
+        yield break;
     }
 
     public override void InflictPassiveStatusEffect(StatsData stats)
@@ -28,18 +29,12 @@ public class Focused : StatusEffect
         stats.CriticalChance = (int)(Mathf.Max(100, stats.CriticalChance * criticalChanceMultiplier));
     }
 
-    private void Init(int _turnsLeft, float _criticalChanceMultiplier, Sprite _image, string _tooltip)
-    {
-        turnsLeft = _turnsLeft;
-        criticalChanceMultiplier = _criticalChanceMultiplier;
-        image = _image;
-        tooltip = _tooltip;
-    }
-
     public override StatusEffect Clone()
     {
         Focused focused = ScriptableObject.CreateInstance<Focused>();
-        focused.Init(turnsLeft, criticalChanceMultiplier, image, tooltip);
+        focused.turnsLeft = turnsLeft;
+        focused.criticalChanceMultiplier = criticalChanceMultiplier;
+        focused.CopyBase(this);
         return focused;
     }
 

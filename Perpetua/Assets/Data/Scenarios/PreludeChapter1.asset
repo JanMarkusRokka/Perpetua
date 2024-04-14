@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Prelude Chapter 1
   StartingParty: {fileID: 11400000, guid: 0765fa73418d5be47ac8aeafc3a72cfe, type: 2}
   StartingInventory: {fileID: 11400000, guid: b0fba1943c6d7294185f7739508f8556, type: 2}
-  scene: TempleCrossroadsAfterScene
+  scene: InsideTempleScene
   isSave: 0
   isLoadNextScene: 0
   PlayerLocation: {x: 0, y: 0, z: 0}

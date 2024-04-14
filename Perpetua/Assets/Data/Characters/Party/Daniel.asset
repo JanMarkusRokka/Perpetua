@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa25e95f9e2f28a4ca8c0ac498b68246, type: 3}
-  m_Name: John
+  m_Name: Daniel
   m_EditorClassIdentifier: 
   image: {fileID: -1999497370, guid: f619e779a92a48f498c2a0d3a0f4664f, type: 3}
-  name: John Personimus
+  name: Daniel
   description: A man of focus, commitment and sheer will.
   stats: {fileID: 11400000, guid: 92cf16ef6696a66429d0a97a434ef121, type: 2}
-  equipment: {fileID: 11400000, guid: 4cf1fb92b91b0f240b2eb02b2224bfb5, type: 2}
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
+  skills:
+  - {fileID: 11400000, guid: 5d531462b841a724ba2edcdb72c481e0, type: 2}
+  - {fileID: 11400000, guid: e14058de0073995429c3d916e535c7a8, type: 2}
+  equipment: {fileID: 11400000, guid: 4cf1fb92b91b0f240b2eb02b2224bfb5, type: 2}

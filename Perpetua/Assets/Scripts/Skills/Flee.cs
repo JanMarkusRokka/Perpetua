@@ -79,4 +79,8 @@ public class Flee : BattleAction
     {
         return false;
     }
+    public override bool SelectPartyMember()
+    {
+        return false;
+    }
 }

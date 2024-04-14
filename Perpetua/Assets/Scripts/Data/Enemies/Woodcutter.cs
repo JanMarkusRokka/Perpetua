@@ -10,7 +10,13 @@ public class Woodcutter : EnemyData
     // make this into a battleAction (EnemyTurn or sth), have enemy decide when turn comes and then execute action
     public override BattleAction SelectTurn(BattleParticipant participant, bool guardIncluded)
     {
-        BattleParticipant target = DetectTarget(BattleManager.Instance.party);
+        List<BattleParticipant> notGoner = BasicEnemy.GetNotGoner();
+        BattleParticipant target = ScriptableObject.CreateInstance<BattleParticipant>();
+
+        if (notGoner.Count == 0)
+            target = DetectTarget(BattleManager.Instance.party);
+        else
+            target = DetectTarget(notGoner);
 
         AttackWithSpecificStatusEffect awsse = (AttackWithSpecificStatusEffect)skills[0].Clone();
         awsse.participant = participant;

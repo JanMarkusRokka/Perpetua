@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f65d94896368d34a824e77bb3d34679, type: 3}
   m_Name: Elizabeth
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  rune1: {fileID: 0}
-  rune2: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 0ccce8174d23fe94e9560e29e5706b8b, type: 2}
+  rune1: {fileID: 11400000, guid: 1f1ad0e7a59251946a88024079f53c47, type: 2}
+  rune2: {fileID: 11400000, guid: 87eea6d31515e8044838e022bb1bace6, type: 2}
   armour: {fileID: 0}
   accessory: {fileID: 0}

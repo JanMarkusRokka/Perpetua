@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 [Serializable]
@@ -23,18 +24,12 @@ public class Cold : StatusEffect
         stats.PhysicalDefense = (int) (stats.PhysicalDefense * defenseMultiplier);
     }
 
-    private void Init(int _turnsLeft, float _defenseMultiplier, Sprite _image, string _tooltip)
-    {
-        turnsLeft = _turnsLeft;
-        defenseMultiplier = _defenseMultiplier;
-        image = _image;
-        tooltip = _tooltip;
-    }
-
     public override StatusEffect Clone()
     {
         Cold cold = ScriptableObject.CreateInstance<Cold>();
-        cold.Init(turnsLeft, defenseMultiplier, image, tooltip);
+        cold.turnsLeft = turnsLeft;
+        cold.defenseMultiplier = defenseMultiplier;
+        cold.CopyBase(this);
         return cold;
     }
 
