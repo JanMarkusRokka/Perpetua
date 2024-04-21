@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class PartyCharacterData : CharacterData
 {
     public EquipmentData equipment;
+    public RuntimeAnimatorController animatorController;
 
-    private void Init(Sprite _image, string _name, string _description, StatsData _stats, EquipmentData _equipment, StatusEffectsData _statusEffects, List<BattleAction> _skills)
+    private void Init(Sprite _image, string _name, string _description, StatsData _stats, EquipmentData _equipment, StatusEffectsData _statusEffects, List<BattleAction> _skills, RuntimeAnimatorController _animatorController)
     {
         image = _image;
         name = _name;
@@ -18,6 +19,7 @@ public class PartyCharacterData : CharacterData
         equipment = _equipment;
         statusEffects = _statusEffects;
         skills = _skills;
+        animatorController = _animatorController;
     }
 
     public override StatsData GetStatsWithAllEffects()
@@ -35,7 +37,7 @@ public class PartyCharacterData : CharacterData
         var equipmentData = EquipmentData.Clone(character.equipment);
         var statusEffects = StatusEffectsData.Clone(character.statusEffects);
 
-        characterData.Init(character.image, character.name, character.description, statsData, equipmentData, statusEffects, character.skills);
+        characterData.Init(character.image, character.name, character.description, statsData, equipmentData, statusEffects, character.skills, character.animatorController);
         return characterData;
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,12 +11,14 @@ public class OverworldPartyMember : MonoBehaviour
     private NavMeshAgent agent;
     public Rigidbody _rb;
     Vector3 velocity = Vector3.zero;
+    private Animator animator;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
         _rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         //Events.OnBattleTriggered += OnBattleTriggered;
     }
     /*
@@ -33,6 +36,7 @@ public class OverworldPartyMember : MonoBehaviour
     {
         CharacterData = _CharacterData;
         Player = _Player;
+        animator.runtimeAnimatorController = _CharacterData.animatorController;
         GetComponent<SpriteRenderer>().sprite = CharacterData.image;
     }
 

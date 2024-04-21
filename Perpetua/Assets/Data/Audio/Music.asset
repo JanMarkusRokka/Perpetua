@@ -18,3 +18,4 @@ MonoBehaviour:
   PitchMax: 1
   AudioClipGroups:
   - {fileID: 11400000, guid: 45199663df6c6d44fb93ee30588d10a1, type: 2}
+  - {fileID: 11400000, guid: 231a8da34681f1143b98bfb9af25f80d, type: 2}

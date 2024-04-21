@@ -6163,6 +6163,8 @@ MonoBehaviour:
   BackgroundSound: {fileID: 11400000, guid: e08087708d042584483ec6b6ca79fe32, type: 2}
   MoveSelectionSound: {fileID: 11400000, guid: 6af77898cad840e4c89c324c9d1840b7, type: 2}
   SelectableSubmitSound: {fileID: 11400000, guid: 88a28d7ae0ad21b4ebecefc05faf450e, type: 2}
+  Select2Sound: {fileID: 11400000, guid: ff241acde394ed944924923a4ca5826b, type: 2}
+  Deselect2Sound: {fileID: 11400000, guid: 6b2aa6f3b8d04ba4f89b42c8d698b2ad, type: 2}
 --- !u!114 &1741351527
 MonoBehaviour:
   m_ObjectHideFlags: 0

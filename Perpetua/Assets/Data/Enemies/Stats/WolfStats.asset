@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
   m_Name: WolfStats
   m_EditorClassIdentifier: 
-  HealthPoints: 200
-  MaxHealthPoints: 200
-  PhysicalDamage: 55
+  HealthPoints: 110
+  MaxHealthPoints: 110
+  PhysicalDamage: 30
   MagicDamage: 1
   PhysicalDefense: 5
   MagicDefense: 10
@@ -27,3 +27,4 @@ MonoBehaviour:
   WillPower: 0
   MaxWillPower: 0
   Detectability: 0
+  ExtraTurnCount: 0

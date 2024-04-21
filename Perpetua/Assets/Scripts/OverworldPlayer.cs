@@ -24,10 +24,13 @@ public class OverworldPlayer : MonoBehaviour
     private bool canMove;
     [SerializeField]
     private bool spawnPartyMembersAtStart;
+    private AudioSource walkAudioSource;
 
     private void Awake()
     {
         _anim = GetComponent<Animator>();
+        walkAudioSource = GetComponent<AudioSource>();
+        walkAudioSource.enabled = false;
     }
 
     void Start()
@@ -130,6 +133,8 @@ public class OverworldPlayer : MonoBehaviour
         {
             moveLeft = true;
         }
+        if ((verticalRaw != 0 || horizontalRaw != 0) && Time.timeScale > 0) walkAudioSource.enabled = true;
+        else walkAudioSource.enabled = false;
 
         _anim.SetBool("MoveBackwards", moveBackwards);
         _anim.SetBool("MoveForwards", moveForwards);

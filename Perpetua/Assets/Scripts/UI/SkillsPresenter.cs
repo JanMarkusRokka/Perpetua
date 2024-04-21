@@ -44,21 +44,32 @@ public class SkillsPresenter : MonoBehaviour
                 TooltipTrigger tooltipTrigger = button.GetComponent<TooltipTrigger>();
                 tooltipTrigger.header = action.GetName();
                 tooltipTrigger.description = action.tooltip;
-                if (action.SelectEnemy())
+                if (participant.GetStatsData().WillPower >= action.GetWillPowerUsage())
                 {
-                    button.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.StartSelectEnemy(action); });
-                }
-                else if (action.SelectPartyMember())
-                {
-                    button.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.StartSelectPartyMember(action); }) ;
+                    if (action.SelectEnemy())
+                    {
+                        button.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.StartSelectEnemy(action); });
+                    }
+                    else if (action.SelectPartyMember())
+                    {
+                        button.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.StartSelectPartyMember(action); });
+                    }
+                    else
+                    {
+                        button.GetComponent<Button>().onClick.AddListener(delegate {
+                            battleManager.AddActionToQueue(action.CreateFromUI(new List<BattleParticipant> {
+                        participant
+                    }
+                        ));
+                        });
+                    }
                 }
                 else
                 {
-                    button.GetComponent<Button>().onClick.AddListener(delegate { battleManager.AddActionToQueue(action.CreateFromUI(new List<BattleParticipant> {
-                        participant 
-                    }
-                    )); });
+                    button.GetComponentInChildren<TextMeshProUGUI>().color = button.GetComponentInChildren<TextMeshProUGUI>().color / 2;
+                    button.transform.Find("NoWillpower").gameObject.SetActive(true);
                 }
+
             }
         }
     }

@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0154907c4abdfd34faf813c6eb47db12, type: 2}
   - {fileID: 11400000, guid: 49ddba082ce2a064484ba52ddd348ee8, type: 2}
   equipment: {fileID: 11400000, guid: 49bb74f6b279a3b48bdb37ddafb75702, type: 2}
+  animatorController: {fileID: 9100000, guid: 665493ab393fa4e47965b8080053a044, type: 2}

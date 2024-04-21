@@ -49,6 +49,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue[] dialogues1)
     {
+        SoundManager.Instance.PlayUISelect2Sound();
         foreach (Dialogue dialogue in dialogues1)
         {
             dialogues.Enqueue(dialogue);
@@ -120,6 +121,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            SoundManager.Instance.PlayUIDeselect2Sound();
             lastDialogue = null;
             Events.EndDialogue(0);
         }

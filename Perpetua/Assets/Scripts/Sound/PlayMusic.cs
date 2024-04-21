@@ -13,7 +13,10 @@ public class PlayMusic : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time >= timestamp) Play();   
+        if (Time.time >= timestamp) 
+        {
+            Play(); 
+        }
     }
 
     public void Play()

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
   m_Name: BanditStats
   m_EditorClassIdentifier: 
-  HealthPoints: 200
-  MaxHealthPoints: 200
+  HealthPoints: 75
+  MaxHealthPoints: 75
   PhysicalDamage: 55
   MagicDamage: 5
   PhysicalDefense: 5
@@ -27,3 +27,4 @@ MonoBehaviour:
   WillPower: 0
   MaxWillPower: 0
   Detectability: 0
+  ExtraTurnCount: 0

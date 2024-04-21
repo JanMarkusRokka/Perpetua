@@ -453,6 +453,7 @@ public class BattleCanvas : MonoBehaviour
 
     private void SetStatusEffectTooltip(GameObject gameObject, StatusEffect statusEffect)
     {
+        if (statusEffect.isAilment) gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.5f);
         TooltipTrigger tooltip = gameObject.GetComponent<TooltipTrigger>();
         tooltip.header = statusEffect.tooltip;
         tooltip.description = "";

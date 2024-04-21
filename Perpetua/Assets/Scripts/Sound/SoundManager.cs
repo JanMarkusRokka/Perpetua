@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
     [Header("Menu Navigation Sounds")]
     public AudioClipGroup MoveSelectionSound;
     public AudioClipGroup SelectableSubmitSound;
+    public AudioClipGroup Select2Sound;
+    public AudioClipGroup Deselect2Sound;
 
     public void Awake()
     {
@@ -38,5 +40,15 @@ public class SoundManager : MonoBehaviour
     public void PlaySubmitSound()
     {
         SelectableSubmitSound.Play();
+    }
+
+    public void PlayUISelect2Sound()
+    {
+        Select2Sound.Play();
+    }
+
+    public void PlayUIDeselect2Sound()
+    {
+        Deselect2Sound.Play();
     }
 }

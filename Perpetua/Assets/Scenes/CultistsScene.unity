@@ -23295,7 +23295,6 @@ MonoBehaviour:
     spriteRight: {fileID: 0}
     message: There is a rock on the ground...
     triggerAction: {fileID: 0}
-    triggerer: {fileID: 0}
 --- !u!114 &1142852909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28503,31 +28502,26 @@ MonoBehaviour:
     spriteRight: {fileID: 0}
     message: Hello!
     triggerAction: {fileID: 0}
-    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 1390579992, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Hi there, fella...
     triggerAction: {fileID: 0}
-    triggerer: {fileID: 0}
   - name: Elizabeth
     spriteLeft: {fileID: 575218675, guid: a511b441918fb934bba92a02ca6a1fe1, type: 3}
     spriteRight: {fileID: 0}
     message: Catch any fish today?
     triggerAction: {fileID: 0}
-    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 866955322, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Nah... Them folk don't seem to happy to see me lately...
     triggerAction: {fileID: 0}
-    triggerer: {fileID: 0}
   - name: Fisherman
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: -263004192, guid: 37002bc541667954d9d745b84bb7902a, type: 3}
     message: Maybe I been catchin em in the wrong place after all...
     triggerAction: {fileID: 0}
-    triggerer: {fileID: 0}
 --- !u!65 &1200387787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35918,6 +35912,7 @@ GameObject:
   - component: {fileID: 2112152364}
   - component: {fileID: 2112152365}
   - component: {fileID: 2112152366}
+  - component: {fileID: 2112152367}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -36120,6 +36115,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &2112152367
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112152355}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 920c61279e4955d4eb5bf877de4a775c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!136 &207260502211407184
 CapsuleCollider:
   m_ObjectHideFlags: 0
