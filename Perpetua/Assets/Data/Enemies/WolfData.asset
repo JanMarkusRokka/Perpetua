@@ -20,7 +20,7 @@ MonoBehaviour:
   skills:
   - {fileID: 11400000, guid: 2f3b2ad80f33cc6439ccf3efedce3f9c, type: 2}
   loot: []
-  gonerSprite: {fileID: -1366797135, guid: 2b4b29ad300cc4a4f97468ffcf949caa, type: 3}
+  gonerSprite: {fileID: 2013937206, guid: 7598d671a42215c4899be9a79b58588d, type: 3}
   stunSeconds: 0
   stunLocation: {x: 0, y: 0, z: 0}
   animatorController: {fileID: 9100000, guid: 82cd3d58415740944b5522bbfbcf06dc, type: 2}
@@ -28,3 +28,4 @@ MonoBehaviour:
   objectiveToAdvance: {fileID: 0}
   isStaticDialogueEnemy: 0
   isEscapable: 1
+  battleMusic: {fileID: 0}

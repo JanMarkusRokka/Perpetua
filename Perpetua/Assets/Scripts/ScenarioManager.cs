@@ -11,6 +11,8 @@ public class ScenarioManager : MonoBehaviour
     private ScenarioData currentScenario;
     private string currentBattleScene;
     private List<EnemyData> enemyData;
+    private AudioClipGroup setBattleMusic;
+    private float setBattleMusicTime;
     public void Awake()
     {
         if (FindObjectsOfType(typeof(ScenarioManager)).Count() > 1)
@@ -21,6 +23,7 @@ public class ScenarioManager : MonoBehaviour
         Events.OnSelectedScenario += OnSelectedScenario;
         Events.OnBattleTriggered += OnBattleTriggered;
         Events.OnBattleSceneChanged += OnBattleSceneChanged;
+        Events.OnSave += OnSave;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -29,6 +32,7 @@ public class ScenarioManager : MonoBehaviour
         Events.OnSelectedScenario -= OnSelectedScenario;
         Events.OnBattleTriggered -= OnBattleTriggered;
         Events.OnBattleSceneChanged -= OnBattleSceneChanged;
+        Events.OnSave -= OnSave;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -66,6 +70,11 @@ public class ScenarioManager : MonoBehaviour
         {
             Events.SetEnemy(enemyData);
             BattleManager.Instance.returnScenario = currentScenario;
+            if (setBattleMusic)
+            {
+                BattleManager.Instance.playMusic.Music = setBattleMusic;
+                BattleManager.Instance.playMusic.PlayFromSetTime(setBattleMusicTime);
+            }
         }
         else
         {
@@ -112,7 +121,6 @@ public class ScenarioManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("not save or load next scene");
                 //InventoryData inventory = ScriptableObject.CreateInstance<InventoryData>();
                 //inventory.items = new List<ItemData>();
                 InventoryManager.Instance.SetInventoryInstantiate(scenario.StartingInventory);
@@ -126,9 +134,25 @@ public class ScenarioManager : MonoBehaviour
         return ScenarioData.New("temp", PartyManager.Instance.party, InventoryManager.Instance.inventory, nextScene, false, true, Vector3.zero, null, null);
     }
 
+    private void OnSave(Vector3 playerPosition)
+    {
+        PartyData saveParty = PartyManager.Instance.party.CloneForSave();
+        ScenarioData scenarioData = ScenarioData.New("save", saveParty,
+            InventoryManager.Instance.inventory.CloneForSave(PartyManager.Instance.party), currentScenario.scene, true, false, playerPosition, GetAllChestStates(), GetAllEnemyStates());
+        PartyManager.Instance.party.lastSave = scenarioData;
+    }
+
     private ScenarioData SaveDataBeforeBattle(Transform player)
     {
         Debug.Log("save data before battle");
+        Object setBattleMusicObj = FindObjectOfType(typeof(SetBattleMusic));
+        if (setBattleMusicObj)
+        {
+            SetBattleMusic sBM = setBattleMusicObj.GetComponent<SetBattleMusic>();
+            setBattleMusic = sBM.AudioClipGroup;
+            setBattleMusicTime = sBM.GetTime();
+        }
+        else setBattleMusic = null;
         ScenarioData scenarioData = ScenarioData.New("temp", PartyManager.Instance.party, InventoryManager.Instance.inventory, SceneManager.GetActiveScene().name, true, false, player.position, GetAllChestStates(), GetAllEnemyStates());
         return scenarioData;
     }
@@ -137,13 +161,13 @@ public class ScenarioManager : MonoBehaviour
     {
         Dictionary<string, EnemyData> enemies = new();
         OverworldEnemy[] enemiesInScene = FindObjectsOfType(typeof(OverworldEnemy)) as OverworldEnemy[];
-        Debug.Log(enemiesInScene.Count());
+        //Debug.Log(enemiesInScene.Count());
         foreach (OverworldEnemy enemy in enemiesInScene)
         {
-            Debug.Log(enemy.name);
-            Debug.Log(enemy.GetComponent<GuidGenerator>().gameObject);
+            //Debug.Log(enemy.name);
+            //Debug.Log(enemy.GetComponent<GuidGenerator>().gameObject);
             enemies.Add(enemy.GetComponent<GuidGenerator>().guidString, enemy.GetComponent<OverworldEnemy>().EnemyData);
-            Debug.Log(enemy.GetComponent<GuidGenerator>().guidString + " " + enemy.GetComponent<OverworldEnemy>().EnemyData + " " + enemy.gameObject.name);
+            //Debug.Log(enemy.GetComponent<GuidGenerator>().guidString + " " + enemy.GetComponent<OverworldEnemy>().EnemyData + " " + enemy.gameObject.name);
         }
 
         return enemies;
@@ -157,7 +181,7 @@ public class ScenarioManager : MonoBehaviour
         foreach (Chest chest in chestsInScene)
         {
             chests.Add(chest.GetComponent<GuidGenerator>().guidString, chest.GetComponent<Chest>().chestData);
-            Debug.Log(chest.GetComponent<GuidGenerator>().guidString + " " + chest.GetComponent<Chest>().chestData + " " + chest.gameObject.name);
+            //Debug.Log(chest.GetComponent<GuidGenerator>().guidString + " " + chest.GetComponent<Chest>().chestData + " " + chest.gameObject.name);
         }
 
         return chests;

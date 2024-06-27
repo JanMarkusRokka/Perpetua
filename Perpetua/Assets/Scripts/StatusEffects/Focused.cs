@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "StatusEffect/Types/Focused")]
 public class Focused : StatusEffect
 {
-    private int turnsLeft = 1;
+    public int turnsLeft = 10;
     public float criticalChanceMultiplier = 2f;
     public void SetTurnsLeft(int value)
     {

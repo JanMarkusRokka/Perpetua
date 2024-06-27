@@ -5,24 +5,25 @@ using UnityEngine;
 public class PlayMusic : MonoBehaviour
 {
     public AudioClipGroup Music;
-    private float timestamp;
+    public bool NotLooping;
+
     void Start()
     {
         Play();
     }
 
-    private void Update()
-    {
-        if (Time.time >= timestamp) 
-        {
-            Play(); 
-        }
-    }
-
     public void Play()
     {
+        Music.Looping = !NotLooping;
         SoundManager.Instance.BackgroundSound = Music;
         SoundManager.Instance.PlayBackgroundSound();
-        timestamp = Time.time + Music.Clips[0].length;
+    }
+
+    public void PlayFromSetTime(float time)
+    {
+        Music.Looping = !NotLooping;
+        SoundManager.Instance.BackgroundSound = Music;
+        SoundManager.Instance.BackgroundSound.playFromTime = time;
+        SoundManager.Instance.BackgroundSound.Play();
     }
 }

@@ -18,4 +18,22 @@ public class InventoryData : ScriptableObject
         }
         return inv;
     }
+
+    // Removes party equipment from the inventory for them to be added later
+    public InventoryData CloneForSave(PartyData partyData)
+    {
+        List<ItemData> dontAdd = new();
+        foreach(PartyCharacterData member in partyData.PartyMembers)
+        {
+            dontAdd.AddRange(member.equipment.GetItems());
+        }
+        InventoryData inv = CreateInstance<InventoryData>();
+        inv.items = new();
+        foreach (ItemData item in items)
+        {
+            if (!dontAdd.Contains(item))
+            inv.items.Add(item.Clone());
+        }
+        return inv;
+    }
 }

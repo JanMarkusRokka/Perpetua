@@ -24,6 +24,7 @@ public class BattleManager : MonoBehaviour
     [NonSerialized]
     public ScenarioData returnScenario;
     public HashSet<BattleParticipant> GuardDuringTurn;
+    public PlayMusic playMusic;
     public void Awake()
     {
         if (BattleManager.Instance)
@@ -110,7 +111,7 @@ public class BattleManager : MonoBehaviour
         
         if (GetOutOfActionPartyCount() == party.Count)
         {
-            EndGame();
+            FailBattle();
             return;
         }
         else if (GetOutOfActionEnemyCount() == EnemyData.Count)
@@ -182,7 +183,9 @@ public class BattleManager : MonoBehaviour
             foreach (StatusEffect statusEffect in statusEffects)
             {
                 yield return StartCoroutine(statusEffect.InflictActiveStatusEffect(participant));
+                Debug.Log(statusEffect.name + " " + statusEffect.GetTurnsLeft());
             }
+
             participant.GetStatusEffectsData().statusEffects.RemoveAll(sf => sf.GetTurnsLeft() <= 0);
         }
 
@@ -287,7 +290,10 @@ public class BattleManager : MonoBehaviour
         }
         MenuPresenter.Instance.LoadSave(returnScenario);
     }
-
+    private void FailBattle()
+    {
+        MenuPresenter.Instance.LoadSave(PartyManager.Instance.party.lastSave);
+    }
     private void EndGame()
     {
         MenuPresenter.Instance.LoadSave(returnScenario);

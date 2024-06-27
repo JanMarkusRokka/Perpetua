@@ -29,3 +29,5 @@ MonoBehaviour:
   objectiveToAdvance: {fileID: 0}
   isStaticDialogueEnemy: 0
   isEscapable: 0
+  battleMusic: {fileID: 0}
+  continueMusicFromScene: 1

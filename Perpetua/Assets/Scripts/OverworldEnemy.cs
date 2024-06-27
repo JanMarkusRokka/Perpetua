@@ -22,6 +22,7 @@ public class OverworldEnemy : MonoBehaviour
     private SpriteRenderer _sr;
     private SphereCollider _sc;
     public List<GameObject> EnemyGroup;
+    private AudioSource passiveAudio;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class OverworldEnemy : MonoBehaviour
         EnemyData enemyData = EnemyData.Clone();
         _sr = GetComponent<SpriteRenderer>();
         _sc = GetComponent<SphereCollider>();
+        passiveAudio = GetComponent<AudioSource>();
         SetupEnemy(enemyData);
     }
 
@@ -59,6 +61,8 @@ public class OverworldEnemy : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = enemyData.gonerSprite;
             agent.transform.position = enemyData.stunLocation + new Vector3(0f, 1f, 0f);
             transform.position = enemyData.stunLocation + new Vector3(0f, 1f, 0f);
+            if (passiveAudio)
+            passiveAudio.enabled = false;
             enabled = false;
         } else if (enemyData.stunSeconds > 0)
         {

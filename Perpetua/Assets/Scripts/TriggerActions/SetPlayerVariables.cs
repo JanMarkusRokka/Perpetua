@@ -8,8 +8,11 @@ public class SetPlayerVariables : TriggerAction
     public bool movement;
     public override void DoAction()
     {
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<CapsuleCollider>().enabled = true;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         if (movement)
-            GameObject.Find("Player").GetComponent<OverworldPlayer>().EnableMovement();
-        else GameObject.Find("Player").GetComponent<OverworldPlayer>().DisableMovement();
+            player.GetComponent<OverworldPlayer>().EnableMovement();
+        else player.GetComponent<OverworldPlayer>().DisableMovement();
     }
 }

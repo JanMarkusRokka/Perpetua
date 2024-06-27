@@ -1,0 +1,35 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Collider))]
+public class SavePoint : Interactable
+{
+    public bool ActivatesOnce = false;
+    public bool HasBubble = true;
+    public GameObject SpeechBubble;
+
+    private void Start()
+    {
+        if (PartyManager.Instance.party.lastSave == null) Events.Save(transform.position);
+    }
+
+    public override void Interact()
+    {
+        isActive = false;
+        Events.Save(transform.position);
+    }
+
+    public override void OnEnterRange()
+    {
+        if (HasBubble)
+            SpeechBubble.SetActive(true);
+    }
+
+    public override void OnExitRange()
+    {
+        if (HasBubble)
+            SpeechBubble.SetActive(false);
+    }
+}

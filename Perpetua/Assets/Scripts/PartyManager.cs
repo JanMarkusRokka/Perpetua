@@ -26,18 +26,9 @@ public class PartyManager : MonoBehaviour
 
     public void SetPartyInstantiate(PartyData _party, InventoryData inventory)
     {
-        party = ScriptableObject.CreateInstance<PartyData>();
-        party.PartyMembers = new();
-        party.objectives = new();
-        foreach(PartyCharacterData member in _party.PartyMembers)
-        {
-            party.PartyMembers.Add(PartyCharacterData.CloneCharAndAddEquipmentToInventory(member, inventory));
-        }
-        foreach(Objective objective in _party.objectives)
-        {
-            party.objectives.Add(objective.Clone());
-        }
+        party = _party.CloneAndAddItemsToInventory(inventory);
     }
+
     /*
     private void OnSave(int value)
     {

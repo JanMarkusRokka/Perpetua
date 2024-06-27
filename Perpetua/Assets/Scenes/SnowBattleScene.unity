@@ -7850,6 +7850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Music: {fileID: 11400000, guid: 45199663df6c6d44fb93ee30588d10a1, type: 2}
+  NotLooping: 0
 --- !u!1 &964460236
 GameObject:
   m_ObjectHideFlags: 0
@@ -9570,6 +9571,7 @@ MonoBehaviour:
   EnemyPositions: {fileID: 824410604}
   Enemies: {fileID: 838536326}
   EnemyPrefab: {fileID: 1064550698876330674, guid: 679f7bb2369e83c47b4d345a7bd05c18, type: 3}
+  playMusic: {fileID: 963194238}
 --- !u!4 &1429271335
 Transform:
   m_ObjectHideFlags: 0

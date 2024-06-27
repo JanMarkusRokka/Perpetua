@@ -14,6 +14,9 @@ public class AudioClipGroup : ScriptableObject
     [Range(0, 2)]
     public float PitchMax = 1;
     public float Cooldown = 0.1f;
+    public bool Looping;
+
+    public float playFromTime = 0f;
 
     public List<AudioClip> Clips;
 
@@ -40,6 +43,8 @@ public class AudioClipGroup : ScriptableObject
         source.pitch = Random.Range(PitchMin, PitchMax);
         source.clip = Clips[Random.Range(0, Clips.Count)];
         source.ignoreListenerPause = true;
+        source.loop = Looping;
+        source.time = playFromTime;
         source.Play();
     }
 }
