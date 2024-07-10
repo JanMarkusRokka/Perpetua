@@ -19,11 +19,12 @@ public class BooleanObjective : Objective
         booleanObjective.Completed = Completed;
         booleanObjective.name = name;
         booleanObjective.id = id;
+        booleanObjective.NextObjective = NextObjective;
         booleanObjective.description = description;
         return booleanObjective;
     }
 
-    public override void Advance()
+    public override void AdvanceSpecific()
     {
         Completed = true;
     }

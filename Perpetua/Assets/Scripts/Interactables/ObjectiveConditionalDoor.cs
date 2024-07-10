@@ -10,15 +10,11 @@ public class ObjectiveConditionalDoor : DialogueObject
     public Objective objective;
     public override void Interact()
     {
-        Objective obj = PartyManager.Instance.party.objectives.Find(o => o.id == objective.id);
-        if (obj != null)
+        if (PartyManager.Instance.party.isObjectiveCompleted(objective))
         {
-            if (obj.IsCompleted())
-            {
-                ScenarioData sceneScenarioData = ScenarioManager.NextSceneScenarioData(SceneName);
-                MenuPresenter.Instance.LoadSave(sceneScenarioData);
-                return;
-            }
+            ScenarioData sceneScenarioData = ScenarioManager.NextSceneScenarioData(SceneName);
+            MenuPresenter.Instance.LoadSave(sceneScenarioData);
+            return;
         }
         dialogueTrigger.TriggerDialogues();
         isActive = false;

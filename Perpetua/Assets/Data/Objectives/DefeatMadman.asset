@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f20cbfe7340da74fb0cc1aed9883704, type: 3}
-  m_Name: ReachTemple
+  m_Script: {fileID: 11500000, guid: 9b6ce156ad1405b48b6f8bd67b1c0753, type: 3}
+  m_Name: DefeatMadman
   m_EditorClassIdentifier: 
-  name: Reach the temple
-  description: Investigate the village of Fleken
-  id: 0
+  name: Defeat the madman
+  description: Defeat the madman
+  id: 4
   isVisible: 0
-  NextObjective: {fileID: 0}
-  Completed: 0
+  EnemyName: Madman

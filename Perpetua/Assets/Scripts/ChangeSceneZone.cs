@@ -22,11 +22,7 @@ public class ChangeSceneZone : MonoBehaviour
         OverworldPlayer player = other.GetComponent<OverworldPlayer>();
         if (player)
         {
-            Objective obj = null;
-            if (Objective)
-                obj = PartyManager.Instance.party.objectives.Find(o => o.id == Objective.id);
-
-            if (obj != null && obj.IsCompleted())
+            if (PartyManager.Instance.party.isObjectiveCompleted(Objective))
             {
                 ScenarioData sceneScenarioData = ScenarioManager.NextSceneScenarioData(SecondSceneName);
                 sceneScenarioData.PlayerLocation = SecondPlayerLocation;

@@ -16000,7 +16000,7 @@ MonoBehaviour:
   RoamingDestination: {x: 0, y: 0, z: 0}
   FightTriggerDistance: -1
   EnemyData: {fileID: 11400000, guid: 901703a670795f945816cd9e4bc58f18, type: 2}
-  ObjectiveToAdvance: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
+  ObjectiveToAdvance: {fileID: 0}
   Roaming: 0
   Speed: 0
   RoamingSpeed: 0

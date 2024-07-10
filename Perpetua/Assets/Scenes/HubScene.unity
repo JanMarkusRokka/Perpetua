@@ -1748,7 +1748,7 @@ PrefabInstance:
     - target: {fileID: 4733654093755639316, guid: 2f7e1cc903a564446b33dc5ee7d88a9c, type: 3}
       propertyPath: Objective
       value: 
-      objectReference: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
+      objectReference: {fileID: 11400000, guid: 3712dd2c1cc75354f96e1ab0d9372334, type: 2}
     - target: {fileID: 4733654093755639316, guid: 2f7e1cc903a564446b33dc5ee7d88a9c, type: 3}
       propertyPath: SceneName
       value: TempleCrossroadsScene

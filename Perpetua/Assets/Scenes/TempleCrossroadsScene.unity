@@ -33790,7 +33790,7 @@ MonoBehaviour:
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 0}
     message: 'Another has gone mad with rage and lost themselves. '
-    triggerAction: {fileID: 0}
+    triggerAction: {fileID: 11400000, guid: 47693faa1cd0b084f93a53a8c73bbbcd, type: 2}
   - name: Mysterious voice
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: 0}
@@ -33901,7 +33901,7 @@ MonoBehaviour:
   HasBubble: 1
   SpeechBubble: {fileID: 1476317002}
   SceneName: InsideTempleScene
-  objective: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
+  objective: {fileID: 11400000, guid: 3712dd2c1cc75354f96e1ab0d9372334, type: 2}
 --- !u!1001 &1821964321
 PrefabInstance:
   m_ObjectHideFlags: 0

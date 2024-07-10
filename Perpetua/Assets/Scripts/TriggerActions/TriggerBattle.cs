@@ -8,7 +8,7 @@ public class TriggerBattle : TriggerAction
     public OverworldEnemy overworldEnemy;
     public override void DoAction()
     {
-        overworldEnemy.EnemyData = overworldEnemy.EnemyData.Clone();
+        overworldEnemy.EnemyData = overworldEnemy.EnemyData;
         overworldEnemy.TriggerFight();
     }
 }

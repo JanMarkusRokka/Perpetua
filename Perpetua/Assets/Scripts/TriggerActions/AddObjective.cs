@@ -10,8 +10,7 @@ public class AddObjective : TriggerAction
     {
         if (objective)
         {
-            Objective partyObjective = PartyManager.Instance.party.objectives.Find(o => o.id == objective.id);
-            if (partyObjective == null)
+            if (!PartyManager.Instance.party.isObjectiveAlreadyAdded(objective))
             {
                 PartyManager.Instance.party.objectives.Add(objective.Clone());
             }

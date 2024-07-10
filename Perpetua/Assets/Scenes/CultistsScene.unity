@@ -28762,7 +28762,7 @@ PrefabInstance:
     - target: {fileID: 4733654093755639316, guid: 2f7e1cc903a564446b33dc5ee7d88a9c, type: 3}
       propertyPath: Objective
       value: 
-      objectReference: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
+      objectReference: {fileID: 11400000, guid: 3712dd2c1cc75354f96e1ab0d9372334, type: 2}
     - target: {fileID: 4733654093755639316, guid: 2f7e1cc903a564446b33dc5ee7d88a9c, type: 3}
       propertyPath: SceneName
       value: TempleCrossroadsScene
@@ -35424,7 +35424,7 @@ MonoBehaviour:
   RoamingDestination: {x: 0, y: 0, z: 0}
   FightTriggerDistance: 1.5
   EnemyData: {fileID: 11400000, guid: 5773fb5f0b5f88b47b6d0ccfc4025cf8, type: 2}
-  ObjectiveToAdvance: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
+  ObjectiveToAdvance: {fileID: 0}
   Roaming: 0
   Speed: 10
   RoamingSpeed: 5
@@ -36602,7 +36602,7 @@ MonoBehaviour:
   RoamingDestination: {x: 0, y: 0, z: 0}
   FightTriggerDistance: 1.5
   EnemyData: {fileID: 11400000, guid: 0f469b8ffd39b394d8425f760d341308, type: 2}
-  ObjectiveToAdvance: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
+  ObjectiveToAdvance: {fileID: 0}
   Roaming: 0
   Speed: 10
   RoamingSpeed: 5

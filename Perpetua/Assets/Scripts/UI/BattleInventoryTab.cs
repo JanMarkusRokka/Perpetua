@@ -30,7 +30,7 @@ public class BattleInventoryTab : MonoBehaviour
 
     private void UpdateItems()
     {
-        battleCanvas.ClearTab(gameObject);
+        TabsController.ClearTab(gameObject);
         GameObject backButton = Instantiate(battleCanvas.ActionOptionPresenterPrefab, transform);
         backButton.GetComponentInChildren<TextMeshProUGUI>().text = "Back";
         backButton.GetComponent<Button>().onClick.AddListener(delegate { battleCanvas.LeftTC.SetTab(battleCanvas.ActionsPresenter); battleCanvas.ActionsPresenter.transform.GetChild(0).GetComponent<Button>().Select(); });

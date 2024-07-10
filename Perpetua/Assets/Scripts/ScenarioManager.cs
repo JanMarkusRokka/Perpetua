@@ -93,6 +93,10 @@ public class ScenarioManager : MonoBehaviour
             }
             SetChestsFromData(PartyManager.Instance.party.Chests);
             SetEnemiesFromData(PartyManager.Instance.party.Enemies);
+            foreach (EnemyData enemy in PartyManager.Instance.party.Enemies.Values)
+            {
+                Debug.Log(enemy.name + " " + enemy.GetStatsWithAllEffects().HealthPoints);
+            }
         }
     }
 

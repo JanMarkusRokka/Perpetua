@@ -149,7 +149,7 @@ public class BattleCanvas : MonoBehaviour
         }
         else
         {
-            ClearTab(Selections);
+            TabsController.ClearTab(Selections);
         }
     }
 
@@ -171,13 +171,13 @@ public class BattleCanvas : MonoBehaviour
         }
         else
         {
-            ClearTab(HealthBars);
+            TabsController.ClearTab(HealthBars);
         }
     }
 
     public void RefreshEnemyStatusEffects()
     {
-        ClearTab(StatusEffects);
+        TabsController.ClearTab(StatusEffects);
         Transform Enemies = BattleManager.Enemies;
         for (int i = 0; i < Enemies.childCount; i++)
         {
@@ -201,7 +201,7 @@ public class BattleCanvas : MonoBehaviour
 
     public void RefreshEnemyHealthBars()
     {
-        ClearTab(HealthBars);
+        TabsController.ClearTab(HealthBars);
         Transform Enemies = BattleManager.Enemies;
         for (int i = 0; i < Enemies.childCount; i++)
         {
@@ -256,7 +256,7 @@ public class BattleCanvas : MonoBehaviour
     public void DisplayMainActionOptions()
     {
         LeftTC.SetTab(ActionsPresenter);
-        ClearTab(ActionsPresenter);
+        TabsController.ClearTab(ActionsPresenter);
         GameObject attackButton = Instantiate(ActionOptionPresenterPrefab, ActionsPresenter.transform);
         attackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Attack";
         attackButton.GetComponent<Button>().onClick.AddListener( delegate { StartSelectEnemy(new Attack()); } );
@@ -302,7 +302,7 @@ public class BattleCanvas : MonoBehaviour
 
     public void DisplayTurnOrder(List<BattleParticipant> participants)
     {
-        ClearTab(TurnOrderPresenter);
+        TabsController.ClearTab(TurnOrderPresenter);
         for (int i = 0; i < participants.Count; i++)
         {
             BattleParticipant participant = participants[i];
@@ -359,7 +359,7 @@ public class BattleCanvas : MonoBehaviour
 
     public void PopulatePartyTab()
     {
-        ClearTab(PartyPresenter);
+        TabsController.ClearTab(PartyPresenter);
         List<BattleParticipant> spawnedMembers = new();
 
         List<BattleParticipant> agilityOrder = BattleManager.agilityOrder;
@@ -441,7 +441,7 @@ public class BattleCanvas : MonoBehaviour
             memberPresenter.transform.Find("WillPowerBar").GetChild(0).GetComponent<Image>().fillAmount = ((float)partyMember.stats.WillPower) / ((float)partyMember.stats.MaxWillPower);
             memberPresenter.transform.Find("WillPowerStats").GetComponent<TextMeshProUGUI>().text = partyMember.stats.WillPower + "/" + partyMember.stats.MaxWillPower;
             Transform statusEffectsPresenter = memberPresenter.transform.Find("StatusEffectsPresenter");
-            ClearTab(statusEffectsPresenter.gameObject);
+            TabsController.ClearTab(statusEffectsPresenter.gameObject);
             foreach (StatusEffect statusEffect in partyMember.statusEffects.statusEffects)
             {
                 GameObject statusEffectPres = Instantiate(StatusEffectPresenterPrefab, statusEffectsPresenter.transform);
@@ -467,15 +467,5 @@ public class BattleCanvas : MonoBehaviour
     public void ResetPartyMemberColor(Transform member)
     {
         SetPartyMemberColor(member, pmPresDefaultColor);
-    }
-
-    public void ClearTab(GameObject tab)
-    {
-        Transform tabTransform = tab.transform;
-        int children = tabTransform.childCount;
-        for (int i = children - 1; i >= 0; i--)
-        {
-            GameObject.Destroy(tabTransform.GetChild(i).gameObject);
-        }
     }
 }

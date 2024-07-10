@@ -116,10 +116,14 @@ public class BattleManager : MonoBehaviour
         }
         else if (GetOutOfActionEnemyCount() == EnemyData.Count)
         {
-            foreach(EnemyData enemy in EnemyData)
+            foreach (EnemyData enemy in EnemyData)
             {
                 if (enemy.objectiveToAdvance)
-                PartyManager.Instance.party.objectives.Find(o => o.id == enemy.objectiveToAdvance.id).Advance();                
+                {
+                    Objective objective = PartyManager.Instance.party.objectives.Find(o => o.id == enemy.objectiveToAdvance.id);
+                    if (objective)
+                        objective.Advance();
+                }
             }
             EndGame();
             return;
@@ -143,7 +147,7 @@ public class BattleManager : MonoBehaviour
                     //Debug.Log(participant.GetEnemy().name + "'s turn");
                     BattleCanvas.PopulatePartyTab();
                     BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
-                    BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
+                    TabsController.ClearTab(BattleCanvas.ActionsPresenter);
                     AddEnemyTurnAction(participant);
                 }
             }
@@ -158,7 +162,7 @@ public class BattleManager : MonoBehaviour
             }
 
             BattleCanvas.LeftTC.SetTab(BattleCanvas.ActionsPresenter);
-            BattleCanvas.ClearTab(BattleCanvas.ActionsPresenter);
+            TabsController.ClearTab(BattleCanvas.ActionsPresenter);
 
             ApplyStatusEffectsAndStartCommitingActions();
             return;

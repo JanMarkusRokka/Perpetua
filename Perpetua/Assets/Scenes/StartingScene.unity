@@ -16776,7 +16776,7 @@ MonoBehaviour:
     spriteRight: {fileID: -1773551683, guid: f090f418f153f8940b1075450c9d5c5d, type: 3}
     message: Rumors whisper that the Cage of Knowledge can be found near Fleken,
       a small village run by a local lord. Your mission is to retrieve the artifact.
-    triggerAction: {fileID: 0}
+    triggerAction: {fileID: 11400000, guid: 34b69e1ad447b95408f1551ec403ae28, type: 2}
   - name: Hooded figure
     spriteLeft: {fileID: 0}
     spriteRight: {fileID: -1773551683, guid: f090f418f153f8940b1075450c9d5c5d, type: 3}

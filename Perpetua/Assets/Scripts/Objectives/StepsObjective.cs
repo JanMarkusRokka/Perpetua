@@ -21,11 +21,12 @@ public class StepsObjective : Objective
         stepsObjective.name = name;
         stepsObjective.id = id;
         stepsObjective.GoalSteps = GoalSteps;
+        stepsObjective.NextObjective = NextObjective;
         stepsObjective.description = description;
         return stepsObjective;
     }
 
-    public override void Advance()
+    public override void AdvanceSpecific()
     {
         CompletedSteps += 1;
     }

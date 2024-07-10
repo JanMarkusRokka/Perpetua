@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6f403396d304c40b4ea2885508ba96, type: 3}
+  m_Name: SacrificeSinnersObjective
+  m_EditorClassIdentifier: 
+  name: Sacrifice the sinners
+  description: Sacrifice the 3 sinners
+  id: 1
+  isVisible: 0
+  NextObjective: {fileID: 11400000, guid: 04e63249066c16f4c9a432fbb47af56b, type: 2}
+  objectives:
+  - {fileID: 11400000, guid: 405e4bb619773c549b7202ded723e89f, type: 2}
+  - {fileID: 11400000, guid: 4e6b7dba6cfe4b64389776e0ac498f7f, type: 2}
+  - {fileID: 11400000, guid: b5348b10581aef64d94177ac355ce0c5, type: 2}

@@ -6808,6 +6808,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1057530823}
   - component: {fileID: 1057530824}
+  - component: {fileID: 1057530825}
+  - component: {fileID: 1057530826}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -6859,8 +6861,56 @@ PlayableDirector:
     value: {fileID: 8952021306455583882}
   - key: {fileID: -8536644223987099012, guid: 64637791c6e03ab429dd0eeef8846f55, type: 2}
     value: {fileID: 192210861}
+  - key: {fileID: 7189986753305489647, guid: 64637791c6e03ab429dd0eeef8846f55, type: 2}
+    value: {fileID: 1057530825}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &1057530825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057530822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 42cbac320e54fa746913a58872b9b77c, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls: []
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1057530826}
+          m_TargetAssemblyTypeName: TriggerActionPlayer, Assembly-CSharp
+          m_MethodName: TriggerAction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1057530826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057530822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7b01e354d3f71478a7a056f973f634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerAction: {fileID: 11400000, guid: 1565c113738ad884087b2cd586b9ad93, type: 2}
 --- !u!1 &1142852903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6314243236805300177, guid: 43cba45e9d00a8342857735ccf839312, type: 3}
@@ -34645,7 +34695,7 @@ MonoBehaviour:
   HasBubble: 1
   SpeechBubble: {fileID: 1476317002}
   SceneName: InsideTempleScene
-  objective: {fileID: 11400000, guid: f715c53979283f84ea8dd0b81e4ad709, type: 2}
+  objective: {fileID: 11400000, guid: 3712dd2c1cc75354f96e1ab0d9372334, type: 2}
 --- !u!1001 &1821964321
 PrefabInstance:
   m_ObjectHideFlags: 0

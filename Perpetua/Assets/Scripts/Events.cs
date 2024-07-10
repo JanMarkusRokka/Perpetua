@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEditor;
 
 public static class Events
 {
@@ -24,4 +25,6 @@ public static class Events
 
     public static event Action<List<EnemyData>> OnSetEnemy;
     public static void SetEnemy(List<EnemyData> enemyData) => OnSetEnemy?.Invoke(enemyData);
+    public static event Action<int> OnUpdateObjectives;
+    public static void UpdateObjectives(int num) => OnUpdateObjectives?.Invoke(num);
 }

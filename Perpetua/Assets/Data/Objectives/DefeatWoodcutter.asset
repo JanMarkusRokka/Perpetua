@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0608006ef4b7a4e42aafd64b19e65d88, type: 3}
-  m_Name: SacrificeObjective
+  m_Script: {fileID: 11500000, guid: 9b6ce156ad1405b48b6f8bd67b1c0753, type: 3}
+  m_Name: DefeatWoodcutter
   m_EditorClassIdentifier: 
-  name: Sacrifice the sinners
-  description: Sacrifice the 3 sinners to appease the one who resides in the temple
-  id: 0
-  CompletedSteps: 0
-  GoalSteps: 3
+  name: Defeat the woodcutter
+  description: Defeat the woodcutter
+  id: 2
+  isVisible: 0
+  EnemyName: Woodcutter

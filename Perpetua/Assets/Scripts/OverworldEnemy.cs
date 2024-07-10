@@ -49,7 +49,8 @@ public class OverworldEnemy : MonoBehaviour
             {
                 _sr.sprite = EnemyData.gonerSprite;
                 GetComponent<DialogueObject>().enabled = false;
-                transform.GetChild(0).gameObject.SetActive(true);
+                transform.GetChild(0).gameObject.SetActive(false);
+                Debug.Log("Setup enemy " + EnemyData.name);
             }
             foreach(ItemData item in EnemyData.loot)
             {
@@ -82,6 +83,9 @@ public class OverworldEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!EnemyData.isStaticDialogueEnemy)
+        {
+
         if (agent.nextPosition.x > transform.position.x) _sr.flipX = true;
         else _sr.flipX = false;
         if (stopFollowing > Time.time) {
@@ -101,6 +105,8 @@ public class OverworldEnemy : MonoBehaviour
         {
             agent.speed = RoamingSpeed;
             GoToLocation(IdleLocation);
+        }
+
         }
     }
 
