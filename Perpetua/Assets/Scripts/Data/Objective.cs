@@ -15,7 +15,9 @@ public abstract class Objective : ScriptableObject
     public abstract bool IsCompleted();
     public Objective GetNextObjective()
     {
-        return NextObjective.Clone();
+        if (NextObjective)
+            return NextObjective.Clone();
+        else return null;
     }
     public abstract Objective Clone();
     public void Advance()

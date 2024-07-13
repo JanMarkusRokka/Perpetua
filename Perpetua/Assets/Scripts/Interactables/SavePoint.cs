@@ -8,7 +8,9 @@ public class SavePoint : Interactable
 {
     public bool ActivatesOnce = false;
     public bool HasBubble = true;
+    public bool RestoresWillPower;
     public GameObject SpeechBubble;
+    public GameObject RestEffect;
 
     private void Start()
     {
@@ -18,6 +20,11 @@ public class SavePoint : Interactable
     public override void Interact()
     {
         isActive = false;
+        foreach (PartyCharacterData member in PartyManager.Instance.party.PartyMembers)
+        {
+            member.stats.WillPower = member.stats.MaxWillPower;
+        }
+        Instantiate(RestEffect, transform);
         Events.Save(transform.position);
     }
 

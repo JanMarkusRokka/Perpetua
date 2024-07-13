@@ -81,7 +81,11 @@ public class PartyMembersPresenter : MonoBehaviour
         }
 
         GameObject healthPresenter = Instantiate(StatisticPresenterPrefab, pres);
-        healthPresenter.GetComponent<TextMeshProUGUI>().text = "Health: " + stats.HealthPoints;
+        healthPresenter.GetComponent<TextMeshProUGUI>().text = "Health: " + stats.HealthPoints + "/" + stats.MaxHealthPoints;
+        GameObject wpPresenter = Instantiate(StatisticPresenterPrefab, pres);
+        wpPresenter.GetComponent<TextMeshProUGUI>().text = "Willpower: " + stats.WillPower + "/" + stats.MaxWillPower;
+        GameObject atkspPresenter = Instantiate(StatisticPresenterPrefab, pres);
+        atkspPresenter.GetComponent<TextMeshProUGUI>().text = "Attack Speed: " + stats.AttackSpeed;
     }
 
     public void FocusOnMember(PartyCharacterData member)
@@ -101,7 +105,7 @@ public class PartyMembersPresenter : MonoBehaviour
 
         StopCoroutines();
         CharacterCustomizer.transform.Find("DescriptionPanel").GetComponentInChildren<TextMeshProUGUI>().text = "";
-        RefreshStats(member.stats);
+        RefreshStats(member.GetStatsWithAllEffects());
         RevealTextCoroutine = TextMethods.RevealText(member.description, CharacterCustomizer.transform.Find("DescriptionPanel").GetComponentInChildren<TextMeshProUGUI>(), 0.05f);
         this.StartCoroutine(RevealTextCoroutine);
     }

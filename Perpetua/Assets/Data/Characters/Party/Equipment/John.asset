@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f65d94896368d34a824e77bb3d34679, type: 3}
   m_Name: John
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 2ee699a858523cb4a9dcb6c22429a39d, type: 2}
   rune1: {fileID: 0}
   rune2: {fileID: 0}
   armour: {fileID: 11400000, guid: dbb6a1ffbdb1bef47ab266e81232c94b, type: 2}

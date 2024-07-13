@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8da8ea227cacf4690624e5c88039fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
   chestData: {fileID: 11400000, guid: a1689b7eddb21694fab6fc966aeab5a7, type: 2}
-  isOpened: 0
 --- !u!212 &3887285712780803936
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &7031354975809195696
 Animator:
-  serializedVersion: 7
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -138,7 +138,6 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3297213cba242ae4d934dd2a0fc8b710, type: 3}
+  m_Name: ChestManor
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 2b9caf86716eb974e9e5a7f15475593d, type: 2}
+  - {fileID: 11400000, guid: 2b9caf86716eb974e9e5a7f15475593d, type: 2}
+  - {fileID: 11400000, guid: 9c74c0b54ad5431479c9991f63431475, type: 2}
+  ClosedSprite: {fileID: 21300000, guid: 1152d7650c0ff8e4e8e06861109115c2, type: 3}
+  OpenSprite: {fileID: 21300000, guid: 1152d7650c0ff8e4e8e06861109115c2, type: 3}
+  name: RansackedChest

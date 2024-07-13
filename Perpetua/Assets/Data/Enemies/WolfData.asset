@@ -19,7 +19,8 @@ MonoBehaviour:
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
   skills:
   - {fileID: 11400000, guid: 2f3b2ad80f33cc6439ccf3efedce3f9c, type: 2}
-  loot: []
+  loot:
+  - {fileID: 11400000, guid: 9c74c0b54ad5431479c9991f63431475, type: 2}
   gonerSprite: {fileID: 2013937206, guid: 7598d671a42215c4899be9a79b58588d, type: 3}
   stunSeconds: 0
   stunLocation: {x: 0, y: 0, z: 0}
@@ -29,3 +30,4 @@ MonoBehaviour:
   isStaticDialogueEnemy: 0
   isEscapable: 1
   battleMusic: {fileID: 0}
+  continueMusicFromScene: 0
