@@ -58,6 +58,8 @@ public class BattleManager : MonoBehaviour
             {
                 GameObject enemy = Instantiate(EnemyPrefab, Enemies);
                 enemy.transform.position = EnemyPositions.Find("Enemy" + spawnLocationId).position;
+                BoxCollider boxCollider = enemy.GetComponent<BoxCollider>();
+                boxCollider.size = new Vector3(boxCollider.size.x, agilityOrder[i].GetEnemy().image.bounds.size.y, boxCollider.size.z);
                 enemy.GetComponent<Animator>().runtimeAnimatorController = agilityOrder[i].GetEnemy().animatorController;
                 enemy.name = i.ToString();
                 agilityOrder[i].transform = enemy.transform;
@@ -82,12 +84,18 @@ public class BattleManager : MonoBehaviour
     private int GetOutOfActionPartyCount()
     {
         int count = 0;
+        int i = 0;
         foreach(BattleParticipant member in party)
         {
             if (member.GetStatsData().HealthPoints <= 0)
             {
+                if (i == party.Count - 1)
+                {
+                    return party.Count; // Ends the game if the main character has less than 0 hp
+                }
                 count++;
             }
+            i++;
         }
         return count;
     }

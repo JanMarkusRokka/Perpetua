@@ -13,6 +13,8 @@ public struct WeaponVariables
     public int WeaponDamage;
     [SerializeField]
     public int WeaponMagicDamage;
+    [SerializeField]
+    public float WeaponAccuracyMultiplier;
 
     public string GetDescripion()
     {
@@ -24,6 +26,10 @@ public struct WeaponVariables
         if (WeaponMagicDamage > 0)
         {
             desc += "\nMagic damage: " + WeaponMagicDamage;
+        }
+        if (WeaponAccuracyMultiplier > 0)
+        {
+            desc += "\nAccuracy multiplier: " + WeaponAccuracyMultiplier;
         }
         return desc;
     }

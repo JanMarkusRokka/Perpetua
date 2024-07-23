@@ -11,7 +11,7 @@ public class PartyData : ScriptableObject
     public List<PartyCharacterData> PartyMembers;
     public List<Objective> objectives;
     public List<Objective> completedObjectives;
-
+    public bool showTutorial = true;
     public Dictionary<string, ChestData> Chests;
     public Dictionary<string, EnemyData> Enemies;
     // Temporary solution, planning to implement serialization
@@ -32,6 +32,7 @@ public class PartyData : ScriptableObject
         party.PartyMembers = new();
         party.objectives = new();
         party.completedObjectives = new();
+        party.showTutorial = showTutorial;
         foreach (PartyCharacterData member in PartyMembers)
         {
             party.PartyMembers.Add(PartyCharacterData.CloneCharAndAddEquipmentToInventory(member, inventory));
@@ -53,6 +54,7 @@ public class PartyData : ScriptableObject
         party.PartyMembers = new();
         party.objectives = new();
         party.completedObjectives = new();
+        party.showTutorial = showTutorial;
         foreach (PartyCharacterData member in PartyMembers)
         {
             party.PartyMembers.Add(PartyCharacterData.Clone(member));

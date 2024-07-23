@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5831688102190815384}
   - component: {fileID: 8806327521521180469}
   - component: {fileID: 7085990530508050447}
-  - component: {fileID: 8849709407600692965}
   - component: {fileID: 4860453682821020241}
+  - component: {fileID: 8849709407600692965}
   - component: {fileID: 5199753601471324165}
   m_Layer: 0
   m_Name: BatttleEnemy
@@ -163,27 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc94000d1ad1c34287e31652ada4961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &8849709407600692965
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064550698876330674}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.8125, y: 3.1620574, z: 0.2}
-  m_Center: {x: -0.00000047683716, y: -0.050025225, z: 0}
 --- !u!65 &4860453682821020241
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -205,6 +184,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.8125, y: 3.1875, z: 0.2}
   m_Center: {x: -0.00000047683716, y: -0.062746525, z: 0}
+--- !u!65 &8849709407600692965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064550698876330674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 2.8125, y: 3.1620574, z: 0.2}
+  m_Center: {x: -0.00000047683716, y: -0.050025225, z: 0}
 --- !u!114 &5199753601471324165
 MonoBehaviour:
   m_ObjectHideFlags: 0

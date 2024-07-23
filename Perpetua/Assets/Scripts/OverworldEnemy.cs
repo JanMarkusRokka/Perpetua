@@ -23,6 +23,7 @@ public class OverworldEnemy : MonoBehaviour
     private SphereCollider _sc;
     public List<GameObject> EnemyGroup;
     private AudioSource passiveAudio;
+    private Animator _anim;
 
     private void Awake()
     {
@@ -74,11 +75,48 @@ public class OverworldEnemy : MonoBehaviour
             enemyData.stunSeconds = 0f;
             GetComponent<DisableScriptForSeconds>().DisableNavAgent(time);
             GetComponent<DisableScriptForSeconds>().DisableOverworldEnemy(time);
+        } else
+        {
+            AnimateEnemy();
         }
     }
 
-    private void Start()
+    private void AnimateEnemy()
     {
+        if (EnemyData.moveAnimation)
+        {
+            _anim = GetComponent<Animator>();
+            if (!_anim)
+            {
+                _anim = gameObject.AddComponent<Animator>();
+            }
+            _anim.runtimeAnimatorController = EnemyData.moveAnimation;
+            if (!Roaming)
+            {
+                SetMovingAnimation(false);
+            }
+        }
+    }
+
+    private void SetMovingAnimation(bool value)
+    {
+        if (_anim)
+        {
+            if (value)
+            {
+                if (!_anim.enabled)
+                    _anim.enabled = true;
+                _anim.speed = 1f;
+                return;
+            }
+            if (_anim.enabled)
+            {
+                _anim.speed = 0f;
+                _anim.enabled = false;
+                _sr.sprite = EnemyData.image;
+            }
+        }
+
     }
 
     private void FixedUpdate()
@@ -88,24 +126,26 @@ public class OverworldEnemy : MonoBehaviour
 
         if (agent.nextPosition.x > transform.position.x) _sr.flipX = true;
         else _sr.flipX = false;
-        if (stopFollowing > Time.time) {
-            agent.speed = Speed;
-            if (Vector3.Distance(playerTransform.position, transform.position) < FightTriggerDistance)
+            if (stopFollowing > Time.time)
             {
-                TriggerFight();
+                agent.speed = Speed;
+                if (Vector3.Distance(playerTransform.position, transform.position) < FightTriggerDistance)
+                {
+                    TriggerFight();
+                }
+                FollowPlayer();
             }
-            FollowPlayer(); 
-        }
-        else if (Roaming) 
-        {
-            agent.speed = RoamingSpeed;
-            Roam();
-        } // Not roaming - stay at idle location
-        else if (Vector3.Distance(transform.position, IdleLocation) > 1)
-        {
-            agent.speed = RoamingSpeed;
-            GoToLocation(IdleLocation);
-        }
+            else if (Roaming)
+            {
+                agent.speed = RoamingSpeed;
+                Roam();
+            } // Not roaming - stay at idle location
+            else if (Vector3.Distance(transform.position, IdleLocation) > 1)
+            {
+                agent.speed = RoamingSpeed;
+                GoToLocation(IdleLocation);
+            }
+            else SetMovingAnimation(false);
 
         }
     }
@@ -160,6 +200,7 @@ public class OverworldEnemy : MonoBehaviour
 
     private void FollowPlayer()
     {
+        SetMovingAnimation(true);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, (playerTransform.position - transform.position), out hit, Vector3.Distance(transform.position, playerTransform.position) - 1f))
         {

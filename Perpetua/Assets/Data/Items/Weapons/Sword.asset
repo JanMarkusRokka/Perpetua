@@ -19,6 +19,7 @@ MonoBehaviour:
   WeaponVariables:
     WeaponDamage: 16
     WeaponMagicDamage: 0
+    WeaponAccuracyMultiplier: 1.05
   ArmorVariables:
     ArmorDefense: 0
     ArmorMagicDefense: 0

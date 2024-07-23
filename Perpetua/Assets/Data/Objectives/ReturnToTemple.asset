@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Return to the temple
   description: Return to the temple
   id: 5
-  isVisible: 0
+  isVisible: 1
+  NextObjective: {fileID: 0}
   Completed: 0

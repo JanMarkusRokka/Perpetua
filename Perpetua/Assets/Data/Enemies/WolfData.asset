@@ -31,3 +31,4 @@ MonoBehaviour:
   isEscapable: 1
   battleMusic: {fileID: 0}
   continueMusicFromScene: 0
+  moveAnimation: {fileID: 9100000, guid: 14023329ca579f842ae6fbf6fe4a54f8, type: 2}

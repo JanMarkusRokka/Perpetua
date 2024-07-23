@@ -107,6 +107,8 @@ public class StatsData : ScriptableObject
         {
             PhysicalDamage += item.WeaponVariables.WeaponDamage;
             MagicDamage += item.WeaponVariables.WeaponMagicDamage;
+            if (item.WeaponVariables.WeaponAccuracyMultiplier > 0)
+            Accuracy =  Mathf.Min((int) (Accuracy * item.WeaponVariables.WeaponAccuracyMultiplier), 100);
             PhysicalDefense += item.ArmorVariables.ArmorDefense;
             MagicDefense += item.ArmorVariables.ArmorMagicDefense;
             ExtraTurnCount += item.RuneVariables.extraTurns;

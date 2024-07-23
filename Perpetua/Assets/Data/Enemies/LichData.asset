@@ -29,3 +29,6 @@ MonoBehaviour:
   objectiveToAdvance: {fileID: 0}
   isStaticDialogueEnemy: 0
   isEscapable: 0
+  battleMusic: {fileID: 0}
+  continueMusicFromScene: 0
+  moveAnimation: {fileID: 9100000, guid: 047cb69e671ad5c4ea6c657581e54cf6, type: 2}
