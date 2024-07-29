@@ -438,7 +438,7 @@ public class EnemyTurn : BattleAction
 
     public override void CommitAction()
     {
-        participant.GetEnemy().SelectTurn(participant, false).CommitAction();
+        participant.GetEnemy().SelectTurn(participant, true).CommitAction();
     }
 
     public override BattleAction CreateFromUI(List<BattleParticipant> participants)

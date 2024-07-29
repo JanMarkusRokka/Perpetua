@@ -46,6 +46,7 @@ public class OverworldEnemy : MonoBehaviour
         EnemyData.objectiveToAdvance = ObjectiveToAdvance;
         if (enemyData.stats.HealthPoints <= 0)
         {
+            if (_anim) _anim.enabled = false;
             if (EnemyData.isStaticDialogueEnemy)
             {
                 _sr.sprite = EnemyData.gonerSprite;

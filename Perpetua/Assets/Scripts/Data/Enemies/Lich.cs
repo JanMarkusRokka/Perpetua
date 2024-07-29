@@ -7,6 +7,8 @@ using UnityEngine.TextCore.Text;
 [CreateAssetMenu(menuName = "Enemies/Lich")]
 public class LichData : EnemyData
 {
+    [SerializeField]
+    private bool hasSpawned = false;
     // make this into a battleAction (EnemyTurn or sth), have enemy decide when turn comes and then execute action
     public override BattleAction SelectTurn(BattleParticipant participant, bool guardIncluded)
     {
@@ -17,6 +19,17 @@ public class LichData : EnemyData
             target = DetectTarget(BattleManager.Instance.party);
         else
             target = DetectTarget(notGoner);
+
+        SpawnEnemy spawn = (SpawnEnemy)skills[1].Clone();
+        spawn.participant = participant;
+
+        StatsData stats = GetStatsWithAllEffects();
+
+        if (!hasSpawned && stats.HealthPoints <= stats.MaxHealthPoints / 2f)
+        {
+            hasSpawned = true;
+            return spawn;
+        }
 
         AttackWithSpecificStatusEffect awsse = (AttackWithSpecificStatusEffect)skills[0].Clone();
         awsse.participant = participant;
@@ -29,7 +42,7 @@ public class LichData : EnemyData
         Dictionary<BattleAction, int> actionsAndWeights = new Dictionary<BattleAction, int>
         {
             {awsse, 10},
-            {attack, 10},
+            {attack, 10}
         };
 
         if (guardIncluded) actionsAndWeights.Add(guard, 10);
@@ -41,6 +54,7 @@ public class LichData : EnemyData
     {
         var enemyData = ScriptableObject.CreateInstance<LichData>();
         CloneData(this, enemyData);
+        enemyData.hasSpawned = hasSpawned;
         return enemyData;
     }
 }

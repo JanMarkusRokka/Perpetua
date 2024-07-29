@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc2c684f333d5b48b28b30f67f1e06b, type: 3}
+  m_Name: SpawnEnemySkeleton
+  m_EditorClassIdentifier: 
+  tooltip: Spawns another enemy
+  WillPowerUsage: 0
+  participant: {fileID: 0}
+  EnemyToSpawn: {fileID: 11400000, guid: ec331601e2754f54da670923e0cf4287, type: 2}
+  SkillName: Spawn Enemy Skeleton

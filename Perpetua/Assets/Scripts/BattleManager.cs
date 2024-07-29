@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -48,8 +49,11 @@ public class BattleManager : MonoBehaviour
         TakeTurn();
     }
 
-    private void SpawnEnemies()
+    public void SpawnEnemies()
     {
+        TabsController.ClearTab(Enemies.gameObject);
+        
+
         int spawnLocationId = 0;
         List<EnemyData> spawnedEnemies = new();
         for (int i = 0; i < agilityOrder.Count; i++)
@@ -89,10 +93,6 @@ public class BattleManager : MonoBehaviour
         {
             if (member.GetStatsData().HealthPoints <= 0)
             {
-                if (i == party.Count - 1)
-                {
-                    return party.Count; // Ends the game if the main character has less than 0 hp
-                }
                 count++;
             }
             i++;
@@ -117,7 +117,7 @@ public class BattleManager : MonoBehaviour
     {
         currentTurn += 1;
         
-        if (GetOutOfActionPartyCount() == party.Count)
+        if (GetOutOfActionPartyCount() == party.Count || PartyManager.Instance.party.PartyMembers[PartyManager.Instance.party.PartyMembers.Count - 1].GetStatsWithAllEffects().HealthPoints <= 0)
         {
             FailBattle();
             return;
@@ -216,12 +216,7 @@ public class BattleManager : MonoBehaviour
 
     public void AddEnemyTurnAction(BattleParticipant participant)
     {
-        BattleAction action = participant.GetEnemy().SelectTurn(participant, true);
-        if (action.GetType() == typeof(Guard)) AddActionToQueue(action);
-        else
-        {
-            AddActionToQueue(EnemyTurn.New(participant));
-        }
+        AddActionToQueue(EnemyTurn.New(participant));
     }
 
     public BattleParticipant GetPartyMemberFromNumber(int memberId)
