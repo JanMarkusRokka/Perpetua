@@ -59,7 +59,6 @@ public class TransparencyController : MonoBehaviour
                 
                 Color c = r.material.GetColor("_Color");
                 c.a = alpha;
-                Debug.Log(c);
                 r.material.SetColor("_Color", c);
                 
             }

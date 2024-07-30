@@ -71,7 +71,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: iiiiijaaNoBrass
+    m_DisplayName: iiiijjjaafull
   m_Markers:
     m_Objects: []
   m_TrackProperties:
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
   m_Name: AudioPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 6500499e6133288499bf3b2201675997, type: 3}
+  m_Clip: {fileID: 8300000, guid: e3346db86be024844bdb00db372d696d, type: 3}
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:

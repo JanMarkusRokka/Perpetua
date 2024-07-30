@@ -111,6 +111,11 @@ public class StatsData : ScriptableObject
             Accuracy =  Mathf.Min((int) (Accuracy * item.WeaponVariables.WeaponAccuracyMultiplier), 100);
             PhysicalDefense += item.ArmorVariables.ArmorDefense;
             MagicDefense += item.ArmorVariables.ArmorMagicDefense;
+            if (item.ArmorVariables.DodgeMultiplier > 0)
+            {
+                Dodge = Mathf.Min((int)(Dodge * item.ArmorVariables.DodgeMultiplier), 100);
+            }
+            AttackSpeed = Mathf.Clamp(AttackSpeed + item.ArmorVariables.AttackSpeedModifier, 0, 100);
             ExtraTurnCount += item.RuneVariables.extraTurns;
         }
     }

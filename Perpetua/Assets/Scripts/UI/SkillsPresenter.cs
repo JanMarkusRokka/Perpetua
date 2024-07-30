@@ -43,7 +43,7 @@ public class SkillsPresenter : MonoBehaviour
                 button.GetComponentInChildren<TextMeshProUGUI>().text = action.GetName();
                 TooltipTrigger tooltipTrigger = button.GetComponent<TooltipTrigger>();
                 tooltipTrigger.header = action.GetName();
-                tooltipTrigger.description = action.tooltip;
+                tooltipTrigger.description = action.tooltip + "\n Willpower usage: " + action.GetWillPowerUsage();
                 if (participant.GetStatsData().WillPower >= action.GetWillPowerUsage())
                 {
                     if (action.SelectEnemy())

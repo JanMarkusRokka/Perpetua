@@ -42,6 +42,10 @@ public struct ArmorVariables
     public int ArmorDefense;
     [SerializeField]
     public int ArmorMagicDefense;
+    [SerializeField]
+    public float DodgeMultiplier;
+    [SerializeField]
+    public int AttackSpeedModifier;
     public string GetDescripion()
     {
         string desc = "";
@@ -52,6 +56,14 @@ public struct ArmorVariables
         if (ArmorMagicDefense > 0)
         {
             desc += "\nMagic defense: " + ArmorMagicDefense;
+        }
+        if (DodgeMultiplier > 0)
+        {
+            desc += "\nDodge multiplier: " + DodgeMultiplier;
+        }
+        if (AttackSpeedModifier > 0)
+        {
+            desc += "\nAttack speed modifier: " + AttackSpeedModifier;
         }
         return desc;
     }
