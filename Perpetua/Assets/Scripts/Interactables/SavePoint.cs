@@ -11,6 +11,7 @@ public class SavePoint : Interactable
     public bool RestoresWillPower;
     public GameObject SpeechBubble;
     public GameObject RestEffect;
+    public AudioClipGroup SoundEffect;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class SavePoint : Interactable
 
     public override void Interact()
     {
+        if (SoundEffect) SoundEffect.Play();
         isActive = false;
         foreach (PartyCharacterData member in PartyManager.Instance.party.PartyMembers)
         {

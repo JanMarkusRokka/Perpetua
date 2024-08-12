@@ -15,4 +15,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: ff40a92cd8cb9ef4e9ea4698802cd6ec, type: 3}
   tooltip: Poisoned
   isAilment: 1
-  damagePerTurn: 0.05
+  damagePerTurn: 0.04

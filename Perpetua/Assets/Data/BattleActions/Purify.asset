@@ -15,7 +15,7 @@ MonoBehaviour:
   tooltip: Removes ailments from the target.
   participant: {fileID: 0}
   recipient: {fileID: 0}
-  WillPowerUsage: 20
+  WillPowerUsage: 15
   RemoveOnlyAilments: 1
   EnemySelection: 0
   SkillName: Purify

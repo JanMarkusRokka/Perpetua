@@ -21,7 +21,7 @@ MonoBehaviour:
     WeaponMagicDamage: 0
     WeaponAccuracyMultiplier: 0
   ArmorVariables:
-    ArmorDefense: 10
+    ArmorDefense: 9
     ArmorMagicDefense: 2
     DodgeMultiplier: 1
     AttackSpeedModifier: 0

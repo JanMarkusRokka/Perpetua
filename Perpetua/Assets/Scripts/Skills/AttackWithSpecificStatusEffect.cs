@@ -72,7 +72,7 @@ public class AttackWithSpecificStatusEffect : Attack
         return participant;
     }
 
-    public static BattleAction New(BattleParticipant _attacker, BattleParticipant _recipient, StatusEffect _statusEffect, int _willPowerUsage, bool _areaOfEffect)
+    public static BattleAction New(BattleParticipant _attacker, BattleParticipant _recipient, StatusEffect _statusEffect, int _willPowerUsage, bool _areaOfEffect, AudioClipGroup _Sound)
     {
         AttackWithSpecificStatusEffect attack = ScriptableObject.CreateInstance<AttackWithSpecificStatusEffect>();
 
@@ -81,6 +81,7 @@ public class AttackWithSpecificStatusEffect : Attack
         attack.statusEffect = _statusEffect;
         attack.WillPowerUsage = _willPowerUsage;
         attack.areaOfEffect = _areaOfEffect;
+        attack.Sound = _Sound;
 
         return attack;
     }
@@ -94,6 +95,7 @@ public class AttackWithSpecificStatusEffect : Attack
         attack.statusEffect = statusEffect;
         attack.WillPowerUsage = WillPowerUsage;
         attack.areaOfEffect = areaOfEffect;
+        attack.Sound = Sound;
 
         return attack;
     }

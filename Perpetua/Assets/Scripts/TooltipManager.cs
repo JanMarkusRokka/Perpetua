@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 //Somewhat inspired by https://www.youtube.com/watch?v=HXFoUGw7eKk
@@ -43,6 +44,21 @@ public class TooltipManager : MonoBehaviour
         Instance.layoutElem.enabled = (Instance.headerText.text.Length > Instance.characterWrap || Instance.descriptionText.text.Length > Instance.characterWrap);
         Instance.StartCoroutine(Instance.SlowReveal());
     }
+
+    public static void KeysSelectShow(string header, string description)
+    {
+        Instance.headerText.text = header;
+        Instance.descriptionText.text = description;
+        Instance.layoutElem.enabled = (Instance.headerText.text.Length > Instance.characterWrap || Instance.descriptionText.text.Length > Instance.characterWrap);
+        Instance.StartCoroutine(Instance.Wait());
+    }
+    
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        Instance.StartCoroutine(Instance.SlowReveal());
+    }
+
 
     private IEnumerator SlowReveal()
     {

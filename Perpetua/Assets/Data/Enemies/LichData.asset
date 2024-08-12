@@ -15,7 +15,7 @@ MonoBehaviour:
   image: {fileID: -1892150245, guid: c33efc2b185d2d14a82e23de2371cb1d, type: 3}
   name: Lich
   description: Evil? Lich
-  stats: {fileID: 11400000, guid: d88f5799ea60d3d45a40dc2320bacded, type: 2}
+  stats: {fileID: 11400000, guid: 53a0364206f30c8469eb122ac111d1c4, type: 2}
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
   skills:
   - {fileID: 11400000, guid: 4c25303470f837a4fa28bd49efc44b1d, type: 2}
@@ -33,3 +33,4 @@ MonoBehaviour:
   battleMusic: {fileID: 0}
   continueMusicFromScene: 0
   moveAnimation: {fileID: 9100000, guid: 047cb69e671ad5c4ea6c657581e54cf6, type: 2}
+  hasSpawned: 0

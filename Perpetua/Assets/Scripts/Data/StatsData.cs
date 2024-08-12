@@ -117,6 +117,8 @@ public class StatsData : ScriptableObject
             }
             AttackSpeed = Mathf.Clamp(AttackSpeed + item.ArmorVariables.AttackSpeedModifier, 0, 100);
             ExtraTurnCount += item.RuneVariables.extraTurns;
+            if (item.RuneVariables.accuracyMultiplier != 0)
+            Accuracy = (int) Mathf.Clamp(Accuracy * item.RuneVariables.accuracyMultiplier, 0f, 100f);
         }
     }
 }

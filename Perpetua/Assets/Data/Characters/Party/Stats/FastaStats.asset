@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
   m_Name: FastaStats
   m_EditorClassIdentifier: 
-  HealthPoints: 103
-  MaxHealthPoints: 103
-  PhysicalDamage: 15
+  HealthPoints: 90
+  MaxHealthPoints: 90
+  PhysicalDamage: 8
   MagicDamage: 1
-  PhysicalDefense: 10
+  PhysicalDefense: 5
   MagicDefense: 1
-  AilmentResistance: 1
-  AttackSpeed: 8
+  AilmentResistance: 5
+  AttackSpeed: 11
   Dodge: 0.02
   Accuracy: 85
   CriticalChance: 5
@@ -27,3 +27,4 @@ MonoBehaviour:
   WillPower: 100
   MaxWillPower: 100
   Detectability: 10
+  ExtraTurnCount: 0

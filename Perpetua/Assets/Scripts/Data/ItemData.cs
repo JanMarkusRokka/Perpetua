@@ -78,6 +78,9 @@ public struct RuneVariables
     [SerializeField]
     public int extraTurns;
 
+    [SerializeField]
+    public float accuracyMultiplier;
+
     public string GetDescripion()
     {
         string desc = "";
@@ -93,6 +96,10 @@ public struct RuneVariables
         if (extraTurns != 0)
         {
             desc += "\nExtra turns:" + extraTurns;
+        }
+        if (accuracyMultiplier != 0)
+        {
+            desc += "\nAccuracy multiplier:" + accuracyMultiplier;
         }
         return desc;
     }

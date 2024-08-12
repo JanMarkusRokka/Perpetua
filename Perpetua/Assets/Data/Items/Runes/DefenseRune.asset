@@ -19,9 +19,12 @@ MonoBehaviour:
   WeaponVariables:
     WeaponDamage: 0
     WeaponMagicDamage: 0
+    WeaponAccuracyMultiplier: 0
   ArmorVariables:
-    ArmorDefense: 5
-    ArmorMagicDefense: 5
+    ArmorDefense: 4
+    ArmorMagicDefense: 4
+    DodgeMultiplier: 0
+    AttackSpeedModifier: 0
   RuneVariables:
     recipientStatusEffects: []
     extraTurns: 0

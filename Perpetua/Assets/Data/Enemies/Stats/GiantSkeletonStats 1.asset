@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
   m_Name: GiantSkeletonStats 1
   m_EditorClassIdentifier: 
-  HealthPoints: 200
-  MaxHealthPoints: 200
+  HealthPoints: 100
+  MaxHealthPoints: 100
   PhysicalDamage: 55
   MagicDamage: 5
-  PhysicalDefense: 5
+  PhysicalDefense: 8
   MagicDefense: 10
   AilmentResistance: 10
-  AttackSpeed: 10
+  AttackSpeed: 11
   Dodge: 0.05
   Accuracy: 80
-  CriticalChance: 3
+  CriticalChance: 5
   CriticalMultiplier: 1.5
   WillPower: 0
   MaxWillPower: 0
   Detectability: 0
+  ExtraTurnCount: 0

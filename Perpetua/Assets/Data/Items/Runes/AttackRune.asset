@@ -17,11 +17,14 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: f93aaf84a891446489da57e467f24a02, type: 2}
   equipped: 0
   WeaponVariables:
-    WeaponDamage: 10
-    WeaponMagicDamage: 10
+    WeaponDamage: 5
+    WeaponMagicDamage: 5
+    WeaponAccuracyMultiplier: 0
   ArmorVariables:
     ArmorDefense: 0
     ArmorMagicDefense: 0
+    DodgeMultiplier: 0
+    AttackSpeedModifier: 0
   RuneVariables:
     recipientStatusEffects: []
     extraTurns: 0

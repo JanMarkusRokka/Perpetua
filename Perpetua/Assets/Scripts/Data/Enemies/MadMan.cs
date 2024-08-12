@@ -17,7 +17,7 @@ public class MadManData : EnemyData
         awsse.participant = participant;
         awsse.recipient = target;
 
-        if (turn < 4)
+        if (turn < 3)
         {
             IntentionalMiss miss = (IntentionalMiss)IntentionalMiss.New(participant, target);
             turn++;

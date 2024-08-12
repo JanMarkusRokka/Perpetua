@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
   m_Name: WoodcutterStats
   m_EditorClassIdentifier: 
-  HealthPoints: 200
-  MaxHealthPoints: 200
+  HealthPoints: 350
+  MaxHealthPoints: 350
   PhysicalDamage: 55
   MagicDamage: 1
-  PhysicalDefense: 5
+  PhysicalDefense: 17
   MagicDefense: 10
   AilmentResistance: 10
   AttackSpeed: 10
   Dodge: 0.05
-  Accuracy: 80
-  CriticalChance: 3
+  Accuracy: 85
+  CriticalChance: 5
   CriticalMultiplier: 1.5
   WillPower: 0
   MaxWillPower: 0

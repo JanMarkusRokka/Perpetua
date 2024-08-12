@@ -8,7 +8,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "StatusEffect/Types/Taunting")]
 public class Taunting : StatusEffect
 {
-    private int turnsLeft = 1;
+    private int turnsLeft = 2;
     public float detectabilityMultiplier = 2f;
     public void SetTurnsLeft(int value)
     {

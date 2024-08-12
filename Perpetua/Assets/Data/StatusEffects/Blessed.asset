@@ -15,4 +15,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: fa8ed3114e6f98c4cb818ca2e7fee8f5, type: 3}
   tooltip: Blessed
   isAilment: 0
-  defenseMultiplier: 1.5
+  defenseMultiplier: 1.4

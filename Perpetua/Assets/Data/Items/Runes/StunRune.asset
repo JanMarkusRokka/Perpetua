@@ -19,10 +19,18 @@ MonoBehaviour:
   WeaponVariables:
     WeaponDamage: 0
     WeaponMagicDamage: 0
+    WeaponAccuracyMultiplier: 0
   ArmorVariables:
     ArmorDefense: 0
     ArmorMagicDefense: 0
+    DodgeMultiplier: 0
+    AttackSpeedModifier: 0
   RuneVariables:
     recipientStatusEffects:
     - {fileID: 11400000, guid: 429ae8bb613fc0c47ae82f7495656a99, type: 2}
+    extraTurns: 0
+    accuracyMultiplier: 0.55
+  ConsumableVariables:
+    healthChange: 0
+    willpowerChange: 0
   description: Stuns the target.

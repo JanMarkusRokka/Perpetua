@@ -16,4 +16,4 @@ MonoBehaviour:
     also curing them.
   participant: {fileID: 0}
   recipient: {fileID: 0}
-  WPowerUsage: 20
+  WPowerUsage: 15

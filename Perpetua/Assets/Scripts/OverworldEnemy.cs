@@ -27,7 +27,6 @@ public class OverworldEnemy : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(EnemyData.GetInstanceID());
         IdleLocation = transform.position;
         RoamingDestination = IdleLocation;
         agent = GetComponent<NavMeshAgent>();

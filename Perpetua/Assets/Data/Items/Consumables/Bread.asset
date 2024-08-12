@@ -19,13 +19,16 @@ MonoBehaviour:
   WeaponVariables:
     WeaponDamage: 0
     WeaponMagicDamage: 0
+    WeaponAccuracyMultiplier: 0
   ArmorVariables:
     ArmorDefense: 0
     ArmorMagicDefense: 0
+    DodgeMultiplier: 0
+    AttackSpeedModifier: 0
   RuneVariables:
     recipientStatusEffects: []
     extraTurns: 0
   ConsumableVariables:
-    healthChange: 5
-    willpowerChange: 20
-  description: Eating this ought to make you feel a bit better
+    healthChange: 10
+    willpowerChange: 30
+  description: Dry and cold

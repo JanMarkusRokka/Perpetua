@@ -16,9 +16,9 @@ MonoBehaviour:
   MaxHealthPoints: 100
   PhysicalDamage: 11
   MagicDamage: 2
-  PhysicalDefense: 5
+  PhysicalDefense: 10
   MagicDefense: 2
-  AilmentResistance: 1
+  AilmentResistance: 5
   AttackSpeed: 10
   Dodge: 0.05
   Accuracy: 80
@@ -27,3 +27,4 @@ MonoBehaviour:
   WillPower: 100
   MaxWillPower: 100
   Detectability: 10
+  ExtraTurnCount: 0

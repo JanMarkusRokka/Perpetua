@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
   m_Name: MonarchStats
   m_EditorClassIdentifier: 
-  HealthPoints: 300
-  MaxHealthPoints: 300
+  HealthPoints: 500
+  MaxHealthPoints: 500
   PhysicalDamage: 60
   MagicDamage: 5
-  PhysicalDefense: 5
+  PhysicalDefense: 20
   MagicDefense: 10
   AilmentResistance: 10
   AttackSpeed: 10
-  Dodge: 0.05
-  Accuracy: 80
-  CriticalChance: 3
+  Dodge: 0.02
+  Accuracy: 90
+  CriticalChance: 5
   CriticalMultiplier: 1.5
   WillPower: 0
   MaxWillPower: 0

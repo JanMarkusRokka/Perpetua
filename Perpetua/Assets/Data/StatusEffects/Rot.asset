@@ -16,4 +16,4 @@ MonoBehaviour:
   tooltip: Rotting
   isAilment: 1
   turnsLeft: 3
-  damagePerTurn: 0.07
+  damagePerTurn: 0.06

@@ -19,8 +19,8 @@ MonoBehaviour:
   statusEffects: {fileID: 11400000, guid: 4f7326bac9eb70b429176ba016d30811, type: 2}
   skills: []
   loot:
-  - {fileID: 11400000, guid: 0afd3b1a9fe2818488fd84a8e64ce674, type: 2}
   - {fileID: 11400000, guid: 9aac68fbc9ce2624d873edf1911aad13, type: 2}
+  - {fileID: 11400000, guid: cf3b3e8612933c74c8f1dc8368bef1c2, type: 2}
   gonerSprite: {fileID: -474448225, guid: ed3dbeac5414dad45bc16a12a24b0ff1, type: 3}
   stunSeconds: 0
   stunLocation: {x: 0, y: 0, z: 0}

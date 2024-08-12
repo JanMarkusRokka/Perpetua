@@ -55,13 +55,14 @@ public class PurgeAndPunish : Attack
         return participant;
     }
 
-    public static BattleAction New(BattleParticipant _attacker, BattleParticipant _recipient, StatusEffect _statusEffect, int _willPowerUsage)
+    public static BattleAction New(BattleParticipant _attacker, BattleParticipant _recipient, StatusEffect _statusEffect, int _willPowerUsage, AudioClipGroup _Sound)
     {
         PurgeAndPunish attack = ScriptableObject.CreateInstance<PurgeAndPunish>();
 
         attack.participant = _attacker;
         attack.recipient = _recipient;
         attack.WPowerUsage = _willPowerUsage;
+        attack.Sound = _Sound;
 
         return attack;
     }
@@ -73,6 +74,7 @@ public class PurgeAndPunish : Attack
         attack.participant = participant;
         attack.recipient = recipient;
         attack.WPowerUsage = WPowerUsage;
+        attack.Sound = Sound;
 
         return attack;
     }

@@ -70,3 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /Perpetua/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /Perpetua/[Aa]ssets/[Ss]treamingAssets/aa/*
+Perpetua/Assets/ClassDiagram1.cd
+Perpetua/Assets/ClassDiagram1.cd.meta
+Perpetua/Assets/ClassDiagram2.cd
+Perpetua/Assets/ClassDiagram2.cd.meta

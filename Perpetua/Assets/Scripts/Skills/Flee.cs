@@ -16,7 +16,7 @@ public class Flee : BattleAction
         foreach(EnemyData enemy in enemies)
         {
             StatsData statsData = enemy.GetStatsWithAllEffects();
-            if (statsData.AttackSpeed > 0 && statsData.HealthPoints > 0 && !enemy.isEscapable)
+            if (statsData.AttackSpeed <= 0 || statsData.HealthPoints <= 0 || !enemy.isEscapable)
             {
                 canFlee = false;
             }

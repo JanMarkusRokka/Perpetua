@@ -16,6 +16,6 @@ MonoBehaviour:
   participant: {fileID: 0}
   recipient: {fileID: 0}
   statusEffect: {fileID: 11400000, guid: 521f04d131d3d5b46af3140fad42fad6, type: 2}
-  WillPowerUsage: 20
+  WillPowerUsage: 15
   EnemySelection: 0
   SkillName: Divine Blessing

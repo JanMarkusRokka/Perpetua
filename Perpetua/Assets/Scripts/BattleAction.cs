@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public abstract class BattleAction : ScriptableObject
 {
     public string tooltip;
+    public AudioClipGroup Sound;
     public abstract string GetName();
     public abstract BattleParticipant GetParticipant();
     public abstract void CommitAction();
@@ -218,7 +219,7 @@ public class Attack : AttackAction
             battleCanvas.SetPartyMemberColor(participant.transform, Color.blue);
             Transform recipientTransform = attackRecipient.transform;
             battleEffects.DisplayAttackEnemyEffect(recipientTransform);
-
+            battleManager.DefaultAttackSound.Play();
             yield return new WaitForSeconds(0.5f);
             attackRecipient.participant.stats.HealthPoints = Mathf.Max(0, recipient.GetStatsData().HealthPoints - totalDamage);
 
@@ -318,6 +319,7 @@ public class Attack : AttackAction
 
         attack.participant = participant;
         attack.recipient = recipient;
+        attack.Sound = Sound;
 
         return attack;
     }
@@ -393,6 +395,7 @@ public class Guard : BattleAction
         Guard guard = ScriptableObject.CreateInstance<Guard>();
 
         guard.participant = participant;
+        guard.Sound = Sound;
 
         return guard;
     }

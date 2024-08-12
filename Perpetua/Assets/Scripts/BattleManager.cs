@@ -26,6 +26,8 @@ public class BattleManager : MonoBehaviour
     public ScenarioData returnScenario;
     public HashSet<BattleParticipant> GuardDuringTurn;
     public PlayMusic playMusic;
+    // Temp solution
+    public AudioClipGroup DefaultAttackSound;
     public void Awake()
     {
         if (BattleManager.Instance)

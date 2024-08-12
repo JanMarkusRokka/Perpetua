@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthPoints: 110
   MaxHealthPoints: 110
-  PhysicalDamage: 30
+  PhysicalDamage: 50
   MagicDamage: 1
-  PhysicalDefense: 5
+  PhysicalDefense: 13
   MagicDefense: 10
   AilmentResistance: 10
-  AttackSpeed: 10
-  Dodge: 0.05
-  Accuracy: 80
+  AttackSpeed: 11
+  Dodge: 0.2
+  Accuracy: 85
   CriticalChance: 3
   CriticalMultiplier: 1.5
   WillPower: 0

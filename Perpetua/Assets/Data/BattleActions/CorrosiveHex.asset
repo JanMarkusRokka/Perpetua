@@ -16,6 +16,6 @@ MonoBehaviour:
   participant: {fileID: 0}
   recipient: {fileID: 0}
   statusEffect: {fileID: 11400000, guid: 26b4ca104d1f320428d720e293191254, type: 2}
-  WillPowerUsage: 20
+  WillPowerUsage: 15
   EnemySelection: 1
   SkillName: Corrosive Hex

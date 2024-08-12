@@ -15,6 +15,6 @@ MonoBehaviour:
   tooltip: Increases the likelihood of the user scoring a critical hit for the next
     turn.
   statusEffect: {fileID: 11400000, guid: 7a0cd353108b7914e9e0e47b265dc56c, type: 2}
-  WillPowerUsage: 10
+  WillPowerUsage: 15
   participant: {fileID: 0}
   SkillName: Counterbalance Stance
