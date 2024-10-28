@@ -19,6 +19,7 @@ public class Consume : BattleAction
         StatsData stats = participant.GetPartyMember().stats;
         stats.HealthPoints = Mathf.Min(stats.MaxHealthPoints, participant.GetPartyMember().stats.HealthPoints + item.ConsumableVariables.healthChange);
         stats.WillPower = Mathf.Min(stats.MaxWillPower, participant.GetPartyMember().stats.WillPower + item.ConsumableVariables.willpowerChange);
+        if (BattleManager.Instance)
         BattleManager.Instance.StartCoroutine(AnimateConsumable());
     }
 

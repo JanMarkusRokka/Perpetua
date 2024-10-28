@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1089d71d8a63c4eaf49e7d8f8b1c34, type: 3}
   m_Name: DanielStats
   m_EditorClassIdentifier: 
-  HealthPoints: 90
+  HealthPoints: 40
   MaxHealthPoints: 90
   PhysicalDamage: 8
   MagicDamage: 10
@@ -24,7 +24,7 @@ MonoBehaviour:
   Accuracy: 85
   CriticalChance: 5
   CriticalMultiplier: 1.5
-  WillPower: 100
+  WillPower: 50
   MaxWillPower: 100
   Detectability: 10
   ExtraTurnCount: 0
