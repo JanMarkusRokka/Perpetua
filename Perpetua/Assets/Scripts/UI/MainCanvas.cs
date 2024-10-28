@@ -11,6 +11,7 @@ public class MainCanvas : MonoBehaviour
     public GameObject PartyPanel;
     public GameObject OptionsPanel;
     public GameObject TabsChanger;
+    public GameObject ConsumableMenu;
     private TabsController _tc;
     public AudioClipGroup MenuSound;
 
@@ -22,6 +23,7 @@ public class MainCanvas : MonoBehaviour
         _tc.tabs.Add(InventoryPanel);
         _tc.tabs.Add(PartyPanel);
         _tc.tabs.Add(OptionsPanel);
+        _tc.tabs.Add(ConsumableMenu);
     }
     void Update()
     {

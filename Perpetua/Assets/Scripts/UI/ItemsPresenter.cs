@@ -15,10 +15,10 @@ public class ItemsPresenter : MonoBehaviour
 
     private void OnEnable()
     {
-        RefreshInventory();
+        RefreshInventory(false);
     }
 
-    private void RefreshInventory()
+    private void RefreshInventory(bool selectItem)
     {
         int children = transform.childCount;
 
@@ -30,6 +30,7 @@ public class ItemsPresenter : MonoBehaviour
         if (InventoryManager.Instance.inventory.items.Count > 0)
         {
             List<ItemData> removables = new List<ItemData>();
+            int i = 0;
             foreach (ItemData item in InventoryManager.Instance.inventory.items)
             {
                 if (item != null)
@@ -46,26 +47,37 @@ public class ItemsPresenter : MonoBehaviour
                     TooltipTrigger tooltip = itemPres.GetComponent<TooltipTrigger>();
                     tooltip.header = item.name;
                     tooltip.description = item.GetDescription();
+                    if (selectItem && i == 0)
+                    {
+                        itemPres.Select();
+                    }
+                    i++;
                 }
                 else
                 {
                     removables.Add(item);
                 }
             }
-            foreach(ItemData item in removables)
+            foreach (ItemData item in removables)
             {
                 InventoryManager.Instance.inventory.items.Remove(item);
             }
         }
     }
 
+    public void SelectFirstChild()
+    {
+        transform.GetChild(0).GetComponent<Button>().Select();
+    }
+
     private void OpenConsumeMenu(ItemData item)
     {
         ConsumeMenu.SetActive(true);
-        TabsController.ClearTab(ConsumeMenu);
+        TabsController.ClearTab(ConsumeMenu.transform.GetChild(0).gameObject);
+        ConsumeMenu.transform.GetChild(1).gameObject.GetComponent<Button>().Select();
         foreach (PartyCharacterData member in PartyManager.Instance.party.PartyMembers)
         {
-            Button pres = Instantiate(PartyMemberPresenter, ConsumeMenu.transform);
+            Button pres = Instantiate(PartyMemberPresenter, ConsumeMenu.transform.GetChild(0));
             pres.transform.Find("Image").GetComponent<Image>().sprite = member.image;
             if (member.stats.HealthPoints <= 0)
             {
@@ -89,14 +101,14 @@ public class ItemsPresenter : MonoBehaviour
 
     private void ConsumeItem(ItemData item, PartyCharacterData partyCharacter)
     {
-        ConsumeMenu.SetActive(false);
         BattleParticipant participant = BattleParticipant.New(partyCharacter);
         Consume consume = ScriptableObject.CreateInstance<Consume>();
         consume.participant = participant;
         consume.item = item;
         consume.CommitAction();
         InventoryManager.Instance.inventory.items.Remove(item);
-        RefreshInventory();
         Destroy(consume);
+        RefreshInventory(true);
+        ConsumeMenu.SetActive(false);
     }
 }
